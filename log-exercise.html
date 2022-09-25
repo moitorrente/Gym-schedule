@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <script defer src="log.js"></script>
+
+
+</head>
+
+<body class="bg-light">
+    <div class="container container-fluid d-flex justify-content-center">
+        <div class="row">
+
+
+            <div class="col-12">
+                <h3 class="mb-3 text-center py-3">Log de ejercicio</h3>
+                <form class="needs-validation" novalidate="">
+
+                    <div class="col-12 row py-2">
+                        <div class="col-3">
+                            <label for="firstName" class="form-label">Orden</label>
+                            <input type="text" class="form-control" id="order" placeholder="" value="" required="" disabled>
+                        </div>
+                        <div class="col-9">
+                            <label for="exe" class="form-label">Ejercicio</label>
+                            <input type="text" class="form-control" id="exe" placeholder="" value="" required="" disabled>
+                        </div>
+                    </div>
+
+                    <div class="col-12 py-2">
+                        <div for="series" class="form-label">Series</div>
+                        <input type="text" class="form-control" id="series" placeholder="" value="" required="" disabled>
+                    </div>
+
+                    <div class="col-12 row py-2">
+                        <div class="col-3">
+                            <label for="tempo1" class="form-label">Subir</label>
+                            <input type="text" class="form-control" id="tempo1" placeholder="" value="" required="" disabled>
+                        </div>
+
+                        <div class="col-3">
+                            <label for="tempo2" class="form-label">Arriba</label>
+                            <input type="text" class="form-control" id="tempo2" placeholder="" value="" required="" disabled>
+                        </div>
+                        <div class="col-3">
+                            <label for="tempo3" class="form-label">Bajar</label>
+                            <input type="text" class="form-control" id="tempo3" placeholder="" value="" required="" disabled>
+                        </div>
+                        <div class="col-3">
+                            <label for="tempo4" class="form-label">Abajo</label>
+                            <input type="text" class="form-control" id="tempo4" placeholder="" value="" required="" disabled>
+                        </div>
+                    </div>
+                    <div class="col-12 row py-2">
+                        <div class="col-3">
+                            <label for="reps1" class="form-label">Rep 1</label>
+                            <input type="text" class="form-control" id="reps1" placeholder="" value="" required="" disabled>
+                        </div>
+
+                        <div class="col-3">
+                            <label for="reps2" class="form-label">Rep 2</label>
+                            <input type="text" class="form-control" id="reps2" placeholder="" value="" required="" disabled>
+                        </div>
+                        <div class="col-3">
+                            <label for="rep23" class="form-label">Rep 3</label>
+                            <input type="text" class="form-control" id="reps3" placeholder="" value="" required="" disabled>
+                        </div>
+                        <div class="col-3">
+                            <label for="reps4" class="form-label">Rep 4</label>
+                            <input type="text" class="form-control" id="reps4" placeholder="" value="" required="" disabled>
+                        </div>
+                    </div>
+
+                    <div class="col-12 row py-2">
+                        <div class="col-3">
+                            <label for="u1-1" class="form-label">Peso 1</label>
+                            <input type="text" class="form-control" id="u1-1" placeholder="" value="" required="">
+                        </div>
+
+                        <div class="col-3">
+                            <label for="u1-2" class="form-label">Peso 2</label>
+                            <input type="text" class="form-control" id="u1-2" placeholder="" value="" required="">
+                        </div>
+                        <div class="col-3">
+                            <label for="u1-3" class="form-label">Peso 3</label>
+                            <input type="text" class="form-control" id="u1-3" placeholder="" value="" required="">
+                        </div>
+                        <div class="col-3">
+                            <label for="u1-4" class="form-label">Peso 4</label>
+                            <input type="text" class="form-control" id="u1-4" placeholder="" value="" required="">
+                        </div>
+                    </div>
+                    <div class="col-12 row py-2">
+                        <div class="col-3">
+                            <label for="u2-1" class="form-label">Peso 1</label>
+                            <input type="text" class="form-control" id="u2-1" placeholder="" value="" required="">
+                        </div>
+
+                        <div class="col-3">
+                            <label for="u2-2" class="form-label">Peso 2</label>
+                            <input type="text" class="form-control" id="u2-2" placeholder="" value="" required="">
+                        </div>
+                        <div class="col-3">
+                            <label for="u2-3" class="form-label">Peso 3</label>
+                            <input type="text" class="form-control" id="u2-3" placeholder="" value="" required="">
+                        </div>
+                        <div class="col-3">
+                            <label for="u2-4" class="form-label">Peso 4</label>
+                            <input type="text" class="form-control" id="u2-4" placeholder="" value="" required="">
+                        </div>
+                    </div>
+
+
+                    <!-- <div class="col-12 py-2">
+                        <label for="objective" class="form-label">Objetivo</label>
+                        <select class="form-select" id="objective" required="">
+                            <option value="">Choose...</option>
+                            <option value="">Fallo -2</option>
+                            <option value="">Curl mancuernas</option>
+                        </select>
+                    </div> -->
+
+
+
+
+                    <hr class="my-4">
+
+                    <div class="col-12 fixed-bottom">
+                        <a class="w-100 btn btn-primary btn-lg" id="save">Guardar</a>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+
+    </div>
+</body>
+
+</html>
