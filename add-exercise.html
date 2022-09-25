@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
@@ -34,6 +35,7 @@
                         <div class="col-9">
                             <label for="exe" class="form-label">Ejercicio</label>
                             <select class="form-select" id="exe" required="">
+                                <option value="" hidden selected>Ejercicios...</option>
                                 <option value="1">Sentadillas con barra</option>
                                 <option value="2">Curl femoral tumbado</option>
                                 <option value="3">Zancadas reversas alternas con mancuernas</option>
@@ -44,79 +46,89 @@
                         </div>
                     </div>
 
-                    <div class="col-12 py-2">
-                        <div for="series" class="form-label">Series</div>
-
-                        <div id="series" class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="series1"
-                                value="option1">
-                            <label class="form-check-label" for="inlineRadio1">1</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="series2"
-                                value="option2">
-                            <label class="form-check-label" for="inlineRadio2">2</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="series3"
-                                value="option3">
-                            <label class="form-check-label" for="inlineRadio3">3</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="series4"
-                                value="option3">
-                            <label class="form-check-label" for="inlineRadio3">4</label>
-                        </div>
-                    </div>
-
                     <div class="col-12 row py-2">
                         <div class="col-3">
                             <label for="tempo1" class="form-label">Subir</label>
-                            <input type="text" class="form-control" id="tempo1" placeholder="" value="" required="">
+                            <input type="text" class="form-control" name="tempo">
                         </div>
 
                         <div class="col-3">
                             <label for="tempo2" class="form-label">Arriba</label>
-                            <input type="text" class="form-control" id="tempo2" placeholder="" value="" required="">
+                            <input type="text" class="form-control" name="tempo">
                         </div>
                         <div class="col-3">
                             <label for="tempo3" class="form-label">Bajar</label>
-                            <input type="text" class="form-control" id="tempo3" placeholder="" value="" required="">
+                            <input type="text" class="form-control" name="tempo">
                         </div>
                         <div class="col-3">
                             <label for="tempo4" class="form-label">Abajo</label>
-                            <input type="text" class="form-control" id="tempo4" placeholder="" value="" required="">
+                            <input type="text" class="form-control" name="tempo">
                         </div>
                     </div>
-                    <div class="col-12 row py-2">
-                        <div class="col-3">
-                            <label for="reps1" class="form-label">Rep 1</label>
-                            <input type="text" class="form-control" id="reps1" placeholder="" value="" required="">
-                        </div>
-
-                        <div class="col-3">
-                            <label for="reps2" class="form-label">Rep 2</label>
-                            <input type="text" class="form-control" id="reps2" placeholder="" value="" required="">
-                        </div>
-                        <div class="col-3">
-                            <label for="rep23" class="form-label">Rep 3</label>
-                            <input type="text" class="form-control" id="reps3" placeholder="" value="" required="">
-                        </div>
-                        <div class="col-3">
-                            <label for="reps4" class="form-label">Rep 4</label>
-                            <input type="text" class="form-control" id="reps4" placeholder="" value="" required="">
-                        </div>
-                    </div>
-
 
                     <div class="col-12 py-2">
                         <label for="objective" class="form-label">Objetivo</label>
                         <select class="form-select" id="objective" required="">
-                            <option value="">Choose...</option>
-                            <option value="">Fallo -2</option>
-                            <option value="">Curl mancuernas</option>
+                            <option value="X-2">Fallo -2</option>
+                            <option value="X-1">Fallo -1</option>
+                            <option value="X">Fallo</option>
                         </select>
                     </div>
+
+
+
+                    <div class="modal fade modal-sheet py-5" tabindex="-1"
+                        role="dialog" id="modalSheet">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content rounded-4 shadow">
+                                <div class="modal-header border-bottom-0">
+                                    <h5 class="modal-title">Ejercicio guardado</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body py-0">
+                                    <p>Se ha añadido el ejercicio seleccionado. ¿Quieres introducir más ejercicios?</p>
+                                </div>
+                                <div class="modal-footer flex-column border-top-0">
+                                    <a type="button" class="btn btn-lg btn-primary w-100 mx-0 mb-2" href="index.html">Volver al inicio</a>
+                                    <button type="button" class="btn btn-lg btn-light w-100 mx-0"
+                                        data-bs-dismiss="modal" id="closeModal">Más ejercicios</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 py-2">
+                        <div for="series" class="form-label">Series</div>
+
+                        <div id="series" class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="series" id="series1" value="1">
+                            <label class="form-check-label" for="series1">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="series" id="series2" value="2">
+                            <label class="form-check-label" for="series2">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="series" id="series3" value="3">
+                            <label class="form-check-label" for="series3">3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="series" id="series4" value="4">
+                            <label class="form-check-label" for="series4">4</label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 row py-2" id="reps-container">
+                        <!-- <div class="col-3">
+                            <label for="reps1" class="form-label">Rep 1</label>
+                            <input type="text" class="form-control" id="reps1" placeholder="" value="" required="">
+                        </div> -->
+                    </div>
+
+
+
 
 
 
@@ -124,7 +136,7 @@
                     <hr class="my-4">
 
                     <div class="col-12 fixed-bottom">
-                        <button class="w-100 btn btn-primary btn-lg" id="save">Guardar</button>
+                        <button class="w-100 btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalSheet" id="save">Guardar</button>
                     </div>
                 </form>
             </div>

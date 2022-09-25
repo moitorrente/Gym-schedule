@@ -21,7 +21,9 @@ const u22 = document.getElementById('u2-2');
 const u23 = document.getElementById('u2-3');
 const u24 = document.getElementById('u2-4');
 
-document.getElementById('save').onclick = () => {
+const saveBtn = document.getElementById('save');
+
+saveBtn.onclick = () => {
     current.aitor = [u11.value, u12.value, u13.value, u14.value];
     current.moi = [u21.value, u22.value, u23.value, u24.value];
     localStorage.setItem('ejercicios', JSON.stringify(ejercicios));
@@ -29,20 +31,22 @@ document.getElementById('save').onclick = () => {
 
 let current;
 let ejercicios;
+
 loadData();
 function loadData(){
-    getCurrent();
+    getContext();
     orden.value = current.orden;
     ejercicio.value = current.nombre;
     [tempo1.value, tempo2.value, tempo3.value, tempo4.value ] = current.tempo;
     [reps1.value, reps2.value, reps3.value, reps4.value ] = current.repeticiones;
+    if(current.aitor) [u11.value, u12.value, u13.value, u14.value] = current.aitor;
+    if(current.moi) [u21.value, u22.value, u23.value, u24.value] = current.moi;
     series.value = current.series;
 }
 
-
-function getCurrent(){
+function getContext(){
     const id = localStorage.getItem('current');
     ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
-    console.log(ejercicios, id);
     current = ejercicios.filter(ejercicio => ejercicio.id == id)[0]
 }
+

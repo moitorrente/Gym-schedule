@@ -19,7 +19,7 @@
     <div class="container d-flex justify-content-center py-4">
         <div class="col-10 ">
             <div class="row">
-                <a class="btn btn-danger btn-lg my-auto" type="button" id="delete">Eliminar
+                <a class="btn btn-danger btn-lg my-auto" type="button" data-bs-toggle="modal" data-bs-target="#modalChoice">Eliminar
                     entrenamiento</a>
 
             </div>
@@ -27,6 +27,26 @@
                 <a class="btn btn-secondary btn-lg my-auto" href="add-exercise.html" type="button">Añadir
                     ejercicio</a>
 
+            </div>
+
+
+            <div class="modal fade modal-alert" tabindex="-1" role="dialog"
+                id="modalChoice">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content rounded-3 shadow">
+                        <div class="modal-body p-4 text-center">
+                            <h5 class="mb-0">Eliminar entrenamiento</h5>
+                            <p class="mb-0">Una vez eliminado el entrenamiento no se podrá recuperar. ¿Quieres continuar?</p>
+                        </div>
+                        <div class="modal-footer flex-nowrap p-0">
+                            <button type="button" id="delete" data-bs-dismiss="modal"
+                                class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end"><strong>Sí, eliminar</strong></button>
+                            <button type="button"
+                                class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0"
+                                data-bs-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
@@ -53,7 +73,8 @@
             </div>
 
             <div class="row">
-                <a class="btn btn-primary btn-lg my-auto" type="button" id="share" data-action="share/whatsapp/share" target="_blank">Compartir</a>
+                <a class="btn btn-primary btn-lg my-auto" type="button" id="share" data-action="share/whatsapp/share"
+                    target="_blank">Compartir</a>
 
             </div>
         </div>
