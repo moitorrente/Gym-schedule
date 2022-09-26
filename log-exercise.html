@@ -13,17 +13,23 @@
         crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <script defer src="log.js"></script>
-
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding-bottom: 50px;
+        }
+    </style>
 
 </head>
 
-<body class="bg-light">
+<body class="bg-secondary bg-opacity-10">
     <div class="container container-fluid d-flex justify-content-center">
         <div class="row">
 
 
             <div class="col-12">
-                <h3 class="mb-3 text-center py-3">Log de ejercicio</h3>
+                <h1 class="mb-3  ps-3 mt-4">Log de ejercicio</h1>
                 <form class="needs-validation" novalidate="">
 
                     <div class="col-12 row py-2">
@@ -148,9 +154,9 @@
 
 
 
-                    <div class="col-12 fixed-bottom">
+                    <!-- <div class="col-12 fixed-bottom">
                         <a class="w-100 btn btn-primary btn-lg" href="index.html" id="save">Guardar</a>
-                    </div>
+                    </div> -->
                 </form>
             </div>
 
@@ -158,6 +164,36 @@
         </div>
 
     </div>
+
+    <nav class="fixed-bottom justify-content-between navbar-expand-sm py-2 bg-white">
+        <div class="row text-secondary">
+            <div class="col text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash3"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                </svg>
+            </div>
+            <div class="col text-center text-primary">
+                <a class="navbar-brand" href="index.html" id="save">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-save">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                        <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
+                </a>
+            </div>
+            <a class="col text-center text-secondary" href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                    class="bi bi-house-door" viewBox="0 0 16 16">
+                    <path
+                        d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+                </svg>
+            </a>
+        </div>
+    </nav>
 </body>
 
 </html>

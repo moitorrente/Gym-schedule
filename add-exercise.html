@@ -15,14 +15,22 @@
     <!-- <link rel="stylesheet" href="style.css"> -->
     <script defer src="add.js"></script>
 
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding-bottom: 50px;
+        }
+    </style>
+
 
 </head>
 
-<body class="bg-light">
+<body class="bg-secondary bg-opacity-10">
     <div class="container container-fluid d-flex justify-content-center">
         <div class="row">
             <div class="col-12">
-                <h3 class="mb-3 text-center py-3">Edición de ejercicio</h3>
+                <h1 class="mb-3 ps-3 py-3">Edición de ejercicio</h1>
                 <form class="needs-validation" novalidate="">
 
                     <div class="col-12 row py-2">
@@ -35,12 +43,12 @@
                             <label for="exe" class="form-label">Ejercicio</label>
                             <select class="form-select" id="exe" required="">
                                 <option value="" hidden selected>Ejercicios...</option>
-                                <option value="1">Sentadillas con barra</option>
-                                <option value="2">Curl femoral tumbado</option>
-                                <option value="3">Zancadas reversas alternas con mancuernas</option>
-                                <option value="4">Peso muerto rumano con barra</option>
-                                <option value="5">Elevaciones de gemelo sentado</option>
-                                <option value="6">Plancha RKC</option>
+                                <option value="1">Dips</option>
+                                <option value="2">Jalón al pecho agarre supino</option>
+                                <option value="3">Press inclinado mancuernas</option>
+                                <option value="4">Remo con mancuernas inclinado</option>
+                                <option value="5">Facepull</option>
+                                <option value="6">Elevaciones laterales poloquin sentado</option>
                             </select>
                         </div>
                     </div>
@@ -118,35 +126,20 @@
                         </div>
                     </div>
 
-
                     <div class="col-12 row py-2" id="reps-container">
                         <!-- <div class="col-3">
                             <label for="reps1" class="form-label">Rep 1</label>
                             <input type="text" class="form-control" id="reps1" placeholder="" value="" required="">
                         </div> -->
                     </div>
-
-
-
-
-
-
-
                     <hr class="my-4">
-
-                    <div class="col-12 fixed-bottom">
-                        <button class="w-100 btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalSheet"
-                            id="save">Guardar</button>
-                    </div>
                 </form>
             </div>
-
-
         </div>
 
     </div>
 
-    <nav class="fixed-bottom justify-content-between navbar-expand-sm py-3 bg-white">
+    <nav class="fixed-bottom justify-content-between navbar-expand-sm py-2 bg-white">
         <div class="row text-secondary">
             <div class="col text-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash3"
@@ -156,7 +149,7 @@
                 </svg>
             </div>
             <div class="col text-center text-primary">
-                <a class="navbar-brand" href="add-exercise.html">
+                <a class="navbar-brand" data-bs-toggle="modal" data-bs-target="#modalSheet" id="save">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="feather feather-save">
