@@ -74,9 +74,7 @@ function SaveDataToLocalStorage(data) {
     let ejercicios = JSON.parse(localStorage.getItem('ejercicios')) || [];
 
     const index = ejercicios.findIndex(x => x.id == data.id);
-    console.log(index)
-    if(index >0){
-        console.log('borra', index)
+    if(index > -1){
         ejercicios.splice(index, 1);
     }
     ejercicios.push(data)
