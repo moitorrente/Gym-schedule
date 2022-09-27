@@ -6,11 +6,11 @@ const reps3 = document.getElementById('reps3');
 const reps4 = document.getElementById('reps4');
 const objetivo = document.getElementById('objective');
 
-const repsContainer = document.getElementById('reps-container')
+const repsContainer = document.getElementById('reps-container');
 
 
 const series = document.querySelectorAll('input[name="series"]');
-series.forEach(x => x.onclick = () => createReps(document.querySelector('input[name="series"]:checked').value))
+series.forEach(x => x.onclick = () => createReps(document.querySelector('input[name="series"]:checked').value));
 
 
 const saveButton = document.getElementById('save');
@@ -24,6 +24,37 @@ saveButton.addEventListener('click', (e) => {
         document.getElementById('closeModal').click();
     }
 });
+
+let current;
+
+loadData();
+function loadData() {
+    if (getContext()) {
+        orden.value = current.orden;
+        ejercicio.value = current.id;
+        ejercicio.disabled = true;
+        [...document.querySelectorAll('input[name="tempo"]')].forEach((x, i) => x.value = current.tempo[i]);
+        [...document.querySelectorAll('input[name="series"]')][parseInt(current.series) - 1].checked = true;
+        createReps(parseInt(current.series));
+        [...document.querySelectorAll('input[name="reps"]')].forEach((x, i) => x.value = current.repeticiones[i]);
+        objetivo.value = current.objetivo;
+    }
+
+}
+
+function getContext() {
+    const id = localStorage.getItem('current-edit');
+
+    if (id) {
+        ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
+        if (ejercicios) current = ejercicios.filter(ejercicio => ejercicio.id == id)[0];
+    }
+
+
+    if (current) return true;
+    return false;
+
+}
 
 
 function createToken() {
@@ -41,9 +72,17 @@ function createToken() {
 }
 
 function SaveDataToLocalStorage(data) {
-    let a = JSON.parse(localStorage.getItem('ejercicios')) || [];
-    a.push(data);
-    localStorage.setItem('ejercicios', JSON.stringify(a));
+    let ejercicios = JSON.parse(localStorage.getItem('ejercicios')) || [];
+
+    const index = ejercicios.findIndex(x => x.id == data.id);
+    console.log(index)
+    if(index >0){
+        console.log('borra', index)
+        ejercicios.splice(index, 1);
+    }
+    ejercicios.push(data)
+
+    localStorage.setItem('ejercicios', JSON.stringify(ejercicios));
 }
 
 function createReps(num) {
