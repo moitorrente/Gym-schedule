@@ -50,7 +50,6 @@ function getContext() {
         if (ejercicios) current = ejercicios.filter(ejercicio => ejercicio.id == id)[0];
     }
 
-
     if (current) return true;
     return false;
 

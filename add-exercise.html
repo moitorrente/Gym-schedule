@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title>Document</title>
+    <title>Gym schedule</title>
+    <link rel="icon" type="image/x-icon" href="/assets/icon.png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -33,11 +34,11 @@
                 <h1 class="mb-3 ps-3 py-3">Edición de ejercicio</h1>
                 <form class="needs-validation" novalidate="">
                     <div class="col-12 row py-2">
-                        <div class="col-3">
+                        <div class="col-2">
                             <label for="firstName" class="form-label">Orden</label>
                             <input type="text" class="form-control" id="order" placeholder="" value="" required="">
                         </div>
-                        <div class="col-9">
+                        <div class="col-8">
                             <label for="exe" class="form-label">Ejercicio</label>
                             <select class="form-select" id="exe" required="">
                                 <option value="" hidden selected>Ejercicios...</option>
@@ -47,6 +48,15 @@
                                 <option value="4">Elevaciones de gemelo de pie</option>
                                 <option value="5">Plancha lateral</option>
                             </select>
+                        </div>
+                        <div class="col-2">
+                            <label for="exe" class="form-label"><br></label>
+
+                            <button class="btn btn-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                  </svg>
+                            </button>
                         </div>
                     </div>
 
