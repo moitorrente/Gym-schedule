@@ -78,7 +78,6 @@ function SaveDataToLocalStorage(data) {
         ejercicios.splice(index, 1);
     }
     ejercicios.push(data)
-
     localStorage.setItem('ejercicios', JSON.stringify(ejercicios));
 }
 
