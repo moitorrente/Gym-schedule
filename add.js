@@ -1,9 +1,5 @@
 const orden = document.getElementById('order');
 const ejercicio = document.getElementById('exe');
-const reps1 = document.getElementById('reps1');
-const reps2 = document.getElementById('reps2');
-const reps3 = document.getElementById('reps3');
-const reps4 = document.getElementById('reps4');
 const objetivo = document.getElementById('objective');
 
 const repsContainer = document.getElementById('reps-container');
@@ -17,8 +13,9 @@ const saveButton = document.getElementById('save');
 
 saveButton.addEventListener('click', (e) => {
     e.preventDefault();
+    ejercicio.disabled = false;
     if (ejercicio.value) {
-        SaveDataToLocalStorage(createToken())
+        SaveDataToLocalStorage(createToken());
     } else {
         alert('Selecciona ejercicio');
         document.getElementById('closeModal').click();
@@ -27,13 +24,21 @@ saveButton.addEventListener('click', (e) => {
 
 let current;
 
+const tempos = [...document.querySelectorAll('input[name="tempo"]')];
+
+tempos.forEach((el, i) => el.onkeyup = () => {
+    if (i < tempos.length - 1) {
+        if (el.value) tempos[i + 1].focus();
+    }
+});
+
 loadData();
 function loadData() {
     if (getContext()) {
         orden.value = current.orden;
         ejercicio.value = current.id;
         ejercicio.disabled = true;
-        [...document.querySelectorAll('input[name="tempo"]')].forEach((x, i) => x.value = current.tempo[i]);
+        tempos.forEach((x, i) => x.value = current.tempo[i]);
         [...document.querySelectorAll('input[name="series"]')][parseInt(current.series) - 1].checked = true;
         createReps(parseInt(current.series));
         [...document.querySelectorAll('input[name="reps"]')].forEach((x, i) => x.value = current.repeticiones[i]);
@@ -74,7 +79,7 @@ function SaveDataToLocalStorage(data) {
     let ejercicios = JSON.parse(localStorage.getItem('ejercicios')) || [];
 
     const index = ejercicios.findIndex(x => x.id == data.id);
-    if(index > -1){
+    if (index > -1) {
         ejercicios.splice(index, 1);
     }
     ejercicios.push(data)
@@ -82,16 +87,13 @@ function SaveDataToLocalStorage(data) {
 }
 
 function createReps(num) {
-
     repsContainer.innerHTML = '';
-
     num++;
-
     for (let i = 1; i < num; i++) {
         const div = document.createElement('div');
         div.classList.add('col-3');
-        div.innerHTML = `<label for="reps${i}" class="form-label">Rep ${i}</label>
-        <input type="text" class="form-control" id="reps${i}" placeholder="" value="" required="" name="reps">`
+        div.innerHTML = `<label for="reps-${i}" class="form-label">Rep ${i}</label>
+        <input type="text" class="form-control" id="reps-${i}" placeholder="" value="" required="" name="reps">`
         repsContainer.appendChild(div);
     }
 }

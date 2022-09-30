@@ -13,11 +13,11 @@ function loadExercises() {
     listaEjercicios.innerHTML = ''
     const ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
     if (ejercicios) {
-        ejercicios.forEach(ejercicio => {
+        ejercicios.forEach((ejercicio, i) => {
             const checked = ejercicio.aitor || ejercicio.moi ? 'checked' : '';
-            createNewExercise(ejercicio.orden, ejercicio.nombre, ejercicio.series, ejercicio.id, checked)
+            createNewExercise(ejercicio.orden, ejercicio.nombre, ejercicio.series, ejercicio.id, checked, ejercicios.length, i)
         });
-    }else{
+    } else {
         const a = document.createElement('a');
         a.innerHTML = 'Añadir ejercicio';
         a.classList.add('text-center', 'my-4', 'py-4')
@@ -26,7 +26,7 @@ function loadExercises() {
     }
 }
 
-function createNewExercise(order, name, series, id, checked) {
+function createNewExercise(order, name, series, id, checked, len, pos) {
     const d = document.createElement('div');
     d.classList.add('py-1')
     d.innerHTML = `
@@ -53,8 +53,26 @@ function createNewExercise(order, name, series, id, checked) {
                         Editar
                     </button>
                 </li>
+
+                <li>
+                    <button type="button" class="d-none option px-1 my-1 w-75 d-flex gap-2 align-items-center ms-3 border-0" id="up-${id}" data-id="${id}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                        </svg>
+                        Subir
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="d-none option px-1 my-1 w-75 d-flex gap-2 align-items-center ms-3 border-0" id="down-${id}" data-id="${id}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                        </svg>
+                        Bajar
+                    </button>
+                </li>
+
                 <li class="">
-                    <button type="button" class="option px-1 w-75 d-flex gap-2 align-items-center ms-3 border-0" id="delete-${id}" data-id="${id}">
+                    <button type="button" class="option px-1 w-75 d-flex gap-2 align-items-center ms-3 border-0 text-danger" id="delete-${id}" data-id="${id}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eraser" viewBox="0 0 16 16">
                             <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm2.121.707a1 1 0 0 0-1.414 0L4.16 7.547l5.293 5.293 4.633-4.633a1 1 0 0 0 0-1.414l-3.879-3.879zM8.746 13.547 3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
                         </svg>
@@ -70,10 +88,10 @@ function createNewExercise(order, name, series, id, checked) {
     listaEjercicios.appendChild(d);
     const start = document.getElementById(`start-${id}`);
 
-    start.onclick = () =>{
+    start.onclick = () => {
         localStorage.setItem('current', start.getAttribute('data-id'));
         location.href = "log-exercise.html";
-    } 
+    }
 
     const del = document.getElementById(`delete-${id}`);
 
@@ -89,8 +107,29 @@ function createNewExercise(order, name, series, id, checked) {
     edit.onclick = () => {
         localStorage.setItem('current-edit', edit.getAttribute('data-id'));
         location.href = "add-exercise.html";
-
     }
+
+    const up = document.getElementById(`up-${id}`);
+    const down = document.getElementById(`down-${id}`);
+    if (pos > 0) up.classList.remove('d-none');
+    if (pos < len - 1) down.classList.remove('d-none')
+
+    up.onclick = () => {
+        const ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
+        swapPositions(ejercicios, pos, pos - 1);
+        localStorage.setItem('ejercicios', JSON.stringify(ejercicios));
+        loadExercises();
+    }
+    down.onclick = () => {
+        const ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
+        swapPositions(ejercicios, pos, pos + 1);
+        localStorage.setItem('ejercicios', JSON.stringify(ejercicios));
+        loadExercises();
+    }
+}
+
+const swapPositions = (array, a, b) => {
+    [array[a], array[b]] = [array[b], array[a]]
 }
 
 const share = document.getElementById('share');
@@ -101,7 +140,7 @@ share.onclick = () => {
     share.href = `https://wa.me?text=${encodeURIComponent(text)}`;
 }
 
-function json2csv(ob){
+function json2csv(ob) {
     const date = new Date().toLocaleDateString('en-GB');
     const entrenamiento = '';
     const ejercicio = ob.nombre;
@@ -112,11 +151,11 @@ function json2csv(ob){
 
     let repsAitor = ';;;;;;;';
     let repsMoi = ';;;;;;;';
-    if(ob.aitor) repsAitor = `${ob.repeticiones[0] || ''};${ob.aitor[0]|| ''};${ob.repeticiones[1] || ''};${ob.aitor[1]|| ''};${ob.repeticiones[2] || ''};${ob.aitor[2]|| ''};${ob.repeticiones[3] || ''};${ob.aitor[3]|| ''}`;
-    if(ob.moi) repsMoi = `${ob.repeticiones[0] || ''};${ob.moi[0]|| ''};${ob.repeticiones[1] || ''};${ob.moi[1]|| ''};${ob.repeticiones[2] || ''};${ob.moi[2]|| ''};${ob.repeticiones[3] || ''};${ob.moi[3]|| ''}`;
+    if (ob.aitor) repsAitor = `${ob.repeticiones[0] || ''};${ob.aitor[0] || ''};${ob.repeticiones[1] || ''};${ob.aitor[1] || ''};${ob.repeticiones[2] || ''};${ob.aitor[2] || ''};${ob.repeticiones[3] || ''};${ob.aitor[3] || ''}`;
+    if (ob.moi) repsMoi = `${ob.repeticiones[0] || ''};${ob.moi[0] || ''};${ob.repeticiones[1] || ''};${ob.moi[1] || ''};${ob.repeticiones[2] || ''};${ob.moi[2] || ''};${ob.repeticiones[3] || ''};${ob.moi[3] || ''}`;
 
     const aitor = `${date};${entrenamiento};${orden};${ejercicio};${series};${tempo};${objetivo};Aitor;${repsAitor}`;
     const moi = `${date};${entrenamiento};${orden};${ejercicio};${series};${tempo};${objetivo};Moi;${repsMoi}`;
 
-    return aitor + '\r\n' + moi + '\r\n';           
+    return aitor + '\r\n' + moi + '\r\n';
 }
