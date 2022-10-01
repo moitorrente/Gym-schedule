@@ -23,9 +23,113 @@
 
 <body class="bg-secondary bg-opacity-10">
     <div class="container d-flex justify-content-center py-4">
-        <div class="col-11">
-            <h1>Ejercicios <span class="fs-6">v0.0.5</span></h1>
+        <nav class="col-11">
+            <h1 class="d-flex">
+                <span class="flex-grow-1">💪Gym schedule<span class="fs-6" data-bs-toggle="modal"
+                        data-bs-target="#modalChangelog">v0.0.6</span></span>
+                <span class="align-self-center ms-auto">
+                    <div class="btn-group">
+                        <button class="btn border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                            id="options-${id}" href="javascript:void(0);">
+                            <svg class="align-self-center" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-magic" viewBox="0 0 16 16">
+                                <path
+                                    d="M9.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0v1.829Zm4.5.035A.5.5 0 0 0 13.293 2L12 3.293a.5.5 0 1 0 .707.707L14 2.707ZM7.293 4A.5.5 0 1 0 8 3.293L6.707 2A.5.5 0 0 0 6 2.707L7.293 4Zm-.621 2.5a.5.5 0 1 0 0-1H4.843a.5.5 0 1 0 0 1h1.829Zm8.485 0a.5.5 0 1 0 0-1h-1.829a.5.5 0 0 0 0 1h1.829ZM13.293 10A.5.5 0 1 0 14 9.293L12.707 8a.5.5 0 1 0-.707.707L13.293 10ZM9.5 11.157a.5.5 0 0 0 1 0V9.328a.5.5 0 0 0-1 0v1.829Zm1.854-5.097a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L8.646 5.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0l1.293-1.293Zm-3 3a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L.646 13.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0L8.354 9.06Z" />
+                            </svg>
+                        </button>
+                        <ul class="dropdown-menu text-center">
+                            <li>
+                                <button type="button"
+                                    class="option px-1 my-1 w-75 d-flex gap-2 align-items-center ms-3 border-0"
+                                    id="edit-${id}" data-id="${id}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+                                    </svg>
+                                    Ordenar
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button"
+                                    class="option px-1 my-1 w-75 d-flex gap-2 align-items-center ms-3 border-0"
+                                    id="load-E1">
+                                    <strong>E1</strong>
+                                    Cargar
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button"
+                                    class="option px-1 my-1 w-75 d-flex gap-2 align-items-center ms-3 border-0"
+                                    id="load-E2">
+                                    <strong>E2</strong>
+                                    Cargar
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button"
+                                    class="option px-1 my-1 w-75 d-flex gap-2 align-items-center ms-3 border-0"
+                                    id="load-E3">
+                                    <strong>E3</strong>
+                                    Cargar
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button"
+                                    class="option px-1 my-1 w-75 d-flex gap-2 align-items-center ms-3 border-0"
+                                    id="load-E4">
+                                    <strong>E4</strong>
+                                    Cargar
+                                </button>
+                            </li>
+
+
+                            <li class="">
+                                <button type="button"
+                                    class="option px-1 w-75 d-flex gap-2 align-items-center ms-3 border-0 text-danger"
+                                    data-bs-toggle="modal" data-bs-target="#modalChoice">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-eraser" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm2.121.707a1 1 0 0 0-1.414 0L4.16 7.547l5.293 5.293 4.633-4.633a1 1 0 0 0 0-1.414l-3.879-3.879zM8.746 13.547 3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z" />
+                                    </svg>
+                                    Eliminar
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </span>
+            </h1>
+
             <hr class="m-0">
+
+
+
+
+
+
+            <div class="modal fade modal-tour" tabindex="-1" role="dialog" id="modalChangelog">
+                <div class="modal-dialog " role="document">
+                    <div class="modal-content rounded-3 shadow">
+                        <div class="modal-body p-2 py-4 bg-white rounded-3">
+                            <h2 class="fw-bold mb-0">What's new</h2>
+
+                            <ul class="d-grid gap-4 my-5 list-unstyled">
+                                <li class="d-flex gap-4">
+                                    <div>
+                                        <span class="mb-0 fw-bold">v.0.0.6</span>
+                                        Opción para cargar ejercicios predefinidos
+                                    </div>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-primary mt-5 w-100"
+                                data-bs-dismiss="modal">Entendido!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
 
             <div class="modal fade modal-alert" tabindex="-1" role="dialog" id="modalChoice">
                 <div class="modal-dialog" role="document">
@@ -47,35 +151,40 @@
                 </div>
             </div>
 
-            <div class="row my-4">
-                <div class="list-group" id="exercise-list">
-                    <!-- <label class="list-group-item d-flex gap-3">
-                        <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked=""
-                            style="font-size: 1.375em;">
-                        <span class="pt-1 form-checked-content">
-                            <strong>Press inclinado con barra</strong>
-                            <small class="d-block text-muted">
-                                3 0 X 0
-                            </small>
-                            <small class="d-block text-muted">
-                                15 - 12 - 10 - 10
-                            </small>
-                        </span>
-                        <button class="btn btn-primary btn-sm start">Empezar</button>
-                    </label> -->
 
-                </div>
+    </div>
+    <div class="col-11 container d-flex justify-content-center">
+        <div class="row">
+            <div class="list-group" id="exercise-list">
+                <!-- <label class="list-group-item d-flex gap-3">
+                    <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked=""
+                        style="font-size: 1.375em;">
+                    <span class="pt-1 form-checked-content">
+                        <strong>Press inclinado con barra</strong>
+                        <small class="d-block text-muted">
+                            3 0 X 0
+                        </small>
+                        <small class="d-block text-muted">
+                            15 - 12 - 10 - 10
+                        </small>
+                    </span>
+                    <button class="btn btn-primary btn-sm start">Empezar</button>
+                </label> -->
+
             </div>
         </div>
     </div>
 
+
     <nav class="fixed-bottom justify-content-between navbar-expand-sm py-2 bg-white">
         <div class="row text-secondary">
-            <div class="col text-center" data-bs-toggle="modal" data-bs-target="#modalChoice">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash3"
-                    viewBox="0 0 16 16">
+            <div class="col text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                    class="bi bi-calendar4-week" viewBox="0 0 16 16">
                     <path
-                        d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1H2zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V5z" />
+                    <path
+                        d="M11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-2 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
                 </svg>
             </div>
             <div class="col text-center text-primary">

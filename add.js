@@ -1,16 +1,12 @@
 const orden = document.getElementById('order');
 const ejercicio = document.getElementById('exe');
 const objetivo = document.getElementById('objective');
-
 const repsContainer = document.getElementById('reps-container');
 
-
 const series = document.querySelectorAll('input[name="series"]');
-series.forEach(x => x.onclick = () => createReps(document.querySelector('input[name="series"]:checked').value));
-
+series.forEach(serie => serie.onclick = () => createReps(document.querySelector('input[name="series"]:checked').value));
 
 const saveButton = document.getElementById('save');
-
 saveButton.addEventListener('click', (e) => {
     e.preventDefault();
     ejercicio.disabled = false;
@@ -44,7 +40,6 @@ function loadData() {
         [...document.querySelectorAll('input[name="reps"]')].forEach((x, i) => x.value = current.repeticiones[i]);
         objetivo.value = current.objetivo;
     }
-
 }
 
 function getContext() {
@@ -55,9 +50,7 @@ function getContext() {
         if (ejercicios) current = ejercicios.filter(ejercicio => ejercicio.id == id)[0];
     }
 
-    if (current) return true;
-    return false;
-
+    return current;
 }
 
 
@@ -72,7 +65,6 @@ function createToken() {
     token.objetivo = objetivo.value;
 
     return token;
-
 }
 
 function SaveDataToLocalStorage(data) {
@@ -93,7 +85,15 @@ function createReps(num) {
         const div = document.createElement('div');
         div.classList.add('col-3');
         div.innerHTML = `<label for="reps-${i}" class="form-label">Rep ${i}</label>
-        <input type="text" class="form-control" id="reps-${i}" placeholder="" value="" required="" name="reps">`
+        <input type="text" class="form-control" id="reps-${i}" placeholder="" value="" required="" name="reps" maxlength="2">`;
         repsContainer.appendChild(div);
     }
+    const reps = [...document.querySelectorAll('input[name="reps"]')];
+    reps.forEach((el, i) => el.onkeyup = () => {
+        if (i < reps.length - 1) {
+            if (el.value.length >= 2) reps[i + 1].focus();
+        }
+    });
 }
+
+

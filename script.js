@@ -10,19 +10,19 @@ localStorage.setItem('current-edit', null);
 loadExercises();
 
 function loadExercises() {
-    listaEjercicios.innerHTML = ''
+    listaEjercicios.innerHTML = '';
     const ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
     if (ejercicios) {
         ejercicios.forEach((ejercicio, i) => {
             const checked = ejercicio.aitor || ejercicio.moi ? 'checked' : '';
-            createNewExercise(ejercicio.orden, ejercicio.nombre, ejercicio.series, ejercicio.id, checked, ejercicios.length, i)
+            createNewExercise(ejercicio.orden, ejercicio.nombre, ejercicio.series, ejercicio.id, checked, ejercicios.length, i);
         });
     } else {
         const a = document.createElement('a');
         a.innerHTML = 'Añadir ejercicio';
-        a.classList.add('text-center', 'my-4', 'py-4')
-        a.href = 'add-exercise.html'
-        listaEjercicios.appendChild(a)
+        a.classList.add('text-center', 'my-4', 'py-4');
+        a.href = 'add-exercise.html';
+        listaEjercicios.appendChild(a);
     }
 }
 
@@ -136,13 +136,14 @@ const share = document.getElementById('share');
 
 share.onclick = () => {
     const ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
-    const text = ejercicios.map(ejercicio => json2csv(ejercicio)).join('');
+    const entrenamientoId = JSON.parse(localStorage.getItem('entrenamiento'));
+    const text = ejercicios.map(ejercicio => json2csv(ejercicio, entrenamientoId)).join('');
     share.href = `https://wa.me?text=${encodeURIComponent(text)}`;
 }
 
-function json2csv(ob) {
+function json2csv(ob, entrenamientoId) {
     const date = new Date().toLocaleDateString('en-GB');
-    const entrenamiento = '';
+    const entrenamiento = entrenamientoId || '';
     const ejercicio = ob.nombre;
     const orden = ob.orden || '';
     const series = ob.series || '';
@@ -159,3 +160,22 @@ function json2csv(ob) {
 
     return aitor + '\r\n' + moi + '\r\n';
 }
+
+document.getElementById('load-E1').onclick = () => loadTraining(0);
+document.getElementById('load-E2').onclick = () => loadTraining(1);
+document.getElementById('load-E3').onclick = () => loadTraining(2);
+document.getElementById('load-E4').onclick = () => loadTraining(3);
+
+function loadTraining(id) {
+    const E1 = '[{ "orden": "A1", "nombre": "Press banca inclinado barra", "id": "1", "series": "4", "tempo": ["3", "0", "X", "0"], "repeticiones": ["15", "12", "10", "10"], "objetivo": "X-2" }, { "orden": "A2", "nombre": "Jalón al pecho agarre supino", "id": "2", "series": "4", "tempo": ["3", "0", "X", "0"], "repeticiones": ["15", "12", "10", "10"], "objetivo": "X-2" }, { "orden": "B1", "nombre": "Press declinado con mancuernas agarre neutro", "id": "3", "series": "3", "tempo": ["3", "0", "1", "0"], "repeticiones": ["15", "15", "15"], "objetivo": "X-2" }, { "orden": "B2", "nombre": "Remo máquina con soporte pecho", "id": "4", "series": "3", "tempo": ["2", "0", "1", "1"], "repeticiones": ["15", "15", "15"], "objetivo": "X-2" }, { "orden": "C1", "nombre": "Curl bíceps en banco inclinado agarre supino", "id": "5", "series": "3", "tempo": ["3", "0", "1", "1"], "repeticiones": ["15", "15", "15"], "objetivo": "X-2" }, { "orden": "C2", "nombre": "Extensiones de triceps con mancuernas en banco inclinado", "id": "6", "series": "3", "tempo": ["3", "0", "1", "1"], "repeticiones": ["15", "15", "15"], "objetivo": "X-2" }]';
+    const E2 = '[{"orden":"A","nombre":"Sentadillas con barra","id":"7","series":"4","tempo":["3","0","X","0"],"repeticiones":["15","12","10","10"],"objetivo":"X-2"},{"orden":"B1","nombre":"Curl femoral tumbado","id":"8","series":"3","tempo":["4","0","1","0"],"repeticiones":["10","10","10"],"objetivo":"X-2"},{"orden":"B2","nombre":"Zancadas reversas alternas con mancuernas","id":"9","series":"3","tempo":["2","0","1","0"],"repeticiones":["24","24","24"],"objetivo":"X-2"},{"orden":"C","nombre":"Peso muerto rumano con barra","id":"10","series":"3","tempo":["3","0","1","0"],"repeticiones":["12","12","12"],"objetivo":"X-2"},{"orden":"D","nombre":"Elevaciones de gemelo sentado","id":"11","series":"3","tempo":["1","0","1","1"],"repeticiones":["20","20","20"],"objetivo":"X-2"},{"orden":"E","nombre":"Plancha RKC","id":"12","series":"3","tempo":["I","S","O","M"],"repeticiones":["30","30","30"],"objetivo":"X-2"}]';
+    const E3 = '[{"orden":"A1","nombre":"Dips","id":"13","series":"4","tempo":["3","0","X","0"],"repeticiones":["15","12","10","10"],"objetivo":"X-2"},{"orden":"A2","nombre":"Jalón al pecho agarre prono","id":"23","series":"4","tempo":["3","0","X","0"],"repeticiones":["15","12","10","10"],"objetivo":"X-2"},{"orden":"B1","nombre":"Press inclinado mancuernas","id":"14","series":"3","tempo":["3","0","1","0"],"repeticiones":["15","15","15"],"objetivo":"X-2"},{"orden":"B2","nombre":"Remo con mancuernas inclinado","id":"15","series":"3","tempo":["2","0","1","1"],"repeticiones":["15","15","15"],"objetivo":"X-2"},{"orden":"C1","nombre":"Facepull","id":"16","series":"3","tempo":["2","0","1","1"],"repeticiones":["16","16","16"],"objetivo":"X-2"},{"orden":"C2","nombre":"Elevaciones laterales poliquin sentado","id":"17","series":"3","tempo":["3","0","1","0"],"repeticiones":["15","15","15"],"objetivo":"X-2"}]';
+    const E4 = '[{"orden":"A","nombre":"Hack squats","id":"18","series":"2","tempo":["3","0","1","0"],"repeticiones":["10","10"],"objetivo":"X-2"},{"orden":"B1","nombre":"Hip thrusts","id":"19","series":"2","tempo":["1","0","1","0"],"repeticiones":["10","10"],"objetivo":"X-2"},{"orden":"B2","nombre":"Zancadas con mancuernas","id":"20","series":"2","tempo":["2","0","1","0"],"repeticiones":["20","20"],"objetivo":"X-2"},{"orden":"C","nombre":"Elevaciones de gemelo de pie","id":"21","series":"2","tempo":["1","0","1","0"],"repeticiones":["10","10"],"objetivo":"X-2"},{"orden":"D","nombre":"Plancha lateral","id":"22","series":"2","tempo":["I","S","O","M"],"repeticiones":["20","20"],"objetivo":"X-2"}]';
+    
+    const prefixedTrainings = [E1, E2, E3, E4]
+    localStorage.clear();
+    localStorage.setItem('entrenamiento', `"E${id}"`);
+    localStorage.setItem('ejercicios', prefixedTrainings[id]);
+    loadExercises();
+}
+
