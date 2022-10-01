@@ -1,7 +1,7 @@
 {
     "lang": "es",
     "name": "Gym schedule",
-    "short_name": "Gym shcedule",
+    "short_name": "Gym schedule",
     "description": "PWA for gym schedulle",
     "scope": "/Gym-schedule/",
     "start_url": "/Gym-schedule/",

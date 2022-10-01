@@ -7,10 +7,15 @@ const VERSION = 'version_006';
 const URLS = [    
     `${GHPATH}/`,
     `${GHPATH}/index.html`,
+    `${GHPATH}/calendar.html`,
+    `${GHPATH}/add-exercise.html`,
+    `${GHPATH}/log-exercise.html`,
     `${GHPATH}/common.css`,
     `${GHPATH}/script.js`,
+    `${GHPATH}/log.js`,
+    `${GHPATH}/add.js`,
     `${GHPATH}/style.css`,
-    `${GHPATH}/calendar.html`
+    `${GHPATH}/calendar.css`,
 
   ]
 
