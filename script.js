@@ -11,7 +11,7 @@ loadExercises();
 
 function loadExercises() {
     listaEjercicios.innerHTML = '';
-    const ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
+    const ejercicios = getExercises();
     if (ejercicios) {
         ejercicios.forEach((ejercicio, i) => {
             const checked = ejercicio.aitor || ejercicio.moi ? 'checked' : '';
@@ -96,7 +96,7 @@ function createNewExercise(order, name, series, id, checked, len, pos) {
     const del = document.getElementById(`delete-${id}`);
 
     del.onclick = () => {
-        const ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
+        const ejercicios = getExercises();
         const index = ejercicios.findIndex(x => x.id == del.getAttribute('data-id'));
         ejercicios.splice(index, 1);
         localStorage.setItem('ejercicios', JSON.stringify(ejercicios));
@@ -115,13 +115,13 @@ function createNewExercise(order, name, series, id, checked, len, pos) {
     if (pos < len - 1) down.classList.remove('d-none')
 
     up.onclick = () => {
-        const ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
+        const ejercicios = getExercises();
         swapPositions(ejercicios, pos, pos - 1);
         localStorage.setItem('ejercicios', JSON.stringify(ejercicios));
         loadExercises();
     }
     down.onclick = () => {
-        const ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
+        const ejercicios = getExercises();
         swapPositions(ejercicios, pos, pos + 1);
         localStorage.setItem('ejercicios', JSON.stringify(ejercicios));
         loadExercises();
@@ -135,7 +135,7 @@ const swapPositions = (array, a, b) => {
 const share = document.getElementById('share');
 
 share.onclick = () => {
-    const ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
+    const ejercicios = getExercises();
     const entrenamientoId = JSON.parse(localStorage.getItem('entrenamiento'));
     const text = ejercicios.map(ejercicio => json2csv(ejercicio, entrenamientoId)).join('');
     share.href = `https://wa.me?text=${encodeURIComponent(text)}`;
@@ -171,11 +171,26 @@ function loadTraining(id) {
     const E2 = '[{"orden":"A","nombre":"Sentadillas con barra","id":"7","series":"4","tempo":["3","0","X","0"],"repeticiones":["15","12","10","10"],"objetivo":"X-2"},{"orden":"B1","nombre":"Curl femoral tumbado","id":"8","series":"3","tempo":["4","0","1","0"],"repeticiones":["10","10","10"],"objetivo":"X-2"},{"orden":"B2","nombre":"Zancadas reversas alternas con mancuernas","id":"9","series":"3","tempo":["2","0","1","0"],"repeticiones":["24","24","24"],"objetivo":"X-2"},{"orden":"C","nombre":"Peso muerto rumano con barra","id":"10","series":"3","tempo":["3","0","1","0"],"repeticiones":["12","12","12"],"objetivo":"X-2"},{"orden":"D","nombre":"Elevaciones de gemelo sentado","id":"11","series":"3","tempo":["1","0","1","1"],"repeticiones":["20","20","20"],"objetivo":"X-2"},{"orden":"E","nombre":"Plancha RKC","id":"12","series":"3","tempo":["I","S","O","M"],"repeticiones":["30","30","30"],"objetivo":"X-2"}]';
     const E3 = '[{"orden":"A1","nombre":"Dips","id":"13","series":"4","tempo":["3","0","X","0"],"repeticiones":["15","12","10","10"],"objetivo":"X-2"},{"orden":"A2","nombre":"Jalón al pecho agarre prono","id":"23","series":"4","tempo":["3","0","X","0"],"repeticiones":["15","12","10","10"],"objetivo":"X-2"},{"orden":"B1","nombre":"Press inclinado mancuernas","id":"14","series":"3","tempo":["3","0","1","0"],"repeticiones":["15","15","15"],"objetivo":"X-2"},{"orden":"B2","nombre":"Remo con mancuernas inclinado","id":"15","series":"3","tempo":["2","0","1","1"],"repeticiones":["15","15","15"],"objetivo":"X-2"},{"orden":"C1","nombre":"Facepull","id":"16","series":"3","tempo":["2","0","1","1"],"repeticiones":["16","16","16"],"objetivo":"X-2"},{"orden":"C2","nombre":"Elevaciones laterales poliquin sentado","id":"17","series":"3","tempo":["3","0","1","0"],"repeticiones":["15","15","15"],"objetivo":"X-2"}]';
     const E4 = '[{"orden":"A","nombre":"Hack squats","id":"18","series":"2","tempo":["3","0","1","0"],"repeticiones":["10","10"],"objetivo":"X-2"},{"orden":"B1","nombre":"Hip thrusts","id":"19","series":"2","tempo":["1","0","1","0"],"repeticiones":["10","10"],"objetivo":"X-2"},{"orden":"B2","nombre":"Zancadas con mancuernas","id":"20","series":"2","tempo":["2","0","1","0"],"repeticiones":["20","20"],"objetivo":"X-2"},{"orden":"C","nombre":"Elevaciones de gemelo de pie","id":"21","series":"2","tempo":["1","0","1","0"],"repeticiones":["10","10"],"objetivo":"X-2"},{"orden":"D","nombre":"Plancha lateral","id":"22","series":"2","tempo":["I","S","O","M"],"repeticiones":["20","20"],"objetivo":"X-2"}]';
-    
+
     const prefixedTrainings = [E1, E2, E3, E4]
     localStorage.clear();
     localStorage.setItem('entrenamiento', `"E${id}"`);
     localStorage.setItem('ejercicios', prefixedTrainings[id]);
     loadExercises();
+}
+
+document.getElementById('order').onclick = () => {
+    localStorage.setItem('ejercicios', JSON.stringify(getExercises().sort(compare)));
+    loadExercises();
+}
+
+function compare(a, b) {
+    if (a.orden < b.orden) return -1;
+    if (a.orden > b.orden) return 1;
+    return 0;
+}
+
+function getExercises() {
+    return JSON.parse(localStorage.getItem('ejercicios'));
 }
 
