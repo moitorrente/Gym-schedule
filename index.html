@@ -30,7 +30,7 @@
         <nav class="col-11">
             <h1 class="d-flex">
                 <span class="flex-grow-1">💪Gym schedule<span class="fs-6" data-bs-toggle="modal"
-                        data-bs-target="#modalChangelog">v0.0.6</span></span>
+                        data-bs-target="#modalChangelog">v0.0.7</span></span>
                 <span class="align-self-center ms-auto">
                     <div class="btn-group">
                         <button class="btn border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false"
@@ -119,6 +119,9 @@
                                         <span class="mb-0 fw-bold">v.0.0.7</span>
                                         Habilitada la opción de PWA
                                     </div>
+                                </li>
+                                <li class="d-flex gap-4">
+
                                     <div>
                                         <span class="mb-0 fw-bold">v.0.0.6</span>
                                         Opción para cargar ejercicios predefinidos
@@ -173,7 +176,7 @@
                     <button class="btn btn-primary btn-sm start">Empezar</button>
                 </label> -->
 
-                
+
 
 
             </div>
@@ -215,10 +218,10 @@
 
     <script>
         if (navigator.serviceWorker) {
-          navigator.serviceWorker.register (
-            '/Gym-schedule/sw.js',
-            {scope: '/Gym-schedule/'}
-          )
+            navigator.serviceWorker.register(
+                '/Gym-schedule/sw.js',
+                { scope: '/Gym-schedule/' }
+            )
         }
     </script>
 </body>

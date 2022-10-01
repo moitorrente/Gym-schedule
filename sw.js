@@ -6,6 +6,7 @@ const VERSION = 'version_007';
 
 const URLS = [    
     `${GHPATH}/`,
+    `${GHPATH}/icon.png`,
     `${GHPATH}/index.html`,
     `${GHPATH}/calendar.html`,
     `${GHPATH}/add-exercise.html`,
