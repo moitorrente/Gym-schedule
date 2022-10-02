@@ -1,52 +1,83 @@
 const orden = document.getElementById('order');
 const ejercicio = document.getElementById('exe');
-const series = document.getElementById('series');
-const tempo1 = document.getElementById('tempo1');
-const tempo2 = document.getElementById('tempo2');
-const tempo3 = document.getElementById('tempo3');
-const tempo4 = document.getElementById('tempo4');
-const reps1 = document.getElementById('reps1');
-const reps2 = document.getElementById('reps2');
-const reps3 = document.getElementById('reps3');
-const reps4 = document.getElementById('reps4');
+const tempos = [...document.querySelectorAll('input[name="tempo"]')];
+const repsContainer = document.getElementById('reps-container');
+const aitorWeightContainer = document.getElementById('aitor-weight-container');
+const moiWeightContainer = document.getElementById('moi-weight-container');
 const objetivo = document.getElementById('objective');
-
-const u11 = document.getElementById('u1-1');
-const u12 = document.getElementById('u1-2');
-const u13 = document.getElementById('u1-3');
-const u14 = document.getElementById('u1-4');
-
-const u21 = document.getElementById('u2-1');
-const u22 = document.getElementById('u2-2');
-const u23 = document.getElementById('u2-3');
-const u24 = document.getElementById('u2-4');
 
 const saveBtn = document.getElementById('save');
 
 saveBtn.onclick = () => {
-    current.aitor = [u11.value, u12.value, u13.value, u14.value];
-    current.moi = [u21.value, u22.value, u23.value, u24.value];
+
+    current.aitor = [...document.querySelectorAll('input[name="peso-Aitor"]')].map(x => x.value)
+    current.moi = [...document.querySelectorAll('input[name="peso-Moi"]')].map(x => x.value)
     localStorage.setItem('ejercicios', JSON.stringify(ejercicios));
 }
+
+const tempo = document.getElementById('tempo')
 
 let current;
 let ejercicios;
 
 loadData();
-function loadData(){
+function loadData() {
     getContext();
-    orden.value = current.orden;
     ejercicio.value = current.nombre;
-    [tempo1.value, tempo2.value, tempo3.value, tempo4.value ] = current.tempo;
-    [reps1.value, reps2.value, reps3.value, reps4.value ] = current.repeticiones;
-    if(current.aitor) [u11.value, u12.value, u13.value, u14.value] = current.aitor;
-    if(current.moi) [u21.value, u22.value, u23.value, u24.value] = current.moi;
-    series.value = current.series;
+    if (current.isometrico) {
+        tempo.value = current.tempo;
+    } else {
+        tempo.value = current.tempo.reduce((prev, curr) => prev + curr);
+    }
+    objetivo.value = current.objetivo;   
+    [...document.querySelectorAll('input[name="series"]')][parseInt(current.series) - 1].checked = true;
+    createReps(current.series);
+    [...document.querySelectorAll('input[name="reps"]')].forEach((x, i) => x.value = current.repeticiones[i]);
+    createPeso(current.series, 'Aitor');
+    createPeso(current.series, 'Moi');
+
+
+    if (current.aitor) [...document.querySelectorAll('input[name="peso-Aitor"]')].forEach((x,i) => x.value = current.aitor[i])
+    if (current.moi) [...document.querySelectorAll('input[name="peso-Moi"]')].forEach((x,i) => x.value = current.moi[i])
+    
 }
 
-function getContext(){
+function getContext() {
     const id = localStorage.getItem('current');
     ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
-    current = ejercicios.filter(ejercicio => ejercicio.id == id)[0]
+    current = ejercicios.filter(ejercicio => ejercicio.id == id)[0];
+    return current;
 }
 
+function createReps(num) {
+    repsContainer.innerHTML = '';
+    num++;
+    for (let i = 1; i < num; i++) {
+        const div = document.createElement('div');
+        div.classList.add('col-3');
+        div.innerHTML = `<label for="reps-${i}" class="form-label fw-bold">Rep ${i}</label>
+        <input type="text" class="form-control" id="reps-${i}" placeholder="" value="" required="" name="reps" maxlength="2" disabled>`;
+        repsContainer.appendChild(div);
+    }
+    const reps = [...document.querySelectorAll('input[name="reps"]')];
+    reps.forEach((el, i) => el.onkeyup = () => {
+        if (i < reps.length - 1) {
+            if (el.value.length >= 2) reps[i + 1].focus();
+        }
+    });
+}
+
+function createPeso(num, user) {
+    if (user == 'Aitor') aitorWeightContainer.innerHTML = '';
+    if (user == 'Moi') moiWeightContainer.innerHTML = '';
+    num++;
+
+    for (let i = 1; i < num; i++) {
+        const div = document.createElement('div');
+        div.classList.add('col-3');
+        div.innerHTML = `<label for="${user}-${i}" class="form-label fw-bold">Peso ${i}</label>
+        <input type="text" class="form-control" id="${user}-${i}" placeholder="" value="" required="" name="peso-${user}">`;
+        if (user == 'Aitor') aitorWeightContainer.appendChild(div);
+        if (user == 'Moi') moiWeightContainer.appendChild(div);
+    }
+}

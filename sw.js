@@ -16,7 +16,7 @@ const URLS = [
     `${GHPATH}/log.js`,
     `${GHPATH}/add.js`,
     `${GHPATH}/style.css`,
-    `${GHPATH}/calendar.css`,
+    `${GHPATH}/calendar.css`
 
   ]
 

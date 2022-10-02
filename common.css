@@ -1,22 +1,30 @@
-:root{
+:root {
     --gray: #f3f4f6;
     --blue: #1d4ed8;
     --red: #b91c1c;
     --teal: #0f766e;
+    --black: #111827;
 }
 
-body{
+body {
     background-color: var(--gray);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding-bottom: 50px;
 }
 
-.t-blue{
+.t-blue {
     color: var(--blue);
 }
 
-.t-red{
+.t-red {
     color: var(--red);
 }
 
-.t-teal{
+.t-teal {
     color: var(--teal);
+}
+
+.t-black{
+    color: var(--black)
 }

@@ -2,6 +2,7 @@ const listaEjercicios = document.getElementById('exercise-list');
 
 document.getElementById('delete').onclick = () => {
     localStorage.clear();
+
     loadExercises();
 }
 
@@ -144,10 +145,11 @@ share.onclick = () => {
 function json2csv(ob, entrenamientoId) {
     const date = new Date().toLocaleDateString('en-GB');
     const entrenamiento = entrenamientoId || '';
+    const ejercicioID = ob.id;
     const ejercicio = ob.nombre;
     const orden = ob.orden || '';
     const series = ob.series || '';
-    const tempo = ob.tempo.reduce((prev, curr) => prev + curr, '');
+    const tempo = ob.isometrico ? ob.tempo : ob.tempo.reduce((prev, curr) => prev + curr, '');
     const objetivo = ob.objetivo;
 
     let repsAitor = ';;;;;;;';
@@ -155,8 +157,8 @@ function json2csv(ob, entrenamientoId) {
     if (ob.aitor) repsAitor = `${ob.repeticiones[0] || ''};${ob.aitor[0] || ''};${ob.repeticiones[1] || ''};${ob.aitor[1] || ''};${ob.repeticiones[2] || ''};${ob.aitor[2] || ''};${ob.repeticiones[3] || ''};${ob.aitor[3] || ''}`;
     if (ob.moi) repsMoi = `${ob.repeticiones[0] || ''};${ob.moi[0] || ''};${ob.repeticiones[1] || ''};${ob.moi[1] || ''};${ob.repeticiones[2] || ''};${ob.moi[2] || ''};${ob.repeticiones[3] || ''};${ob.moi[3] || ''}`;
 
-    const aitor = `${date};${entrenamiento};${orden};${ejercicio};${series};${tempo};${objetivo};Aitor;${repsAitor}`;
-    const moi = `${date};${entrenamiento};${orden};${ejercicio};${series};${tempo};${objetivo};Moi;${repsMoi}`;
+    const aitor = `${date};${entrenamiento};${orden};${ejercicioID};${ejercicio};${series};${tempo};${objetivo};Aitor;${repsAitor}`;
+    const moi = `${date};${entrenamiento};${orden};${ejercicioID};${ejercicio};${series};${tempo};${objetivo};Moi;${repsMoi}`;
 
     return aitor + '\r\n' + moi + '\r\n';
 }
@@ -168,9 +170,9 @@ document.getElementById('load-E4').onclick = () => loadTraining(3);
 
 function loadTraining(id) {
     const E1 = '[{ "orden": "A1", "nombre": "Press banca inclinado barra", "id": "1", "series": "4", "tempo": ["3", "0", "X", "0"], "repeticiones": ["15", "12", "10", "10"], "objetivo": "X-2" }, { "orden": "A2", "nombre": "Jalón al pecho agarre supino", "id": "2", "series": "4", "tempo": ["3", "0", "X", "0"], "repeticiones": ["15", "12", "10", "10"], "objetivo": "X-2" }, { "orden": "B1", "nombre": "Press declinado con mancuernas agarre neutro", "id": "3", "series": "3", "tempo": ["3", "0", "1", "0"], "repeticiones": ["15", "15", "15"], "objetivo": "X-2" }, { "orden": "B2", "nombre": "Remo máquina con soporte pecho", "id": "4", "series": "3", "tempo": ["2", "0", "1", "1"], "repeticiones": ["15", "15", "15"], "objetivo": "X-2" }, { "orden": "C1", "nombre": "Curl bíceps en banco inclinado agarre supino", "id": "5", "series": "3", "tempo": ["3", "0", "1", "1"], "repeticiones": ["15", "15", "15"], "objetivo": "X-2" }, { "orden": "C2", "nombre": "Extensiones de triceps con mancuernas en banco inclinado", "id": "6", "series": "3", "tempo": ["3", "0", "1", "1"], "repeticiones": ["15", "15", "15"], "objetivo": "X-2" }]';
-    const E2 = '[{"orden":"A","nombre":"Sentadillas con barra","id":"7","series":"4","tempo":["3","0","X","0"],"repeticiones":["15","12","10","10"],"objetivo":"X-2"},{"orden":"B1","nombre":"Curl femoral tumbado","id":"8","series":"3","tempo":["4","0","1","0"],"repeticiones":["10","10","10"],"objetivo":"X-2"},{"orden":"B2","nombre":"Zancadas reversas alternas con mancuernas","id":"9","series":"3","tempo":["2","0","1","0"],"repeticiones":["24","24","24"],"objetivo":"X-2"},{"orden":"C","nombre":"Peso muerto rumano con barra","id":"10","series":"3","tempo":["3","0","1","0"],"repeticiones":["12","12","12"],"objetivo":"X-2"},{"orden":"D","nombre":"Elevaciones de gemelo sentado","id":"11","series":"3","tempo":["1","0","1","1"],"repeticiones":["20","20","20"],"objetivo":"X-2"},{"orden":"E","nombre":"Plancha RKC","id":"12","series":"3","tempo":["I","S","O","M"],"repeticiones":["30","30","30"],"objetivo":"X-2"}]';
+    const E2 = '[{"orden":"A","nombre":"Sentadillas con barra","id":"7","series":"4","tempo":["3","0","X","0"],"repeticiones":["15","12","10","10"],"objetivo":"X-2"},{"orden":"B1","nombre":"Curl femoral tumbado","id":"8","series":"3","tempo":["4","0","1","0"],"repeticiones":["10","10","10"],"objetivo":"X-2"},{"orden":"B2","nombre":"Zancadas reversas alternas con mancuernas","id":"9","series":"3","tempo":["2","0","1","0"],"repeticiones":["24","24","24"],"objetivo":"X-2"},{"orden":"C","nombre":"Peso muerto rumano con barra","id":"10","series":"3","tempo":["3","0","1","0"],"repeticiones":["12","12","12"],"objetivo":"X-2"},{"orden":"D","nombre":"Elevaciones de gemelo sentado","id":"11","series":"3","tempo":["1","0","1","1"],"repeticiones":["20","20","20"],"objetivo":"X-2"},{"orden":"E","nombre":"Plancha RKC","id":"12","series":"3","isometrico":true,"tempo":"Isométrico","repeticiones":["30","30","30"],"objetivo":"X-2"}]';
     const E3 = '[{"orden":"A1","nombre":"Dips","id":"13","series":"4","tempo":["3","0","X","0"],"repeticiones":["15","12","10","10"],"objetivo":"X-2"},{"orden":"A2","nombre":"Jalón al pecho agarre prono","id":"23","series":"4","tempo":["3","0","X","0"],"repeticiones":["15","12","10","10"],"objetivo":"X-2"},{"orden":"B1","nombre":"Press inclinado mancuernas","id":"14","series":"3","tempo":["3","0","1","0"],"repeticiones":["15","15","15"],"objetivo":"X-2"},{"orden":"B2","nombre":"Remo con mancuernas inclinado","id":"15","series":"3","tempo":["2","0","1","1"],"repeticiones":["15","15","15"],"objetivo":"X-2"},{"orden":"C1","nombre":"Facepull","id":"16","series":"3","tempo":["2","0","1","1"],"repeticiones":["16","16","16"],"objetivo":"X-2"},{"orden":"C2","nombre":"Elevaciones laterales poliquin sentado","id":"17","series":"3","tempo":["3","0","1","0"],"repeticiones":["15","15","15"],"objetivo":"X-2"}]';
-    const E4 = '[{"orden":"A","nombre":"Hack squats","id":"18","series":"2","tempo":["3","0","1","0"],"repeticiones":["10","10"],"objetivo":"X-2"},{"orden":"B1","nombre":"Hip thrusts","id":"19","series":"2","tempo":["1","0","1","0"],"repeticiones":["10","10"],"objetivo":"X-2"},{"orden":"B2","nombre":"Zancadas con mancuernas","id":"20","series":"2","tempo":["2","0","1","0"],"repeticiones":["20","20"],"objetivo":"X-2"},{"orden":"C","nombre":"Elevaciones de gemelo de pie","id":"21","series":"2","tempo":["1","0","1","0"],"repeticiones":["10","10"],"objetivo":"X-2"},{"orden":"D","nombre":"Plancha lateral","id":"22","series":"2","tempo":["I","S","O","M"],"repeticiones":["20","20"],"objetivo":"X-2"}]';
+    const E4 = '[{"orden":"A","nombre":"Hack squats","id":"18","series":"2","tempo":["3","0","1","0"],"repeticiones":["10","10"],"objetivo":"X-2"},{"orden":"B1","nombre":"Hip thrusts","id":"19","series":"2","isometrico":false,"tempo":["1","0","1","0"],"repeticiones":["10","10"],"objetivo":"X-2"},{"orden":"B2","nombre":"Zancadas con mancuernas","id":"20","series":"2","tempo":["2","0","1","0"],"repeticiones":["20","20"],"objetivo":"X-2"},{"orden":"C","nombre":"Elevaciones de gemelo de pie","id":"21","series":"2","tempo":["1","0","1","0"],"repeticiones":["10","10"],"objetivo":"X-2"},{"orden":"D","nombre":"Plancha lateral","id":"22","series":"2","isometrico":true,"tempo":"Isométrico","repeticiones":["20","20"],"objetivo":"X-2"}]';
 
     const prefixedTrainings = [E1, E2, E3, E4]
     localStorage.clear();
@@ -179,7 +181,10 @@ function loadTraining(id) {
     loadExercises();
 }
 
-document.getElementById('order').onclick = () => {
+
+document.getElementById('order').onclick = sortList;
+
+function sortList() {
     localStorage.setItem('ejercicios', JSON.stringify(getExercises().sort(compare)));
     loadExercises();
 }

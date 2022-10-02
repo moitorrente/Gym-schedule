@@ -5,6 +5,8 @@ const repsContainer = document.getElementById('reps-container');
 
 const series = document.querySelectorAll('input[name="series"]');
 series.forEach(serie => serie.onclick = () => createReps(document.querySelector('input[name="series"]:checked').value));
+const isometric = document.getElementById('isometric');
+
 
 const saveButton = document.getElementById('save');
 saveButton.addEventListener('click', (e) => {
@@ -34,7 +36,15 @@ function loadData() {
         orden.value = current.orden;
         ejercicio.value = current.id;
         ejercicio.disabled = true;
-        tempos.forEach((x, i) => x.value = current.tempo[i]);
+        if (current.isometrico) {
+            isometric.checked = true;
+            tempos.forEach(tempo => {
+                tempo.disabled = true;
+                tempo.value = null;
+            });
+        } else {
+            tempos.forEach((x, i) => x.value = current.tempo[i]);
+        }
         [...document.querySelectorAll('input[name="series"]')][parseInt(current.series) - 1].checked = true;
         createReps(parseInt(current.series));
         [...document.querySelectorAll('input[name="reps"]')].forEach((x, i) => x.value = current.repeticiones[i]);
@@ -46,13 +56,12 @@ function getContext() {
     const id = localStorage.getItem('current-edit');
 
     if (id) {
-        ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
+        const ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
         if (ejercicios) current = ejercicios.filter(ejercicio => ejercicio.id == id)[0];
     }
 
     return current;
 }
-
 
 function createToken() {
     const token = new Object();
@@ -60,7 +69,8 @@ function createToken() {
     token.nombre = ejercicio.options[ejercicio.selectedIndex].text;
     token.id = ejercicio.value;
     token.series = document.querySelector('input[name="series"]:checked').value ? document.querySelector('input[name="series"]:checked').value : alert('Falta indicar serie');
-    token.tempo = [...document.querySelectorAll('input[name="tempo"]')].map(x => x.value);
+    token.isometrico = isometric.checked;
+    token.tempo = isometric.checked ? 'Isométrico' : [...document.querySelectorAll('input[name="tempo"]')].map(x => x.value);
     token.repeticiones = [...document.querySelectorAll('input[name="reps"]')].map(x => x.value)
     token.objetivo = objetivo.value;
 
@@ -74,7 +84,7 @@ function SaveDataToLocalStorage(data) {
     if (index > -1) {
         ejercicios.splice(index, 1);
     }
-    ejercicios.push(data)
+    ejercicios.push(data);
     localStorage.setItem('ejercicios', JSON.stringify(ejercicios));
 }
 
@@ -84,7 +94,7 @@ function createReps(num) {
     for (let i = 1; i < num; i++) {
         const div = document.createElement('div');
         div.classList.add('col-3');
-        div.innerHTML = `<label for="reps-${i}" class="form-label">Rep ${i}</label>
+        div.innerHTML = `<label for="reps-${i}" class="form-label fw-bold">Rep ${i}</label>
         <input type="text" class="form-control" id="reps-${i}" placeholder="" value="" required="" name="reps" maxlength="2">`;
         repsContainer.appendChild(div);
     }
@@ -96,4 +106,18 @@ function createReps(num) {
     });
 }
 
-
+let tmp;
+isometric.onchange = () => {
+    if (isometric.checked) {
+        tmp = tempos.map(x => x.value);
+        tempos.forEach(tempo => {
+            tempo.disabled = true;
+            tempo.value = null;
+        });
+    } else {
+        tempos.forEach((tempo, i) => {
+            tempo.disabled = false;
+            tempo.value = tmp[i];
+        });
+    }
+}
