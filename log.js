@@ -23,6 +23,7 @@ let ejercicios;
 loadData();
 function loadData() {
     getContext();
+    console.log(getContext())
     ejercicio.value = current.nombre;
     if (current.isometrico) {
         tempo.value = current.tempo;
@@ -45,6 +46,8 @@ function loadData() {
 function getContext() {
     const id = localStorage.getItem('current');
     ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
+    if(!ejercicios) window.location.href = "index.html";
+
     current = ejercicios.filter(ejercicio => ejercicio.id == id)[0];
     return current;
 }
