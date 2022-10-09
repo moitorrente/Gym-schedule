@@ -25,9 +25,34 @@
 
 <body>
     <div class="container container-fluid d-flex justify-content-center">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="mb-3 ps-3 py-3">🏋️Log de ejercicio</h1>
+        <div class="row pt-4">
+            <div class="col">
+                <h1 class="d-flex">
+                    <span class="d-flex flex-grow-1">🏋️Log de ejercicio</span>
+                    <button class="btn border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                        id="options-${id}" href="javascript:void(0);">
+                        <svg class="align-self-center" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-magic" viewBox="0 0 16 16">
+                            <path
+                                d="M9.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0v1.829Zm4.5.035A.5.5 0 0 0 13.293 2L12 3.293a.5.5 0 1 0 .707.707L14 2.707ZM7.293 4A.5.5 0 1 0 8 3.293L6.707 2A.5.5 0 0 0 6 2.707L7.293 4Zm-.621 2.5a.5.5 0 1 0 0-1H4.843a.5.5 0 1 0 0 1h1.829Zm8.485 0a.5.5 0 1 0 0-1h-1.829a.5.5 0 0 0 0 1h1.829ZM13.293 10A.5.5 0 1 0 14 9.293L12.707 8a.5.5 0 1 0-.707.707L13.293 10ZM9.5 11.157a.5.5 0 0 0 1 0V9.328a.5.5 0 0 0-1 0v1.829Zm1.854-5.097a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L8.646 5.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0l1.293-1.293Zm-3 3a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L.646 13.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0L8.354 9.06Z" />
+                        </svg>
+                    </button>
+
+                    <ul class="dropdown-menu text-center">
+                        <li>
+                            <button type="button"
+                            class="option px-1 my-1 w-75 d-flex gap-2 align-items-center ms-3 border-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-file-earmark-spreadsheet" viewBox="0 0 16 16">
+                                    <path
+                                        d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V9H3V2a1 1 0 0 1 1-1h5.5v2zM3 12v-2h2v2H3zm0 1h2v2H4a1 1 0 0 1-1-1v-1zm3 2v-2h3v2H6zm4 0v-2h3v1a1 1 0 0 1-1 1h-2zm3-3h-3v-2h3v2zm-7 0v-2h3v2H6z" />
+                                </svg>
+                                Recuperar
+                            </button>
+                        </li>
+                    </ul>
+
+                </h1>
                 <form class="needs-validation" novalidate="">
                     <div class="col-12 row py-2">
                         <!-- <div class="col-3">
@@ -86,9 +111,10 @@
             </div>
         </div>
     </div>
+    <!-- href="index.html" -->
 
     <nav class="fixed-bottom justify-content-between navbar-expand-sm py-2 bg-white">
-        <a class="col-11 d-flex mx-auto" href="index.html" id="save">
+        <a class="col-11 d-flex mx-auto" href="log-exercise.html" id="save">
             <button class="btn btn-primary w-100 mb-3">Guardar</button>
         </a>
         <div class="row text-secondary">
@@ -107,7 +133,7 @@
                             d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
                     </svg>
                 </a>
-                
+
             </div>
             <!-- <a class="col text-center text-secondary" href="index.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"

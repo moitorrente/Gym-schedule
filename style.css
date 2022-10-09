@@ -5,27 +5,3 @@ html {
 .container{
     max-width: 960px;
 }
-
-.option{
-    padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
-    color: var(--bs-dropdown-link-color);
-    background-color: transparent;
-}
-
-.modal-sheet .modal-dialog {
-    width: 380px;
-    transition: bottom .75s ease-in-out;
-  }
-  .modal-sheet .modal-footer {
-    padding-bottom: 2rem;
-  }
-  
-  .modal-alert .modal-dialog {
-    width: 380px;
-  }
-  
-  .modal-tour .modal-dialog {
-    width: 380px;
-    border-radius: 0.5rem;
-  }
-  

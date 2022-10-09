@@ -9,10 +9,16 @@ const objetivo = document.getElementById('objective');
 const saveBtn = document.getElementById('save');
 
 saveBtn.onclick = () => {
-
     current.aitor = [...document.querySelectorAll('input[name="peso-Aitor"]')].map(x => x.value)
     current.moi = [...document.querySelectorAll('input[name="peso-Moi"]')].map(x => x.value)
     localStorage.setItem('ejercicios', JSON.stringify(ejercicios));
+
+    const newCurent = ejercicios.filter(x => x.moi == undefined)[0];
+    if (newCurent) {
+        localStorage.setItem('current', newCurent.id);
+    } else {
+        saveBtn.href = 'index.html';
+    }
 }
 
 const tempo = document.getElementById('tempo')
@@ -23,14 +29,13 @@ let ejercicios;
 loadData();
 function loadData() {
     getContext();
-    console.log(getContext())
     ejercicio.value = current.nombre;
     if (current.isometrico) {
         tempo.value = current.tempo;
     } else {
         tempo.value = current.tempo.reduce((prev, curr) => prev + curr);
     }
-    objetivo.value = current.objetivo;   
+    objetivo.value = current.objetivo;
     [...document.querySelectorAll('input[name="series"]')][parseInt(current.series) - 1].checked = true;
     createReps(current.series);
     [...document.querySelectorAll('input[name="reps"]')].forEach((x, i) => x.value = current.repeticiones[i]);
@@ -38,15 +43,15 @@ function loadData() {
     createPeso(current.series, 'Moi');
 
 
-    if (current.aitor) [...document.querySelectorAll('input[name="peso-Aitor"]')].forEach((x,i) => x.value = current.aitor[i])
-    if (current.moi) [...document.querySelectorAll('input[name="peso-Moi"]')].forEach((x,i) => x.value = current.moi[i])
-    
+    if (current.aitor) [...document.querySelectorAll('input[name="peso-Aitor"]')].forEach((x, i) => x.value = current.aitor[i])
+    if (current.moi) [...document.querySelectorAll('input[name="peso-Moi"]')].forEach((x, i) => x.value = current.moi[i])
+
 }
 
 function getContext() {
     const id = localStorage.getItem('current');
     ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
-    if(!ejercicios) window.location.href = "index.html";
+    if (!ejercicios) window.location.href = "index.html";
 
     current = ejercicios.filter(ejercicio => ejercicio.id == id)[0];
     return current;
@@ -83,4 +88,10 @@ function createPeso(num, user) {
         if (user == 'Aitor') aitorWeightContainer.appendChild(div);
         if (user == 'Moi') moiWeightContainer.appendChild(div);
     }
+}
+
+
+function gesLast(id, user) {
+    const data = JSON.parse(localStorage.getItem('historic'));
+    if (data) return [...data.filter(x => x.EjercicioID == id && x.Usuario == user)].pop();
 }

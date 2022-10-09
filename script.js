@@ -20,7 +20,6 @@ function loadExercises() {
             createNewExercise(ejercicio.orden, ejercicio.nombre, ejercicio.series, ejercicio.id, checked, ejercicios.length, i);
         });
         const done = ejercicios.map(x => x.aitor).filter(x => x == undefined).length > 0 ? false : true;
-        console.log(done)
         if (done) shareBtn.classList.remove('d-none');
         addPresetContainer.classList.add('d-none');
     } else {
@@ -194,7 +193,7 @@ function loadTraining(id) {
     const prefixedTrainings = [AC, BC, CC, DC, AD, BD, CD, DD];
     const tipos = ['Carga', 'Carga', 'Carga', 'Carga', 'Descarga', 'Descarga', 'Descarga', 'Descarga'];
     const tipo = tipos[id];
-    const ids = ['A', 'B', 'C', 'D'];
+    const ids = ['A', 'B', 'C', 'D','A', 'B', 'C', 'D'];
     const nid = ids[id];
 
     localStorage.clear();
