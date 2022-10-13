@@ -6,6 +6,45 @@ const aitorWeightContainer = document.getElementById('aitor-weight-container');
 const moiWeightContainer = document.getElementById('moi-weight-container');
 const objetivo = document.getElementById('objective');
 
+const retrieve = document.getElementById('retrieve');
+
+const modalBody = document.querySelector('.modal-body')
+
+retrieve.onclick = () => {
+    const historic = JSON.parse(localStorage.getItem('historic'));
+    if(historic){
+
+        const lastMoiCarga = [...historic.data.filter(x => x.EjercicioID == current.id && x.Usuario == 'Moi' && x.TipoEntrenamiento == 'Carga')].pop();
+        const lastMoiDescarga = [...historic.data.filter(x => x.EjercicioID == current.id && x.Usuario == 'Moi' && x.TipoEntrenamiento == 'Descarga')].pop();
+        const lastAitorCarga = [...historic.data.filter(x => x.EjercicioID == current.id && x.Usuario == 'Aitor' && x.TipoEntrenamiento == 'Carga')].pop();
+        const lastAitorDescarga = [...historic.data.filter(x => x.EjercicioID == current.id && x.Usuario == 'Aitor' && x.TipoEntrenamiento == 'Descarga')].pop();
+        modalBody.innerHTML = 
+
+        `
+        <div class="fw-bold">Aitor<div>
+        <ul class="fw-normal">
+            <li>Último peso carga: ${lastAitorCarga.Peso1}</li>
+            <li>Último peso descarga: ${lastAitorDescarga.Peso1}</li>
+        </ul>
+        <hr>
+        <div class="fw-bold">Moi<div>
+        <ul class="fw-normal">
+            <li>Último peso carga: ${lastMoiCarga.Peso1}</li>
+            <li>Último peso descarga: ${lastMoiDescarga.Peso1}</li>
+        </ul>
+        
+        `
+        
+        
+        // Aitor: Último carga: ${lastAitorCarga.Peso1}
+        //        Úlitmo descarga: ${lastAitorDescarga.Peso1}
+        // Moi: Último carga: ${lastMoiCarga.Peso1}
+        //      Úlitmo descarga: ${lastMoiDescarga.Peso1}
+        
+        // `;
+    }
+}
+
 const saveBtn = document.getElementById('save');
 
 saveBtn.onclick = () => {

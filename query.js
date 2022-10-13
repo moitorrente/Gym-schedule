@@ -3,15 +3,24 @@ const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?`;
 const sheetName = 'Log';
 const query = encodeURIComponent('Select *')
 const url = `${base}&sheet=${sheetName}&tq=${query}`;
-let all = [];
+
+const loading = document.getElementById('loading')
+
+const lastDescription = document.getElementById('last-description');
+const lastDate = document.getElementById('last-date');
+const lastCheck = document.getElementById('last-check');
+document.getElementById('delete-last').onclick = () => {
+    localStorage.removeItem('historic');
+    getContext();
+}
 
 document.getElementById('fetch').addEventListener('click', () => {
+    loading.classList.remove('d-none');
     init();
-    console.log(data)
-
 })
 const data = []
-const output = document.querySelector('.output')
+const output = document.querySelector('.output');
+getContext();
 
 //document.addEventListener('DOMContentLoaded', init)
 
@@ -31,11 +40,11 @@ function init() {
                     let column = heading.label;
                     colz.push(column);
                     const th = document.createElement('th');
-                    th.innerText = column;
-                    tr.appendChild(th);
+                    // th.innerText = column;
+                    // tr.appendChild(th);
                 }
             })
-            output.appendChild(tr);
+            // output.appendChild(tr);
 
             //extract row data:
             jsonData.table.rows.forEach((rowData) => {
@@ -45,10 +54,19 @@ function init() {
                 })
                 data.push(row);
             })
-            all.push(data)
-            processRows(data);
-        }).then((x) => localStorage.setItem('historic', JSON.stringify(data))
-        )
+            //processRows(data);
+        }).then(() => {
+            loading.classList.add('d-none');
+            localStorage.setItem('historic', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: data }));
+            bsOkToast.show();
+            const historic = JSON.parse(localStorage.getItem('historic'));
+            updateLastCard(historic.date);
+        }
+        ).catch(error => {
+            loading.classList.add('d-none')
+            bsKoToast.show();
+            console.log(error)
+        });
 }
 
 function processRows(json) {
@@ -66,11 +84,35 @@ function processRows(json) {
     })
 }
 
-//------------------------------------
-let myAlert = document.querySelector('.toast');
-let bsAlert = new bootstrap.Toast(myAlert);
+function getContext() {
+    const historic = JSON.parse(localStorage.getItem('historic'));
+    if (historic) {
+        updateLastCard(historic.date)
+    } else {
+        updateLastCard()
+    }
 
-document.getElementById('liveToastBtn').onclick = () => { bsAlert.show() }
+}
+
+function updateLastCard(date) {
+    if (date) {
+        lastDescription.innerHTML = 'Datos cargados';
+        lastDate.innerHTML = `Último: ${date}`;
+        lastCheck.checked = true;
+    } else {
+        lastDescription.innerHTML = 'No hay datos cargados';
+        lastDate.innerHTML = 'Solicita los datos';
+        lastCheck.checked = false;
+    }
+}
+
+
+
+//------------------------------------
+let okToast = document.getElementById('okToast');
+let koToast = document.getElementById('koToast');
+let bsOkToast = new bootstrap.Toast(okToast);
+let bsKoToast = new bootstrap.Toast(koToast);
 
 const stringToDate = (dateString) => {
     const [day, month, year] = dateString.split('/');
