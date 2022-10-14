@@ -14,11 +14,11 @@ const URLS = [
     `${GHPATH}/script.js`,
     `${GHPATH}/log.js`,
     `${GHPATH}/add.js`,
-    `${GHPATH}/css/style.css`,
-    `${GHPATH}/css/calendar.css`,
+    `${GHPATH}./css/style.css`,
+    `${GHPATH}./css/calendar.css`,
     `${GHPATH}/historic.html`,
     `${GHPATH}/query.js`,
-    `${GHPATH}/css/loader.css`
+    `${GHPATH}./css/loader.css`
   ]
 
   var CACHE_NAME = APP_PREFIX + VERSION
