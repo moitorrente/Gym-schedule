@@ -18,10 +18,28 @@ document.getElementById('delete-last').onclick = () => {
     localStorage.removeItem('historic');
     getContext();
 }
+document.getElementById('delete-last-exercise').onclick = () => {
+    localStorage.removeItem('listaEjercicios');
+    getContext();
+}
 
 document.getElementById('fetch').addEventListener('click', () => {
     loading.classList.remove('d-none');
     init();
+
+    let location = window.location.host;
+    if (location == 'moitorrente.github.io') {
+        location = 'https://moitorrente.github.io/Gym-schedule/data/exercise.json';
+    } else {
+        location = `/data/exercise.json`
+    }
+    fetch(location)
+        .then(res => res.json())
+        .then(json => {
+            localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: json }));
+            const listaEjercicios = JSON.parse(localStorage.getItem('listaEjercicios'));
+            updateLastExerciseCard(listaEjercicios.date);
+        }).catch(e => alert(e));
 })
 const data = []
 const output = document.querySelector('.output');
@@ -106,22 +124,22 @@ function getContext() {
 
 function updateLastCard(date) {
     if (date) {
-        lastDescription.innerHTML = 'Datos cargados';
+        lastDescription.innerHTML = 'Histórico';
         lastDate.innerHTML = `Último: ${date}`;
         lastCheck.checked = true;
     } else {
-        lastDescription.innerHTML = 'No hay datos cargados';
+        lastDescription.innerHTML = 'No hay histórico cargado';
         lastDate.innerHTML = 'Solicita los datos';
         lastCheck.checked = false;
     }
 }
 function updateLastExerciseCard(date) {
     if (date) {
-        lastExerciseDescription.innerHTML = 'Ejercicios cargados';
+        lastExerciseDescription.innerHTML = 'Lista de ejercicios';
         lastExerciseDate.innerHTML = `Último: ${date}`;
         lastExerciseCheck.checked = true;
     } else {
-        lastExerciseDescription.innerHTML = 'No hay ejercicios cargados';
+        lastExerciseDescription.innerHTML = 'No hay lista de ejercicios';
         lastExerciseDate.innerHTML = 'Solicita los ejercicios';
         lastExerciseCheck.checked = false;
     }

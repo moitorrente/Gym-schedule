@@ -19,7 +19,14 @@ function createOptions() {
             ejercicioSelect.appendChild(option)
         })
     } else {
-        fetch('https://moitorrente.github.io/Gym-schedule/data/exercise.json')
+
+        let location = window.location.host;
+        if (location == 'moitorrente.github.io') {
+            location = 'https://moitorrente.github.io/Gym-schedule/data/exercise.json';
+        } else {
+            location = `/data/exercise.json`
+        }
+        fetch(location)
             .then(res => res.json())
             .then(json => {
                 localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: json }));

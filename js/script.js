@@ -2,11 +2,25 @@ const listaEjercicios = document.getElementById('exercise-list');
 const addPresetContainer = document.getElementById('add-preset-training');
 const shareBtn = document.getElementById('share-btn');
 
-fetch('https://moitorrente.github.io/Gym-schedule/data/exercise.json')
-    .then(res => res.json())
-    .then(json => {
-        localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: json }));
-    }).catch(e => alert(e))
+getContext();
+function getContext() {
+    const listaEjercicios = localStorage.getItem('listaEjercicios');
+    if (!listaEjercicios) {
+        let location = window.location.host;
+        if (location == 'moitorrente.github.io') {
+            location = 'https://moitorrente.github.io/Gym-schedule/data/exercise.json';
+        } else {
+            location = `/data/exercise.json`
+        }
+        fetch(location)
+            .then(res => res.json())
+            .then(json => {
+                localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: json }));
+            }).catch(e => alert(e));
+    }
+}
+
+
 
 document.getElementById('delete').onclick = () => {
     localStorage.clear();
