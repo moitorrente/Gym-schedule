@@ -19,7 +19,7 @@
         crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <script defer src="log.js"></script>
-    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="/css/style.css">
 
 </head>
 
@@ -41,9 +41,8 @@
                     <ul class="dropdown-menu text-center">
                         <li>
                             <button type="button"
-                            class="option px-1 my-1 w-75 d-flex gap-2 align-items-center ms-3 border-0"
-                            id="retrieve"
-                            data-bs-toggle="modal" data-bs-target="#modalSheet">
+                                class="option px-1 my-1 w-75 d-flex gap-2 align-items-center ms-3 border-0"
+                                id="retrieve" data-bs-toggle="modal" data-bs-target="#modalSheet">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-file-earmark-spreadsheet" viewBox="0 0 16 16">
                                     <path
@@ -87,28 +86,43 @@
 
                     <div class="col-12 py-2 mb-3">
                         <div for="series" class="form-label fw-bold">Series</div>
-                        <input type="radio" class="btn-check" name="series" id="series1" autocomplete="off" required
-                            value="1" disabled>
-                        <label class="btn btn-sm btn-outline-secondary px-4" for="series1">1</label>
-                        <input type="radio" class="btn-check" name="series" id="series2" autocomplete="off" required
-                            value="2" disabled>
-                        <label class="btn btn-sm btn-outline-secondary px-4" for="series2">2</label>
-                        <input type="radio" class="btn-check" name="series" id="series3" autocomplete="off" required
-                            value="3" disabled>
-                        <label class="btn btn-sm btn-outline-secondary px-4" for="series3">3</label>
-                        <input type="radio" class="btn-check" name="series" id="series4" autocomplete="off" required
-                            value="4" disabled>
-                        <label class="btn btn-sm btn-outline-secondary px-4" for="series4">4</label>
+                        <div class="d-flex gap-1">
+                            <input type="radio" class="btn-check" name="series" id="series1" autocomplete="off" required
+                                value="1" disabled>
+                            <label class="btn btn-sm btn-outline-secondary px-4" for="series1">1</label>
+                            <input type="radio" class="btn-check" name="series" id="series2" autocomplete="off" required
+                                value="2" disabled>
+                            <label class="btn btn-sm btn-outline-secondary px-4" for="series2">2</label>
+                            <input type="radio" class="btn-check" name="series" id="series3" autocomplete="off" required
+                                value="3" disabled>
+                            <label class="btn btn-sm btn-outline-secondary px-4" for="series3">3</label>
+                            <input type="radio" class="btn-check" name="series" id="series4" autocomplete="off" required
+                                value="4" disabled>
+                            <label class="btn btn-sm btn-outline-secondary px-4" for="series4">4</label>
+                            <input type="radio" class="btn-check" name="series" id="series5" autocomplete="off" required
+                                value="5" disabled>
+                            <label class="btn btn-sm btn-outline-secondary px-4" for="series5">5</label>
+                            <input type="radio" class="btn-check" name="series" id="series6" autocomplete="off" required
+                                value="6" disabled>
+                            <label class="btn btn-sm btn-outline-secondary px-4" for="series6">6</label>
+                        </div>
                     </div>
 
 
-                    <div class="col-12 row py-2 mb-2" id="reps-container"></div>
+                    <div class="row py-2">
+                        <div class="d-flex gap-2" id="reps-container"></div>
+                    </div>
                     <div class="mt-3 fw-bold">Aitor</div>
                     <hr class="p-0 m-0">
-                    <div class="col-12 row py-2" id="aitor-weight-container"></div>
+
+                    <div class="row py-2">
+                        <div class="d-flex gap-2" id="aitor-weight-container"></div>
+                    </div>
                     <div class="mt-2 fw-bold">Moi</div>
                     <hr class="p-0 m-0">
-                    <div class="col-12 row py-2" id="moi-weight-container"></div>
+                    <div class="row py-2">
+                        <div class="d-flex gap-2" id="moi-weight-container"></div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -117,26 +131,25 @@
 
 
 
-      <div class="modal fade modal-sheet py-5" tabindex="-1" role="dialog" id="modalSheet">
+    <div class="modal fade modal-sheet py-5" tabindex="-1" role="dialog" id="modalSheet">
         <div class="modal-dialog" role="document">
             <div class="modal-content rounded-4 shadow">
                 <div class="modal-header border-bottom-0">
                     <h5 class="modal-title">Histórico de pesos</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body py-0">
                 </div>
                 <div class="modal-footer flex-column border-top-0">
-                    <button type="button" class="btn btn-lg btn-primary w-100 mx-0"
-                        data-bs-dismiss="modal" id="closeModal">Salir</button>
+                    <button type="button" class="btn btn-lg btn-primary w-100 mx-0" data-bs-dismiss="modal"
+                        id="closeModal">Salir</button>
                 </div>
             </div>
         </div>
     </div>
-      
 
-    <nav class="fixed-bottom justify-content-between navbar-expand-sm py-2 bg-white">
+
+    <nav class="fixed-bottom justify-content-between navbar-expand-sm py-3 bg-white">
         <a class="col-11 d-flex mx-auto" href="log-exercise.html" id="save">
             <button class="btn btn-primary w-100 mb-3">Guardar y siguiente</button>
         </a>

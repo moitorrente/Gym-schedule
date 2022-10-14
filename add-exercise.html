@@ -17,7 +17,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script defer src="add.js"></script>
 
 </head>
@@ -123,27 +123,37 @@
 
                     <div class="col-12 py-2 mb-3">
                         <div for="series" class="form-label fw-bold">Series</div>
-                        <input type="radio" class="btn-check" name="series" id="series1" autocomplete="off" required
-                            value="1">
-                        <label class="btn btn-sm btn-outline-secondary px-4" for="series1">1</label>
-                        <input type="radio" class="btn-check" name="series" id="series2" autocomplete="off" required
-                            value="2">
-                        <label class="btn btn-sm btn-outline-secondary px-4" for="series2">2</label>
-                        <input type="radio" class="btn-check" name="series" id="series3" autocomplete="off" required
-                            value="3">
-                        <label class="btn btn-sm btn-outline-secondary px-4" for="series3">3</label>
-                        <input type="radio" class="btn-check" name="series" id="series4" autocomplete="off" required
-                            value="4">
-                        <label class="btn btn-sm btn-outline-secondary px-4" for="series4">4</label>
+                        <div class="d-flex gap-1">
+                            <input type="radio" class="btn-check" name="series" id="series1" autocomplete="off" required
+                                value="1">
+                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series1">1</label>
+                            <input type="radio" class="btn-check" name="series" id="series2" autocomplete="off" required
+                                value="2">
+                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series2">2</label>
+                            <input type="radio" class="btn-check" name="series" id="series3" autocomplete="off" required
+                                value="3">
+                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series3">3</label>
+                            <input type="radio" class="btn-check" name="series" id="series4" autocomplete="off" required
+                                value="4">
+                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series4">4</label>
+                            <input type="radio" class="btn-check" name="series" id="series5" autocomplete="off" required
+                                value="5">
+                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series5">5</label>
+                            <input type="radio" class="btn-check" name="series" id="series6" autocomplete="off" required
+                                value="6">
+                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series6">6</label>
+                        </div>
                     </div>
 
-                    <div class="col-12 row py-2" id="reps-container"></div>
+                    <div class="row py-2">
+                        <div class="d-flex gap-2" id="reps-container"></div>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <nav class="fixed-bottom justify-content-between navbar-expand-sm py-2 bg-white">
+    <nav class="fixed-bottom justify-content-between navbar-expand-sm py-3 bg-white">
         <div class="col-11 d-flex mx-auto">
             <button class="btn btn-primary w-100 mb-3" data-bs-toggle="modal" data-bs-target="#modalSheet"
                 id="save">Guardar</button>

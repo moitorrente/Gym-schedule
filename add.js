@@ -93,7 +93,6 @@ function createReps(num) {
     num++;
     for (let i = 1; i < num; i++) {
         const div = document.createElement('div');
-        div.classList.add('col-3');
         div.innerHTML = `<label for="reps-${i}" class="form-label fw-bold">Rep ${i}</label>
         <input type="text" class="form-control" id="reps-${i}" placeholder="" value="" required="" name="reps" maxlength="2">`;
         repsContainer.appendChild(div);

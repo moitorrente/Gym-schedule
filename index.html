@@ -12,7 +12,7 @@
 
     <link rel="icon" type="image/x-icon" href="icon.png">
     <link rel='shortcut icon' type='image/x-icon' href="icon.png" />
-    <link rel="manifest" href="/Gym-schedule/manifest.json">
+    <!-- <link rel="manifest" href="/Gym-schedule/manifest.json"> -->
     <link rel="apple-touch-icon" href="icon.png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -20,8 +20,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script defer src="script.js"></script>
 </head>
 
@@ -30,7 +29,7 @@
         <nav class="col-11">
             <h1 class="d-flex">
                 <span class="flex-grow-1">💪Gym schedule<span class="fs-6" data-bs-toggle="modal"
-                        data-bs-target="#modalChangelog">v0.0.9</span></span>
+                        data-bs-target="#modalChangelog">v0.0.9b</span></span>
                 <span class="align-self-center ms-auto">
                     <div class="btn-group">
                         <button class="btn border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false"
@@ -269,7 +268,7 @@
     </div>
 
 
-    <nav class="fixed-bottom justify-content-between navbar-expand-sm py-2 bg-white">
+    <nav class="fixed-bottom justify-content-between navbar-expand-sm py-3 bg-white">
         <div class="row">
             <a class="col text-center t-blue" href="historic.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-book"
@@ -293,14 +292,14 @@
         </div>
     </nav>
 
-    <script>
+    <!-- <script>
         if (navigator.serviceWorker) {
             navigator.serviceWorker.register(
                 '/Gym-schedule/sw.js',
                 { scope: '/Gym-schedule/' }
             )
         }
-    </script>
+    </script> -->
 </body>
 
 </html>

@@ -15,33 +15,28 @@ retrieve.onclick = () => {
     if(historic){
 
         const lastMoiCarga = [...historic.data.filter(x => x.EjercicioID == current.id && x.Usuario == 'Moi' && x.TipoEntrenamiento == 'Carga')].pop();
-        const lastMoiDescarga = [...historic.data.filter(x => x.EjercicioID == current.id && x.Usuario == 'Moi' && x.TipoEntrenamiento == 'Descarga')].pop();
+        let lastMoiDescarga = [...historic.data.filter(x => x.EjercicioID == current.id && x.Usuario == 'Moi' && x.TipoEntrenamiento == 'Descarga')].pop();
         const lastAitorCarga = [...historic.data.filter(x => x.EjercicioID == current.id && x.Usuario == 'Aitor' && x.TipoEntrenamiento == 'Carga')].pop();
-        const lastAitorDescarga = [...historic.data.filter(x => x.EjercicioID == current.id && x.Usuario == 'Aitor' && x.TipoEntrenamiento == 'Descarga')].pop();
+        let lastAitorDescarga = [...historic.data.filter(x => x.EjercicioID == current.id && x.Usuario == 'Aitor' && x.TipoEntrenamiento == 'Descarga')].pop();
+        
+        const textLastAitorDescarga = lastAitorDescarga ? lastAitorDescarga.Peso1: 'N/A';
+        const textLastMoiDescarga = lastMoiDescarga ? lastMoiDescarga.Peso1 : 'N/A';
         modalBody.innerHTML = 
 
         `
         <div class="fw-bold">Aitor<div>
         <ul class="fw-normal">
             <li>Último peso carga: ${lastAitorCarga.Peso1}</li>
-            <li>Último peso descarga: ${lastAitorDescarga.Peso1}</li>
+            <li>Último peso descarga: ${textLastAitorDescarga}</li>
         </ul>
         <hr>
         <div class="fw-bold">Moi<div>
         <ul class="fw-normal">
             <li>Último peso carga: ${lastMoiCarga.Peso1}</li>
-            <li>Último peso descarga: ${lastMoiDescarga.Peso1}</li>
+            <li>Último peso descarga: ${textLastMoiDescarga}</li>
         </ul>
         
         `
-        
-        
-        // Aitor: Último carga: ${lastAitorCarga.Peso1}
-        //        Úlitmo descarga: ${lastAitorDescarga.Peso1}
-        // Moi: Último carga: ${lastMoiCarga.Peso1}
-        //      Úlitmo descarga: ${lastMoiDescarga.Peso1}
-        
-        // `;
     }
 }
 
@@ -101,7 +96,6 @@ function createReps(num) {
     num++;
     for (let i = 1; i < num; i++) {
         const div = document.createElement('div');
-        div.classList.add('col-3');
         div.innerHTML = `<label for="reps-${i}" class="form-label fw-bold">Rep ${i}</label>
         <input type="text" class="form-control" id="reps-${i}" placeholder="" value="" required="" name="reps" maxlength="2" disabled>`;
         repsContainer.appendChild(div);
@@ -121,7 +115,6 @@ function createPeso(num, user) {
 
     for (let i = 1; i < num; i++) {
         const div = document.createElement('div');
-        div.classList.add('col-3');
         div.innerHTML = `<label for="${user}-${i}" class="form-label fw-bold">Peso ${i}</label>
         <input type="text" class="form-control" id="${user}-${i}" placeholder="" value="" required="" name="peso-${user}">`;
         if (user == 'Aitor') aitorWeightContainer.appendChild(div);
