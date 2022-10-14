@@ -92,7 +92,7 @@ function createNewExercise(order, name, series, id, checked, len, pos) {
 
     start.onclick = () => {
         localStorage.setItem('current', start.getAttribute('data-id'));
-        location.href = "log-exercise.html";
+        location.href = "html/log-exercise.html";
     }
 
     const del = document.getElementById(`delete-${id}`);
@@ -112,7 +112,7 @@ function createNewExercise(order, name, series, id, checked, len, pos) {
 
     edit.onclick = () => {
         localStorage.setItem('current-edit', edit.getAttribute('data-id'));
-        location.href = "add-exercise.html";
+        location.href = "html/add-exercise.html";
     }
 
     const up = document.getElementById(`up-${id}`);
