@@ -51,7 +51,7 @@ saveBtn.onclick = () => {
     if (newCurent) {
         localStorage.setItem('current', newCurent.id);
     } else {
-        saveBtn.href = 'index.html';
+        saveBtn.href = '../index.html';
     }
 }
 
@@ -85,7 +85,7 @@ function loadData() {
 function getContext() {
     const id = localStorage.getItem('current');
     ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
-    if (!ejercicios) window.location.href = "index.html";
+    if (!ejercicios) window.location.href = "../index.html";
 
     current = ejercicios.filter(ejercicio => ejercicio.id == id)[0];
     return current;
