@@ -1,6 +1,12 @@
 const listaEjercicios = document.getElementById('exercise-list');
 const addPresetContainer = document.getElementById('add-preset-training');
-const shareBtn = document.getElementById('share-btn')
+const shareBtn = document.getElementById('share-btn');
+
+fetch('https://moitorrente.github.io/Gym-schedule/data/exercise.json')
+    .then(res => res.json())
+    .then(json => {
+        localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: json }));
+    }).catch(e => alert(e))
 
 document.getElementById('delete').onclick = () => {
     localStorage.clear();
@@ -103,10 +109,10 @@ function createNewExercise(order, name, series, id, checked, len, pos) {
         ejercicios.splice(index, 1);
         localStorage.setItem('ejercicios', JSON.stringify(ejercicios));
         loadExercises();
-        if (ejercicios.length <= 0){
+        if (ejercicios.length <= 0) {
             addPresetContainer.classList.remove('d-none');
             shareBtn.classList.add('d-none')
-        } 
+        }
     }
     const edit = document.getElementById(`edit-${id}`);
 
@@ -193,7 +199,7 @@ function loadTraining(id) {
     const prefixedTrainings = [AC, BC, CC, DC, AD, BD, CD, DD];
     const tipos = ['Carga', 'Carga', 'Carga', 'Carga', 'Descarga', 'Descarga', 'Descarga', 'Descarga'];
     const tipo = tipos[id];
-    const ids = ['A', 'B', 'C', 'D','A', 'B', 'C', 'D'];
+    const ids = ['A', 'B', 'C', 'D', 'A', 'B', 'C', 'D'];
     const nid = ids[id];
 
     localStorage.clear();

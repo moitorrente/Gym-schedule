@@ -1,5 +1,5 @@
 const orden = document.getElementById('order');
-const ejercicio = document.getElementById('exe');
+const ejercicioSelect = document.getElementById('exe');
 const objetivo = document.getElementById('objective');
 const repsContainer = document.getElementById('reps-container');
 
@@ -7,6 +7,26 @@ const series = document.querySelectorAll('input[name="series"]');
 series.forEach(serie => serie.onclick = () => createReps(document.querySelector('input[name="series"]:checked').value));
 const isometric = document.getElementById('isometric');
 
+createOptions();
+function createOptions() {
+    const listaEjercicios = JSON.parse(localStorage.getItem('listaEjercicios'));
+    if (listaEjercicios) {
+        listaEjercicios.data.forEach(ejercicio => {
+            const option = document.createElement('option');
+            option.value = ejercicio.id;
+            option.innerHTML = ejercicio.ejercicio;
+            option.dataset.tipo = ejercicio.tipo;
+            ejercicioSelect.appendChild(option)
+        })
+    } else {
+        fetch('https://moitorrente.github.io/Gym-schedule/data/exercise.json')
+            .then(res => res.json())
+            .then(json => {
+                localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: json }));
+                localStorage.getItem('listaEjercicios') ? createOptions() : alert('No se ha podido cargar los ejercicios');
+            }).catch(e => alert(e))
+    }
+}
 
 const saveButton = document.getElementById('save');
 saveButton.addEventListener('click', (e) => {

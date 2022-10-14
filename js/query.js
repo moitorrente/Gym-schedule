@@ -9,6 +9,11 @@ const loading = document.getElementById('loading')
 const lastDescription = document.getElementById('last-description');
 const lastDate = document.getElementById('last-date');
 const lastCheck = document.getElementById('last-check');
+const lastExerciseDescription = document.getElementById('last-exercises-description');
+const lastExerciseDate = document.getElementById('last-exercises-date');
+const lastExerciseCheck = document.getElementById('last-exercises-check');
+
+
 document.getElementById('delete-last').onclick = () => {
     localStorage.removeItem('historic');
     getContext();
@@ -91,7 +96,12 @@ function getContext() {
     } else {
         updateLastCard()
     }
-
+    const litaEjercicios = JSON.parse(localStorage.getItem('listaEjercicios'));
+    if (litaEjercicios) {
+        updateLastExerciseCard(litaEjercicios.date)
+    } else {
+        updateLastExerciseCard()
+    }
 }
 
 function updateLastCard(date) {
@@ -103,6 +113,17 @@ function updateLastCard(date) {
         lastDescription.innerHTML = 'No hay datos cargados';
         lastDate.innerHTML = 'Solicita los datos';
         lastCheck.checked = false;
+    }
+}
+function updateLastExerciseCard(date) {
+    if (date) {
+        lastExerciseDescription.innerHTML = 'Ejercicios cargados';
+        lastExerciseDate.innerHTML = `Último: ${date}`;
+        lastExerciseCheck.checked = true;
+    } else {
+        lastExerciseDescription.innerHTML = 'No hay ejercicios cargados';
+        lastExerciseDate.innerHTML = 'Solicita los ejercicios';
+        lastExerciseCheck.checked = false;
     }
 }
 
