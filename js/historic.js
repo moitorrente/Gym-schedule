@@ -1,8 +1,22 @@
+import getFile from './data.js';
+
+
 const sheetId = '1b6r8Kg3xfvgRF4VhrIwMZpRD5ae-NjiGWsVdco4EDhI';
 const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?`;
 const sheetName = 'Log';
 const query = encodeURIComponent('Select *')
 const url = `${base}&sheet=${sheetName}&tq=${query}`;
+
+const loadExerciseListBtn = document.getElementById('load-exercise-list-btn');
+loadExerciseListBtn.onclick = async () => {
+    let res = await getFile('exercise.json');
+    if (res.ok) {
+        localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: res.data }));
+        getContext();
+    } else {
+        alert(`Error: ${res.error}`);
+    }
+}
 
 const loading = document.getElementById('loading')
 
@@ -23,23 +37,16 @@ document.getElementById('delete-last-exercise').onclick = () => {
     getContext();
 }
 
-document.getElementById('fetch').addEventListener('click', () => {
+document.getElementById('fetch').addEventListener('click', async () => {
     loading.classList.remove('d-none');
     init();
-
-    let location = window.location.host;
-    if (location == 'moitorrente.github.io') {
-        location = 'https://moitorrente.github.io/Gym-schedule/data/exercise.json';
+    let res = await getFile('exercise.json');
+    if (res.ok) {
+        localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: res.data }));
+        getContext();
     } else {
-        location = `/data/exercise.json`
+        alert(`Error: ${res.error}`);
     }
-    fetch(location)
-        .then(res => res.json())
-        .then(json => {
-            localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: json }));
-            const listaEjercicios = JSON.parse(localStorage.getItem('listaEjercicios'));
-            updateLastExerciseCard(listaEjercicios.date);
-        }).catch(e => alert(e));
 })
 const data = []
 const output = document.querySelector('.output');
@@ -53,7 +60,7 @@ function init() {
         .then(rep => {
             //Remove additional text and extract only JSON:
             const jsonData = JSON.parse(rep.substring(47).slice(0, -2));
-            console.log(jsonData)
+            //console.log(jsonData)
 
             const colz = [];
             const tr = document.createElement('tr');
@@ -134,6 +141,7 @@ function updateLastCard(date) {
     }
 }
 function updateLastExerciseCard(date) {
+
     if (date) {
         lastExerciseDescription.innerHTML = 'Lista de ejercicios';
         lastExerciseDate.innerHTML = `Último: ${date}`;

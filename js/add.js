@@ -1,3 +1,5 @@
+import getFile from './data.js';
+
 const orden = document.getElementById('order');
 const ejercicioSelect = document.getElementById('exe');
 const objetivo = document.getElementById('objective');
@@ -8,7 +10,7 @@ series.forEach(serie => serie.onclick = () => createReps(document.querySelector(
 const isometric = document.getElementById('isometric');
 
 createOptions();
-function createOptions() {
+async function createOptions() {
     const listaEjercicios = JSON.parse(localStorage.getItem('listaEjercicios'));
     if (listaEjercicios) {
         listaEjercicios.data.forEach(ejercicio => {
@@ -19,19 +21,13 @@ function createOptions() {
             ejercicioSelect.appendChild(option)
         })
     } else {
-
-        let location = window.location.host;
-        if (location == 'moitorrente.github.io') {
-            location = 'https://moitorrente.github.io/Gym-schedule/data/exercise.json';
+        let res = await getFile('exercise.json');
+        if (res.ok) {
+            localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: res.data }));
+            createOptions();
         } else {
-            location = `/data/exercise.json`
+            alert(`Error: ${res.error}`);
         }
-        fetch(location)
-            .then(res => res.json())
-            .then(json => {
-                localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: json }));
-                localStorage.getItem('listaEjercicios') ? createOptions() : alert('No se ha podido cargar los ejercicios');
-            }).catch(e => alert(e))
     }
 }
 

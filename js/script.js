@@ -1,29 +1,26 @@
+import getFile from './data.js';
+
 const listaEjercicios = document.getElementById('exercise-list');
 const addPresetContainer = document.getElementById('add-preset-training');
 const shareBtn = document.getElementById('share-btn');
 
 getContext();
-function getContext() {
+async function getContext() {
     const listaEjercicios = localStorage.getItem('listaEjercicios');
     if (!listaEjercicios) {
-        let location = window.location.host;
-        if (location == 'moitorrente.github.io') {
-            location = 'https://moitorrente.github.io/Gym-schedule/data/exercise.json';
+        let res = await getFile('exercise.json');
+        if (res.ok) {
+            localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: res.data }));
         } else {
-            location = `/data/exercise.json`
+            alert(`Error: ${res.error}`);
         }
-        fetch(location)
-            .then(res => res.json())
-            .then(json => {
-                localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: json }));
-            }).catch(e => alert(e));
     }
 }
 
 
 
 document.getElementById('delete').onclick = () => {
-    localStorage.clear();
+    localStorage.removeItem('ejercicios');
     loadExercises();
 }
 
@@ -216,7 +213,9 @@ function loadTraining(id) {
     const ids = ['A', 'B', 'C', 'D', 'A', 'B', 'C', 'D'];
     const nid = ids[id];
 
-    localStorage.clear();
+    localStorage.removeItem('ejercicios');
+    localStorage.removeItem('entrenamiento');
+
     localStorage.setItem('entrenamiento', `{"tipo": "${tipo}", "id": "${nid}"}`);
     localStorage.setItem('ejercicios', prefixedTrainings[id]);
     loadExercises();
