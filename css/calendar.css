@@ -46,6 +46,9 @@
     height: 2rem;
     width: 2rem;
     padding: 0;
+    margin: .2rem;
+    align-self: center;
+    justify-self: center;
   }
   .cal-btn:not([disabled]) {
     font-weight: 500;

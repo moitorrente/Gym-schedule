@@ -32,6 +32,11 @@ document.getElementById('delete-last').onclick = () => {
     localStorage.removeItem('historic');
     getContext();
 }
+document.getElementById('get-historic').onclick = () => {
+    loading.classList.remove('d-none');
+    init();
+    getContext();
+}
 document.getElementById('delete-last-exercise').onclick = () => {
     localStorage.removeItem('listaEjercicios');
     getContext();
@@ -89,8 +94,9 @@ function init() {
             loading.classList.add('d-none');
             localStorage.setItem('historic', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: data }));
             bsOkToast.show();
-            const historic = JSON.parse(localStorage.getItem('historic'));
-            updateLastCard(historic.date);
+            // const historic = JSON.parse(localStorage.getItem('historic'));
+            // updateLastCard(historic.date);
+            getContext();
         }
         ).catch(error => {
             loading.classList.add('d-none')
@@ -117,16 +123,20 @@ function processRows(json) {
 function getContext() {
     const historic = JSON.parse(localStorage.getItem('historic'));
     if (historic) {
-        updateLastCard(historic.date)
+        updateLastCard(historic.date);
+        
     } else {
         updateLastCard()
     }
+
     const litaEjercicios = JSON.parse(localStorage.getItem('listaEjercicios'));
     if (litaEjercicios) {
-        updateLastExerciseCard(litaEjercicios.date)
+        updateLastExerciseCard(litaEjercicios.date);
     } else {
         updateLastExerciseCard()
     }
+    createMonth(new Date());
+
 }
 
 function updateLastCard(date) {
