@@ -9,33 +9,26 @@ const monthName = document.querySelector('.cal-month-name')
 createMonth(new Date());
 
 document.getElementById('prev-month').onclick = () => {
-    console.log(currentMonth, currentYear);
-
     currentMonth = parseInt(currentMonth) - 1;
-    if(currentMonth == 0){
+    if(currentMonth <= 0){
         currentMonth = 12;
         currentYear--;
     } 
     currentMonth = currentMonth.toString().padStart(2, '0');
-    console.log(currentMonth, currentYear);
     createMonth(new Date(`${currentMonth}/01/${currentYear}`));
 }
 document.getElementById('next-month').onclick = () => {
-    console.log(currentMonth, currentYear);
-
     currentMonth = parseInt(currentMonth) + 1;
     if(currentMonth >= 13){
         currentMonth = 1;
         currentYear++;
     } 
     currentMonth = currentMonth.toString().padStart(2, '0');
-    console.log(currentMonth, currentYear);
     createMonth(new Date(`${currentMonth}/01/${currentYear}`));
 }
 
 
 function createMonth(date) {
-    console.log(date)
     calendarContainer.innerHTML = '';
     const month = monthInfo(date);
     currentMonth = month.month;

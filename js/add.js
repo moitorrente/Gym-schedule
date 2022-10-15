@@ -21,7 +21,7 @@ async function createOptions() {
             ejercicioSelect.appendChild(option)
         })
     } else {
-        let res = await getFile('exercise.json');
+        let res = await getFile('exercises.json');
         if (res.ok) {
             localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: res.data }));
             createOptions();
@@ -34,8 +34,8 @@ async function createOptions() {
 const saveButton = document.getElementById('save');
 saveButton.addEventListener('click', (e) => {
     e.preventDefault();
-    ejercicio.disabled = false;
-    if (ejercicio.value) {
+    ejercicioSelect.disabled = false;
+    if (ejercicioSelect.value) {
         SaveDataToLocalStorage(createToken());
     } else {
         alert('Selecciona ejercicio');
@@ -57,8 +57,8 @@ loadData();
 function loadData() {
     if (getContext()) {
         orden.value = current.orden;
-        ejercicio.value = current.id;
-        ejercicio.disabled = true;
+        ejercicioSelect.value = current.id;
+        ejercicioSelect.disabled = true;
         if (current.isometrico) {
             isometric.checked = true;
             tempos.forEach(tempo => {
@@ -89,8 +89,8 @@ function getContext() {
 function createToken() {
     const token = new Object();
     token.orden = orden.value;
-    token.nombre = ejercicio.options[ejercicio.selectedIndex].text;
-    token.id = ejercicio.value;
+    token.nombre = ejercicioSelect.options[ejercicioSelect.selectedIndex].text;
+    token.id = ejercicioSelect.value;
     token.series = document.querySelector('input[name="series"]:checked').value ? document.querySelector('input[name="series"]:checked').value : alert('Falta indicar serie');
     token.isometrico = isometric.checked;
     token.tempo = isometric.checked ? 'Isométrico' : [...document.querySelectorAll('input[name="tempo"]')].map(x => x.value);

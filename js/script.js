@@ -1,5 +1,13 @@
 import getFile from './data.js';
 
+const notCheckedSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-square" viewBox="0 0 16 16">
+<path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+</svg>`;
+
+const checkedSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+<path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+</svg>`;
+
 const listaEjercicios = document.getElementById('exercise-list');
 const addPresetContainer = document.getElementById('add-preset-training');
 const shareBtn = document.getElementById('share-btn');
@@ -8,7 +16,7 @@ getContext();
 async function getContext() {
     const listaEjercicios = localStorage.getItem('listaEjercicios');
     if (!listaEjercicios) {
-        let res = await getFile('exercise.json');
+        let res = await getFile('exercises.json');
         if (res.ok) {
             localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: res.data }));
         } else {
@@ -41,24 +49,27 @@ function loadExercises() {
         addPresetContainer.classList.add('d-none');
     } else {
         addPresetContainer.classList.remove('d-none');
-
+        shareBtn.classList.add('d-none');
     }
 }
 
 function createNewExercise(order, name, series, id, checked, len, pos) {
     const d = document.createElement('div');
-    d.classList.add('py-1')
+    d.classList.add('py-1');
+    const icon = checked ? checkedSVG : notCheckedSVG;
     d.innerHTML = `
     <a class="list-group-item d-flex gap-3 p-2 rounded">
-        <input class="my-0 form-check-input flex-shrink-0 align-self-center" type="checkbox" ${checked} disabled value="" style="font-size: 1.375em;">
-        <span class="flex-shrink-0 align-self-center">${order}</span>
+    <span class="align-self-center ms-auto ps-2">
+        ${icon}    
+    </span>
+
         <span class="pt-1 form-checked-content w-100" data-id="${id}" id="start-${id}">
             <strong>${name}</strong>
-            <small class="d-block text-muted">Series: ${series}</small>
+            <small class="d-block text-muted">Orden: ${order} - Series: ${series}</small>
         </span>
         <span class="align-self-center ms-auto">
         <div class="btn-group">
-            <button class="btn border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="options-${id}" href="javascript:void(0);">
+            <button class="btn border-0 p-0 pe-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="options-${id}" href="javascript:void(0);">
                 <svg  xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
                     <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                 </svg>
@@ -89,7 +100,9 @@ function createNewExercise(order, name, series, id, checked, len, pos) {
                         Bajar
                     </button>
                 </li>
-
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
                 <li class="">
                     <button type="button" class="option px-1 w-75 d-flex gap-2 align-items-center ms-3 border-0 text-danger" id="delete-${id}" data-id="${id}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eraser" viewBox="0 0 16 16">
@@ -122,7 +135,7 @@ function createNewExercise(order, name, series, id, checked, len, pos) {
         loadExercises();
         if (ejercicios.length <= 0) {
             addPresetContainer.classList.remove('d-none');
-            shareBtn.classList.add('d-none')
+            shareBtn.classList.add('d-none');
         }
     }
     const edit = document.getElementById(`edit-${id}`);
@@ -189,6 +202,8 @@ function json2csv(ob, datosEntrenamiento) {
     return aitor + '\r\n' + moi + '\r\n';
 }
 
+
+
 document.getElementById('load-AC').onclick = () => loadTraining(0);
 document.getElementById('load-BC').onclick = () => loadTraining(1);
 document.getElementById('load-CC').onclick = () => loadTraining(2);
@@ -222,7 +237,6 @@ function loadTraining(id) {
     loadExercises();
 }
 
-
 document.getElementById('order').onclick = sortList;
 
 function sortList() {
@@ -243,4 +257,3 @@ function compare(a, b) {
 function getExercises() {
     return JSON.parse(localStorage.getItem('ejercicios'));
 }
-
