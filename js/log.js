@@ -12,18 +12,18 @@ const modalBody = document.querySelector('.modal-body')
 
 retrieve.onclick = () => {
     const historic = JSON.parse(localStorage.getItem('historic'));
-    if(historic){
+    if (historic) {
 
         const lastMoiCarga = [...historic.data.filter(x => x.EjercicioID == current.id && x.Usuario == 'Moi' && x.TipoEntrenamiento == 'Carga')].pop();
         let lastMoiDescarga = [...historic.data.filter(x => x.EjercicioID == current.id && x.Usuario == 'Moi' && x.TipoEntrenamiento == 'Descarga')].pop();
         const lastAitorCarga = [...historic.data.filter(x => x.EjercicioID == current.id && x.Usuario == 'Aitor' && x.TipoEntrenamiento == 'Carga')].pop();
         let lastAitorDescarga = [...historic.data.filter(x => x.EjercicioID == current.id && x.Usuario == 'Aitor' && x.TipoEntrenamiento == 'Descarga')].pop();
-        
-        const textLastAitorDescarga = lastAitorDescarga ? lastAitorDescarga.Peso1: 'N/A';
-        const textLastMoiDescarga = lastMoiDescarga ? lastMoiDescarga.Peso1 : 'N/A';
-        modalBody.innerHTML = 
 
-        `
+        const textLastAitorDescarga = lastAitorDescarga ? lastAitorDescarga.Peso1 : 'N/A';
+        const textLastMoiDescarga = lastMoiDescarga ? lastMoiDescarga.Peso1 : 'N/A';
+        modalBody.innerHTML =
+
+            `
         <div class="fw-bold">Aitor<div>
         <ul class="fw-normal">
             <li>Último peso carga: ${lastAitorCarga.Peso1}</li>
@@ -100,12 +100,6 @@ function createReps(num) {
         <input type="text" class="form-control" id="reps-${i}" placeholder="" value="" required="" name="reps" maxlength="2" disabled>`;
         repsContainer.appendChild(div);
     }
-    const reps = [...document.querySelectorAll('input[name="reps"]')];
-    reps.forEach((el, i) => el.onkeyup = () => {
-        if (i < reps.length - 1) {
-            if (el.value.length >= 2) reps[i + 1].focus();
-        }
-    });
 }
 
 function createPeso(num, user) {
@@ -127,3 +121,11 @@ function gesLast(id, user) {
     const data = JSON.parse(localStorage.getItem('historic'));
     if (data) return [...data.filter(x => x.EjercicioID == id && x.Usuario == user)].pop();
 }
+
+// let height = window.innerHeight;
+// window.addEventListener("resize", (e) => {
+//     let newHeight = window.innerHeight;
+//     if(newHeight > height) document.querySelector("html").style.height = '100%';
+//     if(newHeight < height) document.querySelector("html").style.height = '150%';
+//     console.log('resize')
+// });

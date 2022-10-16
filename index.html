@@ -29,7 +29,7 @@
         <nav class="col-11">
             <h1 class="d-flex">
                 <span class="flex-grow-1">💪Gym schedule<span class="fs-6" data-bs-toggle="modal"
-                        data-bs-target="#modalChangelog">v0.0.9m</span></span>
+                        data-bs-target="#modalChangelog">v0.0.9n</span></span>
                 <span class="align-self-center ms-auto">
                     <div class="btn-group">
                         <button class="btn border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false"
@@ -115,6 +115,7 @@
                                         ejercicios.
                                         Nueva parametrización de ejercicio.
                                         Calendario histórico de entrenamientos.
+                                        Ejercicios mesociclo 2.
                                     </div>
                                 </li>
                                 <li class="d-flex gap-4">
@@ -185,14 +186,14 @@
 
             <div class="list-group p-0" id="exercise-list">
             </div>
-            <div id="add-preset-training" class="d-flex text-center mt-5">
+            <div id="add-preset-training" class="d-flex text-center mt-1">
                 <div class="container">
                     <div class="row">
                         <div class="col">
                             <h2 class="fw-bold">
                                 Añadir un ejercicio
                             </h2>
-                            <a class="btn btn-outline-secondary mt-3" href="html/add-exercise.html">+</a>
+                            <a class="btn btn-outline-secondary mt-1" href="html/add-exercise.html">+</a>
                         </div>
                     </div>
                     <hr class="my-4">
@@ -201,70 +202,132 @@
                             Cargar un entrenamiento
                         </h2>
                     </div>
-                    <div class="row mt-3">
 
-                        <div class="col">
 
-                            <div class="col d-flex align-items-start">
-                                <div class="icon-square">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
-                                        class="bi bi-caret-up-square-fill" viewBox="0 0 16 16">
-                                        <path
-                                            d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4 9h8a.5.5 0 0 0 .374-.832l-4-4.5a.5.5 0 0 0-.748 0l-4 4.5A.5.5 0 0 0 4 11z" />
-                                    </svg>
+                    <div class="col-12 py-2 mb-3">
+                        <h2 for="series" class="form-label fw-bold">Mesociclo</h2>
+                        <div class="d-flex justify-content-center gap-1">
+                            <input type="radio" class="btn-check" name="mesociclos" id="mesociclo1" autocomplete="off"
+                                required value="1">
+                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="mesociclo1">1</label>
+                            <input type="radio" class="btn-check" name="mesociclos" id="mesociclo2" autocomplete="off"
+                                required value="2" checked>
+                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="mesociclo2">2</label>
+                            <!-- <input type="radio" class="btn-check" name="series" id="series3" autocomplete="off" required
+                                value="3">
+                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series3">3</label>
+                            <input type="radio" class="btn-check" name="series" id="series4" autocomplete="off" required
+                                value="4">
+                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series4">4</label>
+                            <input type="radio" class="btn-check" name="series" id="series5" autocomplete="off" required
+                                value="5">
+                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series5">5</label>
+                            <input type="radio" class="btn-check" name="series" id="series6" autocomplete="off" required
+                                value="6">
+                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series6">6</label> -->
+                        </div>
+                    </div>
+
+
+                    <div class="row mt-1" id="trainings">
+                        <div id="training-1">
+
+                            <div class="row">
+                                <div class="col d-flex align-items-start">
+                                    <div class="icon-square">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                            fill="currentColor" class="bi bi-caret-up-square-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4 9h8a.5.5 0 0 0 .374-.832l-4-4.5a.5.5 0 0 0-.748 0l-4 4.5A.5.5 0 0 0 4 11z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="fw-bold mb-0 fs-4">Carga</h3>
+                                    </div>
                                 </div>
-
-                                <div>
-                                    <h3 class="fw-bold mb-0 fs-4">Carga</h3>
+                                <div class="col d-flex align-items-start">
+                                    <div class="icon-square">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                            fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="fw-bold mb-0 fs-4">Descarga</h3>
+                                    </div>
                                 </div>
                             </div>
 
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-outline-secondary" id="load-1-AC">A</button>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-outline-secondary" id="load-1-AD">A</button>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col">
+                                    <button class="btn btn-outline-secondary" id="load-1-BC">B</button>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-outline-secondary" id="load-1-BD">B</button>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col">
+                                    <button class="btn btn-outline-secondary" id="load-1-CC">C</button>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-outline-secondary" id="load-1-CD">C</button>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col">
+                                    <button class="btn btn-outline-secondary" id="load-1-DC">D</button>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-outline-secondary" id="load-1-DD">D</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col d-flex align-items-start">
-                            <div class="icon-square">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
-                                    class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-                                    <path
-                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                                </svg>
+                        <div id="training-2">
+                            <div class="col">
+                                <div class="col d-flex align-items-start justify-content-center">
+                                    <div class="icon-square">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                            fill="currentColor" class="bi bi-caret-up-square-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4 9h8a.5.5 0 0 0 .374-.832l-4-4.5a.5.5 0 0 0-.748 0l-4 4.5A.5.5 0 0 0 4 11z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="fw-bold mb-0 fs-4">Carga</h3>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div>
-                                <h3 class="fw-bold mb-0 fs-4">Descarga</h3>
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-outline-secondary" id="load-2-AC">A</button>
+                                </div>
                             </div>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <button class="btn btn-outline-secondary" id="load-AC">A</button>
-                        </div>
-                        <div class="col">
-                            <button class="btn btn-outline-secondary" id="load-AD">A</button>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col">
-                            <button class="btn btn-outline-secondary" id="load-BC">B</button>
-                        </div>
-                        <div class="col">
-                            <button class="btn btn-outline-secondary" id="load-BD">B</button>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col">
-                            <button class="btn btn-outline-secondary" id="load-CC">C</button>
-                        </div>
-                        <div class="col">
-                            <button class="btn btn-outline-secondary" id="load-CD">C</button>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col">
-                            <button class="btn btn-outline-secondary" id="load-DC">D</button>
-                        </div>
-                        <div class="col">
-                            <button class="btn btn-outline-secondary" id="load-DD">D</button>
+                            <div class="row mt-2">
+                                <div class="col">
+                                    <button class="btn btn-outline-secondary" id="load-2-BC">B</button>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col">
+                                    <button class="btn btn-outline-secondary" id="load-2-CC">C</button>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col">
+                                    <button class="btn btn-outline-secondary" id="load-2-DC">D</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
