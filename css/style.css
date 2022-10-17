@@ -97,6 +97,10 @@ body {
     }
 }
 
+#exercise-list{
+    height: 110%;
+}
+
 
   /* .dropdown-menu {
     --bs-dropdown-min-width: 11rem;

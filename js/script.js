@@ -52,6 +52,7 @@ loadExercises();
 
 function loadExercises() {
     listaEjercicios.innerHTML = '';
+    listaEjercicios.style.height = '0%';
     const ejercicios = getExercises();
     if (ejercicios) {
         ejercicios.forEach((ejercicio, i) => {
@@ -72,13 +73,17 @@ function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
     d.classList.add('py-1');
     const icon = checked ? checkedSVG : notCheckedSVG;
     d.innerHTML = `
-    <a class="list-group-item d-flex gap-3 p-2 rounded">
-    <span class="align-self-center ms-auto ps-2">
+    <a class="list-group-item d-flex gap-2 p-2 rounded align-items-center" style="height: 5rem">
+    <span class="align-self-center ms-auto px-1">
         ${icon}    
     </span>
 
         <span class="pt-1 form-checked-content w-100" data-id="${id}" id="start-${id}">
-            <strong>${name}</strong>
+            <strong style="white-space: nowrap;
+            text-overflow: ellipsis;
+            width: 70vw;
+            display: block;
+            overflow: hidden;">${name}</strong>
             <small class="d-block text-muted"><span class="fw-bold">Orden: ${order}</span> - Series: ${series} - Tempo: ${tempo}</small>
         </span>
         <span class="align-self-center ms-auto">
@@ -130,7 +135,7 @@ function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
         </span>
     </a>
     `;
-
+    listaEjercicios.style.height = '110%';
     listaEjercicios.appendChild(d);
     const start = document.getElementById(`start-${id}`);
 
