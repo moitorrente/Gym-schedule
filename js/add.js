@@ -96,7 +96,7 @@ function createToken() {
     token.tempo = isometric.checked ? 'Isométrico' : [...document.querySelectorAll('input[name="tempo"]')].map(x => x.value);
     token.repeticiones = [...document.querySelectorAll('input[name="reps"]')].map(x => x.value)
     token.objetivo = objetivo.value;
-
+    token.tipo = ejercicioSelect.options[ejercicioSelect.selectedIndex].dataset.tipo;
     return token;
 }
 

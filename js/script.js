@@ -57,7 +57,8 @@ function loadExercises() {
     if (ejercicios) {
         ejercicios.forEach((ejercicio, i) => {
             const checked = ejercicio.aitor || ejercicio.moi ? 'checked' : '';
-            createNewExercise(ejercicio.orden, ejercicio.nombre, ejercicio.series, ejercicio.id, checked, ejercicios.length, i, ejercicio.tempo.join(''));
+            const tempo = ejercicio.isometrico ? ejercicio.tempo : ejercicio.tempo.join('');
+            createNewExercise(ejercicio.orden, ejercicio.nombre, ejercicio.series, ejercicio.id, checked, ejercicios.length, i, tempo);
         });
         const done = ejercicios.map(x => x.aitor).filter(x => x == undefined).length > 0 ? false : true;
         if (done) shareBtn.classList.remove('d-none');
@@ -102,7 +103,6 @@ function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
                         Editar
                     </button>
                 </li>
-
                 <li>
                     <button type="button" class="d-none option px-1 my-1 w-75 d-flex gap-2 align-items-center ms-3 border-0" id="up-${id}" data-id="${id}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
@@ -209,14 +209,15 @@ function json2csv(ob, datosEntrenamiento) {
     const tempo = ob.isometrico ? ob.tempo : ob.tempo.reduce((prev, curr) => prev + curr, '');
     const objetivo = ob.objetivo;
     const mesociclo = 2;
+    const tipo = 'Peso';
 
     let repsAitor = ';;;;;;;';
     let repsMoi = ';;;;;;;';
     if (ob.aitor) repsAitor = `${ob.repeticiones[0] || ''};${ob.aitor[0] || ''};${ob.repeticiones[1] || ''};${ob.aitor[1] || ''};${ob.repeticiones[2] || ''};${ob.aitor[2] || ''};${ob.repeticiones[3] || ''};${ob.aitor[3] || ''};${ob.repeticiones[4] || ''};${ob.aitor[4] || ''};${ob.repeticiones[5] || ''};${ob.aitor[5] || ''}`;
     if (ob.moi) repsMoi = `${ob.repeticiones[0] || ''};${ob.moi[0] || ''};${ob.repeticiones[1] || ''};${ob.moi[1] || ''};${ob.repeticiones[2] || ''};${ob.moi[2] || ''};${ob.repeticiones[3] || ''};${ob.moi[3] || ''};${ob.repeticiones[4] || ''};${ob.moi[4] || ''};${ob.repeticiones[5] || ''};${ob.moi[5] || ''}`;
 
-    const aitor = `${date};${entrenamientoID};${mesociclo};${entrenamientoTipo};${orden};${ejercicioID};${ejercicio};${series};${tempo};${objetivo};Aitor;Peso;${repsAitor}`;
-    const moi = `${date};${entrenamientoID};${mesociclo};${entrenamientoTipo};${orden};${ejercicioID};${ejercicio};${series};${tempo};${objetivo};Moi;Peso;${repsMoi}`;
+    const aitor = `${date};${entrenamientoID};${mesociclo};${entrenamientoTipo};${orden};${ejercicioID};${ejercicio};${series};${tempo};${objetivo};Aitor;${tipo};${repsAitor}`;
+    const moi = `${date};${entrenamientoID};${mesociclo};${entrenamientoTipo};${orden};${ejercicioID};${ejercicio};${series};${tempo};${objetivo};Moi;${tipo};${repsMoi}`;
 
     return aitor + '\r\n' + moi + '\r\n';
 }
