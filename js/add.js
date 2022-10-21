@@ -97,6 +97,7 @@ function createToken() {
     token.repeticiones = [...document.querySelectorAll('input[name="reps"]')].map(x => x.value)
     token.objetivo = objetivo.value;
     token.tipo = ejercicioSelect.options[ejercicioSelect.selectedIndex].dataset.tipo;
+    token.completado = null;
     return token;
 }
 

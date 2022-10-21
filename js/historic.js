@@ -103,7 +103,7 @@ function getContext() {
     const historic = JSON.parse(localStorage.getItem('historic'));
     if (historic) {
         updateLastCard(historic.date);
-        
+
     } else {
         updateLastCard()
     }

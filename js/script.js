@@ -4,8 +4,15 @@ const notCheckedSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height
 <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
 </svg>`;
 
-const checkedSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
-<path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+const checkedSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
+<path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+<path d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z"/>
+</svg>`;
+
+const pendingSVG = `
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+  <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
 </svg>`;
 
 const listaEjercicios = document.getElementById('exercise-list');
@@ -56,11 +63,10 @@ function loadExercises() {
     const ejercicios = getExercises();
     if (ejercicios) {
         ejercicios.forEach((ejercicio, i) => {
-            const checked = ejercicio.aitor || ejercicio.moi ? 'checked' : '';
             const tempo = ejercicio.isometrico ? ejercicio.tempo : ejercicio.tempo.join('');
-            createNewExercise(ejercicio.orden, ejercicio.nombre, ejercicio.series, ejercicio.id, checked, ejercicios.length, i, tempo);
+            createNewExercise(ejercicio.orden, ejercicio.nombre, ejercicio.series, ejercicio.id, ejercicio.completado, ejercicios.length, i, tempo);
         });
-        const done = ejercicios.map(x => x.aitor).filter(x => x == undefined).length > 0 ? false : true;
+        const done = ejercicios.map(x => x.completado).filter(x => x !== true).length > 0 ? false : true;
         if (done) shareBtn.classList.remove('d-none');
         addPresetContainer.classList.add('d-none');
     } else {
@@ -72,7 +78,9 @@ function loadExercises() {
 function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
     const d = document.createElement('div');
     d.classList.add('py-1');
-    const icon = checked ? checkedSVG : notCheckedSVG;
+    let icon = notCheckedSVG;
+    if(checked === false) icon = pendingSVG;
+    if(checked === true) icon = checkedSVG;
     d.innerHTML = `
     <a class="list-group-item d-flex gap-2 p-2 rounded align-items-center" style="height: 5rem">
     <span class="align-self-center ms-auto px-1">

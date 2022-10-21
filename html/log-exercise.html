@@ -29,7 +29,7 @@
             <div class="col">
                 <h1 class="d-flex">
                     <span class="d-flex flex-grow-1">🏋️Log de ejercicio</span>
-                    <button class="btn border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                    <!-- <button class="btn border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false"
                         id="options-${id}" href="javascript:void(0);">
                         <svg class="align-self-center" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                             fill="currentColor" class="bi bi-magic" viewBox="0 0 16 16">
@@ -42,7 +42,7 @@
                         <li>
                             <button type="button"
                                 class="option px-1 my-1 w-75 d-flex gap-2 align-items-center ms-3 border-0"
-                                id="retrieve" data-bs-toggle="modal" data-bs-target="#modalSheet">
+                                id="" data-bs-toggle="modal" data-bs-target="#modalSheet">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-file-earmark-spreadsheet" viewBox="0 0 16 16">
                                     <path
@@ -51,129 +51,163 @@
                                 Recuperar
                             </button>
                         </li>
-                    </ul>
+                    </ul> -->
 
                 </h1>
-                <form class="needs-validation" novalidate="">
-                    <div class="col-12 row py-2">
-                        <!-- <div class="col-3">
-                            <label for="order" class="form-label fw-bold d-none">Orden</label>
-                            <input type="text" class="form-control d-none" id="order" placeholder="" value="" required="" disabled>
-                        </div> -->
-                        <div class="col mb-3">
-                            <label for="exe" class="form-label fw-bold">Ejercicio</label>
-                            <input type="text" class="form-control" id="exe" placeholder="" value="" required=""
-                                disabled>
+                <div class="needs-validation" novalidate="">
+                    <div class="row py-3 mt-3">
+                        <div class="col mx-auto">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button
+                                            class="p-2 accordion-button collapsed badge bg-light text-wrap text-black fs-2 border d-flex flex-grow-1 justify-content-center"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                            aria-expanded="false" aria-controls="collapseOne" id="exe">
+                                            Ejercicio
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse"
+                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-12 row py-2 mb-3">
-                        <div class="col">
-                            <label for="tempo" class="form-label fw-bold">Tempo</label>
-                            <input type="text" class="form-control" id="tempo" placeholder="" value="" required=""
-                                disabled>
+                    <div class="col row py-2 mt-2">
+                        <div class="col d-flex gap-3">
+                            <!-- <label for="tempo" class="form-label fw-bold">Tempo</label> -->
+                            <div type="text" class="badge bg-primary text-wrap fs-5 flex-grow-1" id="series">5 series
+                            </div>
+
+                            <div type="text" class="badge bg-secondary text-wrap fs-5" id="tempo"></div>
+                            <div class="flex">
+                                <!-- <label for="objective" class="form-label fw-bold">Objetivo</label> -->
+                                <select class="form-select badge bg-secondary text-wrap fs-5" id="objective" required=""
+                                    disabled>
+                                    <option value="X-2">Fallo -2</option>
+                                    <option value="X-1">Fallo -1</option>
+                                    <option value="X">Fallo</option>
+                                </select>
+                            </div>
+
                         </div>
-                        <div class="col-7">
-                            <label for="objective" class="form-label fw-bold">Objetivo</label>
-                            <select class="form-select" id="objective" required="" disabled>
-                                <option value="X-2">Fallo -2</option>
-                                <option value="X-1">Fallo -1</option>
-                                <option value="X">Fallo</option>
-                            </select>
+
+                        <div class="py-2 mt-2">
+                            <div class="d-flex gap-2" id="reps-container"></div>
+                        </div>
+                        <div class="mt-4 fw-bold text-center d-flex justify-content-around">
+                            <div class="badge rounded-pill text-bg-dark fs-6 w-50" id="badge-aitor">
+                                Aitor
+                            </div>
+                            <div class="btn btn-light badge text-black border fs-6 w-25" id="spread-aitor">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z" />
+                                    <path fill-rule="evenodd"
+                                        d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z" />
+                                </svg>
+                            </div>
                         </div>
 
-                    </div>
+                        <div class="py-2">
+                            <div class="d-flex gap-2" id="aitor-weight-container"></div>
+                        </div>
+                        <div class="mt-4 fw-bold text-center d-flex justify-content-around">
+                            <div class="badge rounded-pill text-bg-dark fs-6 w-50" id="badge-moi">
+                                Moi
+                            </div>
+                            <btn class="btn btn-light badge text-black border fs-6 w-25" id="spread-moi">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z" />
+                                    <path fill-rule="evenodd"
+                                        d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z" />
+                                </svg>
+                            </btn>
+                        </div>
 
-                    <div class="col-12 py-2 mb-3">
-                        <div for="series" class="form-label fw-bold">Series</div>
-                        <div class="d-flex gap-1">
-                            <input type="radio" class="btn-check" name="series" id="series1" autocomplete="off" required
-                                value="1" disabled>
-                            <label class="btn btn-sm btn-outline-secondary px-4" for="series1">1</label>
-                            <input type="radio" class="btn-check" name="series" id="series2" autocomplete="off" required
-                                value="2" disabled>
-                            <label class="btn btn-sm btn-outline-secondary px-4" for="series2">2</label>
-                            <input type="radio" class="btn-check" name="series" id="series3" autocomplete="off" required
-                                value="3" disabled>
-                            <label class="btn btn-sm btn-outline-secondary px-4" for="series3">3</label>
-                            <input type="radio" class="btn-check" name="series" id="series4" autocomplete="off" required
-                                value="4" disabled>
-                            <label class="btn btn-sm btn-outline-secondary px-4" for="series4">4</label>
-                            <input type="radio" class="btn-check" name="series" id="series5" autocomplete="off" required
-                                value="5" disabled>
-                            <label class="btn btn-sm btn-outline-secondary px-4" for="series5">5</label>
-                            <input type="radio" class="btn-check" name="series" id="series6" autocomplete="off" required
-                                value="6" disabled>
-                            <label class="btn btn-sm btn-outline-secondary px-4" for="series6">6</label>
+                        <div class="py-2">
+                            <div class="d-flex gap-2" id="moi-weight-container"></div>
                         </div>
                     </div>
+                    <div class="d-flex justify-content-around mt-5">
+                        <a class="btn btn-light border" id="video">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="#ff0000"
+                                id="video-icon" class="bi bi-youtube" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
+                            </svg>
+                            Ver video
+                        </a>
+                        <div>
+                            <btn class="btn btn-light border" data-bs-toggle="modal" data-bs-target="#modalSheet"
+                                id="retrieve">
 
-
-                    <div class="row py-2">
-                        <div class="d-flex gap-2" id="reps-container"></div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
+                                    class="bi bi-journal-text" viewBox="0 0 16 16">
+                                    <path
+                                        d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                                    <path
+                                        d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                                    <path
+                                        d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+                                </svg>
+                                Histórico pesos
+                            </btn>
+                        </div>
                     </div>
-                    <div class="mt-3 fw-bold">Aitor</div>
-                    <hr class="p-0 m-0">
-
-                    <div class="row py-2">
-                        <div class="d-flex gap-2" id="aitor-weight-container"></div>
-                    </div>
-                    <div class="mt-2 fw-bold">Moi</div>
-                    <hr class="p-0 m-0">
-                    <div class="row py-2">
-                        <div class="d-flex gap-2" id="moi-weight-container"></div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="modal fade modal-sheet py-5" tabindex="-1" role="dialog" id="modalSheet">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content rounded-4 shadow">
-                <div class="modal-header border-bottom-0">
-                    <h5 class="modal-title">Histórico de pesos</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body py-0">
-                </div>
-                <div class="modal-footer flex-column border-top-0">
-                    <button type="button" class="btn btn-lg btn-primary w-100 mx-0" data-bs-dismiss="modal"
-                        id="closeModal">Salir</button>
+        <div class="modal fade modal-sheet py-5" tabindex="-1" role="dialog" id="modalSheet">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content rounded-4 shadow">
+                    <div class="modal-header border-bottom-0">
+                        <h5 class="modal-title">Histórico de pesos</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body py-0">
+                    </div>
+                    <div class="modal-footer flex-column border-top-0">
+                        <button type="button" class="btn btn-lg btn-primary w-100 mx-0" data-bs-dismiss="modal"
+                            id="closeModal">Salir</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <nav class="fixed-bottom justify-content-between navbar-expand-sm py-3 bg-white" id="bottom-menu">
-        <a class="col-11 d-flex mx-auto" href="log-exercise.html" id="save">
-            <button class="btn btn-primary w-100 mb-3">Guardar</button>
-        </a>
-        <div class="row text-secondary">
-            <!-- <div class="col text-center">
+        <nav class="fixed-bottom justify-content-between navbar-expand-sm py-2 pb-4 bg-white" id="bottom-menu">
+            <div class="row text-secondary">
+                <!-- <div class="col text-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-eraser"
                     viewBox="0 0 16 16">
                     <path
                         d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm2.121.707a1 1 0 0 0-1.414 0L4.16 7.547l5.293 5.293 4.633-4.633a1 1 0 0 0 0-1.414l-3.879-3.879zM8.746 13.547 3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z" />
                 </svg>
             </div> -->
-            <div class="col text-center text-primary">
-                <a class="col text-center text-primary" href="../index.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-                        class="bi bi-house-door" viewBox="0 0 16 16">
-                        <path
-                            d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
-                    </svg>
-                </a>
+                <div class="col text-center text-primary">
+                    <a class="col text-center text-primary" id="home">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                            class="bi bi-house-door" viewBox="0 0 16 16">
+                            <path
+                                d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+                        </svg>
+                    </a>
 
-            </div>
-            <!-- <a class="col text-center text-secondary" href="index.html">
+                </div>
+                <!-- <a class="col text-center text-secondary" href="index.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                     class="bi bi-house-door" viewBox="0 0 16 16">
                     <path
                         d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
                 </svg>
             </a> -->
-        </div>
-    </nav>
+            </div>
+        </nav>
 </body>
 
 </html>

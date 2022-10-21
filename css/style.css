@@ -28,12 +28,16 @@ body {
 }
 
 .b-teal{
-    color: var(--teal);
+    background-color: var(--teal);
 
 }
 
 .b-checked{
     background-color: #e4e4e7;
+}
+
+.b-blue{
+    background-color: var(--blue);
 }
 
 
@@ -99,6 +103,10 @@ body {
 
 #exercise-list{
     height: 110%;
+}
+
+.fs-7{
+    font-size: 0.75rem;
 }
 
 
