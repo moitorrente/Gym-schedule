@@ -58,6 +58,7 @@ document.getElementById('fetch').addEventListener('click', async () => {
     } else {
         alert(`Error: ${res.error}`);
     }
+    window.location.reload(true);
 })
 const data = []
 getContext();
