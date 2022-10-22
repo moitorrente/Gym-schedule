@@ -124,10 +124,10 @@ function isSeriesCompleted(user) {
     const seriesValues = [...document.querySelectorAll(`input[name="peso-${user}"]`)];
     const isCompleted = seriesValues.filter(x => x.value == '').length > 0 ? false : true;
     if (isCompleted) {
-        document.getElementById(`badge-${user}`).classList.remove('text-bg-dark');
+        document.getElementById(`badge-${user}`).classList.remove('text-bg-secondary');
         document.getElementById(`badge-${user}`).classList.add('text-bg-success');
     } else {
-        document.getElementById(`badge-${user}`).classList.add('text-bg-dark');
+        document.getElementById(`badge-${user}`).classList.add('text-bg-secondary');
         document.getElementById(`badge-${user}`).classList.remove('text-bg-success');
     }
 
@@ -168,7 +168,7 @@ function createReps(num, isometrico) {
     for (let i = 1; i < num; i++) {
         const div = document.createElement('div');
         div.innerHTML = `<label for="reps-${i}" class="fw-bold fs-7 text-secondary d-flex justify-content-center">${text} ${i}</label>
-        <input type="text" class="form-control bg-secondary text-white text-center fw-bold fs-4 py-0" id="reps-${i}" placeholder="" value="" required="" name="reps" maxlength="2" disabled>`;
+        <input type="text" class="form-control b-grey text-center fw-bold fs-4 py-0" id="reps-${i}" placeholder="" value="" required="" name="reps" maxlength="2" disabled>`;
         repsContainer.appendChild(div);
     }
 }
@@ -181,7 +181,7 @@ function createPeso(num, user, tipo) {
 
     for (let i = 1; i < num; i++) {
         const div = document.createElement('div');
-        div.innerHTML = `<label for="${user}-${i}" class="fs-7 fw-bold d-flex justify-content-center">${tipo} ${i}</label>
+        div.innerHTML = `<label for="${user}-${i}" class="fs-7 text-secondary fw-bold d-flex justify-content-center">${tipo} ${i}</label>
         <input type="number" class="form-control" id="${user}-${i}" placeholder="" value="" required="" name="peso-${user}">`;
         if (user == 'aitor') aitorWeightContainer.appendChild(div);
         if (user == 'moi') moiWeightContainer.appendChild(div);
