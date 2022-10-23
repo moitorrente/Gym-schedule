@@ -25,16 +25,15 @@
 
 </head>
 
-<body>
+<body style="margin-bottom: 70px;">
+    <nav class="col-11 container d-flex py-4 pb-2">
+        <h1 class="d-flex">
+            <span class="flex-grow-1">📕Histórico</span>
+        </h1>
+    </nav>
     <div class="container container-fluid justify-content-center">
-        <div class="row pt-4 mb-5">
-            <div class="col">
-                <h1>📕Histórico</h1>
-            </div>
-        </div>
-
         <div id="okToast"
-            class="toast position-fixed align-items-center text-white bg-success bottom-0 start-50 translate-middle mb-6"
+            class="toast position-fixed align-items-center text-white bg-success bottom-0 start-50 translate-middle mb-5"
             role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
 
@@ -67,12 +66,34 @@
                     aria-label="Close"></button>
             </div>
         </div>
+        <div class="mx-auto d-flex justify-content-around fs-7 align-items-center mb-2">
 
-        <div class="col-11 container-fluid justify-content-center">
+            <div class="bg-light border rounded-3 p-2 gap-2 d-flex flex-grow-1 align-items-center me-1" id="fetch">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+                    <path
+                        d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+                </svg>
+                Cargar datos
+            </div>
+            <div class="bg-light border rounded-3 p-2 gap-2 d-flex flex-grow-1 align-items-center ms-1 t-red"
+                id="delete-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                    <path fill-rule="evenodd"
+                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg>
+                Eliminar datos
+            </div>
+        </div>
+
+        <div class="container justify-content-center">
             <div class="row list-group p-0">
-                <a class="list-group-item d-flex gap-3 rounded">
-                    <input class="my-0 form-check-input flex-shrink-0 align-self-center" type="checkbox" disabled=""
-                        value="" style="font-size: 1.375em;" id="last-check">
+                <a class="list-group-item d-flex gap-2 p-2 rounded align-items-center">
+                    <span class="align-self-center ms-auto px-1" id="last-check"></span>
                     <span class="p-2 form-checked-content w-100" data-id="6" id="start-6">
                         <strong id="last-description">No hay datos cargados</strong>
                         <small id="last-date" class="d-block text-muted">Solcita los datos</small>
@@ -90,8 +111,7 @@
                             </button>
                             <ul class="dropdown-menu text-center">
                                 <li>
-                                    <button type="button"
-                                    id="get-historic"
+                                    <button type="button" id="get-historic"
                                         class="option px-1 my-1 w-75 d-flex gap-3 align-items-center ms-3 border-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
@@ -125,9 +145,9 @@
                 </a>
             </div>
             <div class="row list-group p-0 pt-2">
-                <a class="list-group-item d-flex gap-3 rounded">
-                    <input class="my-0 form-check-input flex-shrink-0 align-self-center" type="checkbox" disabled=""
-                        value="" style="font-size: 1.375em;" id="last-exercises-check">
+                <a class="list-group-item d-flex gap-2 p-2 rounded align-items-center">
+                    <span class="align-self-center ms-auto px-1" id="last-exercises-check"></span>
+
                     <span class="p-2 form-checked-content w-100" data-id="6" id="start-6">
                         <strong id="last-exercises-description">No hay datos cargados</strong>
                         <small id="last-exercises-date" class="d-block text-muted">Solcita los datos</small>
@@ -178,15 +198,15 @@
                     </span>
                 </a>
             </div>
-            <div class="text-center my-3">
-                <svg class="ring" viewBox="25 25 50 50" stroke-width="5">
+            <div class="text-center my-3 position-relative text-center mx-auto w-100">
+                <svg class="ring position-absolute top-50 start-50" viewBox="25 25 50 50" stroke-width="5">
                     <circle id="loading" class="d-none" cx="50" cy="50" r="20" />
                 </svg>
             </div>
 
         </div>
 
-        <div class="dropdown-menu d-block position-static my-0 p-2 rounded-3 w-340px">
+        <div class="dropdown-menu d-block position-static my-0 p-2 rounded-3 mt-2">
             <div class="d-grid gap-1">
                 <div class="cal">
                     <div class="cal-month">
@@ -236,47 +256,60 @@
             </div>
         </div>
 
-        <!-- <table class="table table-striped">
+        <div class="accordion mt-2" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed text-wrap border" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        <strong>Entrenamiento</strong>
+                        <small class="ms-1">
+                            <span id="selected-training" class="text-muted">Tipo: A - Mesociclo: 2</span>
+                        </small>
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <table class="table table-striped">
             <tbody class="output"></tbody>
         </table> -->
 
-        <nav class="fixed-bottom justify-content-between navbar-expand-sm py-2 pb-4 bg-white">
-            <a class="col-11 d-flex mx-auto" id="fetch">
-                <button class="btn btn-primary w-100 mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
-                        class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
-                        <path
-                            d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
-                    </svg>
-                    Cargar datos</button>
+
+</body>
+<footer>
+    <nav class="fixed-bottom justify-content-between navbar-expand-sm py-2 pb-4 bg-white">
+        <div class="row text-secondary">
+            <a class="col text-center t-blue">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                    class="bi bi-book-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+                </svg>
             </a>
-            <div class="row text-secondary">
-                <a class="col text-center t-blue">
+            <div class="col text-center text-primary">
+                <a class="col text-center text-primary" href="../index.html">
                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-                        class="bi bi-book-fill" viewBox="0 0 16 16">
+                        class="bi bi-house-door" viewBox="0 0 16 16">
                         <path
-                            d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
-                    </svg>
-                </a>
-                <div class="col text-center text-primary">
-                    <a class="col text-center text-primary" href="../index.html">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-                            class="bi bi-house-door" viewBox="0 0 16 16">
-                            <path
-                                d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
-                        </svg>
-                    </a>
-                </div>
-                <a class="col text-center text-secondary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-                        class="bi bi-cone-striped" viewBox="0 0 16 16">
-                        <path
-                            d="m9.97 4.88.953 3.811C10.159 8.878 9.14 9 8 9c-1.14 0-2.158-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.275 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098zm4.396 8.613a.5.5 0 0 1 .037.96l-6 2a.5.5 0 0 1-.316 0l-6-2a.5.5 0 0 1 .037-.96l2.391-.598.565-2.257c.862.212 1.964.339 3.165.339s2.303-.127 3.165-.339l.565 2.257 2.391.598z" />
+                            d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
                     </svg>
                 </a>
             </div>
-        </nav>
-</body>
+            <a class="col text-center text-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                    class="bi bi-cone-striped" viewBox="0 0 16 16">
+                    <path
+                        d="m9.97 4.88.953 3.811C10.159 8.878 9.14 9 8 9c-1.14 0-2.158-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.275 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098zm4.396 8.613a.5.5 0 0 1 .037.96l-6 2a.5.5 0 0 1-.316 0l-6-2a.5.5 0 0 1 .037-.96l2.391-.598.565-2.257c.862.212 1.964.339 3.165.339s2.303-.127 3.165-.339l.565 2.257 2.391.598z" />
+                </svg>
+            </a>
+        </div>
+    </nav>
+</footer>
 
 </html>

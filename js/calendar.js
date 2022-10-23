@@ -4,7 +4,9 @@ let currentMonth;
 let currentYear;
 
 const calendarContainer = document.getElementById('calendar-container');
-const monthName = document.querySelector('.cal-month-name')
+const monthName = document.querySelector('.cal-month-name');
+const selectedTraining = document.getElementById('selected-training');
+
 
 createMonth(new Date());
 
@@ -63,15 +65,36 @@ function createPlaceholder() {
     return b;
 }
 
+const accordionBody = document.querySelector('.accordion-body');
+
 function createDay(day, month, year) {
     const historic = JSON.parse(localStorage.getItem('historic'));
     const b = document.createElement('button');
     b.classList.add('btn', 'cal-btn', 'mb-2');
     b.innerHTML = day;
+
     b.dataset.day = `${day.toString().padStart(2, '0')}/${month}/${year}`;
+    let found = false;
+    let list = [];
     if (historic) {
-        const found = historic.data.find(value => value.Fecha == b.dataset.day);
-        if (found) b.classList.add('btn-success')
+        found = historic.data.find(value => value.Fecha == b.dataset.day);
+        if (found) b.classList.add('b-blue', 'btn-primary', 'text-white');
+        list = historic.data.filter(value => value.Fecha == b.dataset.day && value.Usuario === 'Aitor');
+    }
+    b.onclick = () => {
+        const text1 = found ? found.Entrenamiento : 'N/D';
+        const text2 = found ? found.Mesociclo : 'N/D';
+        selectedTraining.innerHTML = `Tipo: ${text1} - Mesociclo: ${text2}`;
+        console.log(list)
+        let desc ='';
+
+        list.forEach(item => {
+            desc += `<li class="fs-7">
+                ${item.Orden} - ${item.Ejercicio}
+            </li>`
+        })
+        accordionBody.innerHTML = desc;
     }
     return b;
 }
+

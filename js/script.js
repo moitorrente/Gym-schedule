@@ -86,7 +86,6 @@ function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
     <span class="align-self-center ms-auto px-1">
         ${icon}    
     </span>
-
         <span class="pt-1 form-checked-content w-100" data-id="${id}" id="start-${id}">
             <strong style="white-space: nowrap;
             text-overflow: ellipsis;

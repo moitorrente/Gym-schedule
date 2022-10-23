@@ -25,97 +25,94 @@
 </head>
 
 <body style="padding-bottom: 0;">
-    <div class="container d-flex justify-content-center py-4 pb-2">
-        <nav class="col-11">
-            <h1 class="d-flex">
-                <span class="flex-grow-1">💪Gym schedule
-                    <span class="fs-6" data-bs-toggle="modal" data-bs-target="#modalChangelog">v0.0.10a</span>
-                </span>
-                <span class="align-self-center ms-auto">
-                    <div class="btn-group">
+    <nav class="col-11 container d-flex justify-content-center py-4 pb-2">
+        <h1 class="d-flex">
+            <span class="flex-grow-1">💪Gym schedule
+                <span class="fs-6" data-bs-toggle="modal" data-bs-target="#modalChangelog">v0.0.10b</span>
+            </span>
+            <span class="align-self-center ms-auto">
+                <div class="btn-group">
+                    <button class="btn border-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOptions" aria-expanded="false" aria-controls="collapseOptions">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-filter-right" viewBox="0 0 16 16">
+                            <path
+                                d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
+                        </svg>
+                    </button>
+                </div>
+            </span>
+        </h1>
+    </nav>
 
-                        <button class="btn border-0" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOptions" aria-expanded="false" aria-controls="collapseOptions">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-filter-right" viewBox="0 0 16 16">
-                                <path
-                                    d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
-                            </svg>
-                        </button>
-                    </div>
-                </span>
-            </h1>
-            <div class="modal fade modal-tour" tabindex="-1" role="dialog" id="modalChangelog">
-                <div class="modal-dialog " role="document">
-                    <div class="modal-content rounded-3 shadow">
-                        <div class="modal-body p-3 py-4 bg-white rounded-3">
-                            <h2 class="fw-bold mb-0">What's new</h2>
-                            <ul class="d-grid gap-4 mt-3 list-unstyled">
-                                <li class="d-flex gap-4">
-                                    <div>
-                                        <div class="mb-0 fw-bold">v.0.0.10</div>
-                                        Nuevo formato pantalla de log de ejercicio.
-                                        Nuevo menú en pantalla principal.
-                                        Nuevo estado de ejercicio iniciado pero no completado.
-                                    </div>
-                                </li>
-                                <li class="d-flex gap-4">
-                                    <div>
-                                        <div class="mb-0 fw-bold">v.0.0.9</div>
-                                        Añadida la opción de recuperar los datos de excel y mostrarlos en el log de
-                                        ejercicios.
-                                        Nueva parametrización interna de ejercicio desde json.
-                                        Calendario histórico de entrenamientos.
-                                        Ejercicios mesociclo 2.
-                                    </div>
-                                </li>
-                                <li class="d-flex gap-4">
-                                    <div>
-                                        <div class="mb-0 fw-bold">v.0.0.8</div>
-                                        Mejorado log de ejercicio. Se incorpora los entrenamientos de carga y de
-                                        descarga. Mejorada la opción para compartir
-                                    </div>
-                                </li>
-                                <li class="d-flex gap-4">
-                                    <div>
-                                        <div class="mb-0 fw-bold">v.0.0.7</div>
-                                        Habilitada la opción de PWA
-                                    </div>
-                                </li>
-                                <li class="d-flex gap-4">
+    <div class="modal fade modal-tour" tabindex="-1" role="dialog" id="modalChangelog">
+        <div class="modal-dialog modal-dialog-centered " role="document">
+            <div class="modal-content rounded-3 shadow">
+                <div class="modal-body p-3 py-4 bg-white rounded-3">
+                    <h2 class="fw-bold mb-0">What's new</h2>
+                    <ul class="d-grid gap-4 mt-3 list-unstyled">
+                        <li class="d-flex gap-4">
+                            <div>
+                                <div class="mb-0 fw-bold">v.0.0.10</div>
+                                Nuevo formato pantalla de log de ejercicio.
+                                Nuevo menú en pantalla principal.
+                                Nuevo estado de ejercicio iniciado pero no completado.
+                            </div>
+                        </li>
+                        <li class="d-flex gap-4">
+                            <div>
+                                <div class="mb-0 fw-bold">v.0.0.9</div>
+                                Añadida la opción de recuperar los datos de excel y mostrarlos en el log de
+                                ejercicios.
+                                Nueva parametrización interna de ejercicio desde json.
+                                Calendario histórico de entrenamientos.
+                                Ejercicios mesociclo 2.
+                            </div>
+                        </li>
+                        <li class="d-flex gap-4">
+                            <div>
+                                <div class="mb-0 fw-bold">v.0.0.8</div>
+                                Mejorado log de ejercicio. Se incorpora los entrenamientos de carga y de
+                                descarga. Mejorada la opción para compartir
+                            </div>
+                        </li>
+                        <li class="d-flex gap-4">
+                            <div>
+                                <div class="mb-0 fw-bold">v.0.0.7</div>
+                                Habilitada la opción de PWA
+                            </div>
+                        </li>
+                        <li class="d-flex gap-4">
 
-                                    <div>
-                                        <div class="mb-0 fw-bold">v.0.0.6</div>
-                                        Opción para cargar entrenamientos predefinidos
-                                    </div>
-                                </li>
-                            </ul>
-                            <button type="button" class="btn btn-lg btn-primary mt-3 w-100"
-                                data-bs-dismiss="modal">Entendido!</button>
-                        </div>
-                    </div>
+                            <div>
+                                <div class="mb-0 fw-bold">v.0.0.6</div>
+                                Opción para cargar entrenamientos predefinidos
+                            </div>
+                        </li>
+                    </ul>
+                    <button type="button" class="btn btn-lg btn-primary mt-3 w-100"
+                        data-bs-dismiss="modal">Entendido!</button>
                 </div>
             </div>
-            <div class="modal fade modal-alert" tabindex="-1" role="dialog" id="modalChoice">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content rounded-3 shadow">
-                        <div class="modal-body p-4 text-center">
-                            <h5 class="mb-0">Eliminar entrenamiento</h5>
-                            <p class="mb-0">Una vez eliminado el entrenamiento no se podrá recuperar. ¿Quieres
-                                continuar?</p>
-                        </div>
-                        <div class="modal-footer flex-nowrap p-0">
-                            <button type="button" id="delete" data-bs-dismiss="modal"
-                                class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end"><strong>Sí,
-                                    eliminar</strong></button>
-                            <button type="button"
-                                class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0"
-                                data-bs-dismiss="modal">No</button>
-                        </div>
-                    </div>
+        </div>
+    </div>
+    <div class="modal fade modal-alert" tabindex="-1" role="dialog" id="modalChoice">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-3 shadow">
+                <div class="modal-body p-4 text-center">
+                    <h5 class="mb-0">Eliminar entrenamiento</h5>
+                    <p class="mb-0">Una vez eliminado el entrenamiento no se podrá recuperar. ¿Quieres
+                        continuar?</p>
+                </div>
+                <div class="modal-footer flex-nowrap p-0">
+                    <button type="button" id="delete" data-bs-dismiss="modal"
+                        class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end"><strong>Sí,
+                            eliminar</strong></button>
+                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0"
+                        data-bs-dismiss="modal">No</button>
                 </div>
             </div>
-        </nav>
+        </div>
     </div>
 
     <div class="collapse mb-2" id="collapseOptions">
@@ -166,9 +163,7 @@
     </div>
 
     <div class="col-11 container d-flex justify-content-center">
-
         <div class="row">
-
             <a id="share-btn" class="d-none btn btn-success text-white b-teal py-3 mb-2 w-share fw-bold fs-3"
                 data-action="share/whatsapp/share" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
@@ -197,8 +192,6 @@
                             Cargar un entrenamiento
                         </h2>
                     </div>
-
-
                     <div class="col-12 py-2 mb-3">
                         <h2 for="series" class="form-label fw-bold">Mesociclo</h2>
                         <div class="d-flex justify-content-center gap-1">
@@ -208,25 +201,10 @@
                             <input type="radio" class="btn-check" name="mesociclos" id="mesociclo2" autocomplete="off"
                                 required value="2" checked>
                             <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="mesociclo2">2</label>
-                            <!-- <input type="radio" class="btn-check" name="series" id="series3" autocomplete="off" required
-                                value="3">
-                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series3">3</label>
-                            <input type="radio" class="btn-check" name="series" id="series4" autocomplete="off" required
-                                value="4">
-                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series4">4</label>
-                            <input type="radio" class="btn-check" name="series" id="series5" autocomplete="off" required
-                                value="5">
-                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series5">5</label>
-                            <input type="radio" class="btn-check" name="series" id="series6" autocomplete="off" required
-                                value="6">
-                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series6">6</label> -->
                         </div>
                     </div>
-
-
                     <div class="row mt-1" id="trainings">
                         <div id="training-1">
-
                             <div class="row">
                                 <div class="col d-flex align-items-start">
                                     <div class="icon-square">
@@ -329,7 +307,6 @@
             </div>
         </div>
     </div>
-
 
     <nav class="fixed-bottom justify-content-between navbar-expand-sm py-2 pb-4 bg-white">
         <div class="row">
