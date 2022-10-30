@@ -2,12 +2,67 @@ import getFile from './data.js';
 
 const orden = document.getElementById('order');
 const ejercicioSelect = document.getElementById('exe');
+const ejercicioSearch = document.getElementById('exercise-search');
 const objetivo = document.getElementById('objective');
 const repsContainer = document.getElementById('reps-container');
 
 const series = document.querySelectorAll('input[name="series"]');
 series.forEach(serie => serie.onclick = () => createReps(document.querySelector('input[name="series"]:checked').value));
 const isometric = document.getElementById('isometric');
+
+const searchExerciseText = document.getElementById('search-exercise-text');
+
+ejercicioSelect.onmousedown = (e) => {
+    e.preventDefault();
+}
+const myModal = document.getElementById('modalSearchExercise')
+
+myModal.addEventListener('shown.bs.modal', function () {
+    searchExerciseText.focus()
+})
+
+searchExerciseText.oninput = () => {
+    ejercicioSearch.innerHTML = '';
+    const ejerciciosEncontrados = find(JSON.parse(localStorage.getItem('listaEjercicios')).data, searchExerciseText.value);
+
+    ejerciciosEncontrados.forEach(ejercicio => {
+        const option2 = document.createElement('li');
+        option2.innerHTML = `
+        <div class="dropdown-item text-wrap d-flex align-items-center gap-2 py-2" data-tipo="${ejercicio.tipo}" data-id="${ejercicio.id}">
+        <span class="d-inline-block bg-success rounded-circle p-1"></span>
+        <span class="capitalize-first">${ejercicio.ejercicio}</span>
+        </div>
+        `;
+        option2.onclick = () => {
+            ejercicioSelect.value = ejercicio.id;
+            const modal = bootstrap.Modal.getInstance(myModal);
+            modal.hide();
+        }
+        ejercicioSearch.appendChild(option2);
+    });
+
+    if (ejerciciosEncontrados.length === 0) {
+        const option2 = document.createElement('li');
+        option2.innerHTML = `
+        <div class="dropdown-item text-wrap d-flex align-items-center py-2 gap-2 t-red" disabled>
+        <span class="d-inline-block bg-danger rounded-circle p-1"></span>
+        No hay ejercicios para esa búsqueda
+        </div>
+        `;
+        ejercicioSearch.appendChild(option2);
+
+    }
+};
+
+function find(items, text) {
+    return items.filter(item => {
+        if (item.ejercicio.toLowerCase().includes(text.toLowerCase())) {
+            item.ejercicio = item.ejercicio.toLowerCase().replaceAll(text.toLowerCase(), `<strong><mark class="p-0">${text}</mark></strong>`);
+            return item;
+        }
+        return false;
+    });
+}
 
 createOptions();
 async function createOptions() {
@@ -18,7 +73,22 @@ async function createOptions() {
             option.value = ejercicio.id;
             option.innerHTML = ejercicio.ejercicio;
             option.dataset.tipo = ejercicio.tipo;
-            ejercicioSelect.appendChild(option)
+            ejercicioSelect.appendChild(option);
+
+
+            const option2 = document.createElement('li');
+            option2.innerHTML = `
+            <div class="dropdown-item text-wrap d-flex align-items-center gap-2 py-2" data-tipo="${ejercicio.tipo}" data-id="${ejercicio.id}">
+            <span class="d-inline-block bg-success rounded-circle p-1"></span>
+            <span>${ejercicio.ejercicio}</span>
+            </div>
+            `;
+            option2.onclick = () => {
+                ejercicioSelect.value = ejercicio.id;
+                const modal = bootstrap.Modal.getInstance(myModal);
+                modal.hide();
+            }
+            ejercicioSearch.appendChild(option2)
         })
     } else {
         let res = await getFile('exercises.json');
@@ -31,10 +101,12 @@ async function createOptions() {
     }
 }
 
+let currentIndex = null;
+
+
 const saveButton = document.getElementById('save');
 saveButton.addEventListener('click', (e) => {
     e.preventDefault();
-    ejercicioSelect.disabled = false;
     if (ejercicioSelect.value) {
         SaveDataToLocalStorage(createToken());
     } else {
@@ -58,7 +130,6 @@ function loadData() {
     if (getContext()) {
         orden.value = current.orden;
         ejercicioSelect.value = current.id;
-        ejercicioSelect.disabled = true;
         if (current.isometrico) {
             isometric.checked = true;
             tempos.forEach(tempo => {
@@ -75,12 +146,16 @@ function loadData() {
     }
 }
 
+
 function getContext() {
     const id = localStorage.getItem('current-edit');
 
     if (id) {
         const ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
-        if (ejercicios) current = ejercicios.filter(ejercicio => ejercicio.id == id)[0];
+        if (ejercicios) {
+            currentIndex = ejercicios.findIndex(ejercicio => ejercicio.id == id);
+            current = ejercicios[currentIndex];
+        }
     }
 
     return current;
@@ -103,12 +178,15 @@ function createToken() {
 
 function SaveDataToLocalStorage(data) {
     let ejercicios = JSON.parse(localStorage.getItem('ejercicios')) || [];
-
-    const index = ejercicios.findIndex(x => x.id == data.id);
-    if (index > -1) {
-        ejercicios.splice(index, 1);
+    if (currentIndex !== null) {
+        if (ejercicios.filter(x => x.id == data.id)[0]) {
+            alert('Ejercicio ya existente, no se puede volver a añadir');
+        } else {
+            ejercicios[currentIndex] = data;
+        }
+    } else {
+        ejercicios.push(data);
     }
-    ejercicios.push(data);
     localStorage.setItem('ejercicios', JSON.stringify(ejercicios));
 }
 
@@ -118,7 +196,7 @@ function createReps(num) {
     for (let i = 1; i < num; i++) {
         const div = document.createElement('div');
         div.innerHTML = `<label for="reps-${i}" class="form-label fw-bold">Rep ${i}</label>
-        <input type="text" class="form-control" id="reps-${i}" placeholder="" value="" required="" name="reps" maxlength="2">`;
+        <input type="text" class="form-control form-control-sm" id="reps-${i}" placeholder="" value="" required="" name="reps" maxlength="2">`;
         repsContainer.appendChild(div);
     }
     const reps = [...document.querySelectorAll('input[name="reps"]')];
@@ -144,3 +222,5 @@ isometric.onchange = () => {
         });
     }
 }
+
+

@@ -70,7 +70,7 @@ const accordionBody = document.querySelector('.accordion-body');
 function createDay(day, month, year) {
     const historic = JSON.parse(localStorage.getItem('historic'));
     const b = document.createElement('button');
-    b.classList.add('btn', 'cal-btn', 'mb-2');
+    b.classList.add('btn', 'cal-btn');
     b.innerHTML = day;
 
     b.dataset.day = `${day.toString().padStart(2, '0')}/${month}/${year}`;
@@ -85,7 +85,6 @@ function createDay(day, month, year) {
         const text1 = found ? found.Entrenamiento : 'N/D';
         const text2 = found ? found.Mesociclo : 'N/D';
         selectedTraining.innerHTML = `Tipo: ${text1} - Mesociclo: ${text2}`;
-        console.log(list)
         let desc ='';
 
         list.forEach(item => {

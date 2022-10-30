@@ -9,18 +9,17 @@ const objetivo = document.getElementById('objective');
 const spreadMoi = document.getElementById('spread-moi');
 spreadMoi.onclick = () => {
     const pesosMoi = [...document.querySelectorAll('input[name="peso-moi"]')];
-    const peso1 = pesosMoi[0].value;
-    pesosMoi.forEach(peso => peso.value = peso1);
+    const pesoDuplicar = pesosMoi.findLast(x => x.value !== '').value;
+    pesosMoi.forEach(peso => peso.value = peso.value ? peso.value : pesoDuplicar);
     isSeriesCompleted('moi');
 
 }
 const spreadAitor = document.getElementById('spread-aitor');
 spreadAitor.onclick = () => {
     const pesosAitor = [...document.querySelectorAll('input[name="peso-aitor"]')];
-    const peso1 = pesosAitor[0].value;
-    pesosAitor.forEach(peso => peso.value = peso1);
+    const pesoDuplicar = pesosAitor.findLast(x => x.value !== '').value;
+    pesosAitor.forEach(peso => peso.value = peso.value ? peso.value : pesoDuplicar);
     isSeriesCompleted('aitor');
-
 }
 
 const video = document.getElementById('video');
@@ -32,14 +31,12 @@ const modalBody = document.querySelector('.modal-body')
 
 retrieve.onclick = () => {
     const historic = JSON.parse(localStorage.getItem('historic'));
-    console.log(historic)
     if (historic) {
 
         const lastMoiCarga = getLast(current.id, 'Moi', 'Carga');
         const lastMoiDescarga = getLast(current.id, 'Moi', 'Descarga');
         const lastAitorCarga = getLast(current.id, 'Aitor', 'Carga');
         const lastAitorDescarga = getLast(current.id, 'Aitor', 'Descarga');
-        console.log(lastAitorDescarga)
 
         const textLastAitorDescarga = lastAitorDescarga ? lastAitorDescarga.Peso1 : 'N/A';
         const textLastMoiDescarga = lastMoiDescarga ? lastMoiDescarga.Peso1 : 'N/A';

@@ -28,7 +28,7 @@
     <nav class="col-11 container d-flex justify-content-center py-4 pb-2">
         <h1 class="d-flex">
             <span class="flex-grow-1">💪Gym schedule
-                <span class="fs-6" data-bs-toggle="modal" data-bs-target="#modalChangelog">v0.0.10b</span>
+                <span class="fs-6" data-bs-toggle="modal" data-bs-target="#modalChangelog">v0.0.11</span>
             </span>
             <span class="align-self-center ms-auto">
                 <div class="btn-group">
@@ -46,16 +46,22 @@
     </nav>
 
     <div class="modal fade modal-tour" tabindex="-1" role="dialog" id="modalChangelog">
-        <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content rounded-3 shadow">
-                <div class="modal-body p-3 py-4 bg-white rounded-3">
+                <div class="modal-body p-3 py-4 bg-white rounded-3 modal-dialog-scrollable" >
                     <h2 class="fw-bold mb-0">What's new</h2>
-                    <ul class="d-grid gap-4 mt-3 list-unstyled">
+                    <ul class="d-grid gap-4 mt-3 list-unstyled" style="overflow-y: scroll;">
+                        <li class="d-flex gap-4">
+                            <div>
+                                <div class="mb-0 fw-bold">v.0.0.11</div>
+                                Se permite modificar el ejercicio desde edición de entrenamiento
+                            </div>
+                        </li>
                         <li class="d-flex gap-4">
                             <div>
                                 <div class="mb-0 fw-bold">v.0.0.10</div>
-                                Nuevo formato pantalla de log de ejercicio.
-                                Nuevo menú en pantalla principal.
+                                Nuevo formato pantalla de log de ejercicio.<br>
+                                Nuevo menú en pantalla principal.<br>
                                 Nuevo estado de ejercicio iniciado pero no completado.
                             </div>
                         </li>
@@ -63,9 +69,9 @@
                             <div>
                                 <div class="mb-0 fw-bold">v.0.0.9</div>
                                 Añadida la opción de recuperar los datos de excel y mostrarlos en el log de
-                                ejercicios.
-                                Nueva parametrización interna de ejercicio desde json.
-                                Calendario histórico de entrenamientos.
+                                ejercicios.<br>
+                                Nueva parametrización interna de ejercicio desde json.<br>
+                                Calendario histórico de entrenamientos.<br>
                                 Ejercicios mesociclo 2.
                             </div>
                         </li>
@@ -73,7 +79,8 @@
                             <div>
                                 <div class="mb-0 fw-bold">v.0.0.8</div>
                                 Mejorado log de ejercicio. Se incorpora los entrenamientos de carga y de
-                                descarga. Mejorada la opción para compartir
+                                descarga. <br>
+                                Mejorada la opción para compartir
                             </div>
                         </li>
                         <li class="d-flex gap-4">
@@ -204,7 +211,7 @@
                         </div>
                     </div>
                     <div class="row mt-1" id="trainings">
-                        <div id="training-1">
+                        <div id="training-1" class="trainings">
                             <div class="row">
                                 <div class="col d-flex align-items-start">
                                     <div class="icon-square">
@@ -265,7 +272,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="training-2">
+                        <div id="training-2" class="trainings">
                             <div class="col">
                                 <div class="col d-flex align-items-start justify-content-center">
                                     <div class="icon-square">

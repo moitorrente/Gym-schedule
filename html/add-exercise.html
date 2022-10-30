@@ -22,7 +22,7 @@
 
 </head>
 
-<body>
+<body style="margin-bottom: 200px; height: auto;">
     <div class="container container-fluid d-flex justify-content-center">
         <div class="row">
             <div class="col-12">
@@ -36,9 +36,13 @@
                         </div>
                         <div class="col-9 mb-3">
                             <label for="exe" class="form-label fw-bold">Ejercicio</label>
-                            <select class="form-select mx-0" id="exe" required="">
+                            <select class="form-select mx-0" required="" id="exe" data-bs-toggle="modal"
+                                data-bs-target="#modalSearchExercise">
                                 <option value="" hidden selected>Ejercicios...</option>
                             </select>
+                        </div>
+                        <div>
+
                         </div>
                     </div>
 
@@ -116,17 +120,39 @@
             <div class="modal-content rounded-4 shadow">
                 <div class="modal-header border-bottom-0">
                     <h5 class="modal-title">Ejercicio guardado</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body py-0">
                     <p>Se ha añadido el ejercicio seleccionado. ¿Quieres introducir más ejercicios?</p>
                 </div>
                 <div class="modal-footer flex-column border-top-0">
-                    <a type="button" class="btn btn-lg btn-primary w-100 mx-0 mb-2"
-                        href="../index.html">Volver al inicio</a>
-                    <button type="button" class="btn btn-lg btn-light w-100 mx-0"
-                        data-bs-dismiss="modal" id="closeModal">Más ejercicios</button>
+                    <a type="button" class="btn btn-lg btn-primary w-100 mx-0 mb-2" href="../index.html">Volver al
+                        inicio</a>
+                    <button type="button" class="btn btn-lg btn-light w-100 mx-0" data-bs-dismiss="modal"
+                        id="closeModal">Más ejercicios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade modal-sheet" role="dialog" id="modalSearchExercise">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-4 shadow position-fixed" style="top: 20vh; width: 95vw">
+                <!-- <div class="modal-header border-bottom-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div> -->
+                <div class="modal-body p-0">
+                    <div
+                        class="dropdown-menu d-block position-static pt-0 mx-0 rounded-3 shadow overflow-hidden">
+                        <form class="p-2 mb-2 bg-light border-bottom">
+                            <input type="search" class="form-control" autocomplete="off"
+                                placeholder="Escribe para filtrar..." id="search-exercise-text" autofocus="autofocus">
+                        </form>
+                        <ul class="list-unstyled mb-0" style="max-height: 50vh; overflow: scroll;" id="exercise-search">
+
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -134,8 +160,8 @@
 
     <nav class="fixed-bottom justify-content-between navbar-expand-sm py-2 pb-4 bg-white">
         <div class="col-11 d-flex mx-auto">
-            <sub class="btn btn-primary w-100 mb-3" data-bs-toggle="modal" data-bs-target="#modalSheet"
-                type="submit" id="save">Guardar</button>
+            <sub class="btn btn-primary w-100 mb-3" data-bs-toggle="modal" data-bs-target="#modalSheet" type="submit"
+                id="save">Guardar</button>
         </div>
 
         <div class="row text-secondary">

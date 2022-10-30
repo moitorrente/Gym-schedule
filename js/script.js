@@ -18,9 +18,7 @@ const pendingSVG = `
 const listaEjercicios = document.getElementById('exercise-list');
 const addPresetContainer = document.getElementById('add-preset-training');
 const shareBtn = document.getElementById('share-btn');
-const trainig1 = document.getElementById('training-1');
-const trainig2 = document.getElementById('training-2');
-const trainings = [trainig1, trainig2];
+const trainings = document.querySelectorAll('.trainings')
 trainings.forEach(training => training.classList.add('d-none'));
 document.getElementById(`training-${document.querySelector('input[name="mesociclos"]:checked').value}`).classList.remove('d-none');
 
@@ -31,13 +29,11 @@ mesociclos.forEach(mesociclo => mesociclo.onclick = () => {
     document.getElementById(`training-${document.querySelector('input[name="mesociclos"]:checked').value}`).classList.remove('d-none');
 });
 
-
-
 getContext();
 async function getContext() {
     const listaEjercicios = localStorage.getItem('listaEjercicios');
     if (!listaEjercicios) {
-        let res = await getFile('exercises.json');
+        const res = await getFile('exercises.json');
         if (res.ok) {
             localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: res.data }));
         } else {
@@ -46,7 +42,13 @@ async function getContext() {
     }
 }
 
-
+document.getElementById('order').onclick = () => {
+    const ejercicios = getExercises();
+    if (ejercicios) {
+        localStorage.setItem('ejercicios', JSON.stringify(ejercicios.sort(compare)));
+        loadExercises();
+    }
+}
 
 document.getElementById('delete').onclick = () => {
     localStorage.removeItem('ejercicios');
@@ -79,8 +81,8 @@ function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
     const d = document.createElement('div');
     d.classList.add('py-1');
     let icon = notCheckedSVG;
-    if(checked === false) icon = pendingSVG;
-    if(checked === true) icon = checkedSVG;
+    if (checked === false) icon = pendingSVG;
+    if (checked === true) icon = checkedSVG;
     d.innerHTML = `
     <a class="list-group-item d-flex gap-2 p-2 rounded align-items-center" style="height: 5rem">
     <span class="align-self-center ms-auto px-1">
@@ -215,7 +217,7 @@ function json2csv(ob, datosEntrenamiento) {
     const series = ob.series || '';
     const tempo = ob.isometrico ? ob.tempo : ob.tempo.reduce((prev, curr) => prev + curr, '');
     const objetivo = ob.objetivo;
-    const mesociclo = 2;
+    const mesociclo = document.querySelector('input[name="mesociclos"]:checked').value;
     const tipo = 'Peso';
 
     let repsAitor = ';;;;;;;';
@@ -273,17 +275,6 @@ function loadTraining(id) {
     localStorage.setItem('entrenamiento', `{"tipo": "${tipo}", "id": "${nid}"}`);
     localStorage.setItem('ejercicios', prefixedTrainings[id]);
     loadExercises();
-}
-
-document.getElementById('order').onclick = sortList;
-
-function sortList() {
-    const ejercicios = getExercises();
-    if (ejercicios) {
-        localStorage.setItem('ejercicios', JSON.stringify(ejercicios.sort(compare)));
-        loadExercises();
-    }
-
 }
 
 function compare(a, b) {

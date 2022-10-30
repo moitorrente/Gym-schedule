@@ -46,10 +46,10 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  height: 2rem;
+  height: 1.5rem;
   width: 2rem;
   padding: 0;
-  margin: .2rem;
+  margin: .1rem;
   align-self: center;
   justify-self: center;
 }
