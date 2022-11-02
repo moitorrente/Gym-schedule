@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <title>Gym schedule</title>
+    <link rel="icon" type="image/x-icon" href="icon.png">
+    <link rel='shortcut icon' type='image/x-icon' href='icon.png' />
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <script defer src="../js/view-data.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+    <div class="container container-fluid d-flex justify-content-center">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-3 ps-3 py-3">📊Ver histórico</h1>
+
+                <form class="needs-validation" novalidate="">
+                    <div class="row py-2">
+                        <div class="">
+                            <label for="exe" class="form-label fw-bold">Ejercicio</label>
+                            <select class="form-select form-select-sm mx-0" required="" id="exe" data-bs-toggle="modal"
+                                data-bs-target="#modalSearchExercise">
+                                <option value="" hidden selected>Ejercicios...</option>
+                            </select>
+                        </div>
+                        <div id="historic-list">
+                            <!-- <div class="py-1" id="historic-container">
+                                <div class="list-group-item d-flex gap-2 p-2 rounded align-items-center bg-white">
+                                    <div class="d-flex flex-grow-1 flex-column">
+                                        <div class="align-self-end"><small class="d-block text-muted">27/10/2022</small>
+                                        </div>
+                                        <div class="d-flex flex-grow-1">
+                                            <div class="d-flex flex-grow-1">Aitor</div>
+                                            <div class="d-flex gap-3">
+                                                <div>1</div>
+                                                <div>1</div>
+                                                <div>1</div>
+                                                <div>1</div>
+                                                <div>1</div>
+                                                <div>1</div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-grow-1">
+                                            <div class="d-flex flex-grow-1">Moi</div>
+                                            <div class="d-flex gap-3">
+                                                <div>1</div>
+                                                <div>1</div>
+                                                <div>1</div>
+                                                <div>1</div>
+                                                <div>1</div>
+                                                <div>1</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal fade modal-sheet" role="dialog" id="modalSearchExercise">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content rounded-4 shadow position-fixed" style="top: 20vh; width: 95vw">
+                    <!-- <div class="modal-header border-bottom-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div> -->
+                    <div class="modal-body p-0">
+                        <div class="dropdown-menu d-block position-static pt-0 mx-0 rounded-3 shadow overflow-hidden">
+                            <form class="p-2 mb-2 bg-light border-bottom">
+                                <input type="search" class="form-control" autocomplete="off"
+                                    placeholder="Escribe para filtrar..." id="search-exercise-text"
+                                    autofocus="autofocus">
+                            </form>
+                            <ul class="list-unstyled mb-0" style="max-height: 50vh; overflow: scroll;"
+                                id="exercise-search">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -94,7 +94,7 @@ function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
             width: 70vw;
             display: block;
             overflow: hidden;">${name}</strong>
-            <small class="d-block text-muted"><span class="fw-bold">Orden: ${order}</span> - Series: ${series} - Tempo: ${tempo}</small>
+            <small class="d-block text-muted mt-1"><span class="fw-bold">Orden: ${order}</span> - Series: ${series} - Tempo: ${tempo}</small>
         </span>
         <span class="align-self-center ms-auto">
         <div class="btn-group">

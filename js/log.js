@@ -7,19 +7,31 @@ const moiWeightContainer = document.getElementById('moi-weight-container');
 const objetivo = document.getElementById('objective');
 
 const spreadMoi = document.getElementById('spread-moi');
+const resetMoi = document.getElementById('reset-moi');
 spreadMoi.onclick = () => {
     const pesosMoi = [...document.querySelectorAll('input[name="peso-moi"]')];
     const pesoDuplicar = pesosMoi.findLast(x => x.value !== '').value;
     pesosMoi.forEach(peso => peso.value = peso.value ? peso.value : pesoDuplicar);
     isSeriesCompleted('moi');
-
 }
+resetMoi.onclick = () => {
+    [...document.querySelectorAll('input[name="peso-moi"]')].forEach(i => i.value = '');
+    isSeriesCompleted('moi');
+}
+
+
 const spreadAitor = document.getElementById('spread-aitor');
+const resetAitor = document.getElementById('reset-aitor');
 spreadAitor.onclick = () => {
     const pesosAitor = [...document.querySelectorAll('input[name="peso-aitor"]')];
     const pesoDuplicar = pesosAitor.findLast(x => x.value !== '').value;
     pesosAitor.forEach(peso => peso.value = peso.value ? peso.value : pesoDuplicar);
     isSeriesCompleted('aitor');
+}
+
+resetAitor.onclick = () => {
+    [...document.querySelectorAll('input[name="peso-aitor"]')].forEach(i => i.value = '');
+    isSeriesCompleted('moi');
 }
 
 const video = document.getElementById('video');
