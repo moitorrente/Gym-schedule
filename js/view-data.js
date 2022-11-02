@@ -5,20 +5,35 @@ const myModal = document.getElementById('modalSearchExercise');
 const searchExerciseText = document.getElementById('search-exercise-text');
 
 
+getContext();
+function getContext() {
+    const listaEjercicios = JSON.parse(localStorage.getItem('listaEjercicios'));
+
+    listaEjercicios.data.forEach((ejercicio) => {
+        createExerciseOption(ejercicio);
+        createExerciseList(ejercicio);
+    });
+
+    const exerciseToView = localStorage.getItem('exercise-to-view');
+
+    if (exerciseToView) {
+
+        ejercicioSelect.value = parseInt(exerciseToView);
+        createAllCards(exerciseToView)
+    }
+}
+
+
+
 myModal.addEventListener('shown.bs.modal', function () {
-    searchExerciseText.focus()
+    searchExerciseText.focus();
 })
 
 ejercicioSelect.onmousedown = (e) => {
     e.preventDefault();
 }
 
-const listaEjercicios = JSON.parse(localStorage.getItem('listaEjercicios'));
 
-listaEjercicios.data.forEach((ejercicio) => {
-    createExerciseOption(ejercicio);
-    createExerciseList(ejercicio);
-});
 
 
 function createExerciseOption(ejercicio) {

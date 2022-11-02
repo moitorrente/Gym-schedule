@@ -42,33 +42,36 @@ const retrieve = document.getElementById('retrieve');
 const modalBody = document.querySelector('.modal-body')
 
 retrieve.onclick = () => {
-    const historic = JSON.parse(localStorage.getItem('historic'));
-    if (historic) {
 
-        const lastMoiCarga = getLast(current.id, 'Moi', 'Carga');
-        const lastMoiDescarga = getLast(current.id, 'Moi', 'Descarga');
-        const lastAitorCarga = getLast(current.id, 'Aitor', 'Carga');
-        const lastAitorDescarga = getLast(current.id, 'Aitor', 'Descarga');
+    localStorage.setItem('exercise-to-view', current.id);
+    retrieve.href = 'view-data.html';
+    // const historic = JSON.parse(localStorage.getItem('historic'));
+    // if (historic) {
 
-        const textLastAitorDescarga = lastAitorDescarga ? lastAitorDescarga.Peso1 : 'N/A';
-        const textLastMoiDescarga = lastMoiDescarga ? lastMoiDescarga.Peso1 : 'N/A';
-        modalBody.innerHTML =
+    //     const lastMoiCarga = getLast(current.id, 'Moi', 'Carga');
+    //     const lastMoiDescarga = getLast(current.id, 'Moi', 'Descarga');
+    //     const lastAitorCarga = getLast(current.id, 'Aitor', 'Carga');
+    //     const lastAitorDescarga = getLast(current.id, 'Aitor', 'Descarga');
 
-            `
-        <div class="fw-bold">Aitor<div>
-        <ul class="fw-normal">
-            <li>Último peso carga: ${lastAitorCarga.Peso1}</li>
-            <li>Último peso descarga: ${textLastAitorDescarga}</li>
-        </ul>
-        <hr>
-        <div class="fw-bold">Moi<div>
-        <ul class="fw-normal">
-            <li>Último peso carga: ${lastMoiCarga.Peso1}</li>
-            <li>Último peso descarga: ${textLastMoiDescarga}</li>
-        </ul>
+    //     const textLastAitorDescarga = lastAitorDescarga ? lastAitorDescarga.Peso1 : 'N/A';
+    //     const textLastMoiDescarga = lastMoiDescarga ? lastMoiDescarga.Peso1 : 'N/A';
+    //     modalBody.innerHTML =
+
+    //         `
+    //     <div class="fw-bold">Aitor<div>
+    //     <ul class="fw-normal">
+    //         <li>Último peso carga: ${lastAitorCarga.Peso1}</li>
+    //         <li>Último peso descarga: ${textLastAitorDescarga}</li>
+    //     </ul>
+    //     <hr>
+    //     <div class="fw-bold">Moi<div>
+    //     <ul class="fw-normal">
+    //         <li>Último peso carga: ${lastMoiCarga.Peso1}</li>
+    //         <li>Último peso descarga: ${textLastMoiDescarga}</li>
+    //     </ul>
         
-        `
-    }
+    //     `
+    // }
 }
 
 const homeBtn = document.getElementById('home');
