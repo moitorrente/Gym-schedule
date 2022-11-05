@@ -1,16 +1,16 @@
 import getFile from './data.js';
 
-const notCheckedSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-square" viewBox="0 0 16 16">
+const notCheckedSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="var(--dark-gray)" class="bi bi-square" viewBox="0 0 16 16">
 <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
 </svg>`;
 
-const checkedSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
+const checkedSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="var(--dark-gray)" class="bi bi-check-square" viewBox="0 0 16 16">
 <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
 <path d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z"/>
 </svg>`;
 
 const pendingSVG = `
-<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="var(--dark-gray)" class="bi bi-dash-square" viewBox="0 0 16 16">
   <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
   <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
 </svg>`;
@@ -31,6 +31,8 @@ mesociclos.forEach(mesociclo => mesociclo.onclick = () => {
 
 getContext();
 async function getContext() {
+    localStorage.removeItem('exercise-to-view');
+
     const listaEjercicios = localStorage.getItem('listaEjercicios');
     if (!listaEjercicios) {
         const res = await getFile('exercises.json');
@@ -88,7 +90,7 @@ function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
     <span class="align-self-center ms-auto px-1">
         ${icon}    
     </span>
-        <span class="pt-1 form-checked-content w-100" data-id="${id}" id="start-${id}">
+        <span class="pt-1 form-checked-content w-100 fs-6" data-id="${id}" id="start-${id}">
             <strong style="white-space: nowrap;
             text-overflow: ellipsis;
             width: 70vw;
@@ -99,30 +101,40 @@ function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
         <span class="align-self-center ms-auto">
         <div class="btn-group">
             <button class="btn border-0 p-0 pe-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="options-${id}" href="javascript:void(0);">
-                <svg  xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                <svg  xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="var(--dark-gray)" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
                     <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                 </svg>
             </button>
             <ul class="dropdown-menu text-center">
                 <li>
-                    <button type="button" class="option px-1 my-1 w-75 d-flex gap-2 align-items-center ms-3 border-0" id="edit-${id}" data-id="${id}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                    <button type="button" class="option px-1 my-1 w-75 d-flex gap-3 align-items-center ms-2 border-0" id="edit-${id}" data-id="${id}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--blue)" class="bi bi-pencil" viewBox="0 0 16 16">
                             <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
                         </svg>
                         Editar
                     </button>
                 </li>
                 <li>
-                    <button type="button" class="d-none option px-1 my-1 w-75 d-flex gap-2 align-items-center ms-3 border-0" id="up-${id}" data-id="${id}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                    <button type="button" class="option px-1 my-1 w-75 d-flex gap-3 align-items-center ms-2 border-0" id="historic-${id}" data-id="${id}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--blue)" class="bi bi-journal-text" viewBox="0 0 16 16">
+                        <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                        <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                        <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                    </svg>
+                        Histórico
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="d-none option px-1 my-1 w-75 d-flex gap-3 align-items-center ms-2 border-0" id="up-${id}" data-id="${id}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--blue)" class="bi bi-arrow-up" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
                         </svg>
                         Subir
                     </button>
                 </li>
                 <li>
-                    <button type="button" class="d-none option px-1 my-1 w-75 d-flex gap-2 align-items-center ms-3 border-0" id="down-${id}" data-id="${id}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                    <button type="button" class="d-none option px-1 my-1 w-75 d-flex gap-3 align-items-center ms-2 border-0" id="down-${id}" data-id="${id}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--blue)" class="bi bi-arrow-down" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
                         </svg>
                         Bajar
@@ -132,8 +144,8 @@ function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
                     <hr class="dropdown-divider">
                 </li>
                 <li class="">
-                    <button type="button" class="option px-1 w-75 d-flex gap-2 align-items-center ms-3 border-0 text-danger" id="delete-${id}" data-id="${id}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eraser" viewBox="0 0 16 16">
+                    <button type="button" class="option px-1 w-75 d-flex gap-3 align-items-center ms-2 border-0" id="delete-${id}" data-id="${id}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--red)"" class="bi bi-eraser" viewBox="0 0 16 16">
                             <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm2.121.707a1 1 0 0 0-1.414 0L4.16 7.547l5.293 5.293 4.633-4.633a1 1 0 0 0 0-1.414l-3.879-3.879zM8.746 13.547 3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
                         </svg>
                         Eliminar
@@ -171,6 +183,12 @@ function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
     edit.onclick = () => {
         localStorage.setItem('current-edit', edit.getAttribute('data-id'));
         location.href = "html/add-exercise.html";
+    }
+
+    const historic = document.getElementById(`historic-${id}`);
+    historic.onclick = () => {
+        localStorage.setItem('exercise-to-view', id);
+        location.href = "html/view-data.html";
     }
 
     const up = document.getElementById(`up-${id}`);

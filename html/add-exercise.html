@@ -29,85 +29,100 @@
                 <h1 class="mb-3 ps-3 py-3">✍️Edición de ejercicio</h1>
 
                 <form class="needs-validation" novalidate="">
-                    <div class="row py-2">
-                        <div class="col-3">
-                            <label for="order" class="form-label fw-bold" required>Orden</label>
-                            <input type="text" class="form-control" id="order" placeholder="" value="" required="">
-                        </div>
-                        <div class="col-9 mb-3">
-                            <label for="exe" class="form-label fw-bold">Ejercicio</label>
-                            <select class="form-select mx-0" required="" id="exe" data-bs-toggle="modal"
-                                data-bs-target="#modalSearchExercise">
-                                <option value="" hidden selected>Ejercicios...</option>
-                            </select>
-                        </div>
-                        <div>
-
+                    <div class="flex-grow-1 mb-4">
+                        <label for="exe" class="form-label fs-7 fw-bold">Ejercicio</label>
+                        <select class="form-select form-select-sm mx-0" required="" id="exe" data-bs-toggle="modal"
+                            data-bs-target="#modalSearchExercise">
+                            <option value="" hidden selected>Ejercicios...</option>
+                        </select>
+                    </div>
+                    <div class="d-flex gap-2 mb-4 justify-content-between ">
+                        <div class="w-25">
+                            <label for="order" class="form-label fs-7 fw-bold" required>Orden</label>
+                            <input type="text" class="form-control form-control-sm text-center" id="order"
+                                placeholder="" value="" required="">
                         </div>
                     </div>
 
-                    <div class="row py-2 mb-3">
-                        <div class="col">
-                            <label for="tempo1" class="form-label fw-bold">Subir</label>
-                            <input type="text" class="form-control" maxlength="1" name="tempo">
-                        </div>
-                        <div class="col">
-                            <label for="tempo2" class="form-label fw-bold">Arriba</label>
-                            <input type="text" class="form-control" maxlength="1" name="tempo">
-                        </div>
-                        <div class="col">
-                            <label for="tempo3" class="form-label fw-bold">Bajar</label>
-                            <input type="text" class="form-control" maxlength="1" name="tempo">
-                        </div>
-                        <div class="col">
-                            <label for="tempo4" class="form-label fw-bold">Abajo</label>
-                            <input type="text" class="form-control" maxlength="1" name="tempo">
-                        </div>
+                    <div class="">
+                        <label for="tipoeje" class="form-label fs-7 fw-bold">Tipo ejercicio</label>
+                        <div id="tipoeje"
+                            class="d-flex align-items-center gap-1 mb-4 justify-content-between flex-nowrap">
+                            <div class="input-group bg-white rounded-2"
+                                style="width: fit-content; height: fit-content;">
+                                <label
+                                    class="btn btn-sm btn-outline-primary rounded-start t-black border text-center px-3"
+                                    for="isometric" style="border-color: var(--dark-gray);"
+                                    id="isometric-label">Isométrico</label>
+                                <label
+                                    class="btn btn-sm btn-outline-primary rounded-end t-black border text-center px-3"
+                                    style="border-color: var(--dark-gray);" for="isometric-no"
+                                    id="isometric-no-label">Isotónico</label>
+                                <input type="radio" class="btn-check" name="isometrico" id="isometric-no" value="1">
+                                <input type="radio" class="btn-check" name="isometrico" id="isometric" value="2">
+                            </div>
 
+                            <div class="d-flex gap-1">
+                                <div class="">
+                                    <!-- <label for="tempo1" class="form-label fs-7 fw-bold">Subir</label> -->
+                                    <input type="text" class="form-control form-control-sm text-center flex-fill"
+                                        maxlength="1" name="tempo" style="width: 9vw;">
+                                </div>
+                                <div class="">
+                                    <!-- <label for="tempo2" class="form-label fs-7 fw-bold">Arriba</label> -->
+                                    <input type="text" class="form-control form-control-sm text-center flex-fill"
+                                        maxlength="1" name="tempo" style="width: 9vw;">
+                                </div>
+                                <div class="">
+                                    <!-- <label for="tempo3" class="form-label fs-7 fw-bold">Bajar</label> -->
+                                    <input type="text" class="form-control form-control-sm text-center flex-fill"
+                                        maxlength="1" name="tempo" style="width: 9vw;">
+                                </div>
+                                <div class="">
+                                    <!-- <label for="tempo4" class="form-label fs-7 fw-bold">Abajo</label> -->
+                                    <input type="text" class="form-control form-control-sm text-center flex-fill"
+                                        maxlength="1" name="tempo" style="width: 9vw;">
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="form-check col ms-3 mt-2 mb-3">
-                        <input class="form-check-input" type="checkbox" value="" id="isometric">
-                        <label class="form-check-label" for="isometric">
-                            Isométrico
-                        </label>
-                    </div>
-
-
-                    <div class="col-12 py-2 mb-3">
-                        <label for="objective" class="form-label fw-bold">Objetivo</label>
-                        <select class="form-select" id="objective" required="">
+                    <div class="mb-4">
+                        <label for="objective" class="form-label fs-7 fw-bold">Objetivo</label>
+                        <select class="form-select form-select-sm" id="objective" required="">
                             <option value="X-2">Fallo -2</option>
                             <option value="X-1">Fallo -1</option>
                             <option value="X">Fallo</option>
                         </select>
                     </div>
 
-                    <div class="col-12 py-2 mb-3">
-                        <div for="series" class="form-label fw-bold">Series</div>
-                        <div class="d-flex gap-1">
+                    <div class="mb-4">
+                        <div for="series" class="form-label fs-7 fw-bold">Series</div>
+                        <div class="d-flex input-group">
                             <input type="radio" class="btn-check" name="series" id="series1" autocomplete="off" required
                                 value="1">
-                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series1">1</label>
+                            <label class="btn btn-sm btn-outline-primary mx-0 flex-fill rounded-start"
+                                for="series1">1</label>
                             <input type="radio" class="btn-check" name="series" id="series2" autocomplete="off" required
                                 value="2">
-                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series2">2</label>
+                            <label class="btn btn-sm btn-outline-primary mx-0 flex-fill" for="series2">2</label>
                             <input type="radio" class="btn-check" name="series" id="series3" autocomplete="off" required
                                 value="3">
-                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series3">3</label>
+                            <label class="btn btn-sm btn-outline-primary mx-0 flex-fill" for="series3">3</label>
                             <input type="radio" class="btn-check" name="series" id="series4" autocomplete="off" required
                                 value="4">
-                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series4">4</label>
+                            <label class="btn btn-sm btn-outline-primary mx-0 flex-fill" for="series4">4</label>
                             <input type="radio" class="btn-check" name="series" id="series5" autocomplete="off" required
                                 value="5">
-                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series5">5</label>
-                            <input type="radio" class="btn-check" name="series" id="series6" autocomplete="off" required
+                            <label class="btn btn-sm btn-outline-primary mx-0 flex-fill rounded-end"
+                                for="series5">5</label>
+                            <!-- <input type="radio" class="btn-check" name="series" id="series6" autocomplete="off" required
                                 value="6">
-                            <label class="btn btn-sm btn-outline-secondary px-4 mx-0" for="series6">6</label>
+                            <label class="btn btn-sm btn-outline-primary mx-0 flex-fill" for="series6">6</label> -->
                         </div>
                     </div>
 
-                    <div class="row py-2">
+                    <div class="">
                         <div class="d-flex gap-2" id="reps-container"></div>
                     </div>
                 </form>
@@ -143,8 +158,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div> -->
                 <div class="modal-body p-0">
-                    <div
-                        class="dropdown-menu d-block position-static pt-0 mx-0 rounded-3 shadow overflow-hidden">
+                    <div class="dropdown-menu d-block position-static pt-0 mx-0 rounded-3 shadow overflow-hidden">
                         <form class="p-2 mb-2 bg-light border-bottom">
                             <input type="search" class="form-control" autocomplete="off"
                                 placeholder="Escribe para filtrar..." id="search-exercise-text" autofocus="autofocus">

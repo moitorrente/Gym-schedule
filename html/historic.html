@@ -68,8 +68,9 @@
         </div>
         <div class="mx-auto d-flex justify-content-around fs-7 align-items-center mb-2">
 
-            <div class="bg-light border rounded-3 p-2 gap-2 d-flex flex-grow-1 align-items-center me-1" id="fetch">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            <div class="bg-white border rounded-3 p-2 gap-2 d-flex align-items-center me-1 w-50 justify-content-center"
+                id="fetch">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--blue)"
                     class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
                     <path
@@ -77,10 +78,10 @@
                 </svg>
                 Cargar datos
             </div>
-            <div class="bg-light border rounded-3 p-2 gap-2 d-flex flex-grow-1 align-items-center ms-1 t-red"
+            <div class="bg-white border rounded-3 p-2 gap-2 d-flex align-items-center ms-1 w-50 justify-content-center"
                 id="delete-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
-                    viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-trash t-red" viewBox="0 0 16 16">
                     <path
                         d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
                     <path fill-rule="evenodd"
@@ -90,7 +91,7 @@
             </div>
         </div>
 
-        <div class="container justify-content-center">
+        <div class="container">
             <div class="row list-group p-0">
                 <a class="list-group-item d-flex gap-2 px-2 rounded align-items-center">
                     <span class="align-self-center ms-auto px-1" id="last-check"></span>
@@ -102,7 +103,7 @@
                         <div class="btn-group">
                             <button class="btn border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false"
                                 href="javascript:void(0);">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="var(--dark-gray)"
                                     class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
                                     <path
                                         d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z">
@@ -128,7 +129,7 @@
                                 </li>
                                 <li class="">
                                     <button type="button"
-                                        class="option px-1 w-75 d-flex gap-3 align-items-center ms-3 border-0 text-danger"
+                                        class="option px-1 w-25 d-flex gap-3 align-items-center ms-3 border-0 text-danger"
                                         id="delete-last">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-eraser" viewBox="0 0 16 16">
@@ -156,7 +157,7 @@
                         <div class="btn-group">
                             <button class="btn border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false"
                                 href="javascript:void(0);">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="var(--dark-gray)"
                                     class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
                                     <path
                                         d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z">
@@ -198,26 +199,32 @@
                     </span>
                 </a>
             </div>
-            <div class="text-center my-3 position-relative text-center mx-auto w-100">
-                <svg class="ring position-absolute top-50 start-50" viewBox="25 25 50 50" stroke-width="5">
-                    <circle id="loading" class="d-none" cx="50" cy="50" r="20" />
-                </svg>
-            </div>
-
         </div>
-
+        <div class="text-center my-3 position-relative text-center mx-auto w-100">
+            <svg class="ring position-absolute top-50 start-50" viewBox="25 25 50 50" stroke-width="5">
+                <circle id="loading" class="d-none" cx="50" cy="50" r="20" />
+            </svg>
+        </div>
         <div class="dropdown-menu d-block position-static my-0 p-2 rounded-3 mt-2">
             <div class="d-grid gap-1">
                 <div class="cal">
                     <div class="cal-month">
+                        <strong class="cal-month-name">Octubre</strong>
+
                         <button class="btn cal-btn" type="button" id="prev-month">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                                class="bi bi-chevron-left" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
-                                    d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+                                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
                             </svg>
                         </button>
-                        <strong class="cal-month-name">Octubre</strong>
+                        <button class="btn cal-btn" type="button" id="next-month">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </button>
                         <select class="form-select cal-month-name d-none">
                             <option value="January">January</option>
                             <option value="February">February</option>
@@ -232,13 +239,7 @@
                             <option value="November">November</option>
                             <option value="December">December</option>
                         </select>
-                        <button class="btn cal-btn" type="button" id="next-month">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
-                            </svg>
-                        </button>
+
                     </div>
                     <div class="cal-weekdays text-muted">
                         <div class="cal-weekday">Lun</div>

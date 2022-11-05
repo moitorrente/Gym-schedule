@@ -53,7 +53,7 @@ function monthInfo(time) {
         firstDayIndex: new Date(date.getFullYear(), date.getMonth(), 1).getDay(),
         firstDay: new Date(date.getFullYear(), date.getMonth(), 2).toISOString().split('T')[0],
         numberDays: new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate(),
-        name: MONTHS[date.getMonth()],
+        name: MONTHS[date.getMonth()] + ' ' + date.getFullYear(),
         month: monthValue,
         year: date.getFullYear()
     };

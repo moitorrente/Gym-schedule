@@ -9,8 +9,11 @@ const repsContainer = document.getElementById('reps-container');
 const series = document.querySelectorAll('input[name="series"]');
 series.forEach(serie => serie.onclick = () => createReps(document.querySelector('input[name="series"]:checked').value));
 const isometric = document.getElementById('isometric');
+const isometricNo = document.getElementById('isometric-no');
 
 const searchExerciseText = document.getElementById('search-exercise-text');
+
+let tmp;
 
 ejercicioSelect.onmousedown = (e) => {
     e.preventDefault();
@@ -127,22 +130,41 @@ tempos.forEach((el, i) => el.onkeyup = () => {
 
 loadData();
 function loadData() {
+
+
     if (getContext()) {
         orden.value = current.orden;
         ejercicioSelect.value = current.id;
         if (current.isometrico) {
             isometric.checked = true;
+            isometric.classList.add('active');
+            document.getElementById('isometric-label').classList.add('active');
             tempos.forEach(tempo => {
                 tempo.disabled = true;
                 tempo.value = null;
+                tempo.classList.add('d-none')
             });
+            updateIsometric();
+
         } else {
-            tempos.forEach((x, i) => x.value = current.tempo[i]);
+            isometricNo.checked = true;
+            document.getElementById('isometric-no-label').classList.add('active');
+
+            tempos.forEach((tempo, i) => {
+                tempo.value = current.tempo[i]
+                tempo.classList.remove('d-none')
+            });
+            updateIsometric();
+
         }
         [...document.querySelectorAll('input[name="series"]')][parseInt(current.series) - 1].checked = true;
         createReps(parseInt(current.series));
         [...document.querySelectorAll('input[name="reps"]')].forEach((x, i) => x.value = current.repeticiones[i]);
         objetivo.value = current.objetivo;
+    } else {
+        isometricNo.checked = true;
+        document.getElementById('isometric-no-label').classList.add('active');
+        updateIsometric();
     }
 }
 
@@ -178,9 +200,10 @@ function createToken() {
 
 function SaveDataToLocalStorage(data) {
     let ejercicios = JSON.parse(localStorage.getItem('ejercicios')) || [];
-    if (currentIndex !== null) {
-        if (ejercicios.filter(x => x.id == data.id)[0]) {
-            alert('Ejercicio ya existente, no se puede volver a añadir');
+    if (currentIndex !== null && currentIndex > -1) {
+        const newIndex = ejercicios.findIndex(x => x.id == data.id);
+        if (newIndex !== currentIndex && newIndex > -1) {
+            alert(`Ejercicio ya existente, no se puede volver a añadir. ${currentIndex} ${newIndex}`, currentIndex, newIndex);
         } else {
             ejercicios[currentIndex] = data;
         }
@@ -195,8 +218,9 @@ function createReps(num) {
     num++;
     for (let i = 1; i < num; i++) {
         const div = document.createElement('div');
-        div.innerHTML = `<label for="reps-${i}" class="form-label fw-bold">Rep ${i}</label>
-        <input type="text" class="form-control form-control-sm" id="reps-${i}" placeholder="" value="" required="" name="reps" maxlength="2">`;
+        div.classList.add('w-100')
+        div.innerHTML = `<label for="reps-${i}" class="form-label fs-7 fw-bold">Rep ${i}</label>
+        <input type="text" class="form-control form-control-sm flex-fill text-center" id="reps-${i}" placeholder="" value="" required="" name="reps" maxlength="2">`;
         repsContainer.appendChild(div);
     }
     const reps = [...document.querySelectorAll('input[name="reps"]')];
@@ -207,18 +231,39 @@ function createReps(num) {
     });
 }
 
-let tmp;
-isometric.onchange = () => {
+isometric.onclick = () => {
+    isometric.checked = true;
+    isometricNo.checked = false;
+    document.getElementById('isometric-label').classList.add('active');
+    document.getElementById('isometric-no-label').classList.remove('active');
+
+
+    updateIsometric();
+}
+
+isometricNo.onclick = () => {
+    isometric.checked = false;
+    isometricNo.checked = true;
+    document.getElementById('isometric-no-label').classList.add('active');
+    document.getElementById('isometric-label').classList.remove('active');
+
+    updateIsometric();
+}
+
+function updateIsometric() {
     if (isometric.checked) {
         tmp = tempos.map(x => x.value);
         tempos.forEach(tempo => {
             tempo.disabled = true;
             tempo.value = null;
+            tempo.classList.add('d-none');
         });
     } else {
+        isometricNo.active = true;
         tempos.forEach((tempo, i) => {
             tempo.disabled = false;
-            tempo.value = tmp[i];
+            if (tmp) tempo.value = tmp[i];
+            tempo.classList.remove('d-none');
         });
     }
 }

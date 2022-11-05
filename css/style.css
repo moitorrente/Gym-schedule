@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 :root {
-    --gray: #f3f4f6;
-    --blue: #1d4ed8;
+    --gray: #f8fafc;
+    --dark-gray: #6b7280;
+    --blue: #2563eb;
     --red: #b91c1c;
     --teal: #0f766e;
     --black: #111827;
@@ -21,7 +24,7 @@ body {
 
 body {
     background-color: var(--gray);
-    font-family: 'Arial', sans-serif;
+    font-family: 'Inter', 'Arial', sans-serif;
     margin: 0;
     /* margin-bottom: 200px; */
     -webkit-user-select: none;
@@ -72,6 +75,59 @@ body {
     border-radius: 0.75rem;
 }
 
+.form-check-input:checked {
+    background-color: var(--blue);
+    border-color: var(--blue);
+}
+
+.btn {
+    --bs-btn-bg: white;
+    --bs-btn-color: var(--black);
+    border: 1px solid #ced4da;
+}
+
+.transparent {
+    background-color: transparent;
+}
+
+.btn-outline-primary {
+
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--blue);
+    --bs-btn-hover-border-color: var(--blue);
+    --bs-btn-focus-shadow-rgb: 108, 117, 125;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--blue);
+    --bs-btn-active-border-color: var(--blue);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: var(--blue);
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: var(--blue);
+    --bs-gradient: none;
+}
+
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--blue);
+    --bs-btn-border-color: var(--blue);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--blue);
+    --bs-btn-hover-border-color: #0a58ca;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--blue);
+    --bs-btn-active-border-color: var(--blue);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--blue);
+    --bs-btn-disabled-border-color: var(--blue);
+}
+
+
+.text-primary {
+    --bs-text-opacity: 1;
+    color: var(--blue) !important;
+}
 
 .option {
     padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
