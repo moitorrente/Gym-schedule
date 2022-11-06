@@ -14,16 +14,16 @@ const sheetName = 'Log';
 const query = encodeURIComponent('Select *')
 const url = `${base}&sheet=${sheetName}&tq=${query}`;
 
-const loadExerciseListBtn = document.getElementById('load-exercise-list-btn');
-loadExerciseListBtn.onclick = async () => {
-    let res = await getFile('exercises.json');
-    if (res.ok) {
-        localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: res.data }));
-        getContext();
-    } else {
-        alert(`Error: ${res.error}`);
-    }
-}
+// const loadExerciseListBtn = document.getElementById('load-exercise-list-btn');
+// loadExerciseListBtn.onclick = async () => {
+//     let res = await getFile('exercises.json');
+//     if (res.ok) {
+//         localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: res.data }));
+//         getContext();
+//     } else {
+//         alert(`Error: ${res.error}`);
+//     }
+// }
 
 const loading = document.getElementById('loading')
 
@@ -40,19 +40,19 @@ document.getElementById('delete-all').onclick = () => {
     getContext();
 }
 
-document.getElementById('delete-last').onclick = () => {
-    localStorage.removeItem('historic');
-    getContext();
-}
-document.getElementById('get-historic').onclick = () => {
-    loading.classList.remove('d-none');
-    init();
-    getContext();
-}
-document.getElementById('delete-last-exercise').onclick = () => {
-    localStorage.removeItem('listaEjercicios');
-    getContext();
-}
+// document.getElementById('delete-last').onclick = () => {
+//     localStorage.removeItem('historic');
+//     getContext();
+// }
+// document.getElementById('get-historic').onclick = () => {
+//     loading.classList.remove('d-none');
+//     init();
+//     getContext();
+// }
+// document.getElementById('delete-last-exercise').onclick = () => {
+//     localStorage.removeItem('listaEjercicios');
+//     getContext();
+// }
 
 document.getElementById('fetch').addEventListener('click', async () => {
     loading.classList.remove('d-none');
@@ -127,23 +127,23 @@ function updateLastCard(date) {
     if (date) {
         lastDescription.innerHTML = 'Histórico';
         lastDate.innerHTML = `Último: ${date}`;
-        lastCheck.innerHTML = checkedSVG;
+        lastCheck.classList.remove('d-none');
     } else {
         lastDescription.innerHTML = 'No hay histórico cargado';
         lastDate.innerHTML = 'Solicita los datos';
-        lastCheck.innerHTML = notCheckedSVG;
-    }
+        lastCheck.classList.add('d-none');
+        }
 }
 function updateLastExerciseCard(date) {
 
     if (date) {
         lastExerciseDescription.innerHTML = 'Lista de ejercicios';
         lastExerciseDate.innerHTML = `Último: ${date}`;
-        lastExerciseCheck.innerHTML = checkedSVG;
+        lastExerciseCheck.classList.remove('d-none');
     } else {
         lastExerciseDescription.innerHTML = 'No hay lista de ejercicios';
         lastExerciseDate.innerHTML = 'Solicita los ejercicios';
-        lastExerciseCheck.innerHTML = notCheckedSVG;
+        lastExerciseCheck.classList.add('d-none');
     }
 }
 

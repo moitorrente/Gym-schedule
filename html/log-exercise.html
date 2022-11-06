@@ -31,13 +31,13 @@
                     <span class="d-flex flex-grow-1">🏋️Log de ejercicio</span>
                 </h1>
                 <div class="needs-validation" novalidate="">
-                    <div class="row py-3 mt-3">
+                    <div class="row mb-3">
                         <div class="col mx-auto">
                             <div class="accordion" id="accordionExample">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button
-                                            class="p-2 accordion-button collapsed badge bg-light text-wrap text-black fs-2 border d-flex flex-grow-1 justify-content-center"
+                                            class="p-2 accordion-button collapsed badge bg-white text-wrap text-black fs-2 border d-flex flex-grow-1 justify-content-center"
                                             type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
                                             aria-expanded="false" aria-controls="collapseOne" id="exe">
                                             Ejercicio
@@ -52,52 +52,118 @@
                         </div>
                     </div>
 
-                    <div class="col row py-2 mt-2">
-                        <div class="col d-flex gap-3">
-                            <!-- <label for="tempo" class="form-label fw-bold">Tempo</label> -->
-                            <div type="text" class="badge bg-secondary text-wrap fs-5 flex-grow-1" id="series">5 series
+                    <div class="col row mb-3">
+                        <div class="d-flex gap-2 mb-4">
+                            <div class="flex-fill w-50 bg-white border rounded-1 px-3 py-1">
+                                <div class="text-muted fw-bold fs-7">Series</div>
+                                <div class="fw-bolder fs-5" id="series">5</div>
                             </div>
 
-                            <div type="text" class="badge bg-secondary text-wrap fs-5" id="tempo"></div>
-                            <div class="flex">
-                                <!-- <label for="objective" class="form-label fw-bold">Objetivo</label> -->
-                                <select class="form-select badge bg-secondary text-wrap fs-5" id="objective" required=""
-                                    disabled>
-                                    <option value="X-2">Fallo -2</option>
-                                    <option value="X-1">Fallo -1</option>
-                                    <option value="X">Fallo</option>
-                                </select>
+                            <div class="flex-fill w-50 bg-white border rounded-1 px-3 py-1 fs-5">
+                                <div class="text-muted fw-bold fs-7">Tempo</div>
+                                <div class="fw-bolder fs-5" id="tempo">5</div>
+                            </div>
+                            <div class="flex-fill w-50 bg-white border rounded-1 px-3 py-1 fs-5">
+                                <div class="text-muted fw-bold fs-7">Objetivo</div>
+                                <div class="fw-bolder fs-5" id="objective">Fallo -2</div>
                             </div>
                         </div>
-                        <div class="py-2 mt-4 mb-3">
+                        <div class="mb-3">
                             <div class="d-flex gap-2" id="reps-container"></div>
                         </div>
-                        <div class="mt-4 fw-bold text-center d-flex justify-content-around">
-                            <div class="badge rounded-pill text-bg-secondary fs-6 w-50" id="badge-aitor">
-                                Aitor
+
+                        <div class="mt-1">
+                            <div>
+                                <div class="mx-auto border rounded bg-white p-2 mb-2" id="container-aitor" style="border-color: var(--blue)!important">
+                                    <div class="fs-5 fw-bold d-flex align-items-center justify-content-around gap-2">
+                                        <div class="d-flex align-items-center justify-content-start w-100 gap-2">
+                                            <div class="ms-1">
+                                                Aitor
+                                            </div>
+                                            <div class="fs-5 w-50 p-0" id="badge-aitor">
+                                                <span
+                                                    class="b-light-green t-dark-green d-flex align-items-center rounded-4 w-100"
+                                                    style="width: 1rem!important;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="btn btn-light badge t-blue border fs-6 w-25" id="spread-aitor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-chevron-double-right"
+                                                viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z" />
+                                            </svg>
+                                        </div>
+                                        <btn class="btn btn-light badge text-black border fs-6 t-red" id="reset-aitor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-eraser-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z" />
+                                            </svg>
+                                        </btn>
+                                    </div>
+                                    <div class="py-2">
+                                        <div class="d-flex gap-2" id="aitor-weight-container"></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="btn btn-light badge text-black border fs-6 w-25" id="spread-aitor">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z" />
-                                    <path fill-rule="evenodd"
-                                        d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z" />
-                                </svg>
-                            </div>
-                            <btn class="btn btn-light badge text-black border fs-6 t-red" id="reset-aitor">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-eraser-fill" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z" />
-                                </svg>
-                            </btn>
                         </div>
 
-                        <div class="py-2">
-                            <div class="d-flex gap-2" id="aitor-weight-container"></div>
+
+                        <div>
+                            <div class="mx-auto border rounded bg-white p-2 mb-1" id="container-moi">
+                                <div class="fs-5 fw-bold d-flex align-items-center justify-content-around gap-2">
+                                    <div class="d-flex align-items-center justify-content-start w-100 gap-2">
+                                        <div class="ms-1">
+                                            Moi
+                                        </div>
+                                        <div class="fs-5 w-50 p-0" id="badge-moi">
+                                            <span
+                                                class="b-light-green t-dark-green d-flex align-items-center rounded-4 w-100"
+                                                style="width: 1rem!important;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="btn btn-light badge t-blue border fs-6 w-25" id="spread-moi">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z" />
+                                            <path fill-rule="evenodd"
+                                                d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z" />
+                                        </svg>
+                                    </div>
+                                    <btn class="btn btn-light badge text-black border fs-6 t-red" id="reset-moi">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-eraser-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z" />
+                                        </svg>
+                                    </btn>
+                                </div>
+                                <div class="py-2">
+                                    <div class="d-flex gap-2" id="moi-weight-container"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mt-4 fw-bold text-center d-flex justify-content-around">
+
+
+                        <!-- <div class="mt-4 fw-bold text-center d-flex justify-content-around">
                             <div class="badge rounded-pill text-bg-secondary fs-6 w-50" id="badge-moi">
                                 Moi
                             </div>
@@ -117,7 +183,7 @@
                                         d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z" />
                                 </svg>
                             </btn>
-                        </div>
+                        </div> -->
 
                         <div class="py-2">
                             <div class="d-flex gap-2" id="moi-weight-container"></div>

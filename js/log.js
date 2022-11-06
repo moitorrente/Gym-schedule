@@ -31,7 +31,7 @@ spreadAitor.onclick = () => {
 
 resetAitor.onclick = () => {
     [...document.querySelectorAll('input[name="peso-aitor"]')].forEach(i => i.value = '');
-    isSeriesCompleted('moi');
+    isSeriesCompleted('aitor');
 }
 
 const video = document.getElementById('video');
@@ -69,7 +69,7 @@ retrieve.onclick = () => {
     //         <li>Último peso carga: ${lastMoiCarga.Peso1}</li>
     //         <li>Último peso descarga: ${textLastMoiDescarga}</li>
     //     </ul>
-        
+
     //     `
     // }
 }
@@ -119,8 +119,8 @@ function loadData() {
     }
     objetivo.value = current.objetivo;
     createReps(current.series, current.isometrico);
-    document.getElementById('series').innerHTML = `${current.series} series`;
-    [...document.querySelectorAll('input[name="reps"]')].forEach((x, i) => x.value = current.repeticiones[i]);
+    document.getElementById('series').innerHTML = current.series;
+    [...document.getElementsByName('reps')].forEach((x, i) => x.innerHTML = current.repeticiones[i]);
     createPeso(current.series, 'aitor', current.tipo);
     createPeso(current.series, 'moi', current.tipo);
 
@@ -136,11 +136,12 @@ function isSeriesCompleted(user) {
     const seriesValues = [...document.querySelectorAll(`input[name="peso-${user}"]`)];
     const isCompleted = seriesValues.filter(x => x.value == '').length > 0 ? false : true;
     if (isCompleted) {
-        document.getElementById(`badge-${user}`).classList.remove('text-bg-secondary');
-        document.getElementById(`badge-${user}`).classList.add('text-bg-success');
+        document.getElementById(`container-${user}`).style.setProperty('border', '1px solid var(--light-green)', 'important');;
+        document.getElementById(`badge-${user}`).classList.remove('d-none');
     } else {
-        document.getElementById(`badge-${user}`).classList.add('text-bg-secondary');
-        document.getElementById(`badge-${user}`).classList.remove('text-bg-success');
+        document.getElementById(`container-${user}`).style.setProperty('border', '1px solid #dee2e6', 'important');;
+        console.log('No completado: ', user)
+        document.getElementById(`badge-${user}`).classList.add('d-none');
     }
 
     return isCompleted;
@@ -179,8 +180,9 @@ function createReps(num, isometrico) {
     num++;
     for (let i = 1; i < num; i++) {
         const div = document.createElement('div');
-        div.innerHTML = `<label for="reps-${i}" class="fw-bold fs-7 text-secondary d-flex justify-content-center">${text} ${i}</label>
-        <input type="text" class="form-control b-grey text-center fw-bold fs-4 py-0" id="reps-${i}" placeholder="" value="" required="" name="reps" maxlength="2" disabled>`;
+        div.classList.add('flex-fill', 'w-50', 'bg-white', 'border', 'rounded-1', 'px-2', 'py-1')
+        div.innerHTML = `<div for="reps-${i}" class="text-muted fw-bold fs-7">${text} ${i}</div>
+        <div class="fw-bolder fs-5" name="reps" id="reps-${i}">5</div>`;
         repsContainer.appendChild(div);
     }
 }
@@ -193,7 +195,7 @@ function createPeso(num, user, tipo) {
 
     for (let i = 1; i < num; i++) {
         const div = document.createElement('div');
-        div.innerHTML = `<label for="${user}-${i}" class="fs-7 text-secondary fw-bold d-flex justify-content-center">${tipo} ${i}</label>
+        div.innerHTML = `<label for="${user}-${i}" class="fs-7 fw-bold d-flex">${tipo} ${i}</label>
         <input type="number" class="form-control" id="${user}-${i}" placeholder="" value="" required="" name="peso-${user}">`;
         if (user == 'aitor') aitorWeightContainer.appendChild(div);
         if (user == 'moi') moiWeightContainer.appendChild(div);

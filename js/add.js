@@ -200,15 +200,21 @@ function createToken() {
 
 function SaveDataToLocalStorage(data) {
     let ejercicios = JSON.parse(localStorage.getItem('ejercicios')) || [];
+    const newIndex = ejercicios.findIndex(x => x.id == data.id);
+
+
     if (currentIndex !== null && currentIndex > -1) {
-        const newIndex = ejercicios.findIndex(x => x.id == data.id);
         if (newIndex !== currentIndex && newIndex > -1) {
             alert(`Ejercicio ya existente, no se puede volver a añadir. ${currentIndex} ${newIndex}`, currentIndex, newIndex);
         } else {
             ejercicios[currentIndex] = data;
         }
     } else {
-        ejercicios.push(data);
+        if (newIndex > -1) {
+            alert(`Ejercicio ya existente, no se puede volver a añadir. ${currentIndex} ${newIndex}`, currentIndex, newIndex);
+        } else {
+            ejercicios.push(data);
+        }
     }
     localStorage.setItem('ejercicios', JSON.stringify(ejercicios));
 }
