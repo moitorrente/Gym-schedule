@@ -126,7 +126,7 @@ function getContext() {
 function updateLastCard(date) {
     if (date) {
         lastDescription.innerHTML = 'Histórico';
-        lastDate.innerHTML = `Último: ${date}`;
+        lastDate.innerHTML = `Último: ${date.replace(',','')}`;
         lastCheck.classList.remove('d-none');
     } else {
         lastDescription.innerHTML = 'No hay histórico cargado';
@@ -138,7 +138,7 @@ function updateLastExerciseCard(date) {
 
     if (date) {
         lastExerciseDescription.innerHTML = 'Lista de ejercicios';
-        lastExerciseDate.innerHTML = `Último: ${date}`;
+        lastExerciseDate.innerHTML = `Último: ${date.replace(',','')}`;
         lastExerciseCheck.classList.remove('d-none');
     } else {
         lastExerciseDescription.innerHTML = 'No hay lista de ejercicios';

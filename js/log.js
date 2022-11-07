@@ -81,6 +81,7 @@ homeBtn.onclick = () => {
     current.moi = [...document.querySelectorAll('input[name="peso-moi"]')].map(x => x.value);
 
     current.completado = (isSeriesCompleted('aitor') && isSeriesCompleted('moi')) ? true : false;
+    if(isSeriesEmpty('aitor') && isSeriesEmpty('moi')) current.completado = null;
     localStorage.setItem('ejercicios', JSON.stringify(ejercicios));
 
     // const newCurent = ejercicios.filter(x => x.completado !== true)[0];
@@ -140,11 +141,14 @@ function isSeriesCompleted(user) {
         document.getElementById(`badge-${user}`).classList.remove('d-none');
     } else {
         document.getElementById(`container-${user}`).style.setProperty('border', '1px solid #dee2e6', 'important');;
-        console.log('No completado: ', user)
         document.getElementById(`badge-${user}`).classList.add('d-none');
     }
 
     return isCompleted;
+}
+
+function isSeriesEmpty(user){
+    return [...document.querySelectorAll(`input[name="peso-${user}"]`)].every(x => x.value === '');
 }
 
 function getContext() {
@@ -204,7 +208,6 @@ function createPeso(num, user, tipo) {
         isSeriesCompleted(user);
     }))
 }
-
 
 function getLast(id, user, tipoEntrenamiento) {
     const historic = JSON.parse(localStorage.getItem('historic'));

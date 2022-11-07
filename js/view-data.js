@@ -136,12 +136,28 @@ function createCard(ejercicioMoi, ejercicioAitor) {
         contAitor += `<div style="width: 2.5rem;"><small class="d-block">${ejercicioAitor[x]}</small></div>`;
     }
 
+    const colorString = `${ejercicioMoi.Mesociclo}${ejercicioMoi.Entrenamiento}${ejercicioMoi.TipoEntrenamiento}`;
+
+    const COLORES = [{clave: '1ACarga',color: '#64748b'},
+    {clave: '1BCarga',color: '#ef4444'},
+    {clave: '1CCarga',color: '#f59e0b'},
+    {clave: '1DCarga',color: '#84cc16'},
+    {clave: '1ADescarga',color: '#10b981'},
+    {clave: '1BDescarga',color: '#06b6d4'},
+    {clave: '1CDescarga',color: '#3b82f6'},
+    {clave: '1DDescarga',color: '#a855f7'},
+    {clave: '2ACarga',color: '#d946ef'},
+    {clave: '2BCarga',color: '#ec4899'},
+    {clave: '2CCarga',color: '#f43f5e'},
+    {clave: '2DCarga',color: '#0ea5e9'}];
+
+    const color = COLORES.find(x => x.clave === colorString)
+
     const contenido = `
     <div class="list-group-item d-flex gap-2 p-2 rounded align-items-center bg-white my-2 border">
         <div class="d-flex flex-grow-1 flex-column">
             <div class="d-flex gap-2 mb-2 align-items-center">
-            <span class="fs-7 badge rounded-pill text-bg-success">${ejercicioMoi.Mesociclo}</span>
-            <span class="fs-7 badge rounded-pill text-bg-primary">${ejercicioMoi.TipoEntrenamiento}</span>
+            <span class="fs-7 badge rounded-pill text-bg-success" style="background-color: ${color.color}!important;">${ejercicioMoi.Mesociclo} - ${ejercicioMoi.TipoEntrenamiento} - ${ejercicioMoi.Entrenamiento}</span>
             <div class="ms-auto"><small class="fs-7 d-block text-muted">${ejercicioMoi.Fecha}</small></div>
             </div>
             
