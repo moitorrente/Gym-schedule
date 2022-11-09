@@ -45,6 +45,8 @@ mesociclos.forEach(mesociclo => mesociclo.onclick = () => {
 getContext();
 async function getContext() {
     localStorage.removeItem('exercise-to-view');
+    localStorage.removeItem('data-to-copy');
+
 
     const listaEjercicios = localStorage.getItem('listaEjercicios');
     if (!listaEjercicios) {
@@ -200,7 +202,7 @@ function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
 
     const historic = document.getElementById(`historic-${id}`);
     historic.onclick = () => {
-        localStorage.setItem('exercise-to-view', id);
+        localStorage.setItem('exercise-to-view', JSON.stringify({id: id, copy: false}));
         location.href = "html/view-data.html";
     }
 

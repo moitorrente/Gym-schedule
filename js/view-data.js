@@ -4,25 +4,24 @@ const ejercicioSearch = document.getElementById('exercise-search');
 const myModal = document.getElementById('modalSearchExercise');
 const searchExerciseText = document.getElementById('search-exercise-text');
 
+let exerciseToView;
 
 getContext();
 function getContext() {
     const listaEjercicios = JSON.parse(localStorage.getItem('listaEjercicios'));
-
+    exerciseToView = localStorage.getItem('exercise-to-view');
+    if (exerciseToView) exerciseToView = JSON.parse(exerciseToView);
     listaEjercicios.data.forEach((ejercicio) => {
         createExerciseOption(ejercicio);
         createExerciseList(ejercicio);
     });
 
-    const exerciseToView = localStorage.getItem('exercise-to-view');
 
     if (exerciseToView) {
-
-        ejercicioSelect.value = parseInt(exerciseToView);
-        createAllCards(exerciseToView)
+        ejercicioSelect.value = parseInt(exerciseToView.id);
+        createAllCards(exerciseToView.id)
     }
 }
-
 
 
 myModal.addEventListener('shown.bs.modal', function () {
@@ -32,9 +31,6 @@ myModal.addEventListener('shown.bs.modal', function () {
 ejercicioSelect.onmousedown = (e) => {
     e.preventDefault();
 }
-
-
-
 
 function createExerciseOption(ejercicio) {
     const option = document.createElement('option');
@@ -111,7 +107,7 @@ function createAllCards(id) {
     const selectedMoi = [...historicData.data.filter(x => x.EjercicioID == id && x.Usuario == 'Moi')].sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
     const selectedAitor = [...historicData.data.filter(x => x.EjercicioID == id && x.Usuario == 'Aitor')].sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
 
-    selectedMoi.forEach((x, i) => createCard(selectedMoi[i], selectedAitor[i]));
+    selectedMoi.forEach((x, i) => createCard(selectedMoi[i], selectedAitor[i], i));
 
     //TODO corregir que haya ejercicio en uno y no en el otro
 }
@@ -122,7 +118,7 @@ function convertToDate(dateString) {
     return dat;
 }
 
-function createCard(ejercicioMoi, ejercicioAitor) {
+function createCard(ejercicioMoi, ejercicioAitor, index) {
     const d = document.createElement('div');
     d.classList.add('d-flex', 'gap-2');
 
@@ -138,26 +134,47 @@ function createCard(ejercicioMoi, ejercicioAitor) {
 
     const colorString = `${ejercicioMoi.Mesociclo}${ejercicioMoi.Entrenamiento}${ejercicioMoi.TipoEntrenamiento}`;
 
-    const COLORES = [{clave: '1ACarga',color: '#64748b'},
-    {clave: '1BCarga',color: '#ef4444'},
-    {clave: '1CCarga',color: '#f59e0b'},
-    {clave: '1DCarga',color: '#84cc16'},
-    {clave: '1ADescarga',color: '#10b981'},
-    {clave: '1BDescarga',color: '#06b6d4'},
-    {clave: '1CDescarga',color: '#3b82f6'},
-    {clave: '1DDescarga',color: '#a855f7'},
-    {clave: '2ACarga',color: '#d946ef'},
-    {clave: '2BCarga',color: '#ec4899'},
-    {clave: '2CCarga',color: '#f43f5e'},
-    {clave: '2DCarga',color: '#0ea5e9'}];
+    const COLORES = [
+        { clave: '1ACarga', color: '#a5b4fc' },
+        { clave: '1BCarga', color: '#6366f1' },
+        { clave: '1CCarga', color: '#4338ca' },
+        { clave: '1DCarga', color: '#312e81' },
+        { clave: '1ADescarga', color: '#fda4af' },
+        { clave: '1BDescarga', color: '#f43f5e' },
+        { clave: '1CDescarga', color: '#be123c' },
+        { clave: '1DDescarga', color: '#881337' },
+        { clave: '2ACarga', color: '#93c5fd' },
+        { clave: '2BCarga', color: '#3b82f6' },
+        { clave: '2CCarga', color: '#1d4ed8' },
+        { clave: '2DCarga', color: '#1e3a8a' }];
 
-    const color = COLORES.find(x => x.clave === colorString)
+    const color = COLORES.find(x => x.clave === colorString);
+
+    const border = index === 0 ? `2px solid ${color.color}!important` : '';
+
+    let copyMode = '';
+
+    if (exerciseToView) {
+        copyMode = exerciseToView.copy ?
+            `
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="${color.color}" class="bi bi-clipboard-check" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+        </svg>
+        ` : '';
+    }
 
     const contenido = `
-    <div class="list-group-item d-flex gap-2 p-2 rounded align-items-center bg-white my-2 border">
+    <div class="list-group-item d-flex gap-2 p-2 rounded align-items-center bg-white my-2 border" style="border: ${border};" data-id="${index}">
         <div class="d-flex flex-grow-1 flex-column">
             <div class="d-flex gap-2 mb-2 align-items-center">
-            <span class="fs-7 badge rounded-pill text-bg-success" style="background-color: ${color.color}!important;">${ejercicioMoi.Mesociclo} - ${ejercicioMoi.TipoEntrenamiento} - ${ejercicioMoi.Entrenamiento}</span>
+            ${copyMode}
+            <span class="fs-7 badge text-bg-primary" style="background-color: ${color.color}!important;"> ${ejercicioMoi.Mesociclo}</span>
+            <span class="fs-7 badge text-bg-primary" style="background-color: ${color.color}!important;"> ${ejercicioMoi.Entrenamiento}</span>
+            <span class="fs-7 badge text-bg-primary text-center" style="width: 5rem;background-color: ${color.color}!important;">${ejercicioMoi.TipoEntrenamiento}</span>
+
+            
             <div class="ms-auto"><small class="fs-7 d-block text-muted">${ejercicioMoi.Fecha}</small></div>
             </div>
             
@@ -177,8 +194,22 @@ function createCard(ejercicioMoi, ejercicioAitor) {
     </div>
     `;
 
-    const d2 = document.createElement('div')
+    const d2 = document.createElement('div');
     d2.innerHTML = contenido;
+
+    if (exerciseToView) {
+        const pesos = {
+            "pesosMoi": [ejercicioMoi.Peso1, ejercicioMoi.Peso2, ejercicioMoi.Peso3, ejercicioMoi.Peso4, ejercicioMoi.Peso5],
+            "pesosAitor": [ejercicioAitor.Peso1, ejercicioAitor.Peso2, ejercicioAitor.Peso3, ejercicioAitor.Peso4, ejercicioAitor.Peso5]
+        }
+
+        if (exerciseToView.copy) {
+            d2.onclick = () => {
+                localStorage.setItem('data-to-copy', JSON.stringify(pesos));
+                history.back();
+            }
+        }
+    }
 
     document.getElementById('historic-list').appendChild(d2)
 

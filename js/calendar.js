@@ -12,19 +12,19 @@ createMonth(new Date());
 
 document.getElementById('prev-month').onclick = () => {
     currentMonth = parseInt(currentMonth) - 1;
-    if(currentMonth <= 0){
+    if (currentMonth <= 0) {
         currentMonth = 12;
         currentYear--;
-    } 
+    }
     currentMonth = currentMonth.toString().padStart(2, '0');
     createMonth(new Date(`${currentMonth}/01/${currentYear}`));
 }
 document.getElementById('next-month').onclick = () => {
     currentMonth = parseInt(currentMonth) + 1;
-    if(currentMonth >= 13){
+    if (currentMonth >= 13) {
         currentMonth = 1;
         currentYear++;
-    } 
+    }
     currentMonth = currentMonth.toString().padStart(2, '0');
     createMonth(new Date(`${currentMonth}/01/${currentYear}`));
 }
@@ -36,7 +36,7 @@ function createMonth(date) {
     currentMonth = month.month;
     currentYear = month.year;
     monthName.innerHTML = month.name;
-    
+
     for (let i = 0; i < month.firstDayIndex - 1; i++) {
         calendarContainer.appendChild(createPlaceholder())
     }
@@ -80,37 +80,37 @@ function createDay(day, month, year) {
         found = historic.data.find(value => value.Fecha == b.dataset.day);
 
 
-        if (found){
+        if (found) {
             b.classList.add('btn-primary', 'text-white');
 
             const colorString = `${found.Mesociclo}${found.Entrenamiento}${found.TipoEntrenamiento}`;
 
-            const COLORES = [{clave: '1ACarga',color: '#64748b'},
-            {clave: '1BCarga',color: '#ef4444'},
-            {clave: '1CCarga',color: '#f59e0b'},
-            {clave: '1DCarga',color: '#84cc16'},
-            {clave: '1ADescarga',color: '#10b981'},
-            {clave: '1BDescarga',color: '#06b6d4'},
-            {clave: '1CDescarga',color: '#3b82f6'},
-            {clave: '1DDescarga',color: '#a855f7'},
-            {clave: '2ACarga',color: '#d946ef'},
-            {clave: '2BCarga',color: '#ec4899'},
-            {clave: '2CCarga',color: '#f43f5e'},
-            {clave: '2DCarga',color: '#0ea5e9'}];
-        
+            const COLORES = [
+                { clave: '1ACarga', color: '#a5b4fc' },
+                { clave: '1BCarga', color: '#6366f1' },
+                { clave: '1CCarga', color: '#4338ca' },
+                { clave: '1DCarga', color: '#312e81' },
+                { clave: '1ADescarga', color: '#fda4af' },
+                { clave: '1BDescarga', color: '#f43f5e' },
+                { clave: '1CDescarga', color: '#be123c' },
+                { clave: '1DDescarga', color: '#881337' },
+                { clave: '2ACarga', color: '#93c5fd' },
+                { clave: '2BCarga', color: '#3b82f6' },
+                { clave: '2CCarga', color: '#1d4ed8' },
+                { clave: '2DCarga', color: '#1e3a8a' }];
+
             const color = COLORES.find(x => x.clave === colorString)
 
 
             b.style.backgroundColor = color.color;
-        } 
-        console.log(found)
+        }
         list = historic.data.filter(value => value.Fecha == b.dataset.day && value.Usuario === 'Aitor');
     }
     b.onclick = () => {
         const text1 = found ? found.Entrenamiento : 'N/D';
         const text2 = found ? found.Mesociclo : 'N/D';
         selectedTraining.innerHTML = `Tipo: ${text1} - Mesociclo: ${text2}`;
-        let desc ='';
+        let desc = '';
 
         list.forEach(item => {
             desc += `<li class="fs-7">

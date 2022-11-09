@@ -78,11 +78,30 @@ async function createOptions() {
             option.dataset.tipo = ejercicio.tipo;
             ejercicioSelect.appendChild(option);
 
+            let ejercicioIcon = '<span class="d-inline-block bg-success rounded-circle p-1"></span>';
+
+            if (ejercicio.elemento == 'mancuerna') {
+                ejercicioIcon = `<svg style="width: 18px!important; height: 18px!important;" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="var(--dark-gray)" class="bi" viewBox="0 0 640 512"><path d="M112 96c0-17.7 14.3-32 32-32h16c17.7 0 32 14.3 32 32V224v64V416c0 17.7-14.3 32-32 32H144c-17.7 0-32-14.3-32-32V384H64c-17.7 0-32-14.3-32-32V288c-17.7 0-32-14.3-32-32s14.3-32 32-32V160c0-17.7 14.3-32 32-32h48V96zm416 0v32h48c17.7 0 32 14.3 32 32v64c17.7 0 32 14.3 32 32s-14.3 32-32 32v64c0 17.7-14.3 32-32 32H528v32c0 17.7-14.3 32-32 32H480c-17.7 0-32-14.3-32-32V288 224 96c0-17.7 14.3-32 32-32h16c17.7 0 32 14.3 32 32zM416 224v64H224V224H416z"/></svg>`
+            } else if (ejercicio.elemento == 'cuerpo') {
+                ejercicioIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="var(--dark-gray)" class="bi" viewBox="0 0 384 512"><path d="M256 64c0-35.3-28.7-64-64-64s-64 28.7-64 64s28.7 64 64 64s64-28.7 64-64zM152.9 169.3c-23.7-8.4-44.5-24.3-58.8-45.8L74.6 94.2C64.8 79.5 45 75.6 30.2 85.4s-18.7 29.7-8.9 44.4L40.9 159c18.1 27.1 42.8 48.4 71.1 62.4V480c0 17.7 14.3 32 32 32s32-14.3 32-32V384h32v96c0 17.7 14.3 32 32 32s32-14.3 32-32V221.6c29.1-14.2 54.4-36.2 72.7-64.2l18.2-27.9c9.6-14.8 5.4-34.6-9.4-44.3s-34.6-5.5-44.3 9.4L291 122.4c-21.8 33.4-58.9 53.6-98.8 53.6c-12.6 0-24.9-2-36.6-5.8c-.9-.3-1.8-.7-2.7-.9z"/></svg>                `;
+            } else if (ejercicio.elemento == 'polea') {
+                ejercicioIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 448 512" fill="var(--dark-gray)" class="bi"><path d="M224 96c0-53 43-96 96-96h38.4C407.9 0 448 40.1 448 89.6V176v16V376c0 75.1-60.9 136-136 136s-136-60.9-136-136V296c0-22.1-17.9-40-40-40s-40 17.9-40 40V464c0 26.5-21.5 48-48 48s-48-21.5-48-48V296c0-75.1 60.9-136 136-136s136 60.9 136 136v80c0 22.1 17.9 40 40 40s40-17.9 40-40V192H320c-53 0-96-43-96-96zm144-8c0-13.3-10.7-24-24-24s-24 10.7-24 24s10.7 24 24 24s24-10.7 24-24z"/></svg>
+                `
+            }else if(ejercicio.elemento == 'barra'){
+                ejercicioIcon = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
+                </svg>`
+            }else if(ejercicio.elemento == 'maquina'){
+                ejercicioIcon = `
+                <svg xmlns="http://www.w3.org/2000/svg"width="18" height="18" fill="var(--dark-gray)" class="bi" viewBox="0 0 512 512"><path d="M288 96c0 17.7-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32zm58.5 32c3.5-10 5.5-20.8 5.5-32c0-53-43-96-96-96s-96 43-96 96c0 11.2 1.9 22 5.5 32H120c-22 0-41.2 15-46.6 36.4l-72 288c-3.6 14.3-.4 29.5 8.7 41.2S33.2 512 48 512H464c14.8 0 28.7-6.8 37.8-18.5s12.3-26.8 8.7-41.2l-72-288C433.2 143 414 128 392 128H346.5z"/></svg>`
+            }
+
 
             const option2 = document.createElement('li');
             option2.innerHTML = `
-            <div class="dropdown-item text-wrap d-flex align-items-center gap-2 py-2" data-tipo="${ejercicio.tipo}" data-id="${ejercicio.id}">
-            <span class="d-inline-block bg-success rounded-circle p-1"></span>
+            <div class="dropdown-item text-wrap d-flex align-items-center gap-3 py-2" data-tipo="${ejercicio.tipo}" data-id="${ejercicio.id}">
+            ${ejercicioIcon}
             <span>${ejercicio.ejercicio}</span>
             </div>
             `;

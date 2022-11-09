@@ -43,7 +43,7 @@ const modalBody = document.querySelector('.modal-body')
 
 retrieve.onclick = () => {
 
-    localStorage.setItem('exercise-to-view', current.id);
+    localStorage.setItem('exercise-to-view', JSON.stringify({id: current.id, copy: true}));
     retrieve.href = 'view-data.html';
     // const historic = JSON.parse(localStorage.getItem('historic'));
     // if (historic) {
@@ -81,7 +81,7 @@ homeBtn.onclick = () => {
     current.moi = [...document.querySelectorAll('input[name="peso-moi"]')].map(x => x.value);
 
     current.completado = (isSeriesCompleted('aitor') && isSeriesCompleted('moi')) ? true : false;
-    if(isSeriesEmpty('aitor') && isSeriesEmpty('moi')) current.completado = null;
+    if (isSeriesEmpty('aitor') && isSeriesEmpty('moi')) current.completado = null;
     localStorage.setItem('ejercicios', JSON.stringify(ejercicios));
 
     // const newCurent = ejercicios.filter(x => x.completado !== true)[0];
@@ -129,8 +129,17 @@ function loadData() {
     if (current.aitor) [...document.querySelectorAll('input[name="peso-aitor"]')].forEach((x, i) => x.value = current.aitor[i])
     if (current.moi) [...document.querySelectorAll('input[name="peso-moi"]')].forEach((x, i) => x.value = current.moi[i])
 
+    const dataToCopy = JSON.parse(localStorage.getItem('data-to-copy'));
+    if (dataToCopy) {
+        [...document.querySelectorAll('input[name="peso-aitor"]')].forEach((x, i) => x.value = dataToCopy.pesosAitor[i]);
+        [...document.querySelectorAll('input[name="peso-moi"]')].forEach((x, i) => x.value = dataToCopy.pesosMoi[i]);
+    }
+
     isSeriesCompleted('moi');
     isSeriesCompleted('aitor');
+
+    localStorage.removeItem('data-to-copy');
+
 }
 
 function isSeriesCompleted(user) {
@@ -147,7 +156,7 @@ function isSeriesCompleted(user) {
     return isCompleted;
 }
 
-function isSeriesEmpty(user){
+function isSeriesEmpty(user) {
     return [...document.querySelectorAll(`input[name="peso-${user}"]`)].every(x => x.value === '');
 }
 
