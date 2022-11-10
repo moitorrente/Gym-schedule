@@ -107,6 +107,7 @@ function createAllCards(id) {
     const selectedMoi = [...historicData.data.filter(x => x.EjercicioID == id && x.Usuario == 'Moi')].sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
     const selectedAitor = [...historicData.data.filter(x => x.EjercicioID == id && x.Usuario == 'Aitor')].sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
 
+    document.getElementById('found-items').innerHTML = selectedMoi.length;
     selectedMoi.forEach((x, i) => createCard(selectedMoi[i], selectedAitor[i], i));
 
     //TODO corregir que haya ejercicio en uno y no en el otro
@@ -210,9 +211,7 @@ function createCard(ejercicioMoi, ejercicioAitor, index) {
             }
         }
     }
-
-    document.getElementById('historic-list').appendChild(d2)
-
+    document.getElementById('historic-list').appendChild(d2);
 }
 
 
