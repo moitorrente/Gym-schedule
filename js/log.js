@@ -129,8 +129,6 @@ function loadData() {
     if (current.aitor) [...document.querySelectorAll('input[name="peso-aitor"]')].forEach((x, i) => x.value = current.aitor[i])
     if (current.moi) [...document.querySelectorAll('input[name="peso-moi"]')].forEach((x, i) => x.value = current.moi[i])
 
-    delay(10).then(() => console.log('ran after 1 second1 passed'));
-
     const dataToCopy = JSON.parse(localStorage.getItem('data-to-copy'));
     if (dataToCopy) {
         [...document.querySelectorAll('input[name="peso-aitor"]')].forEach((x, i) => x.value = dataToCopy.pesosAitor[i]);
@@ -139,9 +137,6 @@ function loadData() {
 
     isSeriesCompleted('moi');
     isSeriesCompleted('aitor');
-
-    localStorage.removeItem('data-to-copy');
-
 }
 
 function delay(time) {
