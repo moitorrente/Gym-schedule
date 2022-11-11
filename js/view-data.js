@@ -207,7 +207,7 @@ function createCard(ejercicioMoi, ejercicioAitor, index) {
         if (exerciseToView.copy) {
             d2.onclick = () => {
                 localStorage.setItem('data-to-copy', JSON.stringify(pesos));
-                history.back();
+                window.location.href = "log-exercise.html";
             }
         }
     }
