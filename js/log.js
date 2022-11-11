@@ -43,7 +43,7 @@ const modalBody = document.querySelector('.modal-body')
 
 retrieve.onclick = () => {
 
-    localStorage.setItem('exercise-to-view', JSON.stringify({id: current.id, copy: true}));
+    localStorage.setItem('exercise-to-view', JSON.stringify({ id: current.id, copy: true }));
     retrieve.href = 'view-data.html';
     // const historic = JSON.parse(localStorage.getItem('historic'));
     // if (historic) {
@@ -129,8 +129,9 @@ function loadData() {
     if (current.aitor) [...document.querySelectorAll('input[name="peso-aitor"]')].forEach((x, i) => x.value = current.aitor[i])
     if (current.moi) [...document.querySelectorAll('input[name="peso-moi"]')].forEach((x, i) => x.value = current.moi[i])
 
+    delay(10).then(() => console.log('ran after 1 second1 passed'));
+
     const dataToCopy = JSON.parse(localStorage.getItem('data-to-copy'));
-    console.log('pasa por dataToCopy', dataToCopy)
     if (dataToCopy) {
         [...document.querySelectorAll('input[name="peso-aitor"]')].forEach((x, i) => x.value = dataToCopy.pesosAitor[i]);
         [...document.querySelectorAll('input[name="peso-moi"]')].forEach((x, i) => x.value = dataToCopy.pesosMoi[i]);
@@ -142,6 +143,11 @@ function loadData() {
     localStorage.removeItem('data-to-copy');
 
 }
+
+function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+}
+
 
 function isSeriesCompleted(user) {
     const seriesValues = [...document.querySelectorAll(`input[name="peso-${user}"]`)];
