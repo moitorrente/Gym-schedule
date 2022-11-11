@@ -98,7 +98,7 @@ let current;
 let ejercicios;
 
 loadData();
-async function loadData() {
+function loadData() {
     getContext();
     ejercicio.innerHTML = current.nombre;
     const fecha = current.fecha ? current.fecha.split(',')[0] : 'N/D';
@@ -129,7 +129,7 @@ async function loadData() {
     if (current.aitor) [...document.querySelectorAll('input[name="peso-aitor"]')].forEach((x, i) => x.value = current.aitor[i])
     if (current.moi) [...document.querySelectorAll('input[name="peso-moi"]')].forEach((x, i) => x.value = current.moi[i])
 
-    const dataToCopy = await JSON.parse(localStorage.getItem('data-to-copy'));
+    const dataToCopy = JSON.parse(localStorage.getItem('data-to-copy'));
     console.log('pasa por dataToCopy', dataToCopy)
     if (dataToCopy) {
         [...document.querySelectorAll('input[name="peso-aitor"]')].forEach((x, i) => x.value = dataToCopy.pesosAitor[i]);
