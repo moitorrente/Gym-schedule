@@ -278,5 +278,12 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "maquina"
+    },
+    {
+        "ejercicio": "Abdominales tumbado",
+        "id": "41",
+        "tipo": "Repeticiones",
+        "video": "",
+        "elemento": "cuerpo"
     }
 ]
