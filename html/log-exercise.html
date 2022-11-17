@@ -186,11 +186,36 @@
                             </btn>
                         </div> -->
 
-                        <div class="py-2">
+                        <div class="py-0">
                             <div class="d-flex gap-2" id="moi-weight-container"></div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-around mt-2">
+                    <div class="border rounded-1 p-3 mt-1 bg-white d-flex flex-column justify-content-center" id="timer">
+
+                        <div class="d-flex gap-1 justify-content-around align-items-center">
+                            <div class="fw-bold fs-5">Timer</div>
+                            <button class="btn btn-outline-primary" id="play-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                                    class="bi bi-play" viewBox="0 0 16 16">
+                                    <path
+                                        d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" />
+                                </svg>
+                            </button>
+                            <!-- <div class="text-center">
+                                <div class="text-muted">Segundos</div>
+                                <div id="play-text">30</div>
+                            </div> -->
+                            <div class="">
+                                <div class="text-muted fw-bold fs-7">Segundos</div>
+                                <div class="fw-bolder fs-5" id="play-text">30</div>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-3 gap-0 justify-content-around d-none" id="timer-display">
+
+                        </div>
+
+                    </div>
+                    <div class="d-flex justify-content-around mt-4">
                         <a class="btn btn-light border" id="video">
                             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="#ff0000"
                                 id="video-icon" class="bi bi-youtube" viewBox="0 0 16 16">
@@ -219,27 +244,7 @@
                         </div>
 
                     </div>
-                    <div class="border rounded-1 p-3 mt-4 bg-white" id="timer">
 
-                        <div class="d-flex gap-4 justify-content-around align-items-center">
-                            <div class="fw-bold fs-5">Timer</div>
-
-                            <button class="btn btn-outline-primary" id="play-btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
-                                    <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
-                                </svg>
-                            </button>
-                            <!-- <div class="text-center">
-                                <div class="text-muted">Segundos</div>
-                                <div id="play-text">30</div>
-                            </div> -->
-                            <div class="">
-                                <div class="text-muted fw-bold fs-7">Segundos</div>
-                                <div class="fw-bolder fs-5" id="play-text">30</div>
-                            </div>
-                        </div>
-
-                    </div>
 
 
                 </div>
