@@ -101,7 +101,7 @@ function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
     if (checked === false) icon = pendingSVG;
     if (checked === true) icon = checkedSVG;
     d.innerHTML = `
-    <a class="list-group-item d-flex gap-2 p-2 rounded align-items-center" style="height: 5rem">
+    <a class="list-group-item d-flex gap-2 p-2 rounded align-items-center shadow-sm" style="height: 5rem">
     <span class="align-self-center ms-auto px-1">
         ${icon}    
     </span>
@@ -202,7 +202,7 @@ function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
 
     const historic = document.getElementById(`historic-${id}`);
     historic.onclick = () => {
-        localStorage.setItem('exercise-to-view', JSON.stringify({id: id, copy: false}));
+        localStorage.setItem('exercise-to-view', JSON.stringify({ id: id, copy: false }));
         location.href = "html/view-data.html";
     }
 

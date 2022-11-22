@@ -43,7 +43,7 @@ function createExerciseOption(ejercicio) {
 function createExerciseList(ejercicio) {
     const element = document.createElement('li');
     element.innerHTML = `
-            <div class="dropdown-item text-wrap d-flex align-items-center gap-2 py-2" data-tipo="${ejercicio.tipo}" data-id="${ejercicio.id}">
+            <div class="dropdown-item text-wrap d-flex align-items-center gap-2 py-2 " data-tipo="${ejercicio.tipo}" data-id="${ejercicio.id}">
             <span class="d-inline-block bg-success rounded-circle p-1"></span>
             <span>${ejercicio.ejercicio}</span>
             </div>
@@ -167,7 +167,7 @@ function createCard(ejercicioMoi, ejercicioAitor, index) {
     }
 
     const contenido = `
-    <div class="list-group-item d-flex gap-2 p-2 rounded align-items-center bg-white my-2 border" style="border: ${border};" data-id="${index}">
+    <div class="list-group-item d-flex gap-2 p-2 rounded align-items-center bg-white my-2 border shadow-sm" style="border: ${border};" data-id="${index}">
         <div class="d-flex flex-grow-1 flex-column">
             <div class="d-flex gap-2 mb-2 align-items-center">
             ${copyMode}

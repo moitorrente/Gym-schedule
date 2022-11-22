@@ -250,3 +250,15 @@ body {
 .capitalize-first::first-letter {
     text-transform: uppercase;
 }
+
+.rounded-square{
+    border-radius: 35%;
+}
+
+.gap-s{
+    gap: .15rem;
+}
+
+.p-s{
+    padding: 0.3rem;
+}

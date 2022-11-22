@@ -14,16 +14,39 @@ const sheetName = 'Log';
 const query = encodeURIComponent('Select *')
 const url = `${base}&sheet=${sheetName}&tq=${query}`;
 
-// const loadExerciseListBtn = document.getElementById('load-exercise-list-btn');
-// loadExerciseListBtn.onclick = async () => {
-//     let res = await getFile('exercises.json');
-//     if (res.ok) {
-//         localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: res.data }));
-//         getContext();
-//     } else {
-//         alert(`Error: ${res.error}`);
-//     }
-// }
+const yearView = document.getElementById('year-view');       
+
+function createYearView() {
+    const historic = JSON.parse(localStorage.getItem('historic'));
+    let gone = [];
+    if (historic) {
+        historic.data.forEach(data => gone.push(dayOfYear(stringToDate(data.Fecha))))
+    }
+    gone = [...new Set(gone)];
+    yearView.innerHTML = '';
+    for (let i = 0; i < 365; i++) {
+        const day = document.createElement('span');
+        day.classList.add("d-inline-block", "rounded-square", "p-s");
+        if (gone.includes(i + 1)) {
+            day.classList.add('b-blue');
+        } else {
+            day.classList.add('b-light-blue')
+        }
+
+        yearView.appendChild(day)
+    }
+}
+
+function stringToDate(dateString) {
+    const [day, month, year] = dateString.split('/');
+    return new Date([month, day, year].join('/'));
+};
+
+
+function dayOfYear(day) {
+    let date = new Date(day);
+    return Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+}
 
 const loading = document.getElementById('loading')
 
@@ -120,25 +143,27 @@ function getContext() {
         updateLastExerciseCard()
     }
     createMonth(new Date());
+    createYearView();
+
 
 }
 
 function updateLastCard(date) {
     if (date) {
         lastDescription.innerHTML = 'Histórico';
-        lastDate.innerHTML = `Último: ${date.replace(',','')}`;
+        lastDate.innerHTML = `Último: ${date.replace(',', '')}`;
         lastCheck.classList.remove('d-none');
     } else {
         lastDescription.innerHTML = 'No hay histórico cargado';
         lastDate.innerHTML = 'Solicita los datos';
         lastCheck.classList.add('d-none');
-        }
+    }
 }
 function updateLastExerciseCard(date) {
 
     if (date) {
         lastExerciseDescription.innerHTML = 'Lista de ejercicios';
-        lastExerciseDate.innerHTML = `Último: ${date.replace(',','')}`;
+        lastExerciseDate.innerHTML = `Último: ${date.replace(',', '')}`;
         lastExerciseCheck.classList.remove('d-none');
     } else {
         lastExerciseDescription.innerHTML = 'No hay lista de ejercicios';
