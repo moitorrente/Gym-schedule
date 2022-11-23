@@ -22,9 +22,11 @@ function createYearView() {
     if (historic) {
         historic.data.forEach(data => gone.push(dayOfYear(stringToDate(data.Fecha))))
     }
+
+    const today = dayOfYear(new Date());
     gone = [...new Set(gone)];
     yearView.innerHTML = '';
-    for (let i = 0; i < 365; i++) {
+    for (let i = today-174; i < today; i++) {
         const day = document.createElement('span');
         day.classList.add("d-inline-block", "rounded-square", "p-s");
         if (gone.includes(i + 1)) {
