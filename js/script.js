@@ -252,14 +252,16 @@ function json2csv(ob, datosEntrenamiento) {
     const objetivo = ob.objetivo;
     const mesociclo = document.querySelector('input[name="mesociclos"]:checked').value;
     const tipo = 'Peso';
+    const sensacionAitor = ob.aitorSensacion || '';
+    const sensacionMoi = ob.moiSensacion || '';
 
     let repsAitor = ';;;;;;;';
     let repsMoi = ';;;;;;;';
     if (ob.aitor) repsAitor = `${ob.repeticiones[0] || ''};${ob.aitor[0] || ''};${ob.repeticiones[1] || ''};${ob.aitor[1] || ''};${ob.repeticiones[2] || ''};${ob.aitor[2] || ''};${ob.repeticiones[3] || ''};${ob.aitor[3] || ''};${ob.repeticiones[4] || ''};${ob.aitor[4] || ''};${ob.repeticiones[5] || ''};${ob.aitor[5] || ''}`;
     if (ob.moi) repsMoi = `${ob.repeticiones[0] || ''};${ob.moi[0] || ''};${ob.repeticiones[1] || ''};${ob.moi[1] || ''};${ob.repeticiones[2] || ''};${ob.moi[2] || ''};${ob.repeticiones[3] || ''};${ob.moi[3] || ''};${ob.repeticiones[4] || ''};${ob.moi[4] || ''};${ob.repeticiones[5] || ''};${ob.moi[5] || ''}`;
 
-    const aitor = `${date};${entrenamientoID};${mesociclo};${entrenamientoTipo};${orden};${ejercicioID};${ejercicio};${series};${tempo};${objetivo};Aitor;${tipo};${repsAitor}`;
-    const moi = `${date};${entrenamientoID};${mesociclo};${entrenamientoTipo};${orden};${ejercicioID};${ejercicio};${series};${tempo};${objetivo};Moi;${tipo};${repsMoi}`;
+    const aitor = `${date};${entrenamientoID};${mesociclo};${entrenamientoTipo};${orden};${ejercicioID};${ejercicio};${series};${tempo};${objetivo};Aitor;${tipo};${repsAitor};${sensacionAitor}`;
+    const moi = `${date};${entrenamientoID};${mesociclo};${entrenamientoTipo};${orden};${ejercicioID};${ejercicio};${series};${tempo};${objetivo};Moi;${tipo};${repsMoi};${sensacionMoi}`;
 
     return aitor + '\r\n' + moi + '\r\n';
 }

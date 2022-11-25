@@ -162,8 +162,16 @@ retrieve.onclick = () => {
 const homeBtn = document.getElementById('home');
 
 homeBtn.onclick = () => {
+    current.aitor = {};
+    current.moi = {};
     current.aitor = [...document.querySelectorAll('input[name="peso-aitor"]')].map(x => x.value);
     current.moi = [...document.querySelectorAll('input[name="peso-moi"]')].map(x => x.value);
+
+    const sensacionAitor = document.querySelector('input[name="sensacion-aitor"]:checked').value;
+    const sensacionMoi = document.querySelector('input[name="sensacion-moi"]:checked').value;
+
+    if (sensacionAitor) current.aitorSensacion = sensacionAitor;
+    if (sensacionMoi) current.moiSensacion = sensacionMoi;
 
     current.completado = (isSeriesCompleted('aitor') && isSeriesCompleted('moi')) ? true : false;
     if (isSeriesEmpty('aitor') && isSeriesEmpty('moi')) current.completado = null;
@@ -173,6 +181,7 @@ homeBtn.onclick = () => {
     // if (current.completado && newCurent) {
     //     localStorage.setItem('current', newCurent.id);
     // } else {
+    console.log(current)
     homeBtn.href = '../index.html';
     // }
 }
@@ -214,6 +223,10 @@ function loadData() {
 
     if (current.aitor) [...document.querySelectorAll('input[name="peso-aitor"]')].forEach((x, i) => x.value = current.aitor[i])
     if (current.moi) [...document.querySelectorAll('input[name="peso-moi"]')].forEach((x, i) => x.value = current.moi[i])
+
+    if (current.aitorSensacion) document.querySelectorAll('input[name="sensacion-aitor"]')[parseInt(current.aitorSensacion - 1)].checked = true;
+    if (current.moiSensacion) document.querySelectorAll('input[name="sensacion-moi"]')[parseInt(current.moiSensacion - 1)].checked = true;
+
 
     const dataToCopy = JSON.parse(localStorage.getItem('data-to-copy'));
     if (dataToCopy) {

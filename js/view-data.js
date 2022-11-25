@@ -130,7 +130,8 @@ function createCard(ejercicioMoi, ejercicioAitor, index) {
     for (let i = 1; i < 5 + 1; i++) {
         let x = `Peso${i}`;
         contMoi += `<div style="width: 2.5rem;"><small class="d-block">${ejercicioMoi[x]}</small></div>`;
-        contAitor += `<div style="width: 2.5rem;"><small class="d-block">${ejercicioAitor[x]}</small></div>`;
+        contAitor += `<div style="width: 2.5rem;"><small class="d-block">${ejercicioAitor[x]}
+        </small></div>`;
     }
 
     const colorString = `${ejercicioMoi.Mesociclo}${ejercicioMoi.Entrenamiento}${ejercicioMoi.TipoEntrenamiento}`;
@@ -166,6 +167,88 @@ function createCard(ejercicioMoi, ejercicioAitor, index) {
         ` : '';
     }
 
+    let iconoSensacionAitor;
+    let iconoSensacionMoi;
+
+    switch (parseInt(ejercicioAitor.Sensacion)) {
+        case 1:
+            iconoSensacionAitor = `                                               
+             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="var(--red)" class="bi bi-emoji-frown b-light-red rounded-circle" viewBox="0 0 16 16">
+            <path
+                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+                d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+        </svg>`;
+            break;
+        case 2:
+            iconoSensacionAitor = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="var(--dark-yellow)" class="bi bi-emoji-expressionless b-light-yellow rounded-circle"
+            viewBox="0 0 16 16">
+            <path
+                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+                d="M4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm5 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
+        </svg>`;
+            break;
+        case 3:
+            iconoSensacionAitor = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="var(--dark-green)" class="bi bi-emoji-smile b-light-green rounded-circle" viewBox="0 0 16 16">
+            <path
+                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+                d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+        </svg>
+            `;
+            break;
+
+        default:
+            iconoSensacionAitor = '';
+            break;
+    }
+
+
+    switch (parseInt(ejercicioMoi.Sensacion)) {
+        case 1:
+            iconoSensacionMoi = `                                               
+             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="var(--red)" class="bi bi-emoji-frown b-light-red rounded-circle" viewBox="0 0 16 16">
+            <path
+                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+                d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+        </svg>`;
+            break;
+        case 2:
+            iconoSensacionMoi = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="var(--dark-yellow)" class="bi bi-emoji-expressionless b-light-yellow rounded-circle"
+            viewBox="0 0 16 16">
+            <path
+                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+                d="M4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm5 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
+        </svg>`;
+            break;
+        case 3:
+            iconoSensacionMoi = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="var(--dark-green)" class="bi bi-emoji-smile b-light-green rounded-circle" viewBox="0 0 16 16">
+            <path
+                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+                d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+        </svg>
+            `;
+            break;
+
+        default:
+            iconoSensacionMoi = '';
+            break;
+    }
+
+
+
     const contenido = `
     <div class="list-group-item d-flex gap-2 p-2 rounded align-items-center bg-white my-2 border shadow-sm" style="border: ${border};" data-id="${index}">
         <div class="d-flex flex-grow-1 flex-column">
@@ -179,14 +262,17 @@ function createCard(ejercicioMoi, ejercicioAitor, index) {
             <div class="ms-auto"><small class="fs-7 d-block text-muted">${ejercicioMoi.Fecha}</small></div>
             </div>
             
-            <div class="d-flex flex-grow-1 ps-2">
+            <div class="d-flex flex-grow-1 align-items-center ps-2">
                 <div class="d-flex flex-grow-1">Aitor</div>
+                <div class="d-flex gap-3 text-center">${iconoSensacionAitor}</div>
                 <div class="d-flex gap-3 text-center">
                 ${contAitor}
                 </div>
             </div>
-            <div class="d-flex flex-grow-1 ps-2">
+            <div class="d-flex flex-grow-1 align-items-center ps-2">
                 <div class="d-flex flex-grow-1">Moi</div>
+                <div class="d-flex gap-3 text-center">${iconoSensacionMoi}</div>
+
                 <div class="d-flex gap-3 text-center">
                 ${contMoi}
                 </div>
