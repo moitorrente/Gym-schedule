@@ -255,8 +255,8 @@ function json2csv(ob, datosEntrenamiento) {
     const sensacionAitor = ob.aitorSensacion || '';
     const sensacionMoi = ob.moiSensacion || '';
 
-    let repsAitor = ';;;;;;;';
-    let repsMoi = ';;;;;;;';
+    let repsAitor = ';;;;;';
+    let repsMoi = ';;;;;';
     if (ob.aitor) repsAitor = `${ob.repeticiones[0] || ''};${ob.aitor[0] || ''};${ob.repeticiones[1] || ''};${ob.aitor[1] || ''};${ob.repeticiones[2] || ''};${ob.aitor[2] || ''};${ob.repeticiones[3] || ''};${ob.aitor[3] || ''};${ob.repeticiones[4] || ''};${ob.aitor[4] || ''};${ob.repeticiones[5] || ''};${ob.aitor[5] || ''}`;
     if (ob.moi) repsMoi = `${ob.repeticiones[0] || ''};${ob.moi[0] || ''};${ob.repeticiones[1] || ''};${ob.moi[1] || ''};${ob.repeticiones[2] || ''};${ob.moi[2] || ''};${ob.repeticiones[3] || ''};${ob.moi[3] || ''};${ob.repeticiones[4] || ''};${ob.moi[4] || ''};${ob.repeticiones[5] || ''};${ob.moi[5] || ''}`;
 

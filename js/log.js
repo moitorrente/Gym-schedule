@@ -24,13 +24,13 @@ playBtn.onclick = () => {
         clearInterval(int);
         int = null;
         playBtn.innerHTML = playSVG;
-        playTxt.innerHTML = '30';
+        playTxt.innerHTML = parseInt([...document.getElementsByName('reps')][0].innerHTML);
         timerDisplay.innerHTML = '';
         timerDisplay.classList.add('d-none');
     } else {
         playBtn.innerHTML = pauseSVG;
         timerDisplay.classList.remove('d-none');
-        startTimer(30);
+        startTimer(parseInt([...document.getElementsByName('reps')][0].innerHTML));
     }
 }
 
@@ -52,7 +52,7 @@ function startTimer(duration) {
     var timer = duration, minutes, seconds;
     seconds = parseInt(timer % 60, 10);
     timerDisplay.innerHTML = '';
-    for (let i = 0; i < seconds + 1; i++) {
+    for (let i = 0; i < seconds; i++) {
         const s = document.createElement('span');
         s.classList.add('d-inline-block', 'b-light-blue', 'rounded-circle', 'p-1', 'dot');
         timerDisplay.appendChild(s);
@@ -77,13 +77,13 @@ function startTimer(duration) {
             beep();
             int = null;
             playBtn.innerHTML = playSVG;
-            playTxt.innerHTML = '30';
+            playTxt.innerHTML = duration;
             timerDisplay.innerHTML = '';
             timerDisplay.classList.add('d-none');
             let t = [...document.querySelectorAll('input[name="peso-aitor"]')].find((x, i) => x.value == '');
-            if (t) t.value = 30;
+            if (t) t.value = duration;
             t = [...document.querySelectorAll('input[name="peso-moi"]')].find((x, i) => x.value == '');
-            if (t) t.value = 30;
+            if (t) t.value = duration;
             isSeriesCompleted('moi');
             isSeriesCompleted('aitor');
 
@@ -199,6 +199,7 @@ function loadData() {
     const hora = current.fecha ? current.fecha.split(',')[1] : 'N/D';
     const tipo = current.tipo ? current.tipo : 'N/D';
 
+
     document.querySelector('.accordion-body').innerHTML = `
     <div class="badge rounded-pill bg-dark">Orden: ${current.orden}</div>
     <div class="badge rounded-pill bg-success">Id: ${current.id}</div>
@@ -236,6 +237,9 @@ function loadData() {
 
     isSeriesCompleted('moi');
     isSeriesCompleted('aitor');
+
+    playTxt.innerHTML = parseInt([...document.getElementsByName('reps')][0].innerHTML);
+
 }
 
 function delay(time) {

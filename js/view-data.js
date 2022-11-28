@@ -21,6 +21,8 @@ function getContext() {
         ejercicioSelect.value = parseInt(exerciseToView.id);
         createAllCards(exerciseToView.id)
     }
+
+    if (!historicData) document.getElementById('no-data').classList.remove('d-none');
 }
 
 
