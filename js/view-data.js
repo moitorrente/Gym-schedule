@@ -5,6 +5,8 @@ const myModal = document.getElementById('modalSearchExercise');
 const searchExerciseText = document.getElementById('search-exercise-text');
 
 let exerciseToView;
+let myChart;
+
 
 getContext();
 function getContext() {
@@ -310,9 +312,12 @@ function chart(id) {
     const historicData = JSON.parse(localStorage.getItem('historic'));
     const rawMoi = historicData.data.filter(x => x.Usuario == 'Moi' && x.EjercicioID == id);
     const rawAitor = historicData.data.filter(x => x.Usuario == 'Aitor' && x.EjercicioID == id);
-    let fechas = rawMoi.map(x => x.Fecha)//.sort(function (a, b) { return new Date(convertToDate(a)) - new Date(convertToDate(b)) });
+    const fechas = rawMoi.map(x => x.Fecha);
     let datosMoi = rawMoi.map(x => x.Peso1);
     let datosAitor = rawAitor.map(x => x.Peso1);
+
+    datosMoi = datosMoi.map(x => x === '' ? NaN : x);
+    datosAitor = datosAitor.map(x => x === '' ? NaN : x)
 
     const datasetMoi = createDataset('Moi', datosMoi);
     const datasetAitor = createDataset('Aitor', datosAitor);
@@ -341,7 +346,6 @@ function createDataset(text, data) {
     return dataset;
 }
 
-let myChart;
 
 
 function generateChart(data) {
