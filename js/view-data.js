@@ -17,7 +17,7 @@ function getContext() {
     });
 
 
-    if (exerciseToView) {
+    if (exerciseToView && historicData) {
         ejercicioSelect.value = parseInt(exerciseToView.id);
         createAllCards(exerciseToView.id)
     }
@@ -113,6 +113,7 @@ function createAllCards(id) {
     selectedMoi.forEach((x, i) => createCard(selectedMoi[i], selectedAitor[i], i));
 
     //TODO corregir que haya ejercicio en uno y no en el otro
+    chart(id);
 }
 
 function convertToDate(dateString) {
@@ -303,3 +304,71 @@ function createCard(ejercicioMoi, ejercicioAitor, index) {
 }
 
 
+//------------------------------------------------------------------------------
+
+function chart(id) {
+    const historicData = JSON.parse(localStorage.getItem('historic'));
+    const rawMoi = historicData.data.filter(x => x.Usuario == 'Moi' && x.EjercicioID == id);
+    const rawAitor = historicData.data.filter(x => x.Usuario == 'Aitor' && x.EjercicioID == id);
+    let fechas = rawMoi.map(x => x.Fecha)//.sort(function (a, b) { return new Date(convertToDate(a)) - new Date(convertToDate(b)) });
+    let datosMoi = rawMoi.map(x => x.Peso1);
+    let datosAitor = rawAitor.map(x => x.Peso1);
+
+    const datasetMoi = createDataset('Moi', datosMoi);
+    const datasetAitor = createDataset('Aitor', datosAitor);
+
+    const data = {
+        labels: fechas,
+        datasets: [datasetMoi, datasetAitor]
+    }
+    console.log(data)
+    generateChart(data)
+}
+
+function convertToDate(dateString) {
+    const d = dateString.split("/");
+    const dat = new Date(d[2] + '/' + d[1] + '/' + d[0]);
+    return dat;
+}
+
+function createDataset(text, data) {
+    const dataset = {
+        label: text,
+        data: data,
+        borderWidth: 1
+    }
+
+    return dataset;
+}
+
+let myChart;
+
+
+function generateChart(data) {
+
+    const ctx = document.getElementById('myChart');
+
+    if (myChart) {
+        myChart.destroy();
+    }
+
+    myChart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: {
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'day',
+                        parser: 'dd/MM/yyyy',
+
+                        // displayFormats: {
+                        //     'day': 'dd/MM/yyyy'
+                        // }
+                    }
+                }
+            }
+        }
+    });
+}

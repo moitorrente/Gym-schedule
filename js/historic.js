@@ -14,7 +14,7 @@ const sheetName = 'Log';
 const query = encodeURIComponent('Select *')
 const url = `${base}&sheet=${sheetName}&tq=${query}`;
 
-const yearView = document.getElementById('year-view');       
+const yearView = document.getElementById('year-view');
 
 function createYearView() {
     const historic = JSON.parse(localStorage.getItem('historic'));
@@ -26,7 +26,7 @@ function createYearView() {
     const today = dayOfYear(new Date());
     gone = [...new Set(gone)];
     yearView.innerHTML = '';
-    for (let i = today-174; i < today; i++) {
+    for (let i = today - 174; i < today; i++) {
         const day = document.createElement('span');
         day.classList.add("d-inline-block", "rounded-square", "p-s");
         if (gone.includes(i + 1)) {
@@ -50,8 +50,6 @@ function dayOfYear(day) {
     return Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
 }
 
-const loading = document.getElementById('loading')
-
 const lastDescription = document.getElementById('last-description');
 const lastDate = document.getElementById('last-date');
 const lastCheck = document.getElementById('last-check');
@@ -65,22 +63,8 @@ document.getElementById('delete-all').onclick = () => {
     getContext();
 }
 
-// document.getElementById('delete-last').onclick = () => {
-//     localStorage.removeItem('historic');
-//     getContext();
-// }
-// document.getElementById('get-historic').onclick = () => {
-//     loading.classList.remove('d-none');
-//     init();
-//     getContext();
-// }
-// document.getElementById('delete-last-exercise').onclick = () => {
-//     localStorage.removeItem('listaEjercicios');
-//     getContext();
-// }
-
 document.getElementById('fetch').addEventListener('click', async () => {
-    loading.classList.remove('d-none');
+    document.querySelector('.bi-arrow-clockwise').classList.add('rotating');
     init();
     let res = await getFile('exercises.json');
     if (res.ok) {
@@ -118,13 +102,13 @@ function init() {
                 data.push(row);
             })
         }).then(() => {
-            loading.classList.add('d-none');
+            document.querySelector('.bi-arrow-clockwise').classList.remove('rotating');
             localStorage.setItem('historic', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: data }));
             bsOkToast.show();
             getContext();
         }
         ).catch(error => {
-            loading.classList.add('d-none')
+            document.querySelector('.bi-arrow-clockwise').classList.remove('rotating');
             bsKoToast.show();
             console.log(error);
         });

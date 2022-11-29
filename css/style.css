@@ -58,6 +58,7 @@ body {
 .b-light-green {
     background-color: var(--light-green);
 }
+
 .b-dark-green {
     background-color: var(---green);
 }
@@ -69,6 +70,7 @@ body {
 .b-light-blue {
     background-color: var(--light-blue);
 }
+
 .b-light-red {
     background-color: var(--light-red);
 }
@@ -163,6 +165,42 @@ body {
     background-color: transparent;
 }
 
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+    from {
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes rotating {
+    from {
+      -ms-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -ms-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  .rotating {
+    -webkit-animation: rotating 2s linear infinite;
+    -moz-animation: rotating 2s linear infinite;
+    -ms-animation: rotating 2s linear infinite;
+    -o-animation: rotating 2s linear infinite;
+    animation: rotating 2s linear infinite;
+  }
+
 .btn-outline-primary {
     color: var(--blue);
 
@@ -195,6 +233,7 @@ body {
     --bs-btn-disabled-border-color: var(--red);
     --bs-gradient: none;
 }
+
 .btn-outline-yellow {
     color: var(--dark-yellow);
     --bs-btn-hover-color: var(--dark-yellow);
@@ -292,15 +331,15 @@ body {
     font-size: 0.75rem;
 }
 
-.transparent{
+.transparent {
     background-color: transparent;
 }
 
-.dropdown-menu-s{
-    transform: translate(-20px, 0px)!important;
-    width: 5rem!important;
-    min-width: 0px!important;
-    padding:.8rem 0 1rem 0!important;
+.dropdown-menu-s {
+    transform: translate(-20px, 0px) !important;
+    width: 5rem !important;
+    min-width: 0px !important;
+    padding: .8rem 0 1rem 0 !important;
 }
 
 /* .dropdown-menu {
@@ -316,14 +355,14 @@ body {
     text-transform: uppercase;
 }
 
-.rounded-square{
+.rounded-square {
     border-radius: 35%;
 }
 
-.gap-s{
+.gap-s {
     gap: .15rem;
 }
 
-.p-s{
+.p-s {
     padding: 0.3rem;
 }
