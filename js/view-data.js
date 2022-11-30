@@ -6,6 +6,10 @@ const searchExerciseText = document.getElementById('search-exercise-text');
 
 let exerciseToView;
 let myChart;
+let myChart2;
+let myChart3;
+let myChart4;
+let myChart5;
 
 
 getContext();
@@ -115,7 +119,9 @@ function createAllCards(id) {
     selectedMoi.forEach((x, i) => createCard(selectedMoi[i], selectedAitor[i], i));
 
     //TODO corregir que haya ejercicio en uno y no en el otro
-    chart(id);
+    document.getElementById('chart-serie-selector').classList.remove('d-none');
+    chart(id, 1);
+    document.querySelectorAll('input[name="btnradio"]').forEach(x => x.onclick = () => chart(id, document.querySelector('input[name="btnradio"]:checked').value))
 }
 
 function convertToDate(dateString) {
@@ -308,26 +314,95 @@ function createCard(ejercicioMoi, ejercicioAitor, index) {
 
 //------------------------------------------------------------------------------
 
-function chart(id) {
+function chart(id, serie) {
     const historicData = JSON.parse(localStorage.getItem('historic'));
     const rawMoi = historicData.data.filter(x => x.Usuario == 'Moi' && x.EjercicioID == id);
     const rawAitor = historicData.data.filter(x => x.Usuario == 'Aitor' && x.EjercicioID == id);
     const fechas = rawMoi.map(x => x.Fecha);
-    let datosMoi = rawMoi.map(x => x.Peso1);
-    let datosAitor = rawAitor.map(x => x.Peso1);
+    let datosMoi1 = rawMoi.map(x => x.Peso1);
+    let datosAitor1 = rawAitor.map(x => x.Peso1);
+    let datosMoi2 = rawMoi.map(x => x.Peso2);
+    let datosAitor2 = rawAitor.map(x => x.Peso2);
+    let datosMoi3 = rawMoi.map(x => x.Peso3);
+    let datosAitor3 = rawAitor.map(x => x.Peso3);
+    let datosMoi4 = rawMoi.map(x => x.Peso4);
+    let datosAitor4 = rawAitor.map(x => x.Peso4);
+    let datosMoi5 = rawMoi.map(x => x.Peso5);
+    let datosAitor5 = rawAitor.map(x => x.Peso5);
 
-    datosMoi = datosMoi.map(x => x === '' ? NaN : x);
-    datosAitor = datosAitor.map(x => x === '' ? NaN : x)
 
-    const datasetMoi = createDataset('Moi', datosMoi);
-    const datasetAitor = createDataset('Aitor', datosAitor);
+    datosMoi1 = datosMoi1.map(x => x === '' ? NaN : x);
+    datosAitor1 = datosAitor1.map(x => x === '' ? NaN : x);
+    datosMoi2 = datosMoi2.map(x => x === '' ? NaN : x);
+    datosAitor2 = datosAitor2.map(x => x === '' ? NaN : x);
+    datosMoi3 = datosMoi3.map(x => x === '' ? NaN : x);
+    datosAitor3 = datosAitor3.map(x => x === '' ? NaN : x);
+    datosMoi4 = datosMoi4.map(x => x === '' ? NaN : x);
+    datosAitor4 = datosAitor4.map(x => x === '' ? NaN : x);
+    datosMoi5 = datosMoi5.map(x => x === '' ? NaN : x);
+    datosAitor5 = datosAitor5.map(x => x === '' ? NaN : x);
 
-    const data = {
+    const datasetMoi1 = createDataset('Moi', datosMoi1);
+    const datasetAitor1 = createDataset('Aitor', datosAitor1);
+    const datasetMoi2 = createDataset('Moi', datosMoi2);
+    const datasetAitor2 = createDataset('Aitor', datosAitor2);
+    const datasetMoi3 = createDataset('Moi', datosMoi3);
+    const datasetAitor3 = createDataset('Aitor', datosAitor3);
+    const datasetMoi4 = createDataset('Moi', datosMoi4);
+    const datasetAitor4 = createDataset('Aitor', datosAitor4);
+    const datasetMoi5 = createDataset('Moi', datosMoi5);
+    const datasetAitor5 = createDataset('Aitor', datosAitor5);
+
+
+    const data1 = {
         labels: fechas,
-        datasets: [datasetMoi, datasetAitor]
+        datasets: [datasetMoi1, datasetAitor1]
     }
-    console.log(data)
-    generateChart(data)
+    const data2 = {
+        labels: fechas,
+        datasets: [datasetMoi2, datasetAitor2]
+    }
+    const data3 = {
+        labels: fechas,
+        datasets: [datasetMoi3, datasetAitor3]
+    }
+    const data4 = {
+        labels: fechas,
+        datasets: [datasetMoi4, datasetAitor4]
+    }
+    const data5 = {
+        labels: fechas,
+        datasets: [datasetMoi5, datasetAitor5]
+    }
+
+    switch (parseInt(serie)) {
+        case 1:
+            generateChart(data1);
+            break;
+        case 2:
+            generateChart(data2);
+            break;
+        case 3:
+            generateChart(data3);
+            break;
+        case 4:
+            generateChart(data4);
+            break;
+        case 5:
+            generateChart(data5);
+            break;
+    
+        default:
+            break;
+    }
+
+
+    //generateChart(data1, 'myChart', myChart);
+    // generateChart(data2, 'myChart', myChart2);
+    // generateChart(data3, 'myChart3', myChart3);
+    // generateChart(data4, 'myChart4', myChart4);
+    // generateChart(data5, 'myChart5', myChart5);
+
 }
 
 function convertToDate(dateString) {
@@ -340,7 +415,8 @@ function createDataset(text, data) {
     const dataset = {
         label: text,
         data: data,
-        borderWidth: 1
+        borderWidth: 1,
+        tension: 0.2
     }
 
     return dataset;
@@ -363,14 +439,22 @@ function generateChart(data) {
             scales: {
                 x: {
                     type: 'time',
+                    ticks: {
+                        display: false
+                    },
+                    grid: {
+                        display: false
+                    },
                     time: {
                         unit: 'day',
                         parser: 'dd/MM/yyyy',
-
-                        // displayFormats: {
-                        //     'day': 'dd/MM/yyyy'
-                        // }
                     }
+                },
+                y: {
+                    grid: {
+                        display: false,
+                    },
+                    //beginAtZero: true,
                 }
             }
         }

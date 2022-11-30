@@ -1,5 +1,10 @@
 import getFile from './data.js';
 
+const html = document.getElementsByTagName('html')[0];
+const toggleTheme = (theme) => {
+    html.dataset.theme = theme;
+}
+
 const notCheckedSVG = `
 <div class="fs-5 w-50 p-0" id="badge-moi">
     <span class="b-light-blue

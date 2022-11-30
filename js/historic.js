@@ -63,7 +63,9 @@ document.getElementById('delete-all').onclick = () => {
     getContext();
 }
 
-document.getElementById('fetch').addEventListener('click', async () => {
+document.getElementById('fetch').addEventListener('click', list);
+
+async function list() {
     document.querySelector('.bi-arrow-clockwise').classList.add('rotating');
     init();
     let res = await getFile('exercises.json');
@@ -73,11 +75,12 @@ document.getElementById('fetch').addEventListener('click', async () => {
     } else {
         alert(`Error: ${res.error}`);
     }
-})
-const data = []
+}
 getContext();
 
 function init() {
+    const data = []
+
     fetch(url)
         .then(res => res.text())
         .then(rep => {
@@ -103,6 +106,7 @@ function init() {
             })
         }).then(() => {
             document.querySelector('.bi-arrow-clockwise').classList.remove('rotating');
+            localStorage.removeItem('historic');
             localStorage.setItem('historic', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: data }));
             bsOkToast.show();
             getContext();
@@ -110,6 +114,7 @@ function init() {
         ).catch(error => {
             document.querySelector('.bi-arrow-clockwise').classList.remove('rotating');
             bsKoToast.show();
+
             console.log(error);
         });
 }

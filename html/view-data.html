@@ -56,47 +56,39 @@
                                 Encontrados: <span id="found-items">0</span>
                             </div>
                         </div>
+                    </div>
 
+                    <div class="btn-group btn-group-sm d-none" id="chart-serie-selector" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked value="1">
+                        <label class="btn btn-outline-primary" for="btnradio1">1</label>
 
-                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="false" data-bs-touch="true">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <canvas id="myChart"></canvas>
-                                </div>
-                                <div class="carousel-item">
-                                    b
-                                </div>
-                                <div class="carousel-item">
-                                    c
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
-                                <span class="visually-hidden">Previous</span>
-                              </button>
-                              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
-                                <span class="visually-hidden">Next</span>
-                              </button>
-                           
-                        </div>
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value="2">
+                        <label class="btn btn-outline-primary" for="btnradio2">2</label>
+
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value="3">
+                        <label class="btn btn-outline-primary" for="btnradio3">3</label>
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" value="4">
+                        <label class="btn btn-outline-primary" for="btnradio4">4</label>
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" value="5">
+                        <label class="btn btn-outline-primary" for="btnradio5">5</label>
+                    </div>
+                    <canvas id="myChart"></canvas>
 
 
 
-                        <div id="historic-list">
-                            <a id="no-data" href="historic.html"
-                                class="mt-2 text-decoration-none d-none bg-white border rounded-3 p-2 gap-2 d-flex align-items-center me-1 justify-content-center shadow-sm">
-                                <span class="px-2 form-checked-content w-100" data-id="6" id="start-6">
-                                    <div class="d-flex">
-                                        <div id="last-description" class="w-100 flex-grow-1 fw-bold">
-                                            No hay datos cargados
-                                        </div>
+                    <div id="historic-list">
+                        <a id="no-data" href="historic.html"
+                            class="mt-2 text-decoration-none d-none bg-white border rounded-3 p-2 gap-2 d-flex align-items-center me-1 justify-content-center shadow-sm">
+                            <span class="px-2 form-checked-content w-100" data-id="6" id="start-6">
+                                <div class="d-flex">
+                                    <div id="last-description" class="w-100 flex-grow-1 fw-bold">
+                                        No hay datos cargados
                                     </div>
-                                    <small id="last-date" class="d-block text-muted">Solcitar los datos</small>
-                                </span>
+                                </div>
+                                <small id="last-date" class="d-block text-muted">Solcitar los datos</small>
+                            </span>
 
-                            </a>
-                        </div>
+                        </a>
                     </div>
                 </form>
             </div>

@@ -16,11 +16,17 @@
     --dark-yellow: #915e20;
 }
 
+html[data-theme='dark'] {
+    filter: invert(1) hue-rotate(180deg);
+}
+
 html {
     height: auto;
-    /* filter: invert(1) hue-rotate(180deg); */
+    transition: color 300ms, background-color 300ms;
 
 }
+
+
 
 body {
     height: 100%;
