@@ -23,66 +23,40 @@
 </head>
 
 <body style="margin-bottom: 200px; height: auto;">
-    <header class="fixed-top b-gray container pt-4 pb-2 d-flex align-items-center gap-4 justify-content-between">
-        <div class="bg-white p-s rounded shadow-sm">
-            <svg onclick="history.back()" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-                class="bi bi-arrow-left" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                    d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
-            </svg>
+    <header class="fixed-top b-gray container pt-4 pb-2 gap-4">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="bg-white p-s rounded shadow-sm">
+                <svg onclick="history.back()" xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                    fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+                </svg>
+            </div>
+            <h1 class="fw-bold m-0">Entrenamientos</h1>
+            <div class="bg-white p-2 rounded shadow-sm" id="clear-filters">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
+                    <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
+                  </svg>
+            </div>
         </div>
-        <h1 class="fw-bold m-0">Entrenamientos</h1>
-        <div class="bg-white p-s rounded shadow-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-plus"
-                viewBox="0 0 16 16">
-                <path
-                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-            </svg>
+        <div class="mt-2 d-flex gap-2">
+
+            <select id="mesociclo-select"
+                class="w-100 shadow-sm border-0 rounded-1 form-select bg-white p-2 gap-2 d-flex align-items-center text-center justify-content-center fw-bold text-decoration-none fw-normal text-black ">
+                <option selected value="0">Mesociclo</option>
+                <option value="1">Mesociclo 1</option>
+                <option value="2">Mesociclo 2</option>
+            </select>
+            <select id="tipo-select"
+                class="w-100 shadow-sm border-0 rounded-1 form-select bg-white p-2 gap-2 d-flex align-items-center text-center justify-content-center fw-bold text-decoration-none fw-normal text-black ">
+                <option selected value="0">Tipo</option>
+                <option value="carga">Carga</option>
+                <option value="descarga">Descarga</option>
+            </select>
         </div>
     </header>
-    <div class="container" style="margin-top: 5rem;">
-        <a class="bg-white list-group-item d-flex gap-2 px-2 py-0 rounded align-items-center border-0 shadow-sm"
-            style="height: 6rem">
-            <span class="align-self-center ms-auto px-1">
-                <div class="fs-5 w-50 p-0">
-
-                </div>
-            </span>
-            <span class="pt-1 form-checked-content w-100 fs-4">
-                <div class="d-flex gap-2">
-                    <span
-                        class="t-dark-blue d-flex align-items-center justify-content-center rounded-4 w-100"
-                        style="width: 2rem!important; height: 2rem;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-                            class="bi bi-caret-up-fill" viewBox="0 0 16 16">
-                            <path
-                                d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
-                        </svg>
-                    </span>
-                    <strong style="white-space: nowrap;
-                text-overflow: ellipsis;
-                width: 70vw;
-                display: block;
-                overflow: hidden;">Entrenamiento A</strong>
-
-                </div>
-
-                <div class="d-flex mt-2 gap-2 py-1">
-                    <div class="rounded-1 b-light-blue w-50 text-center">
-                        <div class="fs-6 fw-bold">6</div>
-                        <div class="fs-8 text-muted fw-bold">Ejercicios</div>
-                    </div>
-                    <div class="rounded-1 b-light-blue w-50 text-center">
-                        <div class="fs-6 fw-bold">2</div>
-                        <div class="fs-8 text-muted fw-bold">Mesociclo</div>
-                    </div>
-                    <!-- <div class="rounded-1 b-light-gray w-50 text-center">
-                        <div class="fs-6 fw-bold">2</div>
-                        <div class="fs-8 text-muted fw-bold"></div>
-                    </div> -->
-                </div>
-            </span>
-        </a>
+    <div style="margin-top: 7.5rem;"></div>
+    <div class="container" id="workouts-container">
 
     </div>
 
