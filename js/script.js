@@ -106,7 +106,7 @@ function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
     if (checked === false) icon = pendingSVG;
     if (checked === true) icon = checkedSVG;
     d.innerHTML = `
-    <a class="list-group-item d-flex gap-2 p-2 rounded align-items-center shadow-sm" style="height: 5rem">
+    <a class="list-group-item d-flex gap-2 px-2 py-0 rounded align-items-center border-0 shadow-sm" style="height: 5rem">
     <span class="align-self-center ms-auto px-1">
         ${icon}    
     </span>
@@ -125,7 +125,7 @@ function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
                     <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                 </svg>
             </button>
-            <ul class="dropdown-menu text-center">
+            <ul class="dropdown-menu text-center  shadow-sm">
                 <li>
                     <button type="button" class="option px-1 my-1 w-75 d-flex gap-3 align-items-center ms-2 border-0" id="edit-${id}" data-id="${id}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--blue)" class="bi bi-pencil" viewBox="0 0 16 16">

@@ -318,7 +318,7 @@ function chart(id, serie) {
     const historicData = JSON.parse(localStorage.getItem('historic'));
     const rawMoi = historicData.data.filter(x => x.Usuario == 'Moi' && x.EjercicioID == id);
     const rawAitor = historicData.data.filter(x => x.Usuario == 'Aitor' && x.EjercicioID == id);
-    const fechas = rawMoi.map(x => x.Fecha);
+    const fechas = rawAitor.map(x => x.Fecha);
     let datosMoi1 = rawMoi.map(x => x.Peso1);
     let datosAitor1 = rawAitor.map(x => x.Peso1);
     let datosMoi2 = rawMoi.map(x => x.Peso2);

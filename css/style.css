@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 :root {
-    --gray: #f8fafc;
+    --gray: #f1f5f9;
+    --light-gray: #e0e7ff;
     --dark-gray: #6b7280;
     --blue: #2563eb;
     --light-blue: #dbeafe;
@@ -50,6 +51,14 @@ body {
     background-color: var(--gray);
 }
 
+.b-dark-gray {
+    background-color: var(--dark-gray);
+}
+
+.b-light-gray {
+    background-color: var(--light-gray);
+}
+
 .b-teal {
     background-color: var(--teal);
 
@@ -68,7 +77,7 @@ body {
 }
 
 .b-dark-green {
-    background-color: var(---green);
+    background-color: var(--dark-green);
 }
 
 .b-light-yellow {
@@ -346,6 +355,10 @@ body {
     font-size: 0.75rem;
 }
 
+.fs-8 {
+    font-size: 0.5rem;
+}
+
 .transparent {
     background-color: transparent;
 }
@@ -380,4 +393,27 @@ body {
 
 .p-s {
     padding: 0.3rem;
+}
+
+
+.left-ver {
+    box-shadow: inset 3px 0px 0px 0px var(--dark-green);
+}
+
+.white-crystal {
+    background-color: rgba(255, 255, 255, .5);
+    backdrop-filter: blur(5px);
+}
+
+.ui-square-btn {
+    align-self: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    background-color: white;
+    border-radius: 0.375rem;
+    height: 2.25rem;
+    width: 2.25rem;
+
 }

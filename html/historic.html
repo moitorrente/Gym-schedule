@@ -24,19 +24,42 @@
 </head>
 
 <body style="margin-bottom: 70px; height: auto;">
-    <nav class="container pb-2">
-        <h1 class="py-3">
-            <svg onclick="history.back()" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                class="bi bi-arrow-left" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                    d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
-            </svg>
-            <span class="flex-grow-1">📕Histórico</span>
-        </h1>
-    </nav>
-    <div class="container container-fluid justify-content-center">
+    <div class="container">
+        <header class="fixed-top b-gray container pt-4 pb-2 d-flex align-items-center gap-4 justify-content-between">
+            <div class="ui-square-btn">
+                <svg onclick="history.back()" xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                    fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+                </svg>
+            </div>
+            <h1 class="fw-bold m-0">Histórico</h1>
+            <div class="d-flex gap-2">
+                <div class="ui-square-btn" id="delete-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-trash t-red" viewBox="0 0 16 16">
+                        <path
+                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                        <path fill-rule="evenodd"
+                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                    </svg>
+                </div>
+
+                <div class="ui-square-btn" id="fetch">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="var(--blue)"
+                        class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+                        <path
+                            d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+                    </svg>
+                </div>
+            </div>
+
+        </header>
+    </div>
+    <div class="container container-fluid justify-content-center" style="margin-top: 5rem;">
         <div id="okToast"
-            class="toast position-fixed align-items-center text-white bg-success bottom-0 start-50 translate-middle mb-5"
+            class="toast position-fixed align-items-center text-white b-dark-green bottom-0 start-50 translate-middle mb-5"
             role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
 
@@ -69,36 +92,12 @@
                     aria-label="Close"></button>
             </div>
         </div>
-        <div class="mx-auto d-flex justify-content-around fs-7 align-items-center mb-2">
-
-            <div class="bg-white border rounded-3 p-2 gap-2 d-flex align-items-center me-1 w-50 justify-content-center"
-                id="fetch">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--blue)"
-                    class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
-                    <path
-                        d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
-                </svg>
-                Cargar datos
-            </div>
-            <div class="bg-white border rounded-3 p-2 gap-2 d-flex align-items-center ms-1 w-50 justify-content-center"
-                id="delete-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-trash t-red" viewBox="0 0 16 16">
-                    <path
-                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                    <path fill-rule="evenodd"
-                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                </svg>
-                Eliminar datos
-            </div>
-        </div>
 
         <div class="">
             <div class="mx-auto d-flex justify-content-around fs-7 align-items-center mb-2">
 
-                <div
-                    class="bg-white border rounded-3 p-2 gap-2 d-flex align-items-center me-1 w-50 justify-content-center shadow-sm">
+                <div class="bg-white rounded-3 p-2 gap-2 d-flex align-items-center me-1 w-50 justify-content-center shadow-sm"
+                    style="height: 3.5rem;">
                     <span class="px-2 form-checked-content w-100" data-id="6" id="start-6">
                         <div class="d-flex">
                             <div id="last-description" class="w-100 flex-grow-1 fw-bold">
@@ -119,8 +118,8 @@
                     </span>
 
                 </div>
-                <div
-                    class="bg-white border rounded-3 p-2 gap-2 d-flex align-items-center ms-1 w-50 justify-content-center shadow-sm">
+                <div class="bg-white rounded-3 p-2 gap-2 d-flex align-items-center ms-1 w-50 justify-content-center shadow-sm"
+                    style="height: 3.5rem;">
                     <span class="px-2 form-checked-content w-100" data-id="6" id="start-6">
                         <div class="d-flex">
                             <div id="last-exercises-description" class="w-100 flex-grow-1 fw-bold">
@@ -254,7 +253,7 @@
                 </a>
             </div> -->
         </div>
-        <div class="bg-white border rounded-3 p-2 mt-2 shadow-sm" >
+        <div class="bg-white rounded-3 p-2 mt-2 shadow-sm">
             <div class="mb-2 fw-bold fs-7">
                 2022
             </div>
@@ -263,10 +262,8 @@
             justify-items: center;
             align-items: center;">
             </div>
-
-
         </div>
-        <div class="dropdown-menu d-block position-static my-0 p-2 rounded-3 mt-2 shadow-sm">
+        <div class="bg-white d-block position-static my-0 p-2 rounded-3 mt-2 shadow-sm">
             <div class="d-grid gap-1">
                 <div class="cal">
                     <div class="cal-month">
@@ -321,7 +318,7 @@
         <div class="accordion mt-2 mb-2 d-none" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button collapsed text-wrap border" type="button" data-bs-toggle="collapse"
+                    <button class="accordion-button collapsed text-wraps" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                         <strong>Entrenamiento</strong>
                         <small class="ms-1">
@@ -335,14 +332,6 @@
                 </div>
             </div>
         </div>
-
-
-
-        <!-- <table class="table table-striped">
-            <tbody class="output"></tbody>
-        </table> -->
-
-
 </body>
 <footer>
     <nav class="fixed-bottom justify-content-between navbar-expand-sm py-2 pb-4 bg-white">

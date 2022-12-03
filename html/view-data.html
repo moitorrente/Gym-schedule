@@ -31,23 +31,31 @@
 </head>
 
 <body style="margin-bottom: 70px; height: auto;">
-    <div class="container container-fluid d-flex justify-content-center">
+    <div class="container">
+        <header class="fixed-top b-gray container pt-4 pb-2 d-flex align-items-center gap-4 justify-content-between">
+            <div class="bg-white p-s rounded shadow-sm">
+                <svg onclick="history.back()" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                    class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+                </svg>
+            </div>
+            <h1 class="fw-bold m-0">Ver histórico</h1>
+            <div class="bg-white p-s rounded shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-plus"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg>
+            </div>
+        </header>
+    </div>
+    <div class="container container-fluid d-flex justify-content-center" style="margin-top: 5rem;">
         <div class="row">
             <div class="col-12">
-
-                <h1 class="py-3">
-                    <svg onclick="history.back()" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                        fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
-                    </svg>
-                    <span class="ps-3">📊Ver histórico</span>
-                </h1>
-
                 <form class="needs-validation" novalidate="">
                     <div class="row py-1">
                         <div class="">
-                            <label for="exe" class="form-label fs-7">Histórico</label>
                             <select class="form-select form-select-sm mx-0" required="" id="exe" data-bs-toggle="modal"
                                 data-bs-target="#modalSearchExercise">
                                 <option value="" hidden selected>Ejercicios...</option>
@@ -58,21 +66,30 @@
                         </div>
                     </div>
 
-                    <div class="btn-group btn-group-sm d-none" id="chart-serie-selector" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked value="1">
+                    <div class="btn-group btn-group-sm d-none" id="chart-serie-selector" role="group"
+                        aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked
+                            value="1">
                         <label class="btn btn-outline-primary" for="btnradio1">1</label>
 
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value="2">
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"
+                            value="2">
                         <label class="btn btn-outline-primary" for="btnradio2">2</label>
 
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value="3">
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"
+                            value="3">
                         <label class="btn btn-outline-primary" for="btnradio3">3</label>
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" value="4">
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off"
+                            value="4">
                         <label class="btn btn-outline-primary" for="btnradio4">4</label>
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" value="5">
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off"
+                            value="5">
                         <label class="btn btn-outline-primary" for="btnradio5">5</label>
                     </div>
-                    <canvas id="myChart"></canvas>
+
+                    <div class="bg-white rounded-1 border-0 shadow-sm mt-2 p-1">
+                        <canvas id="myChart"></canvas>
+                    </div>
 
 
 

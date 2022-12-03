@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <title>Gym schedule</title>
+    <link rel="icon" type="image/x-icon" href="icon.png">
+    <link rel='shortcut icon' type='image/x-icon' href='icon.png' />
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script defer type="module" src="../js/workouts.js"></script>
+
+</head>
+
+<body style="margin-bottom: 200px; height: auto;">
+    <header class="fixed-top b-gray container pt-4 pb-2 d-flex align-items-center gap-4 justify-content-between">
+        <div class="bg-white p-s rounded shadow-sm">
+            <svg onclick="history.back()" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                class="bi bi-arrow-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+            </svg>
+        </div>
+        <h1 class="fw-bold m-0">Entrenamientos</h1>
+        <div class="bg-white p-s rounded shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-plus"
+                viewBox="0 0 16 16">
+                <path
+                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+            </svg>
+        </div>
+    </header>
+    <div class="container" style="margin-top: 5rem;">
+        <a class="bg-white list-group-item d-flex gap-2 px-2 py-0 rounded align-items-center border-0 shadow-sm"
+            style="height: 6rem">
+            <span class="align-self-center ms-auto px-1">
+                <div class="fs-5 w-50 p-0">
+
+                </div>
+            </span>
+            <span class="pt-1 form-checked-content w-100 fs-4">
+                <div class="d-flex gap-2">
+                    <span
+                        class="t-dark-blue d-flex align-items-center justify-content-center rounded-4 w-100"
+                        style="width: 2rem!important; height: 2rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                            class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                            <path
+                                d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+                        </svg>
+                    </span>
+                    <strong style="white-space: nowrap;
+                text-overflow: ellipsis;
+                width: 70vw;
+                display: block;
+                overflow: hidden;">Entrenamiento A</strong>
+
+                </div>
+
+                <div class="d-flex mt-2 gap-2 py-1">
+                    <div class="rounded-1 b-light-blue w-50 text-center">
+                        <div class="fs-6 fw-bold">6</div>
+                        <div class="fs-8 text-muted fw-bold">Ejercicios</div>
+                    </div>
+                    <div class="rounded-1 b-light-blue w-50 text-center">
+                        <div class="fs-6 fw-bold">2</div>
+                        <div class="fs-8 text-muted fw-bold">Mesociclo</div>
+                    </div>
+                    <!-- <div class="rounded-1 b-light-gray w-50 text-center">
+                        <div class="fs-6 fw-bold">2</div>
+                        <div class="fs-8 text-muted fw-bold"></div>
+                    </div> -->
+                </div>
+            </span>
+        </a>
+
+    </div>
+
+
+    <nav class="fixed-bottom justify-content-between navbar-expand-sm py-2 pb-4 white-crystal">
+
+        <div class="row text-secondary">
+
+            <!-- <div class="col text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-eraser"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm2.121.707a1 1 0 0 0-1.414 0L4.16 7.547l5.293 5.293 4.633-4.633a1 1 0 0 0 0-1.414l-3.879-3.879zM8.746 13.547 3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z" />
+                </svg>
+            </div> -->
+            <a class="col text-center text-primary" href="../index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                    class="bi bi-house-door" viewBox="0 0 16 16">
+                    <path
+                        d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+                </svg>
+            </a>
+            <!-- <a class="col text-center text-secondary" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                    class="bi bi-house-door" viewBox="0 0 16 16">
+                    <path
+                        d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+                </svg>
+            </a> -->
+        </div>
+    </nav>
+</body>
+
+</html>

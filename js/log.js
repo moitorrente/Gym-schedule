@@ -181,7 +181,6 @@ homeBtn.onclick = () => {
     // if (current.completado && newCurent) {
     //     localStorage.setItem('current', newCurent.id);
     // } else {
-    console.log(current)
     homeBtn.href = '../index.html';
     // }
 }
@@ -251,10 +250,10 @@ function isSeriesCompleted(user) {
     const seriesValues = [...document.querySelectorAll(`input[name="peso-${user}"]`)];
     const isCompleted = seriesValues.filter(x => x.value == '').length > 0 ? false : true;
     if (isCompleted) {
-        document.getElementById(`container-${user}`).style.setProperty('border', '1px solid var(--light-green)', 'important');;
+        // document.getElementById(`container-${user}`).style.setProperty('border', '1px solid var(--light-green)', 'important');;
         document.getElementById(`badge-${user}`).classList.remove('d-none');
     } else {
-        document.getElementById(`container-${user}`).style.setProperty('border', '1px solid #dee2e6', 'important');;
+        // document.getElementById(`container-${user}`).style.setProperty('border', '1px solid #dee2e6', 'important');;
         document.getElementById(`badge-${user}`).classList.add('d-none');
     }
 
@@ -298,8 +297,9 @@ function createReps(num, isometrico) {
     num++;
     for (let i = 1; i < num; i++) {
         const div = document.createElement('div');
-        div.classList.add('flex-fill', 'w-50', 'bg-white', 'border', 'rounded-1', 'px-2', 'py-1')
-        div.innerHTML = `<div for="reps-${i}" class="text-muted fw-bold fs-7">${text} ${i}</div>
+        div.classList.add('flex-fill', 'w-50', 'bg-white', 'left-ver', 'px-3', 'py-1', 'rounded-1');
+        div.innerHTML = `
+        <div for="reps-${i}" class="text-muted fw-bold fs-8">${text} ${i}</div>
         <div class="fw-bolder fs-5" name="reps" id="reps-${i}">5</div>`;
         repsContainer.appendChild(div);
     }
@@ -313,6 +313,7 @@ function createPeso(num, user, tipo) {
 
     for (let i = 1; i < num; i++) {
         const div = document.createElement('div');
+        
         div.innerHTML = `<label for="${user}-${i}" class="fs-7 fw-bold d-flex">${tipo} ${i}</label>
         <input type="number" class="form-control" id="${user}-${i}" placeholder="" value="" required="" name="peso-${user}">`;
         if (user == 'aitor') aitorWeightContainer.appendChild(div);

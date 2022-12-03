@@ -24,12 +24,21 @@
 </head>
 
 <body>
-    <div class="container container-fluid d-flex justify-content-center">
+    <div class="container">
+        <header class="mt-3 d-flex align-items-center gap-4">
+            <div class="bg-white p-1 rounded shadow-sm">
+                <svg onclick="history.back()" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                    fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+                </svg>
+            </div>
+            <h1 class="fw-bold m-0">Log de ejercicio</h1>
+        </header>
+    </div>
+    <div class="container container-fluid d-flex justify-content-center mt-3">
         <div class="row pt-4">
             <div class="col">
-                <h1 class="d-flex">
-                    <span class="d-flex flex-grow-1">🏋️Log de ejercicio</span>
-                </h1>
                 <div class="needs-validation" novalidate="">
                     <div class="row mb-3">
                         <div class="col mx-auto">
@@ -37,7 +46,7 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button
-                                            class="p-2 accordion-button collapsed badge bg-white text-wrap text-black fs-2 border d-flex flex-grow-1 justify-content-center"
+                                            class="p-2 accordion-button collapsed badge bg-white text-wrap text-black fs-2 d-flex flex-grow-1 justify-content-center"
                                             type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
                                             aria-expanded="false" aria-controls="collapseOne" id="exe">
                                             Ejercicio
@@ -54,16 +63,16 @@
 
                     <div class="col row mb-3">
                         <div class="d-flex gap-2 mb-4">
-                            <div class="flex-fill w-50 bg-white border rounded-1 px-3 py-1">
+                            <div class="flex-fill w-50 bg-white rounded-1 px-3 py-1 left-ver">
                                 <div class="text-muted fw-bold fs-7">Series</div>
                                 <div class="fw-bolder fs-5" id="series">5</div>
                             </div>
 
-                            <div class="flex-fill w-50 bg-white border rounded-1 px-3 py-1 fs-5">
+                            <div class="flex-fill w-50 bg-white rounded-1 px-3 py-1 fs-5 left-ver">
                                 <div class="text-muted fw-bold fs-7">Tempo</div>
                                 <div class="fw-bolder fs-5" id="tempo">5</div>
                             </div>
-                            <div class="flex-fill w-50 bg-white border rounded-1 px-3 py-1 fs-5">
+                            <div class="flex-fill w-50 bg-white rounded-1 px-3 py-1 fs-5 left-ver">
                                 <div class="text-muted fw-bold fs-7">Objetivo</div>
                                 <div class="fw-bolder fs-5" id="objective">Fallo -2</div>
                             </div>
@@ -74,8 +83,7 @@
 
                         <div class="mt-1">
                             <div>
-                                <div class="mx-auto border rounded bg-white p-2 mb-2 shadow-sm" id="container-aitor"
-                                    style="border-color: var(--blue)!important">
+                                <div class="mx-auto rounded bg-white p-2 mb-2 shadow-sm" id="container-aitor">
                                     <div class="fs-5 fw-bold d-flex align-items-center justify-content-around gap-2">
                                         <div class="d-flex align-items-center justify-content-start w-75 gap-2">
                                             <div class="ms-1">
@@ -95,7 +103,8 @@
                                         </div>
 
                                         <div class="btn-group" role="group">
-                                            <input type="radio" class="btn-check" name="sensacion-aitor" id="sensacion-aitor-1" value="1">
+                                            <input type="radio" class="btn-check" name="sensacion-aitor"
+                                                id="sensacion-aitor-1" value="1">
                                             <label class="btn btn-outline-red badge fs-6" for="sensacion-aitor-1">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-emoji-frown" viewBox="0 0 16 16">
@@ -106,7 +115,8 @@
                                                 </svg>
                                             </label>
 
-                                            <input type="radio" class="btn-check" name="sensacion-aitor" id="sensacion-aitor-2" value="2" checked>
+                                            <input type="radio" class="btn-check" name="sensacion-aitor"
+                                                id="sensacion-aitor-2" value="2" checked>
                                             <label class="btn btn-outline-yellow badge fs-6" for="sensacion-aitor-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-emoji-expressionless"
@@ -118,8 +128,8 @@
                                                 </svg>
                                             </label>
 
-                                            <input type="radio" class="btn-check" name="sensacion-aitor" id="sensacion-aitor-3" value="3"
-                                                autocomplete="off">
+                                            <input type="radio" class="btn-check" name="sensacion-aitor"
+                                                id="sensacion-aitor-3" value="3" autocomplete="off">
                                             <label class="btn btn-outline-green badge fs-6" for="sensacion-aitor-3">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
@@ -133,7 +143,7 @@
 
 
 
-                                        <div class="btn btn-light badge t-blue border fs-6 w-25" id="spread-aitor">
+                                        <div class="btn btn-light badge t-blue fs-6 w-25" id="spread-aitor">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-chevron-double-right"
                                                 viewBox="0 0 16 16">
@@ -143,7 +153,7 @@
                                                     d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z" />
                                             </svg>
                                         </div>
-                                        <btn class="btn btn-light badge text-black border fs-6 t-red" id="reset-aitor">
+                                        <btn class="btn btn-light badge text-black fs-6 t-red" id="reset-aitor">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-eraser-fill" viewBox="0 0 16 16">
                                                 <path
@@ -162,7 +172,7 @@
 
 
                         <div>
-                            <div class="mx-auto border rounded bg-white p-2 mb-1 shadow-sm" id="container-moi">
+                            <div class="mx-auto rounded bg-white p-2 mb-1 shadow-sm" id="container-moi">
                                 <div class="fs-5 fw-bold d-flex align-items-center justify-content-around gap-2">
                                     <div class="d-flex align-items-center justify-content-start w-75 gap-2">
                                         <div class="ms-1">
@@ -182,7 +192,8 @@
                                     </div>
 
                                     <div class="btn-group" role="group">
-                                        <input type="radio" class="btn-check" name="sensacion-moi" id="sensacion-moi-1" value="1">
+                                        <input type="radio" class="btn-check" name="sensacion-moi" id="sensacion-moi-1"
+                                            value="1">
                                         <label class="btn btn-outline-red badge fs-6" for="sensacion-moi-1">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-emoji-frown" viewBox="0 0 16 16">
@@ -193,7 +204,8 @@
                                             </svg>
                                         </label>
 
-                                        <input type="radio" class="btn-check" name="sensacion-moi" id="sensacion-moi-2" value="2" checked>
+                                        <input type="radio" class="btn-check" name="sensacion-moi" id="sensacion-moi-2"
+                                            value="2" checked>
                                         <label class="btn btn-outline-yellow badge fs-6" for="sensacion-moi-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-emoji-expressionless"
@@ -205,8 +217,8 @@
                                             </svg>
                                         </label>
 
-                                        <input type="radio" class="btn-check" name="sensacion-moi" id="sensacion-moi-3" value="3"
-                                            autocomplete="off">
+                                        <input type="radio" class="btn-check" name="sensacion-moi" id="sensacion-moi-3"
+                                            value="3" autocomplete="off">
                                         <label class="btn btn-outline-green badge fs-6" for="sensacion-moi-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
@@ -218,7 +230,7 @@
                                         </label>
                                     </div>
 
-                                    <div class="btn btn-light badge t-blue border fs-6 w-25" id="spread-moi">
+                                    <div class="btn btn-light badge t-blue fs-6 w-25" id="spread-moi">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd"
@@ -227,7 +239,7 @@
                                                 d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z" />
                                         </svg>
                                     </div>
-                                    <btn class="btn btn-light badge text-black border fs-6 t-red" id="reset-moi">
+                                    <btn class="btn btn-light badge text-black fs-6 t-red" id="reset-moi">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-eraser-fill" viewBox="0 0 16 16">
                                             <path
@@ -268,7 +280,7 @@
                             <div class="d-flex gap-2" id="moi-weight-container"></div>
                         </div>
                     </div>
-                    <div class="border rounded-1 p-3 mt-1 bg-white d-flex flex-column justify-content-center"
+                    <div class="rounded-1 p-3 mt-1 bg-white d-flex flex-column justify-content-center"
                         id="timer">
 
                         <div class="d-flex gap-1 justify-content-around align-items-center">
@@ -295,7 +307,7 @@
 
                     </div>
                     <div class="d-flex justify-content-around mt-4">
-                        <a class="btn btn-light border" id="video">
+                        <a class="btn btn-light border-0" id="video">
                             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="#ff0000"
                                 id="video-icon" class="bi bi-youtube" viewBox="0 0 16 16">
                                 <path
@@ -306,7 +318,7 @@
                         <div>
                             <!-- <btn class="btn btn-light border" data-bs-toggle="modal" data-bs-target="#modalSheet"
                                 id="retrieve"> -->
-                            <a class="btn btn-light border" id="retrieve">
+                            <a class="btn btn-light border-0" id="retrieve">
 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="36" fill="currentColor"
                                     class="bi bi-journal-text" viewBox="0 0 16 16">
