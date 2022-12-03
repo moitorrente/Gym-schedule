@@ -36,21 +36,11 @@ const pendingSVG = `
 const listaEjercicios = document.getElementById('exercise-list');
 const addPresetContainer = document.getElementById('add-preset-training');
 const shareBtn = document.getElementById('share-btn');
-const trainings = document.querySelectorAll('.trainings')
-trainings.forEach(training => training.classList.add('d-none'));
-
-const mesociclos = document.querySelectorAll('input[name="mesociclos"]');
-mesociclos.forEach(mesociclo => mesociclo.onclick = () => {
-    trainings.forEach(training => training.classList.add('d-none'));
-    document.getElementById(`training-${document.querySelector('input[name="mesociclos"]:checked').value}`).classList.remove('d-none');
-});
 
 getContext();
 async function getContext() {
     localStorage.removeItem('exercise-to-view');
     localStorage.removeItem('data-to-copy');
-
-
     const listaEjercicios = localStorage.getItem('listaEjercicios');
     if (!listaEjercicios) {
         const res = await getFile('exercises.json');
@@ -253,7 +243,7 @@ function json2csv(ob, datosEntrenamiento) {
     const series = ob.series || '';
     const tempo = ob.isometrico ? ob.tempo : ob.tempo.reduce((prev, curr) => prev + curr, '');
     const objetivo = ob.objetivo;
-    const mesociclo = document.querySelector('input[name="mesociclos"]:checked').value;
+    const mesociclo = 2; //TODO
     const tipo = 'Peso';
     const sensacionAitor = ob.aitorSensacion || '';
     const sensacionMoi = ob.moiSensacion || '';
