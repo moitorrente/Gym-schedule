@@ -34,7 +34,6 @@ function createYearView() {
         } else {
             day.classList.add('b-light-blue')
         }
-
         yearView.appendChild(day)
     }
 }

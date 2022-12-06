@@ -76,7 +76,6 @@ function filters(mesociclo, tipo) {
 
 function createAllCards(workouts) {
     workoutsContainer.innerHTML = '';
-    console.log(workouts)
     if (workouts.length) {
         workouts.forEach(element => {
             createCard(element.entrenamiento, element.tipo, element.ejercicios, element.mesociclo)

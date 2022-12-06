@@ -5,7 +5,6 @@ function getContext() {
     let data = localStorage.getItem('exercises-to-list');
     if (data) {
         data = JSON.parse(data);
-        console.log(data)
         exercisesContainer.innerHTML = '';
         document.getElementById('entrenamiento-nombre').innerHTML = data.nombre;
         document.getElementById('entrenamiento-mesociclo').innerHTML = data.mesociclo;

@@ -126,7 +126,6 @@ const retrieve = document.getElementById('retrieve');
 const modalBody = document.querySelector('.modal-body')
 
 retrieve.onclick = () => {
-    console.log('sss')
     localStorage.setItem('exercise-to-view', JSON.stringify({ id: current.id, copy: true }));
     retrieve.href = 'view-data.html';
 }
