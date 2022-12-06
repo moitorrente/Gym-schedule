@@ -18,8 +18,7 @@
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/style.css">
-    <script defer type="module" src="../js/workouts.js"></script>
-
+    <link rel="stylesheet" href="../css/workout-details.css">
 </head>
 
 <body style="margin-bottom: 200px; height: auto;">
@@ -33,37 +32,55 @@
                 </svg>
             </div>
             <h1 class="fw-bold m-0">Entrenamientos</h1>
-            <div class="bg-white p-2 rounded shadow-sm" style="visibility: hidden;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
-                    <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
-                  </svg>
-            </div>
-        </div>
-        <div class="mt-2 d-flex gap-2">
-
-            <select id="mesociclo-select"
-                class="w-100 shadow-sm border-0 rounded-1 form-select bg-white p-2 gap-2 d-flex align-items-center text-center justify-content-center fw-bold text-decoration-none fw-normal text-black ">
-                <option selected value="0">Mesociclo</option>
-                <option value="1">Mesociclo 1</option>
-                <option value="2">Mesociclo 2</option>
-            </select>
-            <select id="tipo-select"
-                class="w-100 shadow-sm border-0 rounded-1 form-select bg-white p-2 gap-2 d-flex align-items-center text-center justify-content-center fw-bold text-decoration-none fw-normal text-black ">
-                <option selected value="0">Tipo</option>
-                <option value="carga">Carga</option>
-                <option value="descarga">Descarga</option>
-            </select>
             <div class="bg-white p-2 rounded shadow-sm" id="clear-filters">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
-                    <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
-                  </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" fill="currentColor"
+                    class="bi bi-funnel-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                </svg>
             </div>
         </div>
     </header>
-    <div style="margin-top: 7.5rem;"></div>
-    <div class="container" id="workouts-container"></div>
+    <div style="margin-top: 5rem;"></div>
+    <div class="container" id="workouts-container">
+        <div class="bg-white list-group-item d-flex gap-2 p-3 rounded align-items-center border-0 shadow-sm mt-1 mb-2">
+            <span class="form-checked-content w-100 fs-4">
+                <div class="d-flex gap-2">
+                    <div style="white-space: nowrap;
+                text-overflow: ellipsis;
+                width: 70vw;
+                display: block;
+                overflow: hidden;" class="fs-6 align-self-center"><span>A1 </span>Press militar con barra</div>
+                </div>
+                <div class="d-flex gap-4 justify-content-center">
+                    <div class="d-flex flex-column align-items-center gap-1">
+                        <div class="grid-item fs-7 flex-fill">Serie</div>
+                        <div class="grid-item text-muted fs-7 w-100 text-center b-light-blue px-2 rounded flex-fill">1
+                        </div>
+                        <div class="grid-item text-muted fs-7 w-100 text-center b-light-blue px-2 rounded flex-fill">2
+                        </div>
+                        <div class="grid-item text-muted fs-7 w-100 text-center b-light-blue px-2 rounded flex-fill">3
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column align-items-center gap-1">
+                        <div class="grid-item fs-7">Repeticiones</div>
+                        <div class="grid-item text-muted fs-7 w-100 text-center b-light-blue px-2 rounded flex-fill">4
+                        </div>
+                        <div class="grid-item text-muted fs-7 w-100 text-center b-light-blue px-2 rounded flex-fill">6
+                        </div>
+                        <div class="grid-item text-muted fs-7 w-100 text-center b-light-blue px-2 rounded flex-fill">8
+                        </div>
+                    </div>
+                </div>
+            </span>
+        </div>
+    </div>
+
+
     <nav class="fixed-bottom justify-content-between navbar-expand-sm py-2 pb-4 white-crystal">
+
         <div class="row text-secondary">
+
             <!-- <div class="col text-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-eraser"
                     viewBox="0 0 16 16">

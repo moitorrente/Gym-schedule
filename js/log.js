@@ -46,7 +46,6 @@ function beep() {
 
 let int;
 
-
 function startTimer(duration) {
     clearInterval(int)
     var timer = duration, minutes, seconds;
@@ -127,36 +126,8 @@ const retrieve = document.getElementById('retrieve');
 const modalBody = document.querySelector('.modal-body')
 
 retrieve.onclick = () => {
-
     localStorage.setItem('exercise-to-view', JSON.stringify({ id: current.id, copy: true }));
     retrieve.href = 'view-data.html';
-    // const historic = JSON.parse(localStorage.getItem('historic'));
-    // if (historic) {
-
-    //     const lastMoiCarga = getLast(current.id, 'Moi', 'Carga');
-    //     const lastMoiDescarga = getLast(current.id, 'Moi', 'Descarga');
-    //     const lastAitorCarga = getLast(current.id, 'Aitor', 'Carga');
-    //     const lastAitorDescarga = getLast(current.id, 'Aitor', 'Descarga');
-
-    //     const textLastAitorDescarga = lastAitorDescarga ? lastAitorDescarga.Peso1 : 'N/A';
-    //     const textLastMoiDescarga = lastMoiDescarga ? lastMoiDescarga.Peso1 : 'N/A';
-    //     modalBody.innerHTML =
-
-    //         `
-    //     <div class="fw-bold">Aitor<div>
-    //     <ul class="fw-normal">
-    //         <li>Último peso carga: ${lastAitorCarga.Peso1}</li>
-    //         <li>Último peso descarga: ${textLastAitorDescarga}</li>
-    //     </ul>
-    //     <hr>
-    //     <div class="fw-bold">Moi<div>
-    //     <ul class="fw-normal">
-    //         <li>Último peso carga: ${lastMoiCarga.Peso1}</li>
-    //         <li>Último peso descarga: ${textLastMoiDescarga}</li>
-    //     </ul>
-
-    //     `
-    // }
 }
 
 const homeBtn = document.getElementById('home');
@@ -177,12 +148,7 @@ homeBtn.onclick = () => {
     if (isSeriesEmpty('aitor') && isSeriesEmpty('moi')) current.completado = null;
     localStorage.setItem('ejercicios', JSON.stringify(ejercicios));
 
-    // const newCurent = ejercicios.filter(x => x.completado !== true)[0];
-    // if (current.completado && newCurent) {
-    //     localStorage.setItem('current', newCurent.id);
-    // } else {
     homeBtn.href = '../index.html';
-    // }
 }
 
 const tempo = document.getElementById('tempo')
@@ -197,7 +163,6 @@ function loadData() {
     const fecha = current.fecha ? current.fecha.split(',')[0] : 'N/D';
     const hora = current.fecha ? current.fecha.split(',')[1] : 'N/D';
     const tipo = current.tipo ? current.tipo : 'N/D';
-
 
     document.querySelector('.accordion-body').innerHTML = `
     <div class="badge rounded-pill bg-dark">Orden: ${current.orden}</div>

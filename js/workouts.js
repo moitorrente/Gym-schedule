@@ -20,12 +20,12 @@ mesocicloSelect.onchange = () => {
     createAllCards(filters(mesocicloSelect.value, tipoSelect.value));
     if (mesocicloSelect.value != 0) {
         mesocicloSelect.classList.remove('bg-white');
-        mesocicloSelect.classList.add('b-blue', 'text-white');
+        mesocicloSelect.classList.add('b-blue', 'text-white', 'custom-select');
         clearFilters.classList.remove('bg-white');
         clearFilters.classList.add('b-blue', 'text-white');
     } else {
         mesocicloSelect.classList.add('bg-white');
-        mesocicloSelect.classList.remove('b-blue', 'text-white');
+        mesocicloSelect.classList.remove('b-blue', 'text-white', 'custom-select');
         clearFilters.classList.add('bg-white');
         clearFilters.classList.remove('b-blue', 'text-white');
     }
@@ -34,10 +34,14 @@ tipoSelect.onchange = () => {
     createAllCards(filters(mesocicloSelect.value, tipoSelect.value));
     if (tipoSelect.value != 0) {
         tipoSelect.classList.remove('bg-white');
-        tipoSelect.classList.add('b-blue', 'text-white');
+        tipoSelect.classList.add('b-blue', 'text-white', 'custom-select');
+        clearFilters.classList.remove('bg-white');
+        clearFilters.classList.add('b-blue', 'text-white');
     } else {
         tipoSelect.classList.add('bg-white');
-        tipoSelect.classList.remove('b-blue', 'text-white');
+        tipoSelect.classList.remove('b-blue', 'text-white', 'custom-select');
+        clearFilters.classList.add('bg-white');
+        clearFilters.classList.remove('b-blue', 'text-white');
     }
 }
 
@@ -109,6 +113,13 @@ function createCard(name, type, exercises, mesociclo) {
                 width: 70vw;
                 display: block;
                 overflow: hidden;" class="fs-6 align-self-center">Entrenamiento <span class="fw-bold">${name}</span></div>
+                <div>
+                    <a href=workout-details.html>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                        </svg>
+                    </a>
+                </div>
                 </div>
                 <div class="d-flex mt-2 gap-2 py-0">
                     <div class="rounded-1 ${textBacground} w-50 text-center">
