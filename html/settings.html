@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <title>Gym schedule</title>
+    <link rel="icon" type="image/x-icon" href="../icon.png">
+    <link rel='shortcut icon' type='image/x-icon' href='../icon.png' />
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script defer type="module" src="../js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body style="margin-bottom: 200px; height: auto;">
+    <header class="fixed-top b-gray container pt-4 pb-2 gap-4">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="ui-square-btn">
+                <svg onclick="history.back()" xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                    fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+                </svg>
+            </div>
+            <h1 class="fw-bold m-0">Opciones</h1>
+            <div class="ui-square-btn" id="clear-filters" style="visibility: hidden;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" fill="currentColor"
+                    class="bi bi-funnel-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                </svg>
+            </div>
+        </div>
+    </header>
+    <div style="margin-top: 5.5rem;"></div>
+    <div class="container">
+        <div class="text-muted fs-7 fw-bold ms-3">GENERAL</div>
+        <div class="bg-white mt-2 rounded-top border-0 p-2 d-flex align-items-center gap-3">
+            <div class="d-flex ms-2 bg-black feature-icon align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="white"
+                    class="bi bi-moon-stars-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+                    <path
+                        d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
+                </svg>
+            </div>
+            <div class="alig-items-center fs-6 flex-grow-1">
+                Tema
+            </div>
+            <div class="me-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-chevron-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+            </div>
+        </div>
+        <div class="bg-white border-top border-0 p-2 d-flex align-items-center gap-3" data-bs-toggle="modal"
+            data-bs-target="#modalChangelog">
+            <div class="d-flex ms-2 b-blue feature-icon align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-list-stars"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z" />
+                    <path
+                        d="M2.242 2.194a.27.27 0 0 1 .516 0l.162.53c.035.115.14.194.258.194h.551c.259 0 .37.333.164.493l-.468.363a.277.277 0 0 0-.094.3l.173.569c.078.256-.213.462-.423.3l-.417-.324a.267.267 0 0 0-.328 0l-.417.323c-.21.163-.5-.043-.423-.299l.173-.57a.277.277 0 0 0-.094-.299l-.468-.363c-.206-.16-.095-.493.164-.493h.55a.271.271 0 0 0 .259-.194l.162-.53zm0 4a.27.27 0 0 1 .516 0l.162.53c.035.115.14.194.258.194h.551c.259 0 .37.333.164.493l-.468.363a.277.277 0 0 0-.094.3l.173.569c.078.255-.213.462-.423.3l-.417-.324a.267.267 0 0 0-.328 0l-.417.323c-.21.163-.5-.043-.423-.299l.173-.57a.277.277 0 0 0-.094-.299l-.468-.363c-.206-.16-.095-.493.164-.493h.55a.271.271 0 0 0 .259-.194l.162-.53zm0 4a.27.27 0 0 1 .516 0l.162.53c.035.115.14.194.258.194h.551c.259 0 .37.333.164.493l-.468.363a.277.277 0 0 0-.094.3l.173.569c.078.255-.213.462-.423.3l-.417-.324a.267.267 0 0 0-.328 0l-.417.323c-.21.163-.5-.043-.423-.299l.173-.57a.277.277 0 0 0-.094-.299l-.468-.363c-.206-.16-.095-.493.164-.493h.55a.271.271 0 0 0 .259-.194l.162-.53z" />
+                </svg>
+            </div>
+            <div class="alig-items-center fs-6 flex-grow-1">
+                What's new
+            </div>
+            <div class="me-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-chevron-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+            </div>
+        </div>
+        <div class="bg-white rounded-bottom border-top border-1 p-2 d-flex align-items-center gap-3">
+            <div class="d-flex ms-2 b-dark-green feature-icon align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
+                    class="bi bi-database-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M3.904 1.777C4.978 1.289 6.427 1 8 1s3.022.289 4.096.777C13.125 2.245 14 2.993 14 4s-.875 1.755-1.904 2.223C11.022 6.711 9.573 7 8 7s-3.022-.289-4.096-.777C2.875 5.755 2 5.007 2 4s.875-1.755 1.904-2.223Z" />
+                    <path
+                        d="M2 6.161V7c0 1.007.875 1.755 1.904 2.223C4.978 9.71 6.427 10 8 10s3.022-.289 4.096-.777C13.125 8.755 14 8.007 14 7v-.839c-.457.432-1.004.751-1.49.972C11.278 7.693 9.682 8 8 8s-3.278-.307-4.51-.867c-.486-.22-1.033-.54-1.49-.972Z" />
+                    <path
+                        d="M2 9.161V10c0 1.007.875 1.755 1.904 2.223C4.978 12.711 6.427 13 8 13s3.022-.289 4.096-.777C13.125 11.755 14 11.007 14 10v-.839c-.457.432-1.004.751-1.49.972-1.232.56-2.828.867-4.51.867s-3.278-.307-4.51-.867c-.486-.22-1.033-.54-1.49-.972Z" />
+                    <path
+                        d="M2 12.161V13c0 1.007.875 1.755 1.904 2.223C4.978 15.711 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13v-.839c-.457.432-1.004.751-1.49.972-1.232.56-2.828.867-4.51.867s-3.278-.307-4.51-.867c-.486-.22-1.033-.54-1.49-.972Z" />
+                </svg>
+            </div>
+            <div class="alig-items-center fs-6 flex-grow-1">
+                Datos
+            </div>
+            <div class="me-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-chevron-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+            </div>
+        </div>
+
+    </div>
+    <div class="d-flex fixed-bottom mb-6">
+        <div class="mx-auto text-muted fs-7 mt-2">
+            v.0.0.12m
+        </div>
+    </div>
+    <div class="modal fade modal-tour" tabindex="-1" role="dialog" id="modalChangelog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-3 shadow" style="height: 80vh; overflow: hidden;">
+                <div class="modal-body py-0 pb-3 bg-white rounded-3 modal-dialog-scrollable"
+                    style="overflow-y: scroll;">
+                    <div class="d-flex align-items-center sticky-top p-3 bg-white">
+                        <h2 class="fw-bold mb-0 flex-grow-1">What's new</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <ul class="d-grid gap-4 mt-3 list-unstyled">
+                        <li class="d-flex gap-4">
+                            <div>
+                                <div class="mb-0 fw-bold">v.0.0.12</div>
+                                Añadido sensación al realizar ejercicio<br>
+                                Nuevo modo de visualización últimos meses<br>
+                                Nueva parametrización interna de entrenamientos desde json<br>
+                                Nueva selección de entrenamientos<br>
+                            </div>
+                        </li>
+                        <li class="d-flex gap-4">
+                            <div>
+                                <div class="mb-0 fw-bold">v.0.0.11</div>
+                                Se permite modificar el ejercicio desde edición de entrenamiento<br>
+                                Nueva consulta de histórico de pesos
+                            </div>
+                        </li>
+                        <li class="d-flex gap-4">
+                            <div>
+                                <div class="mb-0 fw-bold">v.0.0.10</div>
+                                Nuevo formato pantalla de log de ejercicio.<br>
+                                Nuevo menú en pantalla principal.<br>
+                                Nuevo estado de ejercicio iniciado pero no completado.
+                            </div>
+                        </li>
+                        <li class="d-flex gap-4">
+                            <div>
+                                <div class="mb-0 fw-bold">v.0.0.9</div>
+                                Añadida la opción de recuperar los datos de excel y mostrarlos en el log de
+                                ejercicios.<br>
+                                Nueva parametrización interna de ejercicio desde json.<br>
+                                Calendario histórico de entrenamientos.<br>
+                                Ejercicios mesociclo 2.
+                            </div>
+                        </li>
+                        <li class="d-flex gap-4">
+                            <div>
+                                <div class="mb-0 fw-bold">v.0.0.8</div>
+                                Mejorado log de ejercicio. Se incorpora los entrenamientos de carga y de
+                                descarga. <br>
+                                Mejorada la opción para compartir
+                            </div>
+                        </li>
+                        <li class="d-flex gap-4">
+                            <div>
+                                <div class="mb-0 fw-bold">v.0.0.7</div>
+                                Habilitada la opción de PWA
+                            </div>
+                        </li>
+                        <li class="d-flex gap-4">
+
+                            <div>
+                                <div class="mb-0 fw-bold">v.0.0.6</div>
+                                Opción para cargar entrenamientos predefinidos
+                            </div>
+                        </li>
+                    </ul>
+                    <button type="button" class="btn btn-lg btn-primary mt-3 w-100"
+                        data-bs-dismiss="modal">¡Entendido!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <nav class="fixed-bottom justify-content-between navbar-expand-sm py-2 pb-4 white-crystal">
+        <div class="row text-secondary">
+            <a class="col text-center text-primary" href="../index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                    class="bi bi-house-door" viewBox="0 0 16 16">
+                    <path
+                        d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+                </svg>
+            </a>
+        </div>
+    </nav>
+</body>
+
+</html>

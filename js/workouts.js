@@ -56,17 +56,15 @@ clearFilters.onclick = () => {
 
 getContext();
 async function getContext() {
-
     WORKOUTS = await getFile('workouts.json');
     WORKOUTS = WORKOUTS.data;
     mesocicloSelect.value = '2';
     tipoSelect.value = '0';
     clearFilters.classList.remove('bg-white');
     clearFilters.classList.add('b-blue', 'text-white');
-    mesocicloSelect.onchange();
     tipoSelect.onchange();
+    mesocicloSelect.onchange();
     createAllCards(filters(mesocicloSelect.value, tipoSelect.value));
-
 }
 
 function filters(mesociclo, tipo) {
