@@ -60,9 +60,11 @@ async function getContext() {
     WORKOUTS = await getFile('workouts.json');
     WORKOUTS = WORKOUTS.data;
     mesocicloSelect.value = '2';
+    tipoSelect.value = '0';
     clearFilters.classList.remove('bg-white');
     clearFilters.classList.add('b-blue', 'text-white');
     mesocicloSelect.onchange();
+    tipoSelect.onchange();
     createAllCards(filters(mesocicloSelect.value, tipoSelect.value));
 
 }
@@ -92,7 +94,7 @@ function createAllCards(workouts) {
 
 function createCard(name, type, exercises, mesociclo) {
     const iconColor = type == 'carga' ? 't-dark-green' : 't-dark-blue';
-    const textBacground = type == 'carga' ? 'b-light-green' : 'b-light-blue';
+    const textBackground = type == 'carga' ? 'b-light-green' : 'b-light-blue';
     const svg = type == 'carga' ? upSVG : downSVG;
 
     const tipo = type.charAt(0).toUpperCase() + type.slice(1);
@@ -100,6 +102,21 @@ function createCard(name, type, exercises, mesociclo) {
     const a = document.createElement('a');
     a.classList.add('bg-white', 'list-group-item', 'd-flex', 'gap-2', 'p-2', 'py-3', 'rounded', 'align-items-center', 'border-0', 'shadow-sm', 'mt-1', 'mb-2');
     a.style.height = '5.3rem';
+
+    const div = document.createElement('div');
+
+    const lista = document.createElement('a');
+    lista.id = `${name}${type}${mesociclo}`;
+
+    lista.href = 'workout-details.html';
+    lista.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="black" class="bi bi-list-ul" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+    </svg>
+    `;
+
+
+    div.appendChild(lista);
 
     const card = `
             <span class="form-checked-content w-100 fs-4">
@@ -114,23 +131,19 @@ function createCard(name, type, exercises, mesociclo) {
                 display: block;
                 overflow: hidden;" class="fs-6 align-self-center">Entrenamiento <span class="fw-bold">${name}</span></div>
                 <div>
-                    <a href=workout-details.html>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                        </svg>
-                    </a>
+                    ${div.innerHTML}
                 </div>
                 </div>
                 <div class="d-flex mt-2 gap-2 py-0">
-                    <div class="rounded-1 ${textBacground} w-50 text-center">
+                    <div class="rounded-1 ${textBackground} w-50 text-center">
                         <div class="fs-7 fw-bold">${exercises.length}</div>
                         <div class="fs-8 text-muted fw-bold">Ejercicios</div>
                     </div>
-                    <div class="rounded-1 ${textBacground} w-50 text-center">
+                    <div class="rounded-1 ${textBackground} w-50 text-center">
                         <div class="fs-7 fw-bold">${mesociclo}</div>
                         <div class="fs-8 text-muted fw-bold">Mesociclo</div>
                     </div>
-                    <div class="rounded-1 ${textBacground} w-50 align-items-center d-flex justify-content-center">
+                    <div class="rounded-1 ${textBackground} w-50 align-items-center d-flex justify-content-center">
                         <div class="fs-7 fw-bold">${tipo}</div>
                     </div>
                 </div>
@@ -141,10 +154,20 @@ function createCard(name, type, exercises, mesociclo) {
     a.onclick = () => {
         localStorage.removeItem('ejercicios');
         localStorage.removeItem('entrenamiento');
-        localStorage.setItem('entrenamiento', `{"tipo": "${tipo}", "id": "${name}"}`);
+        localStorage.setItem('entrenamiento', `{"tipo": "${tipo}", "id": "${name}", "mesociclo":"${mesociclo}"}`);
         localStorage.setItem('ejercicios', JSON.stringify(exercises));
         location.href = '../index.html';
     }
 
     workoutsContainer.append(a);
+    const data = {
+        nombre: name,
+        tipo: type,
+        mesociclo: mesociclo,
+        ejercicios: exercises
+    }
+    document.getElementById(`${name}${type}${mesociclo}`).onclick = () => {
+        localStorage.setItem('exercises-to-list', JSON.stringify(data))
+    };
+
 }

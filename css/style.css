@@ -24,6 +24,7 @@ html[data-theme='dark'] {
 html {
     height: auto;
     transition: color 300ms, background-color 300ms;
+    /* filter: invert(1) hue-rotate(180deg); */
 
 }
 
@@ -400,7 +401,7 @@ body {
 
 
 .left-ver {
-    box-shadow: inset 3px 0px 0px 0px var(--dark-green);
+    box-shadow: inset 3px 0px 0px 0px var(--blue);
 }
 
 .white-crystal {

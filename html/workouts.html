@@ -6,26 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-
     <title>Gym schedule</title>
-    <link rel="icon" type="image/x-icon" href="icon.png">
-    <link rel='shortcut icon' type='image/x-icon' href='icon.png' />
-
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-        crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="../icon.png">
+    <link rel='shortcut icon' type='image/x-icon' href='../icon.png' />
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script defer type="module" src="../js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     <script defer type="module" src="../js/workouts.js"></script>
-
 </head>
 
 <body style="margin-bottom: 200px; height: auto;">
     <header class="fixed-top b-gray container pt-4 pb-2 gap-4">
         <div class="d-flex align-items-center justify-content-between">
-            <div class="bg-white p-s rounded shadow-sm">
+            <div class="ui-square-btn">
                 <svg onclick="history.back()" xmlns="http://www.w3.org/2000/svg" width="26" height="26"
                     fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
@@ -33,14 +26,15 @@
                 </svg>
             </div>
             <h1 class="fw-bold m-0">Entrenamientos</h1>
-            <div class="bg-white p-2 rounded shadow-sm" style="visibility: hidden;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
-                    <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
-                  </svg>
+            <div class="ui-square-btn" style="visibility: hidden;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" fill="currentColor"
+                    class="bi bi-funnel-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                </svg>
             </div>
         </div>
         <div class="mt-2 d-flex gap-2">
-
             <select id="mesociclo-select"
                 class="w-100 shadow-sm border-0 rounded-1 form-select bg-white p-2 gap-2 d-flex align-items-center text-center justify-content-center fw-bold text-decoration-none fw-normal text-black ">
                 <option selected value="0">Mesociclo</option>
@@ -54,9 +48,11 @@
                 <option value="descarga">Descarga</option>
             </select>
             <div class="bg-white p-2 rounded shadow-sm" id="clear-filters">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
-                    <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
-                  </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" fill="currentColor"
+                    class="bi bi-funnel-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                </svg>
             </div>
         </div>
     </header>
