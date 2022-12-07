@@ -15,6 +15,7 @@
     --dark-green: #166534;
     --light-yellow: #fef9c3;
     --dark-yellow: #915e20;
+    --fuchsia: #e879f9;
 }
 
 html[data-theme='dark'] {
@@ -57,6 +58,12 @@ body {
 .b-gray {
     background-color: var(--gray);
 }
+.b-red {
+    background-color: var(--red);
+}
+.b-fuchsia {
+    background-color: var(--fuchsia);
+}
 
 .b-dark-gray {
     background-color: var(--dark-gray);
@@ -89,6 +96,9 @@ body {
 
 .b-light-yellow {
     background-color: var(--light-yellow);
+}
+.b-dark-yellow {
+    background-color: var(--dark-yellow);
 }
 
 .b-light-blue {

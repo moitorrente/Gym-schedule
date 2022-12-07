@@ -65,7 +65,7 @@ document.getElementById('delete').onclick = () => {
     loadExercises();
 }
 
-localStorage.setItem('current-edit', null);
+localStorage.removeItem('current-edit');
 
 loadExercises();
 
