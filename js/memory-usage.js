@@ -33,7 +33,12 @@ function storageKeys(ob) {
         keys: keys,
         size: keys.map((x, i) => parseFloat(getkB(keys[i])) + parseFloat(getkB(data[i])))
     }
-    return result;
+    const storageMap = new Map();
+    result.keys.forEach((key, i) => storageMap.set(result.keys[i], result.size[i]));
+
+    const orderedMap = new Map([...storageMap].sort((a, b) => (a[1] > b[1] ? -1 : 1)));
+
+    return orderedMap;
 }
 
 function getkB(str) {
@@ -45,19 +50,40 @@ getContext();
 
 function getContext() {
     const lsSize = localStorageSize();
+    const ssSize = sessionStorgeSize();
     document.getElementById('localStorage-memory-usage').innerHTML = `${lsSize} KB`;
     document.getElementById('localStorage-memory-keys').innerHTML = '';
     const dataLocalStorage = storageKeys(localStorage);
-    dataLocalStorage.keys.forEach((x, i) => {
-        document.getElementById('localStorage-memory-keys').append(createMemoryLabel(dataLocalStorage.keys[i], dataLocalStorage.size[i]));
+    document.getElementById('localStorage-bar').innerHTML = '';
+    let colors = ['bg-primary', 'bg-danger', 'bg-success', 'bg-info'];
+    let i = 0;
+    dataLocalStorage.forEach((value, key) => {
+        document.getElementById('localStorage-memory-keys').append(createMemoryLabel(key, value));
+        const d = document.createElement('div');
+        d.classList.add('progress-bar', colors[i]);
+        d.role = 'progressbar';
+        d.style.width = `${(value / lsSize * 100).toFixed(2)}%`;
+        i++;
+        const bar = `<div class="progress-bar" role="progressbar" aria-label="Segment one" style="width: ${(value / lsSize * 100).toFixed(2)}%"
+        aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>`;
+        document.getElementById('localStorage-bar').append(d);
     });
 
     document.getElementById('sessionStorage-memory-usage').innerHTML = `${sessionStorgeSize()} KB`;
     document.getElementById('sessionStorage-memory-keys').innerHTML = '';
     const dataSessionStorage = storageKeys(sessionStorage);
-    dataSessionStorage.keys.forEach((x, i) => {
-        document.getElementById('sessionStorage-memory-keys').append(createMemoryLabel(dataSessionStorage.keys[i], dataSessionStorage.size[i]))
-    });
+    document.getElementById('sessionStorage-bar').innerHTML = '';
+
+    dataSessionStorage.forEach((value, key) => {
+        document.getElementById('sessionStorage-memory-keys').append(createMemoryLabel(key, value));
+        const d = document.createElement('div');
+        d.classList.add('progress-bar', colors[i]);
+        d.role = 'progressbar';
+        d.style.width = `${(value / ssSize * 100).toFixed(2)}%`;
+        i++;
+        const bar = `<div class="progress-bar" role="progressbar" aria-label="Segment one" style="width: ${(value / lsSize * 100).toFixed(2)}%"
+        aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>`;
+        document.getElementById('sessionStorage-bar').append(d)    });
 }
 
 function createMemoryLabel(text, size, color) {
