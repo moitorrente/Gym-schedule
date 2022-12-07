@@ -84,10 +84,30 @@
                 </svg>
             </div>
         </div>
-        <a  href="memory-usage.html" class="text-decoration-none text-black bg-white rounded-bottom border-top border-1 p-2 d-flex align-items-center gap-3">
-            <div class="d-flex ms-2 b-dark-green feature-icon align-items-center justify-content-center">
+        <div class="bg-white border-top border-0 p-2 d-flex align-items-center gap-3" id="force-update">
+            <div class="d-flex ms-2 b-red feature-icon align-items-center justify-content-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
-                    class="bi bi-database-fill" viewBox="0 0 16 16">
+                    class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
+                </svg>
+            </div>
+            <div class="alig-items-center fs-6 flex-grow-1">
+                Forzar actualización
+            </div>
+            <div class="me-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-chevron-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+            </div>
+        </div>
+        <a href="memory-usage.html"
+            class="text-decoration-none text-black bg-white rounded-bottom border-top border-1 p-2 d-flex align-items-center gap-3">
+            <div class="d-flex ms-2 b-dark-green feature-icon align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-database-fill"
+                    viewBox="0 0 16 16">
                     <path
                         d="M3.904 1.777C4.978 1.289 6.427 1 8 1s3.022.289 4.096.777C13.125 2.245 14 2.993 14 4s-.875 1.755-1.904 2.223C11.022 6.711 9.573 7 8 7s-3.022-.289-4.096-.777C2.875 5.755 2 5.007 2 4s.875-1.755 1.904-2.223Z" />
                     <path
@@ -113,7 +133,7 @@
     </div>
     <div class="d-flex fixed-bottom mb-6">
         <div class="mx-auto text-muted fs-7 mt-2">
-            v.0.0.12q
+            v.0.0.12r
         </div>
     </div>
     <div class="modal fade modal-tour" tabindex="-1" role="dialog" id="modalChangelog">
