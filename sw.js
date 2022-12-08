@@ -1,6 +1,6 @@
 const GHPATH = '/Gym-schedule';
 const APP_PREFIX = 'Gym_schedule_';
-const VERSION = 'version_0012r';
+const VERSION = 'version_0012s';
 
 const URLS = [
   `${GHPATH}/`,
