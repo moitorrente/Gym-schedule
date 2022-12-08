@@ -1,5 +1,41 @@
 let data;
 
+function getData(id) {
+    const request = indexedDB.open('db-primary', 1);
+    request.onerror = (event) => {
+        alert.error(`Database error: ${event.target.errorCode}`)
+    }
+
+    request.onsuccess = (event) => {
+        const db = event.target.result;
+        getDataByEjercicioID(db, id);
+    }
+}
+
+function getDataByEjercicioID(db, id) {
+    const txn = db.transaction('Log', 'readonly');
+    const store = txn.objectStore('Log');
+
+    // get the index from the Object Store
+    const index = store.index('EjercicioID');
+    // query by indexes
+    let query = index.get(id);
+
+    // return the result object on success
+    query.onsuccess = (event) => {
+        console.log(query.result); // result objects
+    };
+
+    query.onerror = (event) => {
+        console.log(event.target.errorCode);
+    }
+
+    // close the database connection
+    txn.oncomplete = function () {
+        db.close();
+    };
+}
+
 function getContext() {
     const historicData = JSON.parse(localStorage.getItem('historic'));
     const raw = historicData.data.filter(x => x.Usuario == 'Moi' && x.EjercicioID == localStorage.getItem('exercise-to-view'));

@@ -12,6 +12,72 @@ let myChart4;
 let myChart5;
 
 
+function loadFromIndexedDB(storeName, id) {
+    return new Promise(
+        function (resolve, reject) {
+            var dbRequest = indexedDB.open(storeName);
+
+            dbRequest.onerror = function (event) {
+                reject(Error("Error text"));
+            };
+
+            dbRequest.onupgradeneeded = function (event) {
+                // Objectstore does not exist. Nothing to load
+                event.target.transaction.abort();
+                reject(Error('Not found'));
+            };
+
+            dbRequest.onsuccess = function (event) {
+                var database = event.target.result;
+                var transaction = database.transaction([storeName]);
+                var objectStore = transaction.objectStore(storeName);
+                var objectRequest = objectStore.get(id);
+
+                objectRequest.onerror = function (event) {
+                    reject(Error('Error text'));
+                };
+
+                objectRequest.onsuccess = function (event) {
+                    if (objectRequest.result) resolve(objectRequest.result);
+                    else reject(Error('object not found'));
+                };
+            };
+        }
+    );
+}
+
+function getData(id) {
+    return new Promise(
+        function (resolve, reject) {
+            const request = indexedDB.open('db-primary', 1);
+            request.onerror = (event) => {
+                reject(Error(`Database error: ${event.target.errorCode}`))
+            }
+            request.onsuccess = (event) => {
+                const db = event.target.result;
+                let res = [];
+                const txn = db.transaction(['Log'], 'readonly');
+                const store = txn.objectStore('Log');
+                const index = store.index('EjercicioID');
+                const keyRng = IDBKeyRange.only(id);
+                const cursorRequest = index.openCursor(keyRng, "prev");
+                cursorRequest.onsuccess = e => {
+                    const cursor = e.target.result;
+                    if (cursor) {
+                        res.push(cursor.value);
+                        cursor.continue();
+                    }
+                }
+                txn.oncomplete = function () {
+                    db.close();
+                    resolve(res)
+
+                };
+            }
+        }
+    )
+}
+
 getContext();
 function getContext() {
     const listaEjercicios = JSON.parse(localStorage.getItem('listaEjercicios'));
@@ -23,7 +89,7 @@ function getContext() {
     });
 
 
-    if (exerciseToView && historicData) {
+    if (exerciseToView) {
         ejercicioSelect.value = parseInt(exerciseToView.id);
         createAllCards(exerciseToView.id)
     }
@@ -112,16 +178,21 @@ function find(items, text) {
 function createAllCards(id) {
     const container = document.getElementById('historic-list');
     container.innerHTML = '';
-    const selectedMoi = [...historicData.data.filter(x => x.EjercicioID == id && x.Usuario == 'Moi')].sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
-    const selectedAitor = [...historicData.data.filter(x => x.EjercicioID == id && x.Usuario == 'Aitor')].sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
 
-    document.getElementById('found-items').innerHTML = selectedMoi.length;
-    selectedMoi.forEach((x, i) => createCard(selectedMoi[i], selectedAitor[i], i));
+    getData(id).then(function (reponse) {
+        const selectedMoi = reponse.filter(x => x.EjercicioID == id && x.Usuario == 'Moi').sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
+        const selectedAitor = reponse.filter(x => x.EjercicioID == id && x.Usuario == 'Aitor').sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
 
-    //TODO corregir que haya ejercicio en uno y no en el otro
-    document.getElementById('chart-serie-selector').classList.remove('d-none');
-    chart(id, 1);
-    document.querySelectorAll('input[name="btnradio"]').forEach(x => x.onclick = () => chart(id, document.querySelector('input[name="btnradio"]:checked').value))
+        document.getElementById('found-items').innerHTML = selectedMoi.length;
+        selectedMoi.forEach((x, i) => createCard(selectedMoi[i], selectedAitor[i], i));
+        //TODO corregir que haya ejercicio en uno y no en el otro
+        document.getElementById('chart-serie-selector').classList.remove('d-none');
+        chart(id, 1);
+        document.querySelectorAll('input[name="btnradio"]').forEach(x => x.onclick = () => chart(id, document.querySelector('input[name="btnradio"]:checked').value))
+    }).catch(function (error) {
+        alert(error.message);
+    });
+
 }
 
 function convertToDate(dateString) {
@@ -391,7 +462,7 @@ function chart(id, serie) {
         case 5:
             generateChart(data5);
             break;
-    
+
         default:
             break;
     }

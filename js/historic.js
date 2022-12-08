@@ -107,6 +107,9 @@ function init() {
             document.querySelector('.bi-arrow-clockwise').classList.remove('rotating');
             localStorage.removeItem('historic');
             localStorage.setItem('historic', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: data }));
+            createIndexedDB();
+            clearIndexedDB();
+            loadIndexedDB(data);
             bsOkToast.show();
             getContext();
         }
@@ -162,11 +165,103 @@ function updateLastExerciseCard(date) {
     }
 }
 
-
-
 //------------------------------------
 let okToast = document.getElementById('okToast');
 let koToast = document.getElementById('koToast');
 let bsOkToast = new bootstrap.Toast(okToast);
 let bsKoToast = new bootstrap.Toast(koToast);
+//------------------------------------
 
+function createIndexedDB() {
+    if (!window.indexedDB) {
+        alert.log(`Your browser doesn't support IndexedDB`);
+        return;
+    }
+
+    const request = indexedDB.open('db-primary', 1);
+    request.onerror = (event) => {
+        alert.error(`Database error: ${event.target.errorCode}`);
+    };
+
+    request.onsuccess = (event) => {
+        const db = event.target.result;
+        console.log('Open ok')
+    };
+
+    request.onupgradeneeded = (event) => {
+        let db = event.target.result;
+
+        let store = db.createObjectStore('Log', {
+            autoIncrement: true
+        });
+
+        // create indexes
+        store.createIndex('Fecha', 'Fecha', { unique: false });
+        store.createIndex('EjercicioID', 'EjercicioID', { unique: false });
+    };
+};
+
+function loadIndexedDB(data) {
+    const request = indexedDB.open('db-primary', 1);
+    request.onerror = (event) => {
+        alert.error(`Database error: ${event.target.errorCode}`)
+    }
+
+    request.onsuccess = (event) => {
+        const db = event.target.result;
+        data.forEach(reg => insertLog(db, reg))
+    }
+}
+
+function clearIndexedDB() {
+    const request = indexedDB.open('db-primary', 1);
+    request.onerror = (event) => {
+        alert.error(`Database error: ${event.target.errorCode}`)
+    }
+
+    request.onsuccess = (event) => {
+        const db = event.target.result;
+        clearDB(db);
+    }
+}
+
+function insertLog(db, log) {
+    // create a new transaction
+    const txn = db.transaction('Log', 'readwrite');
+
+    // get the Contacts object store
+    const store = txn.objectStore('Log');
+    //
+    let query = store.put(log);
+
+    // handle success case
+    query.onsuccess = function (event) {
+        // console.log(event);
+    };
+
+    // handle the error case
+    query.onerror = function (event) {
+        console.log(event.target.errorCode);
+    }
+
+    // close the database once the 
+    // transaction completes
+    txn.oncomplete = function () {
+        db.close();
+    };
+}
+
+function clearDB(db) {
+    const txn = db.transaction('Log', 'readwrite');
+    const store = txn.objectStore('Log');
+    let query = store.clear();
+    query.onsuccess = function (event) {
+        console.log('Registros eliminados correctamente');
+    }
+    query.onerror = function (event) {
+        console.log(event.target.errorCode);
+    }
+    txn.oncomplete = function () {
+        db.close();
+    };
+}
