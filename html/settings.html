@@ -131,9 +131,25 @@
         </a>
 
     </div>
+    <div id="okToast"
+        class="toast position-fixed align-items-center text-white b-dark-green bottom-0 start-50 translate-middle mb-5"
+        role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body fw-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                    class="bi bi-check-lg" viewBox="0 0 16 16">
+                    <path
+                        d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
+                </svg>
+                ¡Datos recuperados correctamente!
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+    </div>
     <div class="d-flex fixed-bottom mb-6">
         <div class="mx-auto text-muted fs-7 mt-2">
-            v.0.0.12t
+            v.0.0.13
         </div>
     </div>
     <div class="modal fade modal-tour" tabindex="-1" role="dialog" id="modalChangelog">

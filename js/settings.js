@@ -4,7 +4,9 @@ const forceReload = () => {
         .then((registrations) =>
             Promise.all(registrations.map((r) => r.unregister())),
         )
-        .then(() => window.location.reload());
+        .then(() => {
+            window.location.reload();
+        });
 }
 
 
