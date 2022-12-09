@@ -6,13 +6,15 @@ async function checkUpdate() {
     console.log(localVersion.data.version, githubVersion.version,)
     if (localVersion.data.version != githubVersion.version) {
         console.log('Hay update')
-    }else{
+    } else {
         console.log('NO hay update')
     }
 }
 
-function forceReload() {
-    console.log('pasa opor force')
+async function forceReload() {
+
+    (await caches.keys()).forEach(c => caches.delete(c))
+
     navigator.serviceWorker
         .getRegistrations()
         .then((registrations) =>
