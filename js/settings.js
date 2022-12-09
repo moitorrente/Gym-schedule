@@ -3,8 +3,12 @@ checkUpdate();
 async function checkUpdate() {
     const localVersion = await getFile('version.json');
     const githubVersion = await getgit('moitorrente', 'Gym-schedule', 'data/version.json');
-    console.log(localVersion.version, githubVersion.version)
-    if (localVersion.version !== githubVersion.version) console.log('Hay update')
+    console.log(localVersion.data.version, githubVersion.version,)
+    if (localVersion.data.version != githubVersion.version) {
+        console.log('Hay update')
+    }else{
+        console.log('NO hay update')
+    }
 }
 
 function forceReload() {
@@ -40,5 +44,3 @@ async function getgit(owner, repo, path) {
     console.log(data)
     return data;
 }
-
-getgit('moitorrente', 'Gym-schedule', 'data/version.json')
