@@ -41,7 +41,7 @@ function storageKeys(ob) {
 }
 
 function getkB(str) {
-    return parseFloat((str.length * 2 / 1024)).toFixed(2);
+    return parseFloat((str.length * 2)).toFixed(2);
 }
 
 getContext();
@@ -58,12 +58,14 @@ function getContext() {
     if (navigator.storage) {
         navigator.storage.estimate().then((estimate) => {
             console.log(estimate, (estimate.usage / 1000 / 1000).toFixed(2), estimate.quota / 1000 / 1000);
+            document.getElementById('usage-bar').innerHTML = '';
+            document.getElementById('usage-memory-keys').innerHTML = '';
 
             document.getElementById('usage-memory-usage').innerHTML = `${((estimate.usage / 1000 / 1000)).toFixed(2)} MB / ${((estimate.quota / 1000 / 1000)).toFixed(2)} MB - ${((estimate.usage) / estimate.quota * 100).toFixed(2)}%`;
             i = 0;
             for (property in estimate.usageDetails) {
                 console.log(property, estimate.usageDetails[property])
-                document.getElementById('usage-memory-keys').append(createMemoryLabel(property, (estimate.usageDetails[property] / 1000 / 1000).toFixed(2), colors[i], 'MB'));
+                document.getElementById('usage-memory-keys').append(createMemoryLabel(property, (estimate.usageDetails[property]).toFixed(2), colors[i], 'MB'));
                 const d = document.createElement('div');
                 d.classList.add('progress-bar', colors[i]);
                 d.role = 'progressbar';
@@ -98,7 +100,7 @@ function getContext() {
         document.getElementById('localStorage-bar').append(d);
     });
 
-    document.getElementById('sessionStorage-memory-usage').innerHTML = `${sessionStorgeSize()} KB`;
+    document.getElementById('sessionStorage-memory-usage').innerHTML = `${sessionStorgeSize()} kB`;
     document.getElementById('sessionStorage-memory-keys').innerHTML = '';
     const dataSessionStorage = storageKeys(sessionStorage);
     document.getElementById('sessionStorage-bar').innerHTML = '';
@@ -117,7 +119,19 @@ function getContext() {
     });
 }
 
-function createMemoryLabel(text, size, color, unit) {
+function createMemoryLabel(text, size, color) {
+    let unit;
+    if (size > 1000000) {
+        size = size / 1000000;
+        unit = 'MB'
+    } else if (size > 1000) {
+        size = size / 1000;
+        unit = 'kB';
+    } else {
+        unit = 'B';
+    }
+
+    size = parseFloat(size).toFixed(2);
     const d = document.createElement('div');
     d.classList.add('text-muted', 'fs-7', 'd-flex', 'gap-2');
     const dText = document.createElement('div');
