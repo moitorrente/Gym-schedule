@@ -1,13 +1,14 @@
 import getFile from './data.js';
 checkUpdate();
-async function checkUpdate(){
+async function checkUpdate() {
     const localVersion = await getFile('version.json');
-    const githubVersion = await getgit('moitorrente','Gym-schedule', 'data/version.json');
-
-    if(localVersion.version !== githubVersion.version) console.log('Hay update')
+    const githubVersion = await getgit('moitorrente', 'Gym-schedule', 'data/version.json');
+    console.log(localVersion.version, githubVersion.version)
+    if (localVersion.version !== githubVersion.version) console.log('Hay update')
 }
 
-const forceReload = () => {
+function forceReload() {
+    console.log('pasa opor force')
     navigator.serviceWorker
         .getRegistrations()
         .then((registrations) =>
@@ -40,4 +41,4 @@ async function getgit(owner, repo, path) {
     return data;
 }
 
-getgit('moitorrente','Gym-schedule', 'data/version.json')
+getgit('moitorrente', 'Gym-schedule', 'data/version.json')
