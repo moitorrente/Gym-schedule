@@ -58,19 +58,23 @@ function getContext() {
     if (navigator.storage) {
         navigator.storage.estimate().then((estimate) => {
             console.log(estimate, (estimate.usage / 1000 / 1000).toFixed(2), estimate.quota / 1000 / 1000);
-            const d = document.createElement('div');
-            d.classList.add('progress-bar', colors[i]);
-            d.role = 'progressbar';
-            d.style.width = `${((estimate.usage) / estimate.quota * 100).toFixed(2)}%`;
 
-            const bar = `<div class="progress-bar" role="progressbar" aria-label="Segment one" 
+            document.getElementById('usage-memory-usage').innerHTML = `${((estimate.usage / 1000 / 1000)).toFixed(2)} MB / ${((estimate.quota / 1000 / 1000)).toFixed(2)} MB - ${((estimate.usage) / estimate.quota * 100).toFixed(2)}%`;
+            i = 0;
+            for (property in estimate.usageDetails) {
+                console.log(property, estimate.usageDetails[property])
+                document.getElementById('usage-memory-keys').append(createMemoryLabel(property, (estimate.usageDetails[property] / 1000 / 1000).toFixed(2), colors[i], 'MB'));
+                const d = document.createElement('div');
+                d.classList.add('progress-bar', colors[i]);
+                d.role = 'progressbar';
+                d.style.width = `${(estimate.usageDetails[property] * 100 / estimate.usage).toFixed(2)}%`;
+                i++;
+                console.log((estimate.usageDetails[property] / estimate.usage).toFixed(2))
+                if (i > colors.length) i = 0;
+                const bar = `<div class="progress-bar" role="progressbar" aria-label="Segment one"
         aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>`;
-            document.getElementById('usage-bar').append(d);
-            document.getElementById('usage-memory-usage').innerHTML = `${((estimate.usage / 1000 / 1000)).toFixed(2)} / ${((estimate.quota / 1000 / 1000)).toFixed(2)} MB`;
-
-            console.log((estimate.usage / estimate.quota * 100).toFixed(2))
-            // document.getElementById("percent").value =
-            //     (estimate.usage / estimate.quota * 100).toFixed(2);
+                document.getElementById('usage-bar').append(d);
+            }
         });
     } else {
         document.getElementById('usage-top').classList.add('d-none');
@@ -82,7 +86,7 @@ function getContext() {
 
 
     dataLocalStorage.forEach((value, key) => {
-        document.getElementById('localStorage-memory-keys').append(createMemoryLabel(key, value, colors[i]));
+        document.getElementById('localStorage-memory-keys').append(createMemoryLabel(key, value, colors[i], 'KB'));
         const d = document.createElement('div');
         d.classList.add('progress-bar', colors[i]);
         d.role = 'progressbar';
@@ -100,7 +104,7 @@ function getContext() {
     document.getElementById('sessionStorage-bar').innerHTML = '';
     i = 0;
     dataSessionStorage.forEach((value, key) => {
-        document.getElementById('sessionStorage-memory-keys').append(createMemoryLabel(key, value, colors[i]));
+        document.getElementById('sessionStorage-memory-keys').append(createMemoryLabel(key, value, colors[i], 'KB'));
         const d = document.createElement('div');
         d.classList.add('progress-bar', colors[i]);
         d.role = 'progressbar';
@@ -113,13 +117,13 @@ function getContext() {
     });
 }
 
-function createMemoryLabel(text, size, color) {
+function createMemoryLabel(text, size, color, unit) {
     const d = document.createElement('div');
     d.classList.add('text-muted', 'fs-7', 'd-flex', 'gap-2');
     const dText = document.createElement('div');
     dText.classList.add('flex-grow-1');
     const dSize = document.createElement('div');
-    dSize.innerHTML = `${size} KB`
+    dSize.innerHTML = `${size} ${unit}`
     d.innerHTML = `<span class="d-flex align-self-center ${color} rounded-circle p-1" style="width: .5rem; height: .5rem"></span>${text}`;
 
     d.append(dText);
