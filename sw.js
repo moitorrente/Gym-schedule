@@ -28,6 +28,7 @@ const URLS = [
   `${GHPATH}/js/memory-usage.js`,
   `${GHPATH}/js/bootstrap.bundle.min.js`,
   `${GHPATH}/data/exercises.json`,
+  `${GHPATH}/data/version.json`,
   `${GHPATH}/data/workouts.json`
 ]
 
