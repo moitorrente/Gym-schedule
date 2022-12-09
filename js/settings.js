@@ -1,3 +1,12 @@
+import getFile from './data.js';
+checkUpdate();
+async function checkUpdate(){
+    const localVersion = await getFile('version.json');
+    const githubVersion = await getgit('moitorrente','Gym-schedule', 'data/version.json');
+
+    if(localVersion.version !== githubVersion.version) console.log('Hay update')
+}
+
 const forceReload = () => {
     navigator.serviceWorker
         .getRegistrations()
@@ -11,3 +20,24 @@ const forceReload = () => {
 
 
 document.getElementById('force-update').onclick = () => forceReload();
+
+
+async function getgit(owner, repo, path) {
+    // A function to fetch files from github using the api 
+
+    let data = await fetch(
+        `https://api.github.com/repos/${owner}/${repo}/contents/${path}`
+    )
+        .then(d => d.json())
+        .then(d =>
+            fetch(
+                `https://api.github.com/repos/${owner}/${repo}/git/blobs/${d.sha}`
+            )
+        )
+        .then(d => d.json())
+        .then(d => JSON.parse(atob(d.content)));
+    console.log(data)
+    return data;
+}
+
+getgit('moitorrente','Gym-schedule', 'data/version.json')
