@@ -173,7 +173,14 @@ let bsKoToast = new bootstrap.Toast(koToast);
 //------------------------------------
 
 function createIndexedDB() {
-    if (!window.indexedDB) {
+    const indexedDB =
+        window.indexedDB ||
+        window.mozIndexedDB ||
+        window.webkitIndexedDB ||
+        window.msIndexedDB ||
+        window.shimIndexedDB;
+
+    if (!indexedDB) {
         alert.log(`Your browser doesn't support IndexedDB`);
         return;
     }

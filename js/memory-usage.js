@@ -44,7 +44,6 @@ function getkB(str) {
     return parseFloat((str.length * 2 / 1024)).toFixed(2);
 }
 
-
 getContext();
 function getContext() {
     const lsSize = localStorageSize();
@@ -55,6 +54,33 @@ function getContext() {
     document.getElementById('localStorage-bar').innerHTML = '';
     let colors = ['b-blue', 'b-fuchsia', 'b-dark-yellow', 'b-teal', 'b-red', 'b-light-green'];
     let i = 0;
+
+    if (navigator.storage) {
+        navigator.storage.estimate().then((estimate) => {
+            console.log(estimate, (estimate.usage / 1000 / 1000).toFixed(2), estimate.quota / 1000 / 1000);
+            const d = document.createElement('div');
+            d.classList.add('progress-bar', colors[i]);
+            d.role = 'progressbar';
+            d.style.width = `${((estimate.usage) / estimate.quota * 100).toFixed(2)}%`;
+
+            const bar = `<div class="progress-bar" role="progressbar" aria-label="Segment one" 
+        aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>`;
+            document.getElementById('usage-bar').append(d);
+            document.getElementById('usage-memory-usage').innerHTML = `${((estimate.usage / 1000 / 1000)).toFixed(2)} / ${((estimate.quota / 1000 / 1000)).toFixed(2)} MB`;
+
+            console.log((estimate.usage / estimate.quota * 100).toFixed(2))
+            // document.getElementById("percent").value =
+            //     (estimate.usage / estimate.quota * 100).toFixed(2);
+        });
+    } else {
+        document.getElementById('usage-top').classList.add('d-none');
+    }
+
+
+
+
+
+
     dataLocalStorage.forEach((value, key) => {
         document.getElementById('localStorage-memory-keys').append(createMemoryLabel(key, value, colors[i]));
         const d = document.createElement('div');
@@ -62,8 +88,8 @@ function getContext() {
         d.role = 'progressbar';
         d.style.width = `${(value / lsSize * 100).toFixed(2)}%`;
         i++;
-        if(i > colors.length) i = 0;
-        const bar = `<div class="progress-bar" role="progressbar" aria-label="Segment one" style="width: ${(value / lsSize * 100).toFixed(2)}%"
+        if (i > colors.length) i = 0;
+        const bar = `<div class="progress-bar" role="progressbar" aria-label="Segment one"
         aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>`;
         document.getElementById('localStorage-bar').append(d);
     });
@@ -80,7 +106,7 @@ function getContext() {
         d.role = 'progressbar';
         d.style.width = `${(value / ssSize * 100).toFixed(2)}%`;
         i++;
-        if(i > colors.length) i = 0;
+        if (i > colors.length) i = 0;
         const bar = `<div class="progress-bar" role="progressbar" aria-label="Segment one" style="width: ${(value / lsSize * 100).toFixed(2)}%"
         aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>`;
         document.getElementById('sessionStorage-bar').append(d);

@@ -13,6 +13,17 @@ let myChart5;
 
 
 function loadFromIndexedDB(storeName, id) {
+    const indexedDB =
+        window.indexedDB ||
+        window.mozIndexedDB ||
+        window.webkitIndexedDB ||
+        window.msIndexedDB ||
+        window.shimIndexedDB;
+
+    if (!indexedDB) {
+        alert.log(`Your browser doesn't support IndexedDB`);
+        return;
+    }
     return new Promise(
         function (resolve, reject) {
             var dbRequest = indexedDB.open(storeName);
