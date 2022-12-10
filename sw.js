@@ -52,10 +52,6 @@ self.addEventListener('install', async function (e) {
   e.waitUntil(
     caches.open(CACHE_NAME).then(async function (cache) {
       console.log('Installing cache : ' + CACHE_NAME);
-      const localVersion = await getFile('version.json');
-      localStorage.setItem('version', localVersion.data.version);
-      console.log('Version local: ', localVersion.data.version)
-
       return cache.addAll(URLS)
     })
   )

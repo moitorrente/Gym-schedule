@@ -1,6 +1,7 @@
 import getFile from './data.js';
 checkUpdate();
 async function checkUpdate() {
+    const localVersion = await getFile('version.json');
     const githubVersion = await getgit('moitorrente', 'Gym-schedule', 'data/version.json');
     console.log(localVersion.data.version, githubVersion.version,)
     if (localVersion.data.version != githubVersion.version) {

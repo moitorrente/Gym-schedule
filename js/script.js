@@ -50,6 +50,9 @@ async function getContext() {
             alert(`Error: ${res.error}`);
         }
     }
+    const localVersion = await getFile('version.json');
+    localStorage.setItem('version', localVersion.data.version);
+    console.log('Version local: ', localVersion.data.version)
 }
 
 document.getElementById('order').onclick = () => {
