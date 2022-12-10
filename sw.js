@@ -50,6 +50,7 @@ self.addEventListener('fetch', function (e) {
 })
 
 self.addEventListener('install', function (e) {
+  skipWaiting();
   e.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
       console.log('Installing cache : ' + CACHE_NAME);
