@@ -48,7 +48,7 @@ getContext();
 function getContext() {
     const lsSize = localStorageSize();
     const ssSize = sessionStorgeSize();
-    document.getElementById('localStorage-memory-usage').innerHTML = `${lsSize} kB`;
+    document.getElementById('localStorage-memory-usage').innerHTML = `${lsSize} kB moi`;
     document.getElementById('localStorage-memory-keys').innerHTML = '';
     const dataLocalStorage = storageKeys(localStorage);
     document.getElementById('localStorage-bar').innerHTML = '';
