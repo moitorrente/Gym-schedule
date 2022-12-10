@@ -21,6 +21,7 @@ const URLS = [
   `${GHPATH}/html/historic.html`,
   `${GHPATH}/js/historic.js`,
   `${GHPATH}/js/workouts.js`,
+  `${GHPATH}/js/settings.js`,
   `${GHPATH}/js/calendar.js`,
   `${GHPATH}/js/view-data.js`,
   `${GHPATH}/js/chart.js`,
@@ -60,9 +61,15 @@ self.addEventListener('install', async function (e) {
 self.addEventListener('activate', function (e) {
   e.waitUntil(
     caches.keys().then(function (keyList) {
+      var cacheWhitelist = keyList.filter(function (key) {
+        return key.indexOf(APP_PREFIX)
+      })
+      cacheWhitelist.push(CACHE_NAME);
       return Promise.all(keyList.map(function (key, i) {
-        console.log('Deleting cache : ' + keyList[i]);
-        return caches.delete(keyList[i])
+        if (cacheWhitelist.indexOf(key) === -1) {
+          console.log('Deleting cache : ' + keyList[i]);
+          return caches.delete(keyList[i])
+        }
       }))
     })
   )
