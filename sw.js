@@ -34,20 +34,58 @@ const URLS = [
 ]
 
 var CACHE_NAME = APP_PREFIX + VERSION;
+//Cache first
+// self.addEventListener('fetch', function (e) {
+//   console.log('Fetch request : ' + e.request.url);
+//   e.respondWith(
+//     caches.match(e.request).then(function (request) {
+//       if (request) {
+//         console.log('Responding with cache : ' + e.request.url);
+//         return request
+//       } else {
+//         console.log('File is not cached, fetching : ' + e.request.url);
+//         return fetch(e.request)
+//       }
+//     })
+//   )
+// })
+
+
 self.addEventListener('fetch', function (e) {
   console.log('Fetch request : ' + e.request.url);
   e.respondWith(
-    caches.match(e.request, { ignoreSearch: true }).then(function (request) {
-      if (request) {
-        console.log('Responding with cache : ' + e.request.url);
-        return request
-      } else {
+    fetch(e.request)
+      .then(async (networkResponse) => {
+        const cache = await caches.open(currentCache);
+        cache.put(e.request, networkResponse.clone());
         console.log('File is not cached, fetching : ' + e.request.url);
-        return fetch(e.request)
-      }
-    })
+
+        return networkResponse;
+      })
+      .catch(() => {
+        console.log('Responding with cache : ' + e.request.url);
+
+        return caches.match(e.request);
+      })
   )
 })
+
+
+// const networkFirst = (event) => {
+//   event.respondWith(
+//     fetch(event.request)
+//       .then((networkResponse) => {
+//         return caches.open(currentCache).then((cache) => {
+//           cache.put(event.request, networkResponse.clone());
+//           return networkResponse;
+//         })
+//       })
+//       .catch(() => {
+//         return caches.match(event.request);
+//       })
+//   )
+// };
+
 
 self.addEventListener('install', function (e) {
   e.waitUntil(
