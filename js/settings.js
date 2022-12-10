@@ -5,16 +5,16 @@ async function getVersion() {
     document.getElementById('version-text').innerHTML = localVersion.data.version;
 }
 
-async function forceReload() {
-    (await caches.keys()).forEach(c => caches.delete(c))
-    navigator.serviceWorker
-        .getRegistrations()
-        .then((registrations) =>
-            Promise.all(registrations.map((r) => r.unregister())),
-        )
-        .then(() => {
-            window.location.reload(true);
-        });
-}
+// async function forceReload() {
+//     (await caches.keys()).forEach(c => caches.delete(c))
+//     navigator.serviceWorker
+//         .getRegistrations()
+//         .then((registrations) =>
+//             Promise.all(registrations.map((r) => r.unregister())),
+//         )
+//         .then(() => {
+//             window.location.reload(true);
+//         });
+// }
 
-document.getElementById('force-update').onclick = () => forceReload();
+// document.getElementById('force-update').onclick = () => forceReload();
