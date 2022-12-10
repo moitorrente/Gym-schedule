@@ -55,7 +55,7 @@ function getContext() {
     let colors = ['b-blue', 'b-fuchsia', 'b-dark-yellow', 'b-teal', 'b-red', 'b-light-green'];
     let i = 0;
 
-    if (navigator.storage) {
+    if ('storage' in navigator && 'estimate' in navigator.storage) {
         navigator.storage.estimate().then((estimate) => {
             console.log(estimate, (estimate.usage / 1000 / 1000).toFixed(2), estimate.quota / 1000 / 1000);
             document.getElementById('usage-bar').innerHTML = '';
@@ -74,7 +74,7 @@ function getContext() {
                 console.log((estimate.usageDetails[property] / estimate.usage).toFixed(2))
                 if (i > colors.length) i = 0;
                 const bar = `<div class="progress-bar" role="progressbar" aria-label="Segment one"
-        aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>`;
+                                    aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>`;
                 document.getElementById('usage-bar').append(d);
             }
         });

@@ -33,7 +33,7 @@ const URLS = [
   `${GHPATH}/data/workouts.json`
 ]
 
-var CACHE_NAME = APP_PREFIX + VERSION
+var CACHE_NAME = APP_PREFIX + VERSION;
 self.addEventListener('fetch', function (e) {
   console.log('Fetch request : ' + e.request.url);
   e.respondWith(
@@ -50,7 +50,6 @@ self.addEventListener('fetch', function (e) {
 })
 
 self.addEventListener('install', function (e) {
-  skipWaiting();
   e.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
       console.log('Installing cache : ' + CACHE_NAME);
