@@ -56,7 +56,7 @@ self.addEventListener('fetch', function (e) {
   e.respondWith(
     fetch(e.request)
       .then(async (networkResponse) => {
-        const cache = await caches.open(currentCache);
+        const cache = await caches.open(CACHE_NAME);
         cache.put(e.request, networkResponse.clone());
         console.log('File is not cached, fetching : ' + e.request.url);
 
