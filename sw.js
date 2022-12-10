@@ -50,41 +50,43 @@ var CACHE_NAME = APP_PREFIX + VERSION;
 //   )
 // })
 
+// fetch the resource from the network
+const fromNetwork = (request, timeout) =>
+  new Promise((fulfill, reject) => {
+    const timeoutId = setTimeout(reject, timeout);
+    fetch(request).then(response => {
+      clearTimeout(timeoutId);
+      fulfill(response);
+      update(request);
+    }, reject);
+  });
 
-self.addEventListener('fetch', function (e) {
-  console.log('Fetch request : ' + e.request.url);
-  e.respondWith(
-    fetch(e.request)
-      .then(async (networkResponse) => {
-        const cache = await caches.open(CACHE_NAME);
-        cache.put(e.request, networkResponse.clone());
-        console.log('File is not cached, fetching : ' + e.request.url);
+// fetch the resource from the browser cache
+const fromCache = request =>
+  caches
+    .open(CACHE_NAME)
+    .then(cache =>
+      cache
+        .match(request)
+        .then(matching => matching || cache.match('/offline/'))
+    );
 
-        return networkResponse;
-      })
-      .catch(() => {
-        console.log('Responding with cache : ' + e.request.url);
+// cache the current page to make it available for offline
+const update = request =>
+  caches
+    .open(CACHE_NAME)
+    .then(cache =>
+      fetch(request).then(response => cache.put(request, response))
+    );
 
-        return caches.match(e.request);
-      })
-  )
-})
-
-
-// const networkFirst = (event) => {
-//   event.respondWith(
-//     fetch(event.request)
-//       .then((networkResponse) => {
-//         return caches.open(currentCache).then((cache) => {
-//           cache.put(event.request, networkResponse.clone());
-//           return networkResponse;
-//         })
-//       })
-//       .catch(() => {
-//         return caches.match(event.request);
-//       })
-//   )
-// };
+// general strategy when making a request (eg if online try to fetch it
+// from the network with a timeout, if something fails serve from cache)
+self.addEventListener('fetch', evt => {
+  evt.respondWith(
+    fromNetwork(evt.request, 1000).catch(() => fromCache(evt.request))
+  );
+  evt.waitUntil(update(evt.request));
+});
 
 
 self.addEventListener('install', function (e) {
