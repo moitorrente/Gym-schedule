@@ -48,7 +48,7 @@ getContext();
 function getContext() {
     const lsSize = localStorageSize();
     const ssSize = sessionStorgeSize();
-    document.getElementById('localStorage-memory-usage').innerHTML = `${lsSize} KB`;
+    document.getElementById('localStorage-memory-usage').innerHTML = `${lsSize} kB`;
     document.getElementById('localStorage-memory-keys').innerHTML = '';
     const dataLocalStorage = storageKeys(localStorage);
     document.getElementById('localStorage-bar').innerHTML = '';
@@ -106,7 +106,7 @@ function getContext() {
     document.getElementById('sessionStorage-bar').innerHTML = '';
     i = 0;
     dataSessionStorage.forEach((value, key) => {
-        document.getElementById('sessionStorage-memory-keys').append(createMemoryLabel(key, value, colors[i], 'KB'));
+        document.getElementById('sessionStorage-memory-keys').append(createMemoryLabel(key, value, colors[i], 'kB'));
         const d = document.createElement('div');
         d.classList.add('progress-bar', colors[i]);
         d.role = 'progressbar';
