@@ -21,7 +21,7 @@ async function forceReload() {
             Promise.all(registrations.map((r) => r.unregister())),
         )
         .then(() => {
-            window.location.reload();
+            window.location.reload(true);
         });
 }
 

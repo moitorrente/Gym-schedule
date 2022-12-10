@@ -21,7 +21,6 @@ const URLS = [
   `${GHPATH}/html/historic.html`,
   `${GHPATH}/js/historic.js`,
   `${GHPATH}/js/workouts.js`,
-  `${GHPATH}/js/settings.js`,
   `${GHPATH}/js/calendar.js`,
   `${GHPATH}/js/view-data.js`,
   `${GHPATH}/js/chart.js`,
@@ -49,9 +48,9 @@ self.addEventListener('fetch', function (e) {
   )
 })
 
-self.addEventListener('install', async function (e) {
+self.addEventListener('install', function (e) {
   e.waitUntil(
-    caches.open(CACHE_NAME).then(async function (cache) {
+    caches.open(CACHE_NAME).then(function (cache) {
       console.log('Installing cache : ' + CACHE_NAME);
       return cache.addAll(URLS)
     })
