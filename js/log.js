@@ -92,11 +92,35 @@ function startTimer(duration) {
 
 const spreadMoi = document.getElementById('spread-moi');
 const resetMoi = document.getElementById('reset-moi');
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    let title = localStorage.getItem("theme");
+    if (title) setActiveStyleSheet(title);
+});
+function setActiveStyleSheet(title) {
+    /* Grab a list of all alternate style sheets */
+    let css = `link[rel="alternate stylesheet"]`;
+    let stylesheets = document.querySelectorAll(css);
+    /* Walk all alternate style sheets and disable them */
+    stylesheets.forEach(sheet => sheet.disabled = true);
+    /* Select style sheet we want to "turn on" */
+    let selector = `link[title="${title}"]`;
+    let stylesheet = document.querySelector(selector);
+    /* Enable the style sheet */
+    stylesheet.disabled = false;
+    localStorage.setItem("theme", title);
+}
+
+
 spreadMoi.onclick = () => {
     const pesosMoi = [...document.querySelectorAll('input[name="peso-moi"]')];
-    const pesoDuplicar = pesosMoi.findLast(x => x.value !== '').value;
-    pesosMoi.forEach(peso => peso.value = peso.value ? peso.value : pesoDuplicar);
-    isSeriesCompleted('moi');
+    const pesoDuplicar = pesosMoi.findLast(x => x.value !== '');
+    if (pesoDuplicar) {
+        pesosMoi.forEach(peso => peso.value = peso.value ? peso.value : pesoDuplicar.value);
+        isSeriesCompleted('moi');
+    }
+
 }
 resetMoi.onclick = () => {
     [...document.querySelectorAll('input[name="peso-moi"]')].forEach(i => i.value = '');
@@ -108,9 +132,12 @@ const spreadAitor = document.getElementById('spread-aitor');
 const resetAitor = document.getElementById('reset-aitor');
 spreadAitor.onclick = () => {
     const pesosAitor = [...document.querySelectorAll('input[name="peso-aitor"]')];
-    const pesoDuplicar = pesosAitor.findLast(x => x.value !== '').value;
-    pesosAitor.forEach(peso => peso.value = peso.value ? peso.value : pesoDuplicar);
-    isSeriesCompleted('aitor');
+    const pesoDuplicar = pesosAitor.findLast(x => x.value !== '');
+    if (pesoDuplicar) {
+
+        pesosAitor.forEach(peso => peso.value = peso.value ? peso.value : pesoDuplicar.value);
+        isSeriesCompleted('aitor');
+    }
 }
 
 resetAitor.onclick = () => {
@@ -278,7 +305,7 @@ function createPeso(num, user, tipo) {
 
     for (let i = 1; i < num; i++) {
         const div = document.createElement('div');
-        
+
         div.innerHTML = `<label for="${user}-${i}" class="fs-7 fw-bold d-flex">${tipo} ${i}</label>
         <input type="number" class="form-control" id="${user}-${i}" placeholder="" value="" required="" name="peso-${user}">`;
         if (user == 'aitor') aitorWeightContainer.appendChild(div);
@@ -288,10 +315,3 @@ function createPeso(num, user, tipo) {
         isSeriesCompleted(user);
     }))
 }
-
-function getLast(id, user, tipoEntrenamiento) {
-    const historic = JSON.parse(localStorage.getItem('historic'));
-    if (historic) return [...historic.data.filter(x => x.EjercicioID == id && x.Usuario == user && x.TipoEntrenamiento == tipoEntrenamiento)].pop();
-    return false;
-}
-

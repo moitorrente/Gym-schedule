@@ -4,286 +4,327 @@
         "id": "1",
         "tipo": "Peso",
         "video": "",
-        "elemento": "barra"
+        "elemento": "barra",
+        "textoCorto": "Press banca inclinado barra"
     },
     {
         "ejercicio": "Jalón al pecho agarre supino",
         "id": "2",
         "tipo": "Peso",
         "video": "",
-        "elemento": "polea"
+        "elemento": "polea",
+        "textoCorto": "Jalón al pecho agarre supino"
     },
     {
-        "ejercicio": "Press declinado con mancuernas agarre neutro",
+        "ejercicio": "Press declinado mancuernas agarre neutro",
         "id": "3",
         "tipo": "Peso",
         "video": "",
-        "elemento": "mancuerna"
+        "elemento": "mancuerna",
+        "textoCorto": "Press declinado mancuernas"
     },
     {
         "ejercicio": "Remo máquina con soporte pecho",
         "id": "4",
         "tipo": "Peso",
         "video": "",
-        "elemento": "polea"
+        "elemento": "polea",
+        "textoCorto": "Remo máquina con soporte pecho"
     },
     {
         "ejercicio": "Curl bíceps en banco inclinado agarre supino",
         "id": "5",
         "tipo": "Peso",
         "video": "",
-        "elemento": "barra"
+        "elemento": "barra",
+        "textoCorto": "Curl bíceps en banco inclinado"
     },
     {
         "ejercicio": "Extensiones de tríceps con mancuernas en banco inclinado",
         "id": "6",
         "tipo": "Peso",
         "video": "",
-        "elemento": "mancuerna"
+        "elemento": "mancuerna",
+        "textoCorto": "Extensiones de tríceps mancuernas"
     },
     {
         "ejercicio": "Sentadillas con barra",
         "id": "7",
         "tipo": "Peso",
         "video": "https://youtu.be/ovF-ZqY11ZY",
-        "elemento": "barra"
+        "elemento": "barra",
+        "textoCorto": "Sentadillas con barra"
     },
     {
         "ejercicio": "Curl femoral tumbado",
         "id": "8",
         "tipo": "Peso",
         "video": "",
-        "elemento": "maquina"
+        "elemento": "maquina",
+        "textoCorto": "Curl femoral tumbado"
     },
     {
         "ejercicio": "Zancadas reversas alternas con mancuernas",
         "id": "9",
         "tipo": "Peso",
         "video": "",
-        "elemento": "mancuerna"
+        "elemento": "mancuerna",
+        "textoCorto": "Zancadas reversas alternas"
     },
     {
         "ejercicio": "Peso muerto rumano con barra",
         "id": "10",
         "tipo": "Peso",
         "video": "",
-        "elemento": "barra"
+        "elemento": "barra",
+        "textoCorto": "Peso muerto rumano con barra"
     },
     {
         "ejercicio": "Elevaciones de gemelo sentado",
         "id": "11",
         "tipo": "Peso",
         "video": "https://youtu.be/Gti0nc0E2jI",
-        "elemento": "maquina"
+        "elemento": "maquina",
+        "textoCorto": "Elevaciones de gemelo sentado"
     },
     {
         "ejercicio": "Plancha RKC",
         "id": "12",
         "tipo": "Segundos",
         "video": "https://youtu.be/6TKktamzq4o",
-        "elemento": "cuerpo"
+        "elemento": "cuerpo",
+        "textoCorto": "Plancha RKC"
     },
     {
         "ejercicio": "Dips",
         "id": "13",
         "tipo": "Repeticiones",
         "video": "",
-        "elemento": "cuerpo"
+        "elemento": "cuerpo",
+        "textoCorto": "Dips"
     },
     {
         "ejercicio": "Press inclinado mancuernas",
         "id": "14",
         "tipo": "Peso",
         "video": "",
-        "elemento": "mancuerna"
+        "elemento": "mancuerna",
+        "textoCorto": "Press inclinado mancuernas"
     },
     {
         "ejercicio": "Remo con mancuernas inclinado",
         "id": "15",
         "tipo": "Peso",
         "video": "",
-        "elemento": "mancuerna"
+        "elemento": "mancuerna",
+        "textoCorto": "Remo con mancuernas inclinado"
     },
     {
         "ejercicio": "Facepull",
         "id": "16",
         "tipo": "Peso",
         "video": "",
-        "elemento": "polea"
+        "elemento": "polea",
+        "textoCorto": "Facepull"
     },
     {
         "ejercicio": "Elevaciones laterales poliquin sentado",
         "id": "17",
         "tipo": "Peso",
         "video": "",
-        "elemento": "mancuerna"
+        "elemento": "mancuerna",
+        "textoCorto": "Elevaciones laterales sentado"
     },
     {
         "ejercicio": "Hack squats",
         "id": "18",
         "tipo": "Peso",
         "video": "",
-        "elemento": "maquina"
+        "elemento": "maquina",
+        "textoCorto": "Hack squats"
     },
     {
         "ejercicio": "Hip thrusts",
         "id": "19",
         "tipo": "Peso",
         "video": "",
-        "elemento": "maquina"
+        "elemento": "maquina",
+        "textoCorto": "Hip thrusts"
     },
     {
         "ejercicio": "Zancadas con mancuernas",
         "id": "20",
         "tipo": "Peso",
         "video": "",
-        "elemento": "mancuerna"
+        "elemento": "mancuerna",
+        "textoCorto": "Zancadas con mancuernas"
     },
     {
         "ejercicio": "Elevaciones de gemelo de pie",
         "id": "21",
         "tipo": "Peso",
         "video": "https://youtu.be/Gti0nc0E2jI",
-        "elemento": "barra"
+        "elemento": "barra",
+        "textoCorto": "Elevaciones de gemelo de pie"
     },
     {
         "ejercicio": "Plancha lateral",
         "id": "22",
         "tipo": "Segundos",
         "video": "https://youtu.be/ckUwoMt2Hmk",
-        "elemento": "cuerpo"
+        "elemento": "cuerpo",
+        "textoCorto": "Plancha lateral"
     },
     {
         "ejercicio": "Jalón al pecho agarre prono",
         "id": "23",
         "tipo": "Peso",
         "video": "",
-        "elemento": "polea"
+        "elemento": "polea",
+        "textoCorto": "Jalón al pecho agarre prono"
     },
     {
         "ejercicio": "Press militar con barra",
         "id": "24",
         "tipo": "Peso",
         "video": "https://youtu.be/f1Un1Z28ekc",
-        "elemento": "barra"
+        "elemento": "barra",
+        "textoCorto": "Press militar con barra"
     },
     {
         "ejercicio": "Dominadas con agarre supino medio",
         "id": "25",
         "tipo": "Repeticiones",
         "video": "",
-        "elemento": "cuerpo"
+        "elemento": "cuerpo",
+        "textoCorto": "Dominadas con agarre supino"
     },
     {
         "ejercicio": "Press plano con mancuernas agarre neutro",
         "id": "26",
         "tipo": "Peso",
         "video": "",
-        "elemento": "mancuerna"
+        "elemento": "mancuerna",
+        "textoCorto": "Press plano con mancuernas"
     },
     {
         "ejercicio": "Remo sentado en polea agarre neutro",
         "id": "27",
         "tipo": "Peso",
         "video": "",
-        "elemento": "polea"
+        "elemento": "polea",
+        "textoCorto": "Remo sentado en polea"
     },
     {
         "ejercicio": "Curl bíceps de pie mancuernas agarre neutro",
         "id": "28",
         "tipo": "Peso",
         "video": "",
-        "elemento": "mancuerna"
+        "elemento": "mancuerna",
+        "textoCorto": "Curl bíceps de pie mancuernas"
     },
     {
         "ejercicio": "Extensiones de tríceps con cuerda en polea alta",
         "id": "29",
         "tipo": "Peso",
         "video": "",
-        "elemento": "polea"
+        "elemento": "polea",
+        "textoCorto": "Extensiones de tríceps cuerda"
     },
     {
         "ejercicio": "Curl femoral sentado",
         "id": "30",
         "tipo": "Peso",
         "video": "https://youtu.be/ELOCsoDSmrg",
-        "elemento": "maquina"
+        "elemento": "maquina",
+        "textoCorto": "Curl femoral sentado"
     },
     {
         "ejercicio": "Sentadilla split con mancuernas talón delantero elevado",
         "id": "31",
         "tipo": "Peso",
         "video": "",
-        "elemento": "mancuerna"
+        "elemento": "mancuerna",
+        "textoCorto": "Sentadilla split"
     },
     {
         "ejercicio": "Peso muerto rumano con barra pausa rodilla",
         "id": "32",
         "tipo": "Peso",
         "video": "https://youtu.be/VDPzTtBF9XE",
-        "elemento": "barra"
+        "elemento": "barra",
+        "textoCorto": "Peso muerto rumano pausa"
     },
     {
         "ejercicio": "Press plano con barra",
         "id": "33",
         "tipo": "Peso",
         "video": "",
-        "elemento": "barra"
+        "elemento": "barra",
+        "textoCorto": "Press plano con barra"
     },
     {
         "ejercicio": "Dominadas agarre neutro cerrado",
         "id": "34",
         "tipo": "Repeticiones",
         "video": "",
-        "elemento": "cuerpo"
+        "elemento": "cuerpo",
+        "textoCorto": "Dominadas agarre neutro cerrado"
     },
     {
         "ejercicio": "Press militar mancuerna a una mano de pie",
         "id": "35",
         "tipo": "Peso",
         "video": "https://youtu.be/je6cSnt00x4",
-        "elemento": "mancuerna"
+        "elemento": "mancuerna",
+        "textoCorto": "Press militar mancuerna"
     },
     {
         "ejercicio": "Remo sentado en polea con agarre prono al pecho",
         "id": "36",
         "tipo": "Peso",
         "video": "",
-        "elemento": "polea"
+        "elemento": "polea",
+        "textoCorto": "Remo sentado agarre prono"
     },
     {
         "ejercicio": "Palloff press en polea",
         "id": "37",
         "tipo": "Peso",
         "video": "https://youtu.be/AS2DxzeQxow",
-        "elemento": "polea"
+        "elemento": "polea",
+        "textoCorto": "Palloff press en polea"
     },
     {
         "ejercicio": "Rotación externa de hombro con mancuerna",
         "id": "38",
         "tipo": "Peso",
         "video": "https://youtu.be/JxOTlLNUdYE",
-        "elemento": "mancuerna"
+        "elemento": "mancuerna",
+        "textoCorto": "Rotación externa de hombro"
     },
     {
         "ejercicio": "Peso muerto convencional desde bloques",
         "id": "39",
         "tipo": "Peso",
         "video": "https://youtu.be/QbO-7w2L6UY",
-        "elemento": "barra"
+        "elemento": "barra",
+        "textoCorto": "Peso muerto convencional"
     },
     {
         "ejercicio": "Curl femoral en pelota suiza",
         "id": "40",
         "tipo": "Peso",
         "video": "",
-        "elemento": "maquina"
+        "elemento": "maquina",
+        "textoCorto": "Curl femoral en pelota suiza"
     },
     {
         "ejercicio": "Abdominales tumbado",
         "id": "41",
         "tipo": "Repeticiones",
         "video": "",
-        "elemento": "cuerpo"
+        "elemento": "cuerpo",
+        "textoCorto": "Abdominales tumbado"
     }
 ]

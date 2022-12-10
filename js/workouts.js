@@ -3,6 +3,25 @@ const workoutsContainer = document.getElementById('workouts-container');
 const mesocicloSelect = document.getElementById('mesociclo-select');
 const tipoSelect = document.getElementById('tipo-select');
 const clearFilters = document.getElementById('clear-filters');
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    let title = localStorage.getItem("theme");
+    if (title) setActiveStyleSheet(title);
+});
+function setActiveStyleSheet(title) {
+    /* Grab a list of all alternate style sheets */
+    let css = `link[rel="alternate stylesheet"]`;
+    let stylesheets = document.querySelectorAll(css);
+    /* Walk all alternate style sheets and disable them */
+    stylesheets.forEach(sheet => sheet.disabled = true);
+    /* Select style sheet we want to "turn on" */
+    let selector = `link[title="${title}"]`;
+    let stylesheet = document.querySelector(selector);
+    /* Enable the style sheet */
+    stylesheet.disabled = false;
+    localStorage.setItem("theme", title);
+}
 let WORKOUTS;
 
 const upSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
@@ -92,6 +111,7 @@ function createAllCards(workouts) {
 function createCard(name, type, exercises, mesociclo) {
     const iconColor = type == 'carga' ? 't-dark-green' : 't-dark-blue';
     const textBackground = type == 'carga' ? 'b-light-green' : 'b-light-blue';
+    const textColor = type == 'carga' ? 't-dark-green' : 't-dark-blue';
     const svg = type == 'carga' ? upSVG : downSVG;
 
     const tipo = type.charAt(0).toUpperCase() + type.slice(1);
@@ -107,7 +127,7 @@ function createCard(name, type, exercises, mesociclo) {
 
     lista.href = 'workout-details.html';
     lista.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="black" class="bi bi-list-ul" viewBox="0 0 16 16">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
     </svg>
     `;
@@ -132,15 +152,15 @@ function createCard(name, type, exercises, mesociclo) {
                 </div>
                 </div>
                 <div class="d-flex mt-2 gap-2 py-0">
-                    <div class="rounded-1 ${textBackground} w-50 text-center">
+                    <div class="rounded-1 ${textBackground} ${textColor} w-50 text-center">
                         <div class="fs-7 fw-bold">${exercises.length}</div>
-                        <div class="fs-8 text-muted fw-bold">Ejercicios</div>
+                        <div class="fs-8 fw-bold">Ejercicios</div>
                     </div>
-                    <div class="rounded-1 ${textBackground} w-50 text-center">
+                    <div class="rounded-1 ${textBackground} ${textColor} w-50 text-center">
                         <div class="fs-7 fw-bold">${mesociclo}</div>
-                        <div class="fs-8 text-muted fw-bold">Mesociclo</div>
+                        <div class="fs-8  fw-bold">Mesociclo</div>
                     </div>
-                    <div class="rounded-1 ${textBackground} w-50 align-items-center d-flex justify-content-center">
+                    <div class="rounded-1 ${textBackground} ${textColor} w-50 align-items-center d-flex justify-content-center">
                         <div class="fs-7 fw-bold">${tipo}</div>
                     </div>
                 </div>

@@ -15,8 +15,32 @@
     <script defer type="module" src="../js/bootstrap.bundle.min.js"></script>
     <script defer src="../js/calendar.js"></script>
 
+    <script>
+        let title = localStorage.getItem("theme");
+        window.addEventListener('DOMContentLoaded', (event) => {
+            console.log('DOM fully loaded and parsed');
+
+            if (title) setActiveStyleSheet(title);
+        });
+        function setActiveStyleSheet(title) {
+            /* Grab a list of all alternate style sheets */
+            let css = `link[rel="alternate stylesheet"]`;
+            let stylesheets = document.querySelectorAll(css);
+            /* Walk all alternate style sheets and disable them */
+            stylesheets.forEach(sheet => sheet.disabled = true);
+            /* Select style sheet we want to "turn on" */
+            let selector = `link[title="${title}"]`;
+            let stylesheet = document.querySelector(selector);
+            /* Enable the style sheet */
+            stylesheet.disabled = false;
+            localStorage.setItem("theme", title);
+        }
+    </script>
+
     <script defer type="module" src="../js/historic.js"></script>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="alternate stylesheet" href="../css/dark.css" title="dark">
+    <link rel="alternate stylesheet" href="../css/light.css" title="light">
     <link rel="stylesheet" href="../css/calendar.css">
 </head>
 
@@ -54,16 +78,17 @@
     </div>
     <div class="container container-fluid justify-content-center" style="margin-top: 5rem;">
         <div id="okToast"
-            class="toast position-fixed align-items-center text-white b-dark-green bottom-0 start-50 translate-middle mb-5"
+            class="toast position-fixed align-items-center text-white b-light-green bottom-0 border-0 start-50 translate-middle mb-5"
             role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body fw-bold">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="var(--dark-green)"
                         class="bi bi-check-lg" viewBox="0 0 16 16">
                         <path
                             d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
                     </svg>
-                    ¡Datos recuperados correctamente!
+                    <span class="t-dark-green">¡Datos recuperados correctamente!</span>
+
                 </div>
                 <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
                     aria-label="Close"></button>
@@ -74,7 +99,7 @@
             role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body fw-bold">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="var(--dark-green)"
                         class="bi bi-check-lg" viewBox="0 0 16 16">
                         <path
                             d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />

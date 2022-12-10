@@ -113,11 +113,11 @@ body {
 }
 
 .t-gray {
-    color: var(--gray)
+    color: var(--gray)!important;
 }
 
 .t-blue {
-    color: var(--blue);
+    color: var(--blue)!important;
 }
 
 .t-red {

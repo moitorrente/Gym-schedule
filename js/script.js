@@ -1,5 +1,26 @@
 import getFile from './data.js';
 
+
+let listaEjerciciosStorage;
+window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    let title = localStorage.getItem("theme");
+    if (title) setActiveStyleSheet(title);
+});
+function setActiveStyleSheet(title) {
+    /* Grab a list of all alternate style sheets */
+    let css = `link[rel="alternate stylesheet"]`;
+    let stylesheets = document.querySelectorAll(css);
+    /* Walk all alternate style sheets and disable them */
+    stylesheets.forEach(sheet => sheet.disabled = true);
+    /* Select style sheet we want to "turn on" */
+    let selector = `link[title="${title}"]`;
+    let stylesheet = document.querySelector(selector);
+    /* Enable the style sheet */
+    stylesheet.disabled = false;
+    localStorage.setItem("theme", title);
+}
+
 const html = document.getElementsByTagName('html')[0];
 const toggleTheme = (theme) => {
     html.dataset.theme = theme;
@@ -46,9 +67,12 @@ async function getContext() {
         const res = await getFile('exercises.json');
         if (res.ok) {
             localStorage.setItem('listaEjercicios', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: res.data }));
+            listaEjerciciosStorage = res.data;
         } else {
             alert(`Error: ${res.error}`);
         }
+    } else {
+        listaEjerciciosStorage = JSON.parse(listaEjercicios).data;
     }
 }
 
@@ -76,7 +100,9 @@ function loadExercises() {
     if (ejercicios) {
         ejercicios.forEach((ejercicio, i) => {
             const tempo = ejercicio.isometrico ? ejercicio.tempo : ejercicio.tempo.join('');
-            createNewExercise(ejercicio.orden, ejercicio.nombre, ejercicio.series, ejercicio.id, ejercicio.completado, ejercicios.length, i, tempo);
+            let ejercicioInfo = listaEjerciciosStorage.filter(x => x.id == ejercicio.id)[0];
+            console.log(ejercicioInfo)
+            createNewExercise(ejercicio.orden, ejercicioInfo.textoCorto, ejercicio.series, ejercicio.id, ejercicio.completado, ejercicios.length, i, tempo);
         });
         const done = ejercicios.map(x => x.completado).filter(x => x !== true).length > 0 ? false : true;
         if (done) shareBtn.classList.remove('d-none');
@@ -94,17 +120,20 @@ function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
     if (checked === false) icon = pendingSVG;
     if (checked === true) icon = checkedSVG;
     d.innerHTML = `
-    <a class="list-group-item d-flex gap-2 px-2 py-0 rounded align-items-center border-0 shadow-sm" style="height: 5rem">
+    <a class="list-group-item bg-white d-flex gap-2 px-2 py-0 rounded align-items-center border-0 shadow-sm" style="height: 5rem">
     <span class="align-self-center ms-auto px-1">
         ${icon}    
     </span>
         <span class="pt-1 form-checked-content w-100 fs-6" data-id="${id}" id="start-${id}">
             <strong style="white-space: nowrap;
-            text-overflow: ellipsis;
             width: 70vw;
             display: block;
             overflow: hidden;">${name}</strong>
-            <small class="d-block text-muted mt-1"><span class="fw-bold">Orden: ${order}</span> - Series: ${series} - Tempo: ${tempo}</small>
+            <div class="d-flex mt-2 gap-2 fs-7 w-100 align-items-center">
+                <small class="b-light-blue text-center align-self-center t-dark-blue border-rounded rounded-5 px-2" style="min-width: 2rem;">Orden: <strong>${order}</strong></small>
+                <small class="b-light-green text-center align-self-center t-dark-green border-rounded rounded-5 px-2" style="min-width: 3.5rem;">Series: <strong>${series}</strong></small>
+                <small class="b-light-yellow text-center align-self-center t-dark-yellow border-rounded rounded-5 px-2" style="min-width: 4rem;">Tempo: <strong>${tempo}</strong></small>
+            </div>
         </span>
         <span class="align-self-center ms-auto">
         <div class="btn-group">

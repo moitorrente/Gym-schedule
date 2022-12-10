@@ -1,7 +1,29 @@
 document.getElementById('delete-localStorage').onclick = () => {
     localStorage.clear();
+    getContext();
+}
+document.getElementById('delete-sessionStorage').onclick = () => {
     sessionStorage.clear();
     getContext();
+}
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    let title = localStorage.getItem("theme");
+    if (title) setActiveStyleSheet(title);
+});
+function setActiveStyleSheet(title) {
+    /* Grab a list of all alternate style sheets */
+    let css = `link[rel="alternate stylesheet"]`;
+    let stylesheets = document.querySelectorAll(css);
+    /* Walk all alternate style sheets and disable them */
+    stylesheets.forEach(sheet => sheet.disabled = true);
+    /* Select style sheet we want to "turn on" */
+    let selector = `link[title="${title}"]`;
+    let stylesheet = document.querySelector(selector);
+    /* Enable the style sheet */
+    stylesheet.disabled = false;
+    localStorage.setItem("theme", title);
 }
 
 
@@ -12,8 +34,7 @@ function localStorageSize() {
         _xLen = (localStorage[_x].length + _x.length) * 2;
         _lsTotal += _xLen;
     }
-    //Devuelve en kB
-    return (_lsTotal / 1024).toFixed(2);
+    return _lsTotal;
 }
 
 function sessionStorgeSize() {
@@ -23,8 +44,7 @@ function sessionStorgeSize() {
         _xLen = (sessionStorage[_x].length + _x.length) * 2;
         _lsTotal += _xLen;
     }
-    //Devuelve en kB
-    return (_lsTotal / 1024).toFixed(2);
+    return _lsTotal;
 }
 
 function storageKeys(ob) {
@@ -48,7 +68,8 @@ getContext();
 function getContext() {
     const lsSize = localStorageSize();
     const ssSize = sessionStorgeSize();
-    document.getElementById('localStorage-memory-usage').innerHTML = `${lsSize} kB moi`;
+
+    document.getElementById('localStorage-memory-usage').innerHTML = returnValueWithUnit(localStorageSize());
     document.getElementById('localStorage-memory-keys').innerHTML = '';
     const dataLocalStorage = storageKeys(localStorage);
     document.getElementById('localStorage-bar').innerHTML = '';
@@ -57,21 +78,18 @@ function getContext() {
 
     if ('storage' in navigator && 'estimate' in navigator.storage) {
         navigator.storage.estimate().then((estimate) => {
-            console.log(estimate, (estimate.usage / 1000 / 1000).toFixed(2), estimate.quota / 1000 / 1000);
             document.getElementById('usage-bar').innerHTML = '';
             document.getElementById('usage-memory-keys').innerHTML = '';
 
             document.getElementById('usage-memory-usage').innerHTML = `${((estimate.usage / 1000 / 1000)).toFixed(2)} MB / ${((estimate.quota / 1000 / 1000)).toFixed(2)} MB - ${((estimate.usage) / estimate.quota * 100).toFixed(2)}%`;
             i = 0;
             for (property in estimate.usageDetails) {
-                console.log(property, estimate.usageDetails[property])
                 document.getElementById('usage-memory-keys').append(createMemoryLabel(property, (estimate.usageDetails[property]).toFixed(2), colors[i], 'MB'));
                 const d = document.createElement('div');
                 d.classList.add('progress-bar', colors[i]);
                 d.role = 'progressbar';
                 d.style.width = `${(estimate.usageDetails[property] * 100 / estimate.usage).toFixed(2)}%`;
                 i++;
-                console.log((estimate.usageDetails[property] / estimate.usage).toFixed(2))
                 if (i > colors.length) i = 0;
                 const bar = `<div class="progress-bar" role="progressbar" aria-label="Segment one"
                                     aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>`;
@@ -81,11 +99,6 @@ function getContext() {
     } else {
         document.getElementById('usage-top').classList.add('d-none');
     }
-
-
-
-
-
 
     dataLocalStorage.forEach((value, key) => {
         document.getElementById('localStorage-memory-keys').append(createMemoryLabel(key, value, colors[i], 'KB'));
@@ -100,7 +113,7 @@ function getContext() {
         document.getElementById('localStorage-bar').append(d);
     });
 
-    document.getElementById('sessionStorage-memory-usage').innerHTML = `${sessionStorgeSize()} kB`;
+    document.getElementById('sessionStorage-memory-usage').innerHTML = returnValueWithUnit(sessionStorgeSize());
     document.getElementById('sessionStorage-memory-keys').innerHTML = '';
     const dataSessionStorage = storageKeys(sessionStorage);
     document.getElementById('sessionStorage-bar').innerHTML = '';
@@ -119,28 +132,28 @@ function getContext() {
     });
 }
 
-function createMemoryLabel(text, size, color) {
-    let unit;
+function createMemoryLabel(text, inSize, color) {
+    const d = document.createElement('div');
+    d.classList.add('text-muted', 'fs-7', 'd-flex', 'gap-2');
+    const dText = document.createElement('div');
+    dText.classList.add('flex-grow-1');
+    const dSize = document.createElement('div');
+    dSize.innerHTML = returnValueWithUnit(inSize);
+    d.innerHTML = `<span class="d-flex align-self-center ${color} rounded-circle p-1" style="width: .5rem; height: .5rem"></span>${text}`;
+
+    d.append(dText);
+    d.append(dSize);
+    return d;
+}
+
+function returnValueWithUnit(size) {
+    let unit = 'B';
     if (size > 1000000) {
         size = size / 1000000;
         unit = 'MB'
     } else if (size > 1000) {
         size = size / 1000;
         unit = 'kB';
-    } else {
-        unit = 'B';
     }
-
-    size = parseFloat(size).toFixed(2);
-    const d = document.createElement('div');
-    d.classList.add('text-muted', 'fs-7', 'd-flex', 'gap-2');
-    const dText = document.createElement('div');
-    dText.classList.add('flex-grow-1');
-    const dSize = document.createElement('div');
-    dSize.innerHTML = `${size} ${unit}`
-    d.innerHTML = `<span class="d-flex align-self-center ${color} rounded-circle p-1" style="width: .5rem; height: .5rem"></span>${text}`;
-
-    d.append(dText);
-    d.append(dSize);
-    return d;
+    return `${parseFloat(size).toFixed(2)} ${unit}`;
 }

@@ -179,7 +179,7 @@ function createIndexedDB() {
         window.webkitIndexedDB ||
         window.msIndexedDB ||
         window.shimIndexedDB;
-
+        
     if (!indexedDB) {
         alert.log(`Your browser doesn't support IndexedDB`);
         return;

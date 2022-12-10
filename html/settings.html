@@ -18,10 +18,12 @@
     <script defer type="module" src="../js/data.js"></script>
 
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="alternate stylesheet" href="../css/dark.css" title="dark">
+    <link rel="alternates tylesheet" href="../css/light.css" title="light">
 </head>
 
 <body style="margin-bottom: 200px; height: auto;">
-    <header class="fixed-top b-gray container pt-4 pb-2 gap-4">
+    <header class="fixed-top container pt-4 pb-2 gap-2">
         <div class="d-flex align-items-center justify-content-between">
             <div class="ui-square-btn">
                 <svg onclick="history.back()" xmlns="http://www.w3.org/2000/svg" width="26" height="26"
@@ -43,7 +45,7 @@
     <div style="margin-top: 5.5rem;"></div>
     <div class="container">
         <div class="text-muted fs-7 fw-bold ms-3">GENERAL</div>
-        <div class="bg-white mt-2 rounded-top border-0 p-2 d-flex align-items-center gap-3">
+        <div class="bg-white mt-2 rounded-top border-0 p-2 d-flex align-items-center gap-3" id="change-theme">
             <div class="d-flex ms-2 bg-black feature-icon align-items-center justify-content-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="white"
                     class="bi bi-moon-stars-fill" viewBox="0 0 16 16">
@@ -138,6 +140,29 @@
         </a>
 
     </div>
+    <div class="container mt-4">
+        <div class="text-muted fs-7 fw-bold ms-3">DEV</div>
+        <a href="../utils/exercise-generator.html"
+            class="text-decoration-none text-black bg-white mt-2 rounded border-0 p-2 d-flex align-items-center gap-3">
+            <div class="d-flex ms-2 b-dark-gray feature-icon align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-code"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M5.854 4.854a.5.5 0 1 0-.708-.708l-3.5 3.5a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L2.707 8l3.147-3.146zm4.292 0a.5.5 0 0 1 .708-.708l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 0 1-.708-.708L13.293 8l-3.147-3.146z" />
+                </svg>
+            </div>
+            <div class="alig-items-center fs-6 flex-grow-1">
+                Generador JSON
+            </div>
+            <div class="me-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-chevron-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+            </div>
+        </a>
+    </div>
     <div id="okToast"
         class="toast position-fixed align-items-center text-white b-dark-green bottom-0 start-50 translate-middle mb-5"
         role="alert" aria-live="assertive" aria-atomic="true">
@@ -160,67 +185,106 @@
     <div class="modal fade modal-tour" tabindex="-1" role="dialog" id="modalChangelog">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content rounded-3 shadow" style="height: 80vh; overflow: hidden;">
-                <div class="modal-body py-0 pb-3 bg-white rounded-3 modal-dialog-scrollable"
-                    style="overflow-y: scroll;">
-                    <div class="d-flex align-items-center sticky-top p-3 bg-white">
+                <div class="modal-body py-0 pb-3 b-gray rounded-3 modal-dialog-scrollable" style="overflow-y: scroll;">
+                    <div class="d-flex align-items-center sticky-top p-3 b-gray">
                         <h2 class="fw-bold mb-0 flex-grow-1">What's new</h2>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <ul class="d-grid gap-4 mt-3 list-unstyled">
-                        <li class="d-flex gap-4">
-                            <div>
-                                <div class="mb-0 fw-bold">v.0.0.12</div>
-                                Añadido sensación al realizar ejercicio<br>
-                                Nuevo modo de visualización últimos meses<br>
-                                Nueva parametrización interna de entrenamientos desde json<br>
-                                Nueva selección de entrenamientos<br>
+                    <ul class="d-grid gap-2 mt-2 list-unstyled fs-7">
+                        <li class="d-flex gap-2">
+                            <div class="border rounded-2 p-1 py-2 shadow-sm bg-white w-100">
+                                <div class="mb-0 fw-bold t-dark-blue b-light-blue rounded-5 px-2"
+                                    style="display: inline-block;">v.0.0.14</div>
+                                <ul class="list">
+                                    <li>Cambio de tema</li>
+                                </ul>
                             </div>
                         </li>
-                        <li class="d-flex gap-4">
-                            <div>
-                                <div class="mb-0 fw-bold">v.0.0.11</div>
-                                Se permite modificar el ejercicio desde edición de entrenamiento<br>
-                                Nueva consulta de histórico de pesos
+                        <li class="d-flex gap-2">
+                            <div class="border rounded-2 p-1 py-2 shadow-sm bg-white w-100">
+                                <div class="mb-0 fw-bold t-dark-blue b-light-blue rounded-5 px-2"
+                                    style="display: inline-block;">v.0.0.13</div>
+                                <ul class="list">
+                                    <li>Nueva pantalla de opciones</li>
+                                    <li>Nueva opción de gestión de memoria</li>
+                                    <li>Ajuste de texto corto de ejercicio en la pantalla de entrenamiento</li>
+                                </ul>
                             </div>
                         </li>
-                        <li class="d-flex gap-4">
-                            <div>
-                                <div class="mb-0 fw-bold">v.0.0.10</div>
-                                Nuevo formato pantalla de log de ejercicio.<br>
-                                Nuevo menú en pantalla principal.<br>
-                                Nuevo estado de ejercicio iniciado pero no completado.
+                        <li class="d-flex gap-2">
+                            <div class="border rounded-2 p-1 py-2 shadow-sm bg-white w-100">
+                                <div class="mb-0 fw-bold t-dark-blue b-light-blue rounded-5 px-2"
+                                    style="display: inline-block;">v.0.0.12</div>
+                                <ul class="list">
+                                    <li>Añadido sensación al realizar ejercicio</li>
+                                    <li>Nuevo modo de visualización últimos meses</li>
+                                    <li>Nueva selección de entrenamientos</li>
+                                    <li>Nueva parametrización interna de entrenamientos desde json</li>
+                                </ul>
                             </div>
                         </li>
-                        <li class="d-flex gap-4">
-                            <div>
-                                <div class="mb-0 fw-bold">v.0.0.9</div>
-                                Añadida la opción de recuperar los datos de excel y mostrarlos en el log de
-                                ejercicios.<br>
-                                Nueva parametrización interna de ejercicio desde json.<br>
-                                Calendario histórico de entrenamientos.<br>
-                                Ejercicios mesociclo 2.
+                        <li class="d-flex gap-2">
+                            <div class="border rounded-2 p-1 py-2 shadow-sm bg-white w-100">
+                                <div class="mb-0 fw-bold t-dark-blue b-light-blue rounded-5 px-2"
+                                    style="display: inline-block;">v.0.0.11</div>
+                                <ul class="list">
+                                    <li>Se permite modificar el ejercicio desde edición de entrenamiento</li>
+                                    <li>Nueva consulta de histórico de pesos</li>
+                                </ul>
                             </div>
                         </li>
-                        <li class="d-flex gap-4">
-                            <div>
-                                <div class="mb-0 fw-bold">v.0.0.8</div>
-                                Mejorado log de ejercicio. Se incorpora los entrenamientos de carga y de
-                                descarga. <br>
-                                Mejorada la opción para compartir
+                        <li class="d-flex gap-2">
+                            <div class="border rounded-2 p-1 py-2 shadow-sm bg-white w-100">
+                                <div class="mb-0 fw-bold t-dark-blue b-light-blue rounded-5 px-2"
+                                    style="display: inline-block;">v.0.0.10</div>
+                                <ul class="list">
+                                    <li>Nuevo formato pantalla de log de ejercicio</li>
+                                    <li>Nuevo menú en pantalla principal</li>
+                                    <li>Nuevo estado de ejercicio iniciado pero no completado</li>
+                                </ul>
                             </div>
                         </li>
-                        <li class="d-flex gap-4">
-                            <div>
-                                <div class="mb-0 fw-bold">v.0.0.7</div>
-                                Habilitada la opción de PWA
+                        <li class="d-flex gap-2">
+                            <div class="border rounded-2 p-1 py-2 shadow-sm bg-white w-100">
+                                <div class="mb-0 fw-bold t-dark-blue b-light-blue rounded-5 px-2"
+                                    style="display: inline-block;">v.0.0.9</div>
+                                <ul class="list">
+                                    <li>Añadida la opción de recuperar los datos de excel y mostrarlos en el log de
+                                        ejercicios</li>
+                                    <li>Nueva parametrización interna de ejercicio desde json</li>
+                                    <li>Calendario histórico de entrenamientos</li>
+                                    <li>Ejercicios mesociclo 2</li>
+                                </ul>
                             </div>
                         </li>
-                        <li class="d-flex gap-4">
-
-                            <div>
-                                <div class="mb-0 fw-bold">v.0.0.6</div>
-                                Opción para cargar entrenamientos predefinidos
+                        <li class="d-flex gap-2">
+                            <div class="border rounded-2 p-1 py-2 shadow-sm bg-white w-100">
+                                <div class="mb-0 fw-bold t-dark-blue b-light-blue rounded-5 px-2"
+                                    style="display: inline-block;">v.0.0.8</div>
+                                <ul class="list">
+                                    <li>Mejorado log de ejercicio. Se incorpora los entrenamientos de carga y de
+                                        descarga</li>
+                                    <li>Mejorada la opción para compartir</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="d-flex gap-2">
+                            <div class="border rounded-2 p-1 py-2 shadow-sm bg-white w-100">
+                                <div class="mb-0 fw-bold t-dark-blue b-light-blue rounded-5 px-2"
+                                    style="display: inline-block;">v.0.0.7</div>
+                                <ul class="list">
+                                    <li>Habilitada la opción de PWA</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="d-flex gap-2">
+                            <div class="border rounded-2 p-1 py-2 shadow-sm bg-white w-100">
+                                <div class="mb-0 fw-bold t-dark-blue b-light-blue rounded-5 px-2"
+                                    style="display: inline-block;">v.0.0.6</div>
+                                <ul class="list">
+                                    <li>Opción para cargar entrenamientos predefinidos</li>
+                                </ul>
                             </div>
                         </li>
                     </ul>

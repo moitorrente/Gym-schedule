@@ -1,0 +1,78 @@
+body {
+    background-color: black !important;
+}
+
+header, .b-gray {
+    background-color: black !important;
+}
+
+.bg-white {
+    background-color: #0F172A !important;
+}
+
+.b-light-green {
+    background-color: var(--dark-green) !important;
+}
+
+.b-light-blue {
+    background-color: var(--dark-blue) !important;
+}
+
+.t-dark-blue {
+    color: var(--light-blue) !important
+}
+
+.t-dark-green {
+    color: var(--light-green) !important
+}
+
+
+.text-black {
+    color: white !important;
+}
+
+.border-top {
+    border-top: var(--bs-border-width) var(--bs-border-style) var(--dark-gray) !important;
+}
+
+.dropdown-divider {
+    border-top: 1px solid var(--dark-gray) !important;
+}
+
+input {
+    background-color: var(--dark-gray) !important;
+    color: white !important;
+}
+
+div {
+    color: white !important;
+}
+
+a {
+    color: white !important;
+}
+
+ul, li, select, .dropdown-menu, .bg-light {
+    color: white !important;
+    background-color: #0F172A !important;
+}
+
+
+button, .btn-outline-primary {
+    color: white !important;
+    background-color: #0F172A !important;
+}
+
+.btn-group {
+    background-color: #0F172A !important;
+
+}
+
+.ui-square-btn, .modal-content {
+    background-color: #0F172A !important;
+}
+
+.white-crystal {
+    background-color: rgba(30, 30, 30, 0.5);
+    backdrop-filter: blur(5px);
+}

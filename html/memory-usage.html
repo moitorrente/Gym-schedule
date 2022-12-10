@@ -16,6 +16,8 @@
 
     <script defer src="../js/memory-usage.js"></script>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="alternate stylesheet" href="../css/dark.css" title="dark">
+    <link rel="alternate stylesheet" href="../css/light.css" title="light">
 </head>
 
 <body style="margin-bottom: 200px; height: auto;">
@@ -84,6 +86,10 @@
                 <div id="localStorage-memory-keys" class="fs-8 text-muted">
 
                 </div>
+                <div class="mt-2">
+                    <button id="delete-localStorage" type="button"
+                        class="btn btn-outline-red b-light-red  border-0 fw-bold btn-sm">Eliminar</button>
+                </div>
             </div>
 
         </div>
@@ -107,11 +113,11 @@
                 <div id="sessionStorage-memory-keys" class="fs-8 text-muted">
 
                 </div>
+                <div class="mt-2">
+                    <button id="delete-sessionStorage" type="button"
+                        class="btn btn-outline-red b-light-red  border-0 fw-bold btn-sm">Eliminar</button>
+                </div>
             </div>
-
-        </div>
-        <div class="d-flex mt-2">
-            <button id="delete-localStorage" type="button" class="btn btn-outline-red flex-grow-1 border-0 shadow-sm">Eliminar datos guardados</button>
 
         </div>
     </div>
