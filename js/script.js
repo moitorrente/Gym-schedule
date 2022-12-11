@@ -98,10 +98,30 @@ function loadExercises() {
     listaEjercicios.style.height = '0%';
     const ejercicios = getExercises();
     if (ejercicios) {
+
+
+        let entrenamiento = localStorage.getItem('entrenamiento');
+
+        if (entrenamiento) {
+            entrenamiento = JSON.parse(entrenamiento);
+            const d = document.createElement('div');
+            d.classList.add('d-flex', 'gap-2', 'align-items-center', 'justify-content-between', 'mb-2');
+
+            d.innerHTML = `
+            <div class="rounded-5 b-light-blue t-dark-blue p-1 px-3 fs-7">Entrenamiento <strong>${entrenamiento.id}</strong></div>
+            <div class="rounded-5 b-light-blue t-dark-blue p-1 px-3 fs-7">Tipo <strong>${entrenamiento.tipo}</strong></div>
+            <div class="rounded-5 b-light-blue t-dark-blue p-1 px-3 fs-7">Mesociclo <strong>${entrenamiento.mesociclo}</strong></div>
+            `;
+            listaEjercicios.appendChild(d);
+
+        }
+
+
+
+
         ejercicios.forEach((ejercicio, i) => {
             const tempo = ejercicio.isometrico ? ejercicio.tempo : ejercicio.tempo.join('');
-            let ejercicioInfo = listaEjerciciosStorage.filter(x => x.id == ejercicio.id)[0];
-            console.log(ejercicioInfo)
+            const ejercicioInfo = listaEjerciciosStorage.filter(x => x.id == ejercicio.id)[0];
             createNewExercise(ejercicio.orden, ejercicioInfo.textoCorto, ejercicio.series, ejercicio.id, ejercicio.completado, ejercicios.length, i, tempo);
         });
         const done = ejercicios.map(x => x.completado).filter(x => x !== true).length > 0 ? false : true;

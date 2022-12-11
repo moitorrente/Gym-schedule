@@ -1,3 +1,7 @@
+html {
+    visibility: visible !important;
+}
+
 body {
     background-color: black !important;
 }

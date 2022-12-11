@@ -28,3 +28,22 @@ function object2option(obj) {
 
     return option.outerHTML + '\n';
 }
+
+document.getElementById('copy').onclick = copyText;
+
+function copyText() {
+    // Get the text field
+    var copyText = document.getElementById("output");
+
+    // Select the text field
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
+
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(copyText.value);
+}
+
+document.getElementById('delete').onclick = () => {
+    document.getElementById('input').value = '';
+    document.getElementById('output').value = '';
+}

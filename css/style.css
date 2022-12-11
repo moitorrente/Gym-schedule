@@ -103,6 +103,9 @@ body {
 .b-dark-yellow {
     background-color: var(--dark-yellow);
 }
+.b-dark-blue {
+    background-color: var(--dark-blue);
+}
 
 .b-light-blue {
     background-color: var(--light-blue);
@@ -113,11 +116,14 @@ body {
 }
 
 .t-gray {
-    color: var(--gray)!important;
+    color: var(--gray) !important;
 }
 
 .t-blue {
-    color: var(--blue)!important;
+    color: var(--blue) !important;
+}
+.t-dark-blue {
+    color: var(--dark-blue) !important;
 }
 
 .t-red {

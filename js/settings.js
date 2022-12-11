@@ -2,7 +2,7 @@ import getFile from './data.js';
 getVersion();
 async function getVersion() {
     const localVersion = await getFile('version.json');
-    document.getElementById('version-text').innerHTML = localVersion.data.version;
+    document.getElementById('version-text').innerHTML = `v${localVersion.data.version}`;
 }
 
 async function forceReload() {
@@ -18,7 +18,8 @@ async function forceReload() {
 }
 
 document.getElementById('force-update').onclick = () => forceReload();
-document.getElementById('change-theme').onclick = () => setActiveStyleSheet();
+document.getElementById('dark-theme').onclick = () => setActiveStyleSheet('dark');
+document.getElementById('light-theme').onclick = () => setActiveStyleSheet('light');
 
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');

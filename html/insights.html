@@ -7,18 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title>Gym schedule</title>
+    <title>GymSchedule - Insights</title>
     <link rel="icon" type="image/x-icon" href="../icon.png">
     <link rel='shortcut icon' type='image/x-icon' href='../icon.png' />
-    <style>
-        html {
-            visibility: hidden;
-        }
-    </style>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <script defer type="module" src="../js/bootstrap.bundle.min.js"></script>
 
-    <script defer src="../js/memory-usage.js"></script>
+    <script defer src="../js/insights.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="alternate stylesheet" href="../css/dark.css" title="dark">
     <link rel="alternate stylesheet" href="../css/light.css" title="light">
@@ -34,7 +29,7 @@
                         d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
                 </svg>
             </div>
-            <h1 class="fw-bold m-0">Uso de memoria</h1>
+            <h1 class="fw-bold m-0">Insights</h1>
             <div class="ui-square-btn" id="clear-filters" style="visibility: hidden;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" fill="currentColor"
                     class="bi bi-funnel-fill" viewBox="0 0 16 16">
@@ -46,84 +41,21 @@
     </header>
     <div style="margin-top: 5.5rem;"></div>
     <div class="container">
-        <!-- <div class="text-muted fs-7 fw-bold ms-3">GENERAL</div> -->
-        <div class="bg-white mt-2 m rounded-2 border-0 p-2 shadow-sm" id="usage-top">
-            <div class="mx-2">
-                <div class="align-items-center fs-6 flex-grow-1 d-flex">
-                    <div class="flex-grow-1">
-                        Usage
-                    </div>
-                    <div id="usage-memory-usage" class="text-muted fs-7"></div>
-                </div>
-
-                <div class="progress my-2" id="usage-bar">
-                    <!-- <div class="progress-bar" role="progressbar" aria-label="Segment one" style="width: 15%"
-                        aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                    <div class="progress-bar bg-success" role="progressbar" aria-label="Segment two" style="width: 30%"
-                        aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                    <div class="progress-bar bg-info" role="progressbar" aria-label="Segment three" style="width: 20%"
-                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div> -->
-                </div>
-                <div id="usage-memory-keys" class="fs-8 text-muted">
-
-                </div>
-            </div>
-
+        <div class="b-light-blue t-dark-blue fs-5 p-2 rounded-2 text-black fw-bold shadow-sm d-flex px-4 mt-2">
+            <div class="flex-grow-1">Total entrenamientos: </div>
+            <div id="trained-days" class="">3</div>
         </div>
-        <div class="bg-white mt-2 m rounded-2 border-0 p-2 shadow-sm">
-            <div class="mx-2">
-                <div class="align-items-center fs-6 flex-grow-1 d-flex">
-                    <div class="flex-grow-1">
-                        localStorage
-                    </div>
-                    <div id="localStorage-memory-usage" class="text-muted fs-7"></div>
-                </div>
-
-                <div class="progress my-2" id="localStorage-bar">
-                    <!-- <div class="progress-bar" role="progressbar" aria-label="Segment one" style="width: 15%"
-                        aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                    <div class="progress-bar bg-success" role="progressbar" aria-label="Segment two" style="width: 30%"
-                        aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                    <div class="progress-bar bg-info" role="progressbar" aria-label="Segment three" style="width: 20%"
-                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div> -->
-                </div>
-                <div id="localStorage-memory-keys" class="fs-8 text-muted">
-
-                </div>
-                <div class="mt-2">
-                    <button id="delete-localStorage" type="button"
-                        class="btn btn-outline-red b-light-red  border-0 fw-bold btn-sm">Eliminar</button>
-                </div>
+        <div class="d-flex gap-2">
+            <div class="b-light-blue t-dark-blue p-2 px-3 w-50 fs-7 align-items-center rounded-2 text-black fw-bold shadow-sm d-flex mt-2">
+                <div class="flex-grow-1">Primero: </div>
+                <div id="first-training" class="fs-6">3</div>
             </div>
-
-        </div>
-        <div class="bg-white mt-2 m rounded-2 border-0 p-2 shadow-sm">
-            <div class="mx-2">
-                <div class="align-items-center fs-6 flex-grow-1 d-flex">
-                    <div class="flex-grow-1">
-                        sessionStorage
-                    </div>
-                    <div id="sessionStorage-memory-usage" class="text-muted fs-7"></div>
-                </div>
-
-                <div class="progress my-2" id="sessionStorage-bar">
-                    <!-- <div class="progress-bar" role="progressbar" aria-label="Segment one" style="width: 15%"
-                        aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                    <div class="progress-bar bg-success" role="progressbar" aria-label="Segment two" style="width: 30%"
-                        aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                    <div class="progress-bar bg-info" role="progressbar" aria-label="Segment three" style="width: 20%"
-                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div> -->
-                </div>
-                <div id="sessionStorage-memory-keys" class="fs-8 text-muted">
-
-                </div>
-                <div class="mt-2">
-                    <button id="delete-sessionStorage" type="button"
-                        class="btn btn-outline-red b-light-red  border-0 fw-bold btn-sm">Eliminar</button>
-                </div>
+            <div class="b-light-blue t-dark-blue p-2 px-3 w-50 fs-7 align-items-center rounded-2 text-black fw-bold shadow-sm d-flex mt-2">
+                <div class="flex-grow-1">Último: </div>
+                <div id="last-training" class="fs-6">3</div>
             </div>
-
         </div>
+
     </div>
 
     <nav class="fixed-bottom justify-content-between navbar-expand-sm py-2 pb-4 white-crystal">

@@ -160,6 +160,7 @@ retrieve.onclick = () => {
 const homeBtn = document.getElementById('home');
 
 homeBtn.onclick = () => {
+    console.log('pasa')
     current.aitor = {};
     current.moi = {};
     current.aitor = [...document.querySelectorAll('input[name="peso-aitor"]')].map(x => x.value);
