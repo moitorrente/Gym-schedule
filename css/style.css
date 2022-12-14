@@ -60,7 +60,7 @@ body {
 }
 
 .b-red {
-    background-color: var(--red);
+    background-color: var(--red)!important;
 }
 
 .b-fuchsia {

@@ -1,5 +1,35 @@
 import getFile from './data.js';
 
+const stopDVG = `
+<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-stop-fill" viewBox="0 0 16 16">
+  <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
+</svg>
+`;
+
+const playSVG = `
+<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-play-fill" viewBox="0 0 16 16">
+    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
+</svg>`;
+
+const startStopTimer = document.getElementById('start-stop-timer');
+
+startStopTimer.onclick = () => {
+    if (startStopTimer.dataset.state != 'started') {
+        startStopTimer.innerHTML = stopDVG;
+        startStopTimer.classList.remove('b-red');
+        startStopTimer.classList.add('b-dark-green');
+        startStopTimer.dataset.state = 'started';
+        startStopTimer.dataset.start = new Date();
+        localStorage.setItem('date-start-workout', startStopTimer.dataset.start)
+    } else {
+        startStopTimer.innerHTML = playSVG;
+        startStopTimer.classList.add('b-red');
+        startStopTimer.classList.remove('b-dark-green');
+        startStopTimer.dataset.state = 'stopped';
+        localStorage.setItem('date-end-workout', new Date())
+    }
+    // if (startStopTimer.dataset.state == 'started')
+}
 
 let listaEjerciciosStorage;
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -115,9 +145,6 @@ function loadExercises() {
             listaEjercicios.appendChild(d);
 
         }
-
-
-
 
         ejercicios.forEach((ejercicio, i) => {
             const tempo = ejercicio.isometrico ? ejercicio.tempo : ejercicio.tempo.join('');
@@ -297,13 +324,17 @@ function json2csv(ob, datosEntrenamiento) {
     const sensacionAitor = ob.aitorSensacion || '';
     const sensacionMoi = ob.moiSensacion || '';
 
+    const started = localStorage.getItem('date-start-workout');
+    const ended = localStorage.getItem('date-end-workout');
+    const time = Math.floor((new Date(ended).getTime() - new Date(started).getTime()) / 1000);
+
     let repsAitor = ';;;;;';
     let repsMoi = ';;;;;';
     if (ob.aitor) repsAitor = `${ob.repeticiones[0] || ''};${ob.aitor[0] || ''};${ob.repeticiones[1] || ''};${ob.aitor[1] || ''};${ob.repeticiones[2] || ''};${ob.aitor[2] || ''};${ob.repeticiones[3] || ''};${ob.aitor[3] || ''};${ob.repeticiones[4] || ''};${ob.aitor[4] || ''}`;
     if (ob.moi) repsMoi = `${ob.repeticiones[0] || ''};${ob.moi[0] || ''};${ob.repeticiones[1] || ''};${ob.moi[1] || ''};${ob.repeticiones[2] || ''};${ob.moi[2] || ''};${ob.repeticiones[3] || ''};${ob.moi[3] || ''};${ob.repeticiones[4] || ''};${ob.moi[4] || ''}`;
 
-    const aitor = `${date};${entrenamientoID};${mesociclo};${entrenamientoTipo};${orden};${ejercicioID};${ejercicio};${series};${tempo};${objetivo};Aitor;${tipo};${repsAitor};${sensacionAitor}`;
-    const moi = `${date};${entrenamientoID};${mesociclo};${entrenamientoTipo};${orden};${ejercicioID};${ejercicio};${series};${tempo};${objetivo};Moi;${tipo};${repsMoi};${sensacionMoi}`;
+    const aitor = `${date};${entrenamientoID};${mesociclo};${entrenamientoTipo};${orden};${ejercicioID};${ejercicio};${series};${tempo};${objetivo};Aitor;${tipo};${repsAitor};${sensacionAitor};${started};${ended};${time}`;
+    const moi = `${date};${entrenamientoID};${mesociclo};${entrenamientoTipo};${orden};${ejercicioID};${ejercicio};${series};${tempo};${objetivo};Moi;${tipo};${repsMoi};${sensacionMoi};${started};${ended};${time}`;
 
     return aitor + '\r\n' + moi + '\r\n';
 }
