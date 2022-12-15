@@ -11,24 +11,59 @@ const playSVG = `
     <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
 </svg>`;
 
-const startStopTimer = document.getElementById('start-stop-timer');
+const startStopTimer = document.getElementById('timer-button');
 
-startStopTimer.onclick = () => {
-    if (startStopTimer.dataset.state != 'started') {
+function initializeControls() {
+    const state = localStorage.getItem('workout-state');
+
+    if (state == 'started') {
         startStopTimer.innerHTML = stopDVG;
         startStopTimer.classList.remove('b-red');
         startStopTimer.classList.add('b-dark-green');
-        startStopTimer.dataset.state = 'started';
-        startStopTimer.dataset.start = new Date();
-        localStorage.setItem('date-start-workout', startStopTimer.dataset.start)
+
     } else {
         startStopTimer.innerHTML = playSVG;
         startStopTimer.classList.add('b-red');
         startStopTimer.classList.remove('b-dark-green');
-        startStopTimer.dataset.state = 'stopped';
-        localStorage.setItem('date-end-workout', new Date())
     }
-    // if (startStopTimer.dataset.state == 'started')
+}
+
+document.getElementById('finish-workout').onclick = () => {
+    stopTimer();
+}
+
+function stopTimer() {
+    startStopTimer.innerHTML = playSVG;
+    startStopTimer.classList.add('b-red');
+    startStopTimer.classList.remove('b-dark-green');
+    localStorage.setItem('workout-state', 'stopped');
+}
+
+startStopTimer.onclick = () => {
+    const state = localStorage.getItem('workout-state');
+    if (state == 'started') {
+
+        const modalTimer = new bootstrap.Modal(document.getElementById('modalTimer'), {});
+        const startingDate = new Date(localStorage.getItem('workout-date-start'));
+        const endingDate = new Date();
+        localStorage.setItem('workout-date-end', endingDate)
+        let secs = Math.floor((new Date(endingDate).getTime() - new Date(startingDate).getTime()) / 1000);
+        document.getElementById('modalTimerContent').innerHTML = `
+        <div class="d-flex justify-content-between"><div class="fw-bold">Fecha:</div>${startingDate.toISOString().split('T')[0]}</div>
+        <div class="d-flex justify-content-between"><div class="fw-bold">Hora inicio:</div>${startingDate.getHours().toString().padStart(2, '0')}:${startingDate.getMinutes().toString().padStart(2, '0')}</div>
+        <div class="d-flex justify-content-between"><div class="fw-bold">Hora fin:</div>${endingDate.getHours().toString().padStart(2, '0')}:${endingDate.getMinutes().toString().padStart(2, '0')}</div>
+        <div class="d-flex justify-content-between"><div class="fw-bold">Tiempo total:</div>${Math.floor((secs / 3600)).toString().padStart(2, '0')}:${Math.floor((secs % 3600) / 60).toString().padStart(2, '0')}:${Math.floor(secs % 60).toString().padStart(2, '0')} </div>
+        `;
+        modalTimer.show();
+
+    } else {
+        startStopTimer.innerHTML = stopDVG;
+        startStopTimer.classList.remove('b-red');
+        startStopTimer.classList.add('b-dark-green');
+        localStorage.setItem('workout-state', 'started');
+        localStorage.setItem('workout-date-start', new Date());
+        localStorage.removeItem('workout-date-end', new Date());
+    }
 }
 
 let listaEjerciciosStorage;
@@ -90,6 +125,7 @@ const shareBtn = document.getElementById('share-btn');
 
 getContext();
 async function getContext() {
+    initializeControls();
     localStorage.removeItem('exercise-to-view');
     localStorage.removeItem('data-to-copy');
     const listaEjercicios = localStorage.getItem('listaEjercicios');
@@ -116,6 +152,8 @@ document.getElementById('order').onclick = () => {
 
 document.getElementById('delete').onclick = () => {
     localStorage.removeItem('ejercicios');
+    document.getElementById('timer-button').style.visibility = 'hidden';
+    stopTimer();
     loadExercises();
 }
 
@@ -133,6 +171,8 @@ function loadExercises() {
         let entrenamiento = localStorage.getItem('entrenamiento');
 
         if (entrenamiento) {
+            document.getElementById('timer-button').style.visibility = 'block';
+
             entrenamiento = JSON.parse(entrenamiento);
             const d = document.createElement('div');
             d.classList.add('d-flex', 'gap-2', 'align-items-center', 'justify-content-between', 'mb-2');
@@ -250,7 +290,6 @@ function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
     }
 
     const del = document.getElementById(`delete-${id}`);
-
     del.onclick = () => {
         const ejercicios = getExercises();
         const index = ejercicios.findIndex(x => x.id == del.getAttribute('data-id'));
@@ -324,8 +363,8 @@ function json2csv(ob, datosEntrenamiento) {
     const sensacionAitor = ob.aitorSensacion || '';
     const sensacionMoi = ob.moiSensacion || '';
 
-    const started = localStorage.getItem('date-start-workout');
-    const ended = localStorage.getItem('date-end-workout');
+    const started = localStorage.getItem('workout-date-start');
+    const ended = localStorage.getItem('workout-date-end');
     const time = Math.floor((new Date(ended).getTime() - new Date(started).getTime()) / 1000);
 
     let repsAitor = ';;;;;';
