@@ -1,15 +1,20 @@
 import getFile from './data.js';
 
 const stopDVG = `
-<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-stop-fill" viewBox="0 0 16 16">
+<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="var(--dark-green)" class="bi bi-stop-fill" viewBox="0 0 16 16">
   <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
 </svg>
 `;
 
 const playSVG = `
-<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-play-fill" viewBox="0 0 16 16">
+<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="var(--red)" class="bi bi-play-fill" viewBox="0 0 16 16">
     <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
 </svg>`;
+
+const bsCollapse = new bootstrap.Collapse('#collapseOptions', {
+    toggle: false
+})
+
 
 const startStopTimer = document.getElementById('timer-button');
 
@@ -18,13 +23,13 @@ function initializeControls() {
 
     if (state == 'started') {
         startStopTimer.innerHTML = stopDVG;
-        startStopTimer.classList.remove('b-red');
-        startStopTimer.classList.add('b-dark-green');
+        startStopTimer.classList.remove('b-light-red');
+        startStopTimer.classList.add('b-light-green');
 
     } else {
         startStopTimer.innerHTML = playSVG;
-        startStopTimer.classList.add('b-red');
-        startStopTimer.classList.remove('b-dark-green');
+        startStopTimer.classList.add('b-light-red');
+        startStopTimer.classList.remove('b-light-green');
     }
 }
 
@@ -34,8 +39,8 @@ document.getElementById('finish-workout').onclick = () => {
 
 function stopTimer() {
     startStopTimer.innerHTML = playSVG;
-    startStopTimer.classList.add('b-red');
-    startStopTimer.classList.remove('b-dark-green');
+    startStopTimer.classList.add('b-light-red');
+    startStopTimer.classList.remove('b-light-green');
     localStorage.setItem('workout-state', 'stopped');
 }
 
@@ -58,8 +63,8 @@ startStopTimer.onclick = () => {
 
     } else {
         startStopTimer.innerHTML = stopDVG;
-        startStopTimer.classList.remove('b-red');
-        startStopTimer.classList.add('b-dark-green');
+        startStopTimer.classList.remove('b-light-red');
+        startStopTimer.classList.add('b-light-green');
         localStorage.setItem('workout-state', 'started');
         localStorage.setItem('workout-date-start', new Date());
         localStorage.removeItem('workout-date-end', new Date());
@@ -140,6 +145,7 @@ async function getContext() {
     } else {
         listaEjerciciosStorage = JSON.parse(listaEjercicios).data;
     }
+    loadExercises();
 }
 
 document.getElementById('order').onclick = () => {
@@ -152,15 +158,15 @@ document.getElementById('order').onclick = () => {
 
 document.getElementById('delete').onclick = () => {
     localStorage.removeItem('ejercicios');
+    localStorage.removeItem('entrenamiento');
     document.getElementById('timer-button').style.visibility = 'hidden';
+    document.getElementById('clear-filters').style.visibility = 'hidden';
+    bsCollapse.hide();
     stopTimer();
     loadExercises();
 }
 
 localStorage.removeItem('current-edit');
-
-loadExercises();
-
 function loadExercises() {
     listaEjercicios.innerHTML = '';
     listaEjercicios.style.height = '0%';
@@ -172,18 +178,18 @@ function loadExercises() {
 
         if (entrenamiento) {
             document.getElementById('timer-button').style.visibility = 'block';
+            document.getElementById('clear-filters').style.visibility = 'block';
 
             entrenamiento = JSON.parse(entrenamiento);
             const d = document.createElement('div');
             d.classList.add('d-flex', 'gap-2', 'align-items-center', 'justify-content-between', 'mb-2');
 
             d.innerHTML = `
-            <div class="rounded-5 b-light-blue t-dark-blue p-1 px-3 fs-7">Entrenamiento <strong>${entrenamiento.id}</strong></div>
-            <div class="rounded-5 b-light-blue t-dark-blue p-1 px-3 fs-7">Tipo <strong>${entrenamiento.tipo}</strong></div>
-            <div class="rounded-5 b-light-blue t-dark-blue p-1 px-3 fs-7">Mesociclo <strong>${entrenamiento.mesociclo}</strong></div>
+            <div class="rounded-2 b-light-blue t-dark-blue p-1 px-3 fs-7">Entrenamiento <strong>${entrenamiento.id}</strong></div>
+            <div class="rounded-2 b-light-blue t-dark-blue p-1 px-3 fs-7">Tipo <strong>${entrenamiento.tipo}</strong></div>
+            <div class="rounded-2 b-light-blue t-dark-blue p-1 px-3 fs-7">Mesociclo <strong>${entrenamiento.mesociclo}</strong></div>
             `;
             listaEjercicios.appendChild(d);
-
         }
 
         ejercicios.forEach((ejercicio, i) => {
@@ -197,6 +203,9 @@ function loadExercises() {
     } else {
         addPresetContainer.classList.remove('d-none');
         shareBtn.classList.add('d-none');
+
+        document.getElementById('timer-button').style.visibility = 'hidden';
+        document.getElementById('clear-filters').style.visibility = 'hidden';
     }
 }
 

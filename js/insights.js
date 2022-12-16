@@ -47,7 +47,27 @@ async function getContext() {
             document.getElementById('trained-days').innerHTML = dates.length;
             document.getElementById('first-training').innerHTML = dates[0];
             document.getElementById('last-training').innerHTML = dates[dates.length - 1];
-            unixDates = dates.map(date => convertToUnix(convertToDate(date)))
+            unixDates = dates.map(date => convertToUnix(convertToDate(date)));
+
+            let counts = {};
+            let daysOfWeek = dates.map(date => convertToDate(date).getDay());
+            console.log(daysOfWeek)
+
+            daysOfWeek = daysOfWeek.reduce((cnt, cur) => (cnt[cur] = cnt[cur] + 1 || 1, cnt), {});
+            daysOfWeek = Object.values(daysOfWeek);
+            daysOfWeek.push(daysOfWeek.shift());
+            console.log(Object.values(daysOfWeek))
+
+            const dataset = createDataset('# Veces', daysOfWeek);
+            data = {
+                labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+                datasets: [dataset]
+            }
+            generateChart(data);
+
+
+
+
         } else {
             document.getElementById('trained-days').innerHTML = 'N/D';
         }
@@ -86,4 +106,54 @@ function currentStreak(arr) {
             return stack;
         }, []);
     return result;
+}
+
+
+function convertToDate(dateString) {
+    const d = dateString.split("/");
+    const dat = new Date(d[2] + '/' + d[1] + '/' + d[0]);
+    return dat;
+}
+
+function createDataset(text, data) {
+    const dataset = {
+        label: text,
+        data: data,
+        backgroundColor: '#1e40af',
+        borderRadius: 5
+
+        // borderWidth: 1
+    }
+    return dataset;
+}
+function generateChart(data) {
+
+    const ctx = document.getElementById('dayDistributionChart');
+    new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options:
+        {
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false
+                    }
+                }
+
+            },
+            plugins: {
+                legend:
+                {
+                    display: false
+                }
+            }
+        }
+
+    });
 }
