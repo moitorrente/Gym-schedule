@@ -192,7 +192,6 @@ function createIndexedDB() {
 
     request.onsuccess = (event) => {
         const db = event.target.result;
-        console.log('Open ok')
     };
 
     request.onupgradeneeded = (event) => {

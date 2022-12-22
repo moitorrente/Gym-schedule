@@ -25,7 +25,7 @@ function createDataset(text, data) {
 
 function generateChart(data) {
 
-    const ctx = document.getElementById('myChart');
+    const ctx = document.getElementById('dayDistributionChart');
 
     new Chart(ctx, {
         type: 'bar',

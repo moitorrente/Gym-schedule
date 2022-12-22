@@ -1,3 +1,24 @@
+const dateFrom = document.getElementById('date-from');
+const dateTo = document.getElementById('date-to');
+let dateFromValue = false;
+let dateToValue = 9999999999999;
+dateFrom.onchange = () => {
+    if (dateFrom.value == '') {
+        dateFromValue = false;
+    } else {
+        dateFromValue = new Date(dateFrom.value);
+    }
+    getContext();
+}
+dateTo.onchange = () => {
+    if (dateTo.value == '') {
+        dateToValue = 9999999999999;
+    } else {
+        dateToValue = new Date(dateTo.value);
+    }
+    getContext();
+}
+
 function getAllFromIndexedDB() {
     const indexedDB =
         window.indexedDB ||
@@ -42,21 +63,30 @@ async function getContext() {
     getAllFromIndexedDB().then(function (reponse) {
         historic = reponse;
         dates = [...new Set(historic.map(x => x.Fecha))];
-        if (dates) {
-            dates = dates.sort(function (a, b) { return new Date(convertToDate(a)) - new Date(convertToDate(b)) });
-            document.getElementById('trained-days').innerHTML = dates.length;
-            document.getElementById('first-training').innerHTML = dates[0];
-            document.getElementById('last-training').innerHTML = dates[dates.length - 1];
-            unixDates = dates.map(date => convertToUnix(convertToDate(date)));
+        let filteredDates = dates.map(x => convertToDate(x));
+        filteredDates = filteredDates.filter(date => date >= dateFromValue && date <= dateToValue);
+        filteredDates = filteredDates.map(date => {
+            const day = date.getDate().toString().padStart(2, '0');
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const year = date.getFullYear();
+            return `${day}/${month}/${year}`
+        });
 
-            let counts = {};
-            let daysOfWeek = dates.map(date => convertToDate(date).getDay());
-            console.log(daysOfWeek)
+        if (filteredDates) {
+            filteredDates = filteredDates.sort(function (a, b) { return new Date(convertToDate(a)) - new Date(convertToDate(b)) });
+            document.getElementById('trained-days').innerHTML = filteredDates.length;
+            document.getElementById('first-training').innerHTML = filteredDates[0];
+            document.getElementById('last-training').innerHTML = filteredDates[filteredDates.length - 1];
+            unixDates = filteredDates.map(date => convertToUnix(convertToDate(date)));
+
+            let daysOfWeek = filteredDates.map(date => {
+                let d = convertToDate(date).getDay();
+                if (d === 0) d = 7;
+                return d;
+            });
 
             daysOfWeek = daysOfWeek.reduce((cnt, cur) => (cnt[cur] = cnt[cur] + 1 || 1, cnt), {});
             daysOfWeek = Object.values(daysOfWeek);
-            daysOfWeek.push(daysOfWeek.shift());
-            console.log(Object.values(daysOfWeek))
 
             const dataset = createDataset('# Veces', daysOfWeek);
             data = {
@@ -64,9 +94,6 @@ async function getContext() {
                 datasets: [dataset]
             }
             generateChart(data);
-
-
-
 
         } else {
             document.getElementById('trained-days').innerHTML = 'N/D';
@@ -76,36 +103,8 @@ async function getContext() {
     });
 }
 
-
-function convertToDate(dateString) {
-    const d = dateString.split("/");
-    const dat = new Date(d[2] + '/' + d[1] + '/' + d[0]);
-    return dat;
-}
-
 function convertToUnix(date) {
     return Math.floor(new Date(date).getTime() / 1000)
-}
-
-function currentStreak(arr) {
-
-    i = 0,
-        result = arr.reduce(function (stack, b) {
-            var cur = stack[i],
-                a = cur ? cur[cur.length - 1] : 0;
-
-            if (b - a > 86400000) {
-                i++;
-            }
-
-            if (!stack[i])
-                stack[i] = [];
-
-            stack[i].push(b);
-
-            return stack;
-        }, []);
-    return result;
 }
 
 
@@ -126,10 +125,15 @@ function createDataset(text, data) {
     }
     return dataset;
 }
+let myChart;
 function generateChart(data) {
 
     const ctx = document.getElementById('dayDistributionChart');
-    new Chart(ctx, {
+
+    if (myChart) {
+        myChart.destroy();
+    }
+    myChart = new Chart(ctx, {
         type: 'bar',
         data: data,
         options:
