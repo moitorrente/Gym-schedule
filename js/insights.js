@@ -94,6 +94,7 @@ async function getContext() {
                 datasets: [dataset]
             }
             generateChart(data);
+            createYearView();
 
         } else {
             document.getElementById('trained-days').innerHTML = 'N/D';
@@ -118,7 +119,7 @@ function createDataset(text, data) {
     const dataset = {
         label: text,
         data: data,
-        backgroundColor: '#1e40af',
+        backgroundColor: ['#2563eb'],
         borderRadius: 5
 
         // borderWidth: 1
@@ -161,3 +162,40 @@ function generateChart(data) {
 
     });
 }
+
+//-------------------------------------------------------------------
+const yearView = document.getElementById('year-view');
+
+function createYearView() {
+    const historic = JSON.parse(localStorage.getItem('historic'));
+    let gone = [];
+    if (historic) {
+        historic.data.forEach(data => gone.push(dayOfYear(stringToDate(data.Fecha))))
+    }
+
+    const today = dayOfYear(new Date());
+    gone = [...new Set(gone)];
+    yearView.innerHTML = '';
+    for (let i = today - 174; i < today; i++) {
+        const day = document.createElement('span');
+        day.classList.add("d-inline-block", "rounded-square", "p-s");
+        if (gone.includes(i + 1)) {
+            day.classList.add('b-blue');
+        } else {
+            day.classList.add('b-light-blue')
+        }
+        yearView.appendChild(day)
+    }
+}
+
+function stringToDate(dateString) {
+    const [day, month, year] = dateString.split('/');
+    return new Date([month, day, year].join('/'));
+};
+
+
+function dayOfYear(day) {
+    let date = new Date(day);
+    return Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+}
+//-------------------------------------------------------------------

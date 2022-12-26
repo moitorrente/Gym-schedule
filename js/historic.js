@@ -14,40 +14,7 @@ const sheetName = 'Log';
 const query = encodeURIComponent('Select *')
 const url = `${base}&sheet=${sheetName}&tq=${query}`;
 
-const yearView = document.getElementById('year-view');
 
-function createYearView() {
-    const historic = JSON.parse(localStorage.getItem('historic'));
-    let gone = [];
-    if (historic) {
-        historic.data.forEach(data => gone.push(dayOfYear(stringToDate(data.Fecha))))
-    }
-
-    const today = dayOfYear(new Date());
-    gone = [...new Set(gone)];
-    yearView.innerHTML = '';
-    for (let i = today - 174; i < today; i++) {
-        const day = document.createElement('span');
-        day.classList.add("d-inline-block", "rounded-square", "p-s");
-        if (gone.includes(i + 1)) {
-            day.classList.add('b-blue');
-        } else {
-            day.classList.add('b-light-blue')
-        }
-        yearView.appendChild(day)
-    }
-}
-
-function stringToDate(dateString) {
-    const [day, month, year] = dateString.split('/');
-    return new Date([month, day, year].join('/'));
-};
-
-
-function dayOfYear(day) {
-    let date = new Date(day);
-    return Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
-}
 
 const lastDescription = document.getElementById('last-description');
 const lastDate = document.getElementById('last-date');
@@ -136,7 +103,7 @@ function getContext() {
         updateLastExerciseCard()
     }
     createMonth(new Date());
-    createYearView();
+    // createYearView();
 
 
 }
