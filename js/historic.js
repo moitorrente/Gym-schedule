@@ -24,8 +24,9 @@ const lastExerciseDate = document.getElementById('last-exercises-date');
 const lastExerciseCheck = document.getElementById('last-exercises-check');
 
 document.getElementById('delete-all').onclick = () => {
-    localStorage.removeItem('historic');
     localStorage.removeItem('listaEjercicios');
+    localStorage.removeItem('historic');
+
     getContext();
 }
 
@@ -72,8 +73,7 @@ function init() {
             })
         }).then(() => {
             document.querySelector('.bi-arrow-clockwise').classList.remove('rotating');
-            localStorage.removeItem('historic');
-            localStorage.setItem('historic', JSON.stringify({ date: new Date().toLocaleString('es-ES'), data: data }));
+            localStorage.setItem('historic', JSON.stringify({ date: new Date().toLocaleString('es-ES') }));
             createIndexedDB();
             clearIndexedDB();
             loadIndexedDB(data);
@@ -102,7 +102,7 @@ function getContext() {
     } else {
         updateLastExerciseCard()
     }
-    createMonth(new Date());
+    // createMonth(new Date());
     // createYearView();
 
 
@@ -146,7 +146,7 @@ function createIndexedDB() {
         window.webkitIndexedDB ||
         window.msIndexedDB ||
         window.shimIndexedDB;
-        
+
     if (!indexedDB) {
         alert.log(`Your browser doesn't support IndexedDB`);
         return;

@@ -1,56 +1,37 @@
-function createIndexedDB() {
-    if (!window.indexedDB) {
+export default function getAllFromIndexedDB(database, table) {
+    const indexedDB =
+        window.indexedDB ||
+        window.mozIndexedDB ||
+        window.webkitIndexedDB ||
+        window.msIndexedDB ||
+        window.shimIndexedDB;
+
+    if (!indexedDB) {
         alert.log(`Your browser doesn't support IndexedDB`);
         return;
     }
-
-    const request = indexedDB.open('db-primary', 1);
-    request.onerror = (event) => {
-        alert.error(`Database error: ${event.target.errorCode}`);
-    };
-
-    request.onsuccess = (event) => {
-        const db = event.target.result;
-
-        insertLog(db, { Fecha: '16/09/2022', Entrenamiento: 'A', Mesociclo: '1', TipoEntrenamiento: 'Carga', Orden: 'A1' })
-    };
-
-    request.onupgradeneeded = (event) => {
-        let db = event.target.result;
-
-        let store = db.createObjectStore('Log', {
-            autoIncrement: true
-        });
-
-        // create indexes
-        store.createIndex('Fecha', 'Fecha', { unique: false });
-        store.createIndex('EjercicioID', 'EjercicioID', { unique: false });
-    };
-};
-
-function insertLog(db, log) {
-    // create a new transaction
-    const txn = db.transaction('Log', 'readwrite');
-
-    // get the Contacts object store
-    const store = txn.objectStore('Log');
-    //
-    let query = store.put(log);
-
-    // handle success case
-    query.onsuccess = function (event) {
-        console.log(event);
-    };
-
-    // handle the error case
-    query.onerror = function (event) {
-        console.log(event.target.errorCode);
-    }
-
-    // close the database once the 
-    // transaction completes
-    txn.oncomplete = function () {
-        db.close();
-    };
+    return new Promise(
+        function (resolve, reject) {
+            const request = indexedDB.open('db-primary', 1);
+            request.onerror = (event) => {
+                reject(Error(`Database error: ${event.target.errorCode}`))
+            }
+            request.onsuccess = (event) => {
+                const db = event.target.result;
+                let res;
+                const txn = db.transaction(['Log'], 'readonly');
+                const store = txn.objectStore('Log');
+                const query = store.getAll();
+                query.onsuccess = e => {
+                    res = e.target.result;
+                }
+                txn.oncomplete = function () {
+                    db.close();
+                    resolve(res)
+                };
+            }
+        }
+    )
 }
 
+// getAllFromIndexedDB('db-primary', 'Log') 

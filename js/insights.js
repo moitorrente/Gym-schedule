@@ -1,3 +1,5 @@
+import getAllFromIndexedDB from './db.js';
+
 const dateFrom = document.getElementById('date-from');
 const dateTo = document.getElementById('date-to');
 let dateFromValue = false;
@@ -19,48 +21,12 @@ dateTo.onchange = () => {
     getContext();
 }
 
-function getAllFromIndexedDB() {
-    const indexedDB =
-        window.indexedDB ||
-        window.mozIndexedDB ||
-        window.webkitIndexedDB ||
-        window.msIndexedDB ||
-        window.shimIndexedDB;
-
-    if (!indexedDB) {
-        alert.log(`Your browser doesn't support IndexedDB`);
-        return;
-    }
-    return new Promise(
-        function (resolve, reject) {
-            const request = indexedDB.open('db-primary', 1);
-            request.onerror = (event) => {
-                reject(Error(`Database error: ${event.target.errorCode}`))
-            }
-            request.onsuccess = (event) => {
-                const db = event.target.result;
-                let res;;
-                const txn = db.transaction(['Log'], 'readonly');
-                const store = txn.objectStore('Log');
-                const query = store.getAll();
-                query.onsuccess = e => {
-                    res = e.target.result;
-                }
-                txn.oncomplete = function () {
-                    db.close();
-                    resolve(res)
-                };
-            }
-        }
-    )
-}
-
 let historic;
 let dates;
 let unixDates;
 getContext();
 async function getContext() {
-    getAllFromIndexedDB().then(function (reponse) {
+    getAllFromIndexedDB('db-primary', 'Log').then(function (reponse) {
         historic = reponse;
         dates = [...new Set(historic.map(x => x.Fecha))];
         let filteredDates = dates.map(x => convertToDate(x));
@@ -71,6 +37,8 @@ async function getContext() {
             const year = date.getFullYear();
             return `${day}/${month}/${year}`
         });
+
+        createYearView(dates);
 
         if (filteredDates) {
             filteredDates = filteredDates.sort(function (a, b) { return new Date(convertToDate(a)) - new Date(convertToDate(b)) });
@@ -89,12 +57,12 @@ async function getContext() {
             daysOfWeek = Object.values(daysOfWeek);
 
             const dataset = createDataset('# Veces', daysOfWeek);
-            data = {
+            const data = {
                 labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
                 datasets: [dataset]
             }
             generateChart(data);
-            createYearView();
+
 
         } else {
             document.getElementById('trained-days').innerHTML = 'N/D';
@@ -166,11 +134,10 @@ function generateChart(data) {
 //-------------------------------------------------------------------
 const yearView = document.getElementById('year-view');
 
-function createYearView() {
-    const historic = JSON.parse(localStorage.getItem('historic'));
+function createYearView(days) {
     let gone = [];
-    if (historic) {
-        historic.data.forEach(data => gone.push(dayOfYear(stringToDate(data.Fecha))))
+    if (days) {
+        days.forEach(day => gone.push(dayOfYear(stringToDate(day))))
     }
 
     const today = dayOfYear(new Date());
