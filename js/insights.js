@@ -88,8 +88,9 @@ function createDataset(text, data) {
         label: text,
         data: data,
         backgroundColor: ['#2563eb'],
-        borderRadius: 5
-
+        borderRadius: 3,
+        borderSkipped: false,
+        barThickness: 8
         // borderWidth: 1
     }
     return dataset;
