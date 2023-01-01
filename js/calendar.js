@@ -7,7 +7,6 @@ let currentYear;
 
 const calendarContainer = document.getElementById('calendar-container');
 const monthName = document.querySelector('.cal-month-name');
-const selectedTraining = document.getElementById('selected-training');
 
 function createMonth(date) {
     calendarContainer.innerHTML = '';
@@ -15,6 +14,8 @@ function createMonth(date) {
     currentMonth = month.month;
     currentYear = month.year;
     monthName.innerHTML = month.name;
+
+    if (month.firstDayIndex == 0) month.firstDayIndex = 7;
 
     for (let i = 0; i < month.firstDayIndex - 1; i++) {
         calendarContainer.appendChild(createPlaceholder())

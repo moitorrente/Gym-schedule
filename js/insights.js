@@ -144,7 +144,7 @@ function createYearView(days) {
     const today = dayOfYear(new Date());
     gone = [...new Set(gone)];
     yearView.innerHTML = '';
-    for (let i = today - 174; i < today; i++) {
+    for (let i = 0; i < today; i++) {
         const day = document.createElement('span');
         day.classList.add("d-inline-block", "rounded-square", "p-s");
         if (gone.includes(i + 1)) {
