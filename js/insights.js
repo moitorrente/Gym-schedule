@@ -9,6 +9,8 @@ dateFrom.onchange = () => {
         dateFromValue = false;
     } else {
         dateFromValue = new Date(dateFrom.value);
+        dateFromValue.setHours(0, 0, 0, 0);
+
     }
     getContext();
 }
@@ -17,6 +19,7 @@ dateTo.onchange = () => {
         dateToValue = 9999999999999;
     } else {
         dateToValue = new Date(dateTo.value);
+        dateToValue.setHours(0, 0, 0, 0);
     }
     getContext();
 }
@@ -40,11 +43,27 @@ async function getContext() {
 
         createYearView(dates);
 
+        const uniqueTrainings = historic.filter((value, index, self) =>
+            index === self.findIndex((t) => (
+                t.Fecha === value.Fecha
+            ))
+        )
+
+        let totalTime = uniqueTrainings.map(x => parseInt(x.Tiempo)).filter(x => x);
+        const numberOfTime = parseInt(totalTime.length);
+        let averageTime = totalTime.reduce((prev, curr) => prev + curr, 0);
+        averageTime = averageTime / numberOfTime;
+        document.getElementById('average-time').innerHTML = toMinutes(averageTime);
+        document.getElementById('total-time').innerHTML = toMinutes(totalTime);
+
         if (filteredDates) {
             filteredDates = filteredDates.sort(function (a, b) { return new Date(convertToDate(a)) - new Date(convertToDate(b)) });
             document.getElementById('trained-days').innerHTML = filteredDates.length;
             document.getElementById('first-training').innerHTML = filteredDates[0];
             document.getElementById('last-training').innerHTML = filteredDates[filteredDates.length - 1];
+
+
+
             unixDates = filteredDates.map(date => convertToUnix(convertToDate(date)));
 
             let daysOfWeek = filteredDates.map(date => {
@@ -70,6 +89,13 @@ async function getContext() {
     }).catch(function (error) {
         alert(error.message);
     });
+}
+
+
+function toMinutes(totalMinutes) {
+    const minutes = Math.floor(totalMinutes / 60);
+
+    return `${minutes}min`;
 }
 
 function convertToUnix(date) {
