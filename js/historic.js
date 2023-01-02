@@ -1,4 +1,6 @@
 import getFile from './data.js';
+import updateCalendar from './calendar.js';
+
 const notCheckedSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="var(--dark-gray)" class="bi bi-square" viewBox="0 0 16 16">
 <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
 </svg>`;
@@ -149,7 +151,7 @@ function createIndexedDB() {
 
     if (!indexedDB) {
         alert.log(`Your browser doesn't support IndexedDB`);
-        return;
+        // return;
     }
 
     const request = indexedDB.open('db-primary', 1);
@@ -209,7 +211,7 @@ function insertLog(db, log) {
 
     // handle success case
     query.onsuccess = function (event) {
-        // console.log(event);
+        updateCalendar()
     };
 
     // handle the error case

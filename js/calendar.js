@@ -107,12 +107,16 @@ function createDay(day, month, year) {
 
 let dates;
 let historic;
-getAllFromIndexedDB('db-primary', 'Log').then(function (reponse) {
-    historic = reponse;
-    dates = [...new Set(historic.map(x => x.Fecha))];
-    createMonth(new Date());
 
-}).catch(function (error) {
-    console.log(error.message)
-    // alert(error.message);
-});
+updateCalendar();
+export default function updateCalendar() {
+    getAllFromIndexedDB('db-primary', 'Log').then(function (reponse) {
+        historic = reponse;
+        dates = [...new Set(historic.map(x => x.Fecha))];
+        createMonth(new Date());
+
+    }).catch(function (error) {
+        console.log(error.message)
+        // alert(error.message);
+    });
+}
