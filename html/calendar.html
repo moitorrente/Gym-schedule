@@ -7,17 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title>GymSchedule - Insights</title>
+    <title>GymSchedule - Calendar</title>
     <link rel="icon" type="image/x-icon" href="../icon.png">
     <link rel='shortcut icon' type='image/x-icon' href='../icon.png' />
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <script defer type="module" src="../js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-    <script defer type="module" src="../js/insights.js"></script>
+    <script defer type="module" src="../js/calendar.js"></script>
 
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/calendar.css">
+
     <link rel="alternate stylesheet" href="../css/dark.css" title="dark">
     <link rel="alternate stylesheet" href="../css/light.css" title="light">
 </head>
@@ -32,7 +33,7 @@
                         d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
                 </svg>
             </div>
-            <h1 class="fw-bold m-0">Insights</h1>
+            <h1 class="fw-bold m-0">Calendario</h1>
             <div class="ui-square-btn" id="clear-filters" style="visibility: hidden;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" fill="currentColor"
                     class="bi bi-funnel-fill" viewBox="0 0 16 16">
@@ -44,43 +45,58 @@
     </header>
     <div style="margin-top: 5.5rem;"></div>
 
-    <div class="container d-flex gap-2 mt-4 t-blue">
-        <input class="form-control t-blue border-0 shadow-sm" type="date" name="" id="date-from"></input>
-        <input class="form-control t-blue border-0 shadow-sm" type="date" name="" id="date-to">
-    </div>
-
-
     <div class="container">
+        <div class="bg-white d-block position-static my-0 p-2 rounded-3 mt-2 shadow-sm">
+            <div class="d-grid gap-1">
+                <div class="cal">
+                    <div class="cal-month">
+                        <strong class="cal-month-name">Octubre</strong>
 
-        <div class="bg-white fs-5 p-2 px-3 rounded-2 text-black shadow-sm d-flex mt-2">
-            <div class="flex-grow-1">Total entrenamientos</div>
-            <div id="trained-days" class="fw-bold text-muted">3</div>
-        </div>
-        <div class="d-flex gap-2">
-            <div class="bg-white p-2 px-3 w-50 fs-7 align-items-center rounded-2 text-black shadow-sm mt-2">
-                <div class="flex-grow-1 fw-bold">Primer entrenamiento </div>
-                <div id="first-training" class="fs-6 text-muted">3</div>
+                        <button class="btn cal-btn" type="button" id="prev-month">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                            </svg>
+                        </button>
+                        <button class="btn cal-btn" type="button" id="next-month">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </button>
+                        <select class="form-select cal-month-name d-none">
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option selected="" value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                    </div>
+                    <div class="cal-weekdays text-muted">
+                        <div class="cal-weekday">Lun</div>
+                        <div class="cal-weekday">Mar</div>
+                        <div class="cal-weekday">Mié</div>
+                        <div class="cal-weekday">Jue</div>
+                        <div class="cal-weekday">Vie</div>
+                        <div class="cal-weekday">Sáb</div>
+                        <div class="cal-weekday">Dom</div>
+                    </div>
+                    <div class="cal-days" id="calendar-container">
+                    </div>
+                </div>
             </div>
-            <div class="bg-white p-2 px-3 w-50 fs-7 align-items-center rounded-2 text-black shadow-sm mt-2">
-                <div class="flex-grow-1 fw-bold">Último entrenamiento</div>
-                <div id="last-training" class="fs-6 text-muted">3</div>
-            </div>
-        </div>
-        <div class="d-flex gap-2">
-            <div class="bg-white p-2 px-3 w-50 fs-7 align-items-center rounded-2 text-black shadow-sm mt-2">
-                <div class="flex-grow-1 fw-bold">Tiempo medio</div>
-                <div id="average-time" class="fs-6 text-muted">N/D</div>
-            </div>
-            <div class="bg-white p-2 px-3 w-50 fs-7 align-items-center rounded-2 text-black shadow-sm mt-2">
-                <div class="flex-grow-1 fw-bold">Tiempo total</div>
-                <div id="total-time" class="fs-6 text-muted">N/D</div>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-2 shadow-sm p-3 mt-2">
-            <canvas id="dayDistributionChart"></canvas>
         </div>
     </div>
+
 
     <nav class="fixed-bottom justify-content-between navbar-expand-sm py-2 pb-4 white-crystal">
         <div class="row text-secondary">

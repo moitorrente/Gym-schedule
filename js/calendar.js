@@ -108,7 +108,7 @@ function createDay(day, month, year) {
 let dates;
 let historic;
 
-updateCalendar();
+ updateCalendar();
 export default function updateCalendar() {
     getAllFromIndexedDB('db-primary', 'Log').then(function (reponse) {
         historic = reponse;

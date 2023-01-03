@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title>GymSchedule - Insights</title>
+    <title>GymSchedule - Year view</title>
     <link rel="icon" type="image/x-icon" href="../icon.png">
     <link rel='shortcut icon' type='image/x-icon' href='../icon.png' />
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -15,7 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-    <script defer type="module" src="../js/insights.js"></script>
+    <script defer type="module" src="../js/year-view.js"></script>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="alternate stylesheet" href="../css/dark.css" title="dark">
@@ -32,7 +32,7 @@
                         d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
                 </svg>
             </div>
-            <h1 class="fw-bold m-0">Insights</h1>
+            <h1 class="fw-bold m-0">Visión anual</h1>
             <div class="ui-square-btn" id="clear-filters" style="visibility: hidden;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" fill="currentColor"
                     class="bi bi-funnel-fill" viewBox="0 0 16 16">
@@ -44,41 +44,30 @@
     </header>
     <div style="margin-top: 5.5rem;"></div>
 
-    <div class="container d-flex gap-2 mt-4 t-blue">
-        <input class="form-control t-blue border-0 shadow-sm" type="date" name="" id="date-from"></input>
-        <input class="form-control t-blue border-0 shadow-sm" type="date" name="" id="date-to">
-    </div>
-
-
     <div class="container">
-
-        <div class="bg-white fs-5 p-2 px-3 rounded-2 text-black shadow-sm d-flex mt-2">
-            <div class="flex-grow-1">Total entrenamientos</div>
-            <div id="trained-days" class="fw-bold text-muted">3</div>
-        </div>
-        <div class="d-flex gap-2">
-            <div class="bg-white p-2 px-3 w-50 fs-7 align-items-center rounded-2 text-black shadow-sm mt-2">
-                <div class="flex-grow-1 fw-bold">Primer entrenamiento </div>
-                <div id="first-training" class="fs-6 text-muted">3</div>
+        <div class="bg-white rounded-3 p-2 mt-2 shadow-sm">
+            <div class="mb-2 fw-bold fs-7 ">
+                <div class="b-light-blue t-dark-blue text-center border-rounded rounded-5" style="width: 4rem;">
+                    2023
+                </div>
             </div>
-            <div class="bg-white p-2 px-3 w-50 fs-7 align-items-center rounded-2 text-black shadow-sm mt-2">
-                <div class="flex-grow-1 fw-bold">Último entrenamiento</div>
-                <div id="last-training" class="fs-6 text-muted">3</div>
+            <div id="year-view" class="gap-s" style="  display: grid;
+            grid-template-columns: repeat(29, 1fr);
+            justify-items: center;
+            align-items: center;">
             </div>
         </div>
-        <div class="d-flex gap-2">
-            <div class="bg-white p-2 px-3 w-50 fs-7 align-items-center rounded-2 text-black shadow-sm mt-2">
-                <div class="flex-grow-1 fw-bold">Tiempo medio</div>
-                <div id="average-time" class="fs-6 text-muted">N/D</div>
+        <div class="bg-white rounded-3 p-2 mt-2 shadow-sm">
+            <div class="mb-2 fw-bold fs-7 ">
+                <div class="b-light-blue t-dark-blue text-center border-rounded rounded-5" style="width: 4rem;">
+                    2022
+                </div>
             </div>
-            <div class="bg-white p-2 px-3 w-50 fs-7 align-items-center rounded-2 text-black shadow-sm mt-2">
-                <div class="flex-grow-1 fw-bold">Tiempo total</div>
-                <div id="total-time" class="fs-6 text-muted">N/D</div>
+            <div id="year-view-2022" class="gap-s" style="  display: grid;
+            grid-template-columns: repeat(29, 1fr);
+            justify-items: center;
+            align-items: center;">
             </div>
-        </div>
-
-        <div class="bg-white rounded-2 shadow-sm p-3 mt-2">
-            <canvas id="dayDistributionChart"></canvas>
         </div>
     </div>
 

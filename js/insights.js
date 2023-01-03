@@ -41,7 +41,6 @@ async function getContext() {
             return `${day}/${month}/${year}`
         });
 
-        createYearView(dates);
 
         const uniqueTrainings = historic.filter((value, index, self) =>
             index === self.findIndex((t) => (
@@ -159,37 +158,4 @@ function generateChart(data) {
 }
 
 //-------------------------------------------------------------------
-const yearView = document.getElementById('year-view');
 
-function createYearView(days) {
-    let gone = [];
-    if (days) {
-        days.forEach(day => gone.push(dayOfYear(stringToDate(day))))
-    }
-
-    const today = dayOfYear(new Date());
-    gone = [...new Set(gone)];
-    yearView.innerHTML = '';
-    for (let i = 0; i < today; i++) {
-        const day = document.createElement('span');
-        day.classList.add("d-inline-block", "rounded-square", "p-s");
-        if (gone.includes(i + 1)) {
-            day.classList.add('b-blue');
-        } else {
-            day.classList.add('b-light-blue')
-        }
-        yearView.appendChild(day)
-    }
-}
-
-function stringToDate(dateString) {
-    const [day, month, year] = dateString.split('/');
-    return new Date([month, day, year].join('/'));
-};
-
-
-function dayOfYear(day) {
-    let date = new Date(day);
-    return Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
-}
-//-------------------------------------------------------------------
