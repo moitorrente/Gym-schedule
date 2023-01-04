@@ -50,8 +50,9 @@ async function getContext() {
 
         let totalTime = uniqueTrainings.map(x => parseInt(x.Tiempo)).filter(x => x);
         const numberOfTime = parseInt(totalTime.length);
-        let averageTime = totalTime.reduce((prev, curr) => prev + curr, 0);
-        averageTime = averageTime / numberOfTime;
+        totalTime = totalTime.reduce((prev, curr) => prev + curr, 0);
+        let averageTime = totalTime / numberOfTime;
+        console.log(totalTime)
         document.getElementById('average-time').innerHTML = toMinutes(averageTime);
         document.getElementById('total-time').innerHTML = toMinutes(totalTime);
 
@@ -91,10 +92,19 @@ async function getContext() {
 }
 
 
-function toMinutes(totalMinutes) {
-    const minutes = Math.floor(totalMinutes / 60);
+function toMinutes(time) {
+    const minutes = Math.floor(time / 60);
+    if (minutes > 60) {
+        return toHours(minutes);
+    }
 
     return `${minutes}min`;
+}
+
+function toHours(time) {
+    const hours = Math.floor(time / 60);
+    const minutes = Math.floor(time % 60)
+    return `${hours}h ${minutes}min`;
 }
 
 function convertToUnix(date) {

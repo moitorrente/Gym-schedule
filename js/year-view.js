@@ -30,7 +30,7 @@ function createYearView(days, year, view) {
         if (gone.includes(i + 1)) {
             day.classList.add('b-blue');
         } else {
-            day.classList.add('b-light-blue')
+            day.classList.add('b-light-blue');
         }
         view.appendChild(day)
     }
