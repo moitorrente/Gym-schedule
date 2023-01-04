@@ -130,7 +130,7 @@ async function createOptions() {
                 const modal = bootstrap.Modal.getInstance(myModal);
                 modal.hide();
             }
-            ejercicioSearch.appendChild(option2)
+            ejercicioSearch.appendChild(option2);
         })
     } else {
         let res = await getFile('exercises.json');

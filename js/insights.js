@@ -1,7 +1,13 @@
 import getAllFromIndexedDB from './db.js';
 
+
+const periodoTexto = document.getElementById('periodo-texto');
+
 const dateFrom = document.getElementById('date-from');
 const dateTo = document.getElementById('date-to');
+
+
+
 let dateFromValue = false;
 let dateToValue = 9999999999999;
 dateFrom.onchange = () => {
@@ -23,6 +29,50 @@ dateTo.onchange = () => {
     }
     getContext();
 }
+
+function setDateFrom(date) {
+    dateFromValue = new Date(date);
+    dateFromValue.setHours(0, 0, 0, 0);
+}
+
+function setDateTo(date) {
+    dateToValue = new Date(date);
+    dateToValue.setHours(0, 0, 0, 0);
+}
+
+let tipoPeriodo
+const periodos = document.querySelectorAll('input[name="periodo"]');
+periodos.forEach(periodo => periodo.onclick = () => {
+    tipoPeriodo = periodo.value;
+    switch (periodo.value) {
+        case 'semana':
+            periodoTexto.innerHTML = '02/01/2023 - 08/01/2023';
+            setDateFrom(convertToDate('02/01/2023'));
+            setDateTo(convertToDate('08/01/2023'));
+            break;
+        case 'mes':
+            periodoTexto.innerHTML = '01/01/2023 - 31/01/2023';
+            setDateFrom(convertToDate('01/01/2023'));
+            setDateTo(convertToDate('31/01/2023'));
+            break
+        case 'año':
+            periodoTexto.innerHTML = '2023';
+            setDateFrom(convertToDate('01/01/2023'));
+            setDateTo(convertToDate('31/12/2023'));
+            break;
+        case 'siempre':
+            periodoTexto.innerHTML = 'Siempre';
+            setDateFrom(convertToDate('01/01/2022'));
+            setDateTo(convertToDate('31/12/2023'));
+            break;
+        case 'fechas':
+            ;
+    }
+    getContext();
+});
+
+
+
 
 let historic;
 let dates;
@@ -52,7 +102,6 @@ async function getContext() {
         const numberOfTime = parseInt(totalTime.length);
         totalTime = totalTime.reduce((prev, curr) => prev + curr, 0);
         let averageTime = totalTime / numberOfTime;
-        console.log(totalTime)
         document.getElementById('average-time').innerHTML = toMinutes(averageTime);
         document.getElementById('total-time').innerHTML = toMinutes(totalTime);
 

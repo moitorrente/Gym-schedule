@@ -326,5 +326,29 @@
         "video": "",
         "elemento": "cuerpo",
         "textoCorto": "Abdominales tumbado"
+    },
+    {
+        "ejercicio": "Jalón al pecho agarre neutro",
+        "id": "42",
+        "tipo": "Peso",
+        "video": "",
+        "elemento": "polea",
+        "textoCorto": "Jalón al pecho agarre neutro"
+    },
+    {
+        "ejercicio": "Curl bíceps barra zeta sentado",
+        "id": "43",
+        "tipo": "Peso",
+        "video": "",
+        "elemento": "barra",
+        "textoCorto": "Curl bíceps barra zeta sentado"
+    },
+    {
+        "ejercicio": "Extensiones de tríceps con mancuernas de pie",
+        "id": "44",
+        "tipo": "Peso",
+        "video": "",
+        "elemento": "mancuerna",
+        "textoCorto": "Extensiones de tríceps mancuernas"
     }
 ]
