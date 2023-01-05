@@ -13,9 +13,6 @@ function createYearView(days, year, view) {
             }
         })
     }
-
-    console.log(days)
-
     let today = dayOfYear(new Date());
 
     if (year < new Date().getFullYear()) {
