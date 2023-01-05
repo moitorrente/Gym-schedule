@@ -174,7 +174,7 @@ function createDataset(text, data) {
         backgroundColor: ['#2563eb'],
         borderRadius: 3,
         borderSkipped: false,
-        barThickness: 8
+        barThickness: 16
         // borderWidth: 1
     }
     return dataset;
