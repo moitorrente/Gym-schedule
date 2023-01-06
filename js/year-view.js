@@ -1,5 +1,11 @@
 import getAllFromIndexedDB from './db.js';
 
+
+document.querySelectorAll('.bi-arrows-fullscreen').forEach(el => el.onclick = () => {
+    document.getElementById('years').requestFullscreen().then(res => console.log(res).catch(err => console.log(err)));
+    screen.orientation.lock('landscape').then(res => console.log(res)).catch(err => console.log(err))
+})
+
 function createYearView(days, year) {
     const view = document.getElementById(`year-view-${year}`);
     const today = year >= new Date().getFullYear() ? dayOfYear(new Date()) : dayOfYear(new Date(stringToDate(`31/12/${year}`)));
@@ -10,8 +16,13 @@ function createYearView(days, year) {
         const day = document.createElement('span');
         const color = goneDays.includes(i + 1) ? 'b-blue' : 'b-light-blue';
         day.classList.add("d-inline-block", "rounded-square", "p-s", color);
-        view.appendChild(day)
+        view.appendChild(day);
     }
+
+    document.querySelector(`.dias-${year}`).innerHTML = goneDays.length;
+    console.log(Math.floor((goneDays.length / today * 100)))
+    document.querySelector(`.asistencia-${year}`).innerHTML = `${Math.floor((goneDays.length / today * 100))}%`;
+
 }
 
 function stringToDate(dateString) {
