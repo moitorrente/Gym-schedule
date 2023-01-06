@@ -32,13 +32,20 @@ function createYearView(days, year) {
     for (let i = 0; i < today; i++) {
         const day = document.createElement('span');
         const color = goneDays.includes(i + 1) ? 'b-blue' : 'b-light-blue';
+        const set = goneDays.includes(i + 1) ? true : false;
         day.classList.add("d-inline-block", "rounded-square", "p-s", color);
+        day.dataset.number = i + 1;
+        day.dataset.set = set;
         view.appendChild(day);
     }
 
     document.querySelector(`.dias-${year}`).innerHTML = goneDays.length;
     document.querySelector(`.asistencia-${year}`).innerHTML = `${Math.floor((goneDays.length / today * 100))}%`;
-    document.querySelector(`.racha-${year}`).innerHTML = streak;
+    document.querySelector(`.racha-${year}`).innerHTML = streak.length;
+    document.querySelector(`.racha-${year}`).onclick = () => {
+        const calendarDays = document.querySelectorAll(`#year-view-${year} .rounded-square`);
+        hilite(streak, calendarDays);
+    }
 }
 
 function stringToDate(dateString) {
@@ -66,6 +73,7 @@ function getContext() {
         const dates = [...new Set(response.map(el => el.Fecha))];
         createYearView(dates, 2022);
         createYearView(dates, 2023);
+
     }).catch(function (error) {
         alert(error.message);
     });
@@ -78,9 +86,27 @@ function calculateStreak(days) {
     days.forEach(day => {
         if (day - prev != 1) chunks.push([]);
         chunks[chunks.length - 1].push(day);
+
         prev = day;
     });
 
     chunks.sort((a, b) => b.length - a.length);
-    return chunks[0].length;
+    return chunks[0];
+}
+
+function hilite(streakDays, calendarDays) {
+    streakDays.forEach(streakDay => {
+        calendarDays.forEach(calendarDay => {
+            if (calendarDay.dataset.number == streakDay) {
+                if (calendarDay.classList.contains('b-blue') || calendarDay.classList.contains('b-light-blue')) {
+                    calendarDay.classList.remove('b-blue', 'b-light-blue');
+                    calendarDay.classList.add('b-light-red');
+                } else {
+                    const color = calendarDay.dataset.set ? 'b-blue' : 'b-light-blue';
+                    calendarDay.classList.remove('b-light-red');
+                    calendarDay.classList.add(color);
+                }
+            }
+        })
+    })
 }
