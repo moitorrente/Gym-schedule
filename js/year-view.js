@@ -4,7 +4,12 @@ let fullscreenEvent;
 
 document.querySelectorAll('.bi-arrows-fullscreen').forEach(el => el.onclick = () => {
     document.getElementById('years').requestFullscreen().then(() => {
-        screen.orientation.lock('landscape').catch(err => console.log(err));
+        screen.orientation.lock('landscape').then(() => {
+            document.getElementById(`year-2022`).style.width = 'fit-content';
+            document.getElementById(`year-2023`).style.width = 'fit-content';
+        }).catch(err => console.log(err));
+
+
     });
 });
 
@@ -16,7 +21,11 @@ window.addEventListener("orientationchange", (event) => {
         fullscreenEvent = document.onclick = (event) => {
             if (document.fullscreenElement) {
                 document.exitFullscreen()
-                    .catch((err) => console.error(err))
+                    .then(() => {
+                        document.getElementById(`year-2022`).style.width = '';
+                        document.getElementById(`year-2023`).style.width = '';
+                    })
+                    .catch((err) => console.error(err));
             }
         }
     }
@@ -24,7 +33,9 @@ window.addEventListener("orientationchange", (event) => {
 
 function createYearView(days, year) {
     const view = document.getElementById(`year-view-${year}`);
-    const today = year >= new Date().getFullYear() ? dayOfYear(new Date()) : dayOfYear(new Date(stringToDate(`31/12/${year}`)));
+    //Para que el año actual solo pinte hasta la fecha de consulta
+    // const today = year >= new Date().getFullYear() ? dayOfYear(new Date()) : dayOfYear(new Date(stringToDate(`31/12/${year}`)));
+    const today = dayOfYear(new Date(stringToDate(`31/12/${year}`)));
     const goneDays = getGoneDaysInYear(days, year);
     const streak = calculateStreak(goneDays);
 
@@ -42,9 +53,9 @@ function createYearView(days, year) {
     document.querySelector(`.dias-${year}`).innerHTML = goneDays.length;
     document.querySelector(`.asistencia-${year}`).innerHTML = `${Math.floor((goneDays.length / today * 100))}%`;
     document.querySelector(`.racha-${year}`).innerHTML = streak.length;
-    document.querySelector(`.racha-${year}`).onclick = () => {
+    document.querySelector(`.racha-${year}`).onclick = (e) => {
         const calendarDays = document.querySelectorAll(`#year-view-${year} .rounded-square`);
-        hilite(streak, calendarDays);
+        hilite(streak, calendarDays, e.target);
     }
 }
 
@@ -94,16 +105,19 @@ function calculateStreak(days) {
     return chunks[0];
 }
 
-function hilite(streakDays, calendarDays) {
+function hilite(streakDays, calendarDays, div) {
     streakDays.forEach(streakDay => {
         calendarDays.forEach(calendarDay => {
             if (calendarDay.dataset.number == streakDay) {
                 if (calendarDay.classList.contains('b-blue') || calendarDay.classList.contains('b-light-blue')) {
                     calendarDay.classList.remove('b-blue', 'b-light-blue');
-                    calendarDay.classList.add('b-light-red');
+                    calendarDay.classList.add('b-dark-green');
+                    div.classList.add('t-dark-green')
                 } else {
                     const color = calendarDay.dataset.set ? 'b-blue' : 'b-light-blue';
-                    calendarDay.classList.remove('b-light-red');
+                    calendarDay.classList.remove('b-dark-green');
+                    div.classList.remove('t-dark-green')
+
                     calendarDay.classList.add(color);
                 }
             }

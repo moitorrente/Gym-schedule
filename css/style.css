@@ -131,6 +131,9 @@ body {
 .t-dark-blue {
     color: var(--dark-blue) !important;
 }
+.t-light-red {
+    color: var(--light-red) !important;
+}
 
 .t-red {
     color: var(--red) !important;
