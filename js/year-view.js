@@ -34,8 +34,8 @@ window.addEventListener("orientationchange", (event) => {
 function createYearView(days, year) {
     const view = document.getElementById(`year-view-${year}`);
     //Para que el año actual solo pinte hasta la fecha de consulta
-    // const today = year >= new Date().getFullYear() ? dayOfYear(new Date()) : dayOfYear(new Date(stringToDate(`31/12/${year}`)));
-    const today = dayOfYear(new Date(stringToDate(`31/12/${year}`)));
+    const today = year >= new Date().getFullYear() ? dayOfYear(new Date()) : dayOfYear(new Date(stringToDate(`31/12/${year}`)));
+    const daysInYear = dayOfYear(new Date(stringToDate(`31/12/${year}`)));
     const goneDays = getGoneDaysInYear(days, year);
     const streak = calculateStreak(goneDays);
 
@@ -47,6 +47,13 @@ function createYearView(days, year) {
         day.classList.add("d-inline-block", "rounded-square", "p-s", color);
         day.dataset.number = i + 1;
         day.dataset.set = set;
+        view.appendChild(day);
+    }
+
+    for (let i = today; i < daysInYear; i++) {
+        const day = document.createElement('span');
+        day.classList.add("d-inline-block", "rounded-square", "p-s", 'bg-white');
+        day.dataset.number = i + 1;
         view.appendChild(day);
     }
 
