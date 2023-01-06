@@ -108,6 +108,8 @@ const listaEjercicios = document.getElementById('exercise-list');
 const addPresetContainer = document.getElementById('add-preset-training');
 const shareBtn = document.getElementById('share-btn');
 
+let listaEjerciciosStorage;
+
 getContext();
 async function getContext() {
     initializeControls();
