@@ -2,9 +2,10 @@ import getAllFromIndexedDB from './db.js';
 
 
 document.querySelectorAll('.bi-arrows-fullscreen').forEach(el => el.onclick = () => {
-    document.getElementById('years').requestFullscreen().then(res => console.log(res).catch(err => console.log(err)));
-    screen.orientation.lock('landscape').then(res => console.log(res)).catch(err => console.log(err))
-})
+    document.getElementById(`year-${el.dataset.year}`).requestFullscreen().then(res => {
+        screen.orientation.lock('landscape').then(res => console.log(res)).catch(err => console.log(err));
+    });
+});
 
 function createYearView(days, year) {
     const view = document.getElementById(`year-view-${year}`);
