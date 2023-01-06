@@ -2,8 +2,17 @@ import getAllFromIndexedDB from './db.js';
 
 
 document.querySelectorAll('.bi-arrows-fullscreen').forEach(el => el.onclick = () => {
-    document.getElementById(`year-${el.dataset.year}`).requestFullscreen().then(res => {
+    document.getElementById(`year-${el.dataset.year}`).requestFullscreen().then(() => {
         screen.orientation.lock('landscape').then(res => console.log(res)).catch(err => console.log(err));
+        document.onclick = (event) => {
+            if (document.fullscreenElement) {
+                document.exitFullscreen()
+                    .then(() => console.log("Document Exited from Full screen mode"))
+                    .catch((err) => console.error(err))
+            } else {
+                document.documentElement.requestFullscreen();
+            }
+        }
     });
 });
 
