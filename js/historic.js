@@ -73,14 +73,19 @@ function init() {
                 data.push(row);
             })
         }).then(() => {
-            document.querySelector('.bi-arrow-clockwise').classList.remove('rotating');
+
             localStorage.setItem('historic', JSON.stringify({ date: new Date().toLocaleString('es-ES') }));
             createIndexedDB();
             clearIndexedDB();
             loadIndexedDB(data);
-            getContext();
+           
 
-            bsOkToast.show();
+            setTimeout(() => {
+                document.querySelector('.bi-arrow-clockwise').classList.remove('rotating');
+                bsOkToast.show();
+                getContext();
+            }, "1000")
+
         }
         ).catch(error => {
             document.querySelector('.bi-arrow-clockwise').classList.remove('rotating');
@@ -212,7 +217,7 @@ function insertLog(db, log) {
 
     // handle success case
     query.onsuccess = function (event) {
-        
+
     };
 
     // handle the error case

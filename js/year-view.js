@@ -1,24 +1,32 @@
 import getAllFromIndexedDB from './db.js';
 
+let fullscreenEvent;
+
 document.querySelectorAll('.bi-arrows-fullscreen').forEach(el => el.onclick = () => {
     document.getElementById('years').requestFullscreen().then(() => {
-        screen.orientation.lock('landscape').then(res => console.log(res)).catch(err => console.log(err));
-        document.onclick = (event) => {
+        screen.orientation.lock('landscape').catch(err => console.log(err));
+    });
+});
+
+window.addEventListener("orientationchange", (event) => {
+    if (fullscreenEvent) {
+        document.removeEventListener(fullscreenEvent);
+        fullscreenEvent = null;
+    } else {
+        fullscreenEvent = document.onclick = (event) => {
             if (document.fullscreenElement) {
                 document.exitFullscreen()
-                    .then(() => console.log("Document Exited from Full screen mode"))
                     .catch((err) => console.error(err))
-            } else {
-                document.documentElement.requestFullscreen();
             }
         }
-    });
+    }
 });
 
 function createYearView(days, year) {
     const view = document.getElementById(`year-view-${year}`);
     const today = year >= new Date().getFullYear() ? dayOfYear(new Date()) : dayOfYear(new Date(stringToDate(`31/12/${year}`)));
     const goneDays = getGoneDaysInYear(days, year);
+    const streak = calculateStreak(goneDays);
 
     view.innerHTML = '';
     for (let i = 0; i < today; i++) {
@@ -29,9 +37,8 @@ function createYearView(days, year) {
     }
 
     document.querySelector(`.dias-${year}`).innerHTML = goneDays.length;
-    console.log(Math.floor((goneDays.length / today * 100)))
     document.querySelector(`.asistencia-${year}`).innerHTML = `${Math.floor((goneDays.length / today * 100))}%`;
-
+    document.querySelector(`.racha-${year}`).innerHTML = streak;
 }
 
 function stringToDate(dateString) {
@@ -62,4 +69,18 @@ function getContext() {
     }).catch(function (error) {
         alert(error.message);
     });
+}
+
+function calculateStreak(days) {
+    if (days.length === 0) return 0;
+    let prev = 0;
+    let chunks = [];
+    days.forEach(day => {
+        if (day - prev != 1) chunks.push([]);
+        chunks[chunks.length - 1].push(day);
+        prev = day;
+    });
+
+    chunks.sort((a, b) => b.length - a.length);
+    return chunks[0].length;
 }
