@@ -12,15 +12,15 @@ export default function getAllFromIndexedDB(database, table) {
     }
     return new Promise(
         function (resolve, reject) {
-            const request = indexedDB.open('db-primary', 1);
+            const request = indexedDB.open(database, 1);
             request.onerror = (event) => {
                 reject(Error(`Database error: ${event.target.errorCode}`))
             }
             request.onsuccess = (event) => {
                 const db = event.target.result;
                 let res;
-                const txn = db.transaction(['Log'], 'readonly');
-                const store = txn.objectStore('Log');
+                const txn = db.transaction([table], 'readonly');
+                const store = txn.objectStore(table);
                 const query = store.getAll();
                 query.onsuccess = e => {
                     res = e.target.result;
