@@ -51,15 +51,15 @@
                 <form class="needs-validation" novalidate="">
                     <div class="flex-grow-1 mb-4">
                         <label for="exe" class="form-label fs-7 fw-bold">Ejercicio</label>
-                        <select class="form-select form-select-sm mx-0" required="" id="exe" data-bs-toggle="modal"
+                        <select class="form-select form-select-sm mx-0 border-0 shadow-sm" required="" id="exe" data-bs-toggle="modal"
                             data-bs-target="#modalSearchExercise">
                             <option value="" hidden selected>Ejercicios...</option>
                         </select>
                     </div>
                     <div class="d-flex gap-2 mb-4 justify-content-between ">
                         <div class="w-25">
-                            <label for="order" class="form-label fs-7 fw-bold" required>Orden</label>
-                            <input type="text" class="form-control form-control-sm text-center" id="order"
+                            <label for="order" class="form-label fs-7 fw-bold " required>Orden</label>
+                            <input type="text" class="form-control border-0 shadow-sm form-control-sm text-center" id="order"
                                 placeholder="" value="" required="">
                         </div>
                     </div>
@@ -70,9 +70,9 @@
                             class="d-flex align-items-center gap-1 mb-4 justify-content-between flex-nowrap">
                             <div class="input-group bg-white rounded-2"
                                 style="width: fit-content; height: fit-content;">
-                                <label class="btn btn-sm btn-outline-primary rounded-start t-black text-center px-3"
+                                <label class="btn btn-sm btn-outline-primary rounded-start t-black text-center px-3 border-0 shadow-sm"
                                     for="isometric" id="isometric-label">Isométrico</label>
-                                <label class="btn btn-sm btn-outline-primary rounded-end t-black text-center px-3"
+                                <label class="btn btn-sm btn-outline-primary rounded-end t-black text-center px-3 border-0 shadow-sm"
                                     for="isometric-no" id="isometric-no-label">Isotónico</label>
                                 <input type="radio" class="btn-check" name="isometrico" id="isometric-no" value="1">
                                 <input type="radio" class="btn-check" name="isometrico" id="isometric" value="2">
@@ -81,22 +81,22 @@
                             <div class="d-flex gap-1">
                                 <div class="">
                                     <!-- <label for="tempo1" class="form-label fs-7 fw-bold">Subir</label> -->
-                                    <input type="text" class="form-control form-control-sm text-center flex-fill"
+                                    <input type="text" class="form-control form-control-sm text-center flex-fill border-0 shadow-sm"
                                         maxlength="1" name="tempo" style="width: 9vw;">
                                 </div>
                                 <div class="">
                                     <!-- <label for="tempo2" class="form-label fs-7 fw-bold">Arriba</label> -->
-                                    <input type="text" class="form-control form-control-sm text-center flex-fill"
+                                    <input type="text" class="form-control form-control-sm text-center flex-fill border-0 shadow-sm"
                                         maxlength="1" name="tempo" style="width: 9vw;">
                                 </div>
                                 <div class="">
                                     <!-- <label for="tempo3" class="form-label fs-7 fw-bold">Bajar</label> -->
-                                    <input type="text" class="form-control form-control-sm text-center flex-fill"
+                                    <input type="text" class="form-control form-control-sm text-center flex-fill border-0 shadow-sm"
                                         maxlength="1" name="tempo" style="width: 9vw;">
                                 </div>
                                 <div class="">
                                     <!-- <label for="tempo4" class="form-label fs-7 fw-bold">Abajo</label> -->
-                                    <input type="text" class="form-control form-control-sm text-center flex-fill"
+                                    <input type="text" class="form-control form-control-sm text-center flex-fill border-0 shadow-sm"
                                         maxlength="1" name="tempo" style="width: 9vw;">
                                 </div>
                             </div>
@@ -105,7 +105,7 @@
 
                     <div class="mb-4">
                         <label for="objective" class="form-label fs-7 fw-bold">Objetivo</label>
-                        <select class="form-select form-select-sm" id="objective" required="">
+                        <select class="form-select form-select-sm border-0 shadow-sm" id="objective" required="">
                             <option value="X-2">Fallo -2</option>
                             <option value="X-1">Fallo -1</option>
                             <option value="X">Fallo</option>
@@ -117,20 +117,20 @@
                         <div class="d-flex input-group">
                             <input type="radio" class="btn-check" name="series" id="series1" autocomplete="off" required
                                 value="1">
-                            <label class="btn btn-sm btn-outline-primary mx-0 flex-fill rounded-start"
+                            <label class="btn btn-sm btn-outline-primary mx-0 flex-fill rounded-start border-0 shadow-sm"
                                 for="series1">1</label>
                             <input type="radio" class="btn-check" name="series" id="series2" autocomplete="off" required
                                 value="2">
-                            <label class="btn btn-sm btn-outline-primary mx-0 flex-fill" for="series2">2</label>
+                            <label class="btn btn-sm btn-outline-primary mx-0 flex-fill border-0 shadow-sm" for="series2">2</label>
                             <input type="radio" class="btn-check" name="series" id="series3" autocomplete="off" required
                                 value="3">
-                            <label class="btn btn-sm btn-outline-primary mx-0 flex-fill" for="series3">3</label>
+                            <label class="btn btn-sm btn-outline-primary mx-0 flex-fill border-0 shadow-sm" for="series3">3</label>
                             <input type="radio" class="btn-check" name="series" id="series4" autocomplete="off" required
                                 value="4">
-                            <label class="btn btn-sm btn-outline-primary mx-0 flex-fill" for="series4">4</label>
+                            <label class="btn btn-sm btn-outline-primary mx-0 flex-fill border-0 shadow-sm" for="series4">4</label>
                             <input type="radio" class="btn-check" name="series" id="series5" autocomplete="off" required
                                 value="5">
-                            <label class="btn btn-sm btn-outline-primary mx-0 flex-fill rounded-end"
+                            <label class="btn btn-sm btn-outline-primary mx-0 flex-fill border-0 shadow-sm rounded-end"
                                 for="series5">5</label>
                             <!-- <input type="radio" class="btn-check" name="series" id="series6" autocomplete="off" required
                                 value="6">

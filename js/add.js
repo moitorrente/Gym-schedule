@@ -125,8 +125,6 @@ async function createOptions() {
 }
 
 let currentIndex = null;
-
-
 const saveButton = document.getElementById('save');
 saveButton.addEventListener('click', (e) => {
     e.preventDefault();
@@ -246,7 +244,7 @@ function createReps(num) {
         const div = document.createElement('div');
         div.classList.add('w-100')
         div.innerHTML = `<label for="reps-${i}" class="form-label fs-7 fw-bold">Rep ${i}</label>
-        <input type="text" class="form-control form-control-sm flex-fill text-center" id="reps-${i}" placeholder="" value="" required="" name="reps" maxlength="2">`;
+        <input type="text" class="form-control form-control-sm flex-fill text-center border-0 shadow-sm" id="reps-${i}" placeholder="" value="" required="" name="reps" maxlength="2">`;
         repsContainer.appendChild(div);
     }
     const reps = [...document.querySelectorAll('input[name="reps"]')];

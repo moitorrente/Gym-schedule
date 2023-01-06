@@ -269,7 +269,7 @@ function createReps(num, isometrico) {
     num++;
     for (let i = 1; i < num; i++) {
         const div = document.createElement('div');
-        div.classList.add('flex-fill', 'w-50', 'bg-white', 'left-ver', 'px-3', 'py-1', 'rounded-1');
+        div.classList.add('flex-fill', 'w-50', 'bg-white', 'px-3', 'py-1', 'rounded-1');
         div.innerHTML = `
         <div for="reps-${i}" class="text-muted fw-bold fs-8">${text} ${i}</div>
         <div class="fw-bolder fs-5" name="reps" id="reps-${i}">5</div>`;
