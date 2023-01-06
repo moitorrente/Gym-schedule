@@ -164,12 +164,12 @@ function loadExercises() {
 
             entrenamiento = JSON.parse(entrenamiento);
             const d = document.createElement('div');
-            d.classList.add('d-flex', 'gap-2', 'align-items-center', 'justify-content-between', 'mb-2');
+            d.classList.add('d-flex', 'gap-2', 'align-items-center', 'justify-content-between', 'mb-2', 'mt-2');
 
             d.innerHTML = `
-            <div class="rounded-2 b-light-blue t-dark-blue p-1 px-3 fs-7">Entrenamiento <strong>${entrenamiento.id}</strong></div>
-            <div class="rounded-2 b-light-blue t-dark-blue p-1 px-3 fs-7">Tipo <strong>${entrenamiento.tipo}</strong></div>
-            <div class="rounded-2 b-light-blue t-dark-blue p-1 px-3 fs-7">Mesociclo <strong>${entrenamiento.mesociclo}</strong></div>
+            <div class="rounded-2 b-dark-gray text-white p-1 px-3 fs-7">Entrenamiento <strong>${entrenamiento.id}</strong></div>
+            <div class="rounded-2 b-dark-gray text-white p-1 px-3 fs-7">Tipo <strong>${entrenamiento.tipo}</strong></div>
+            <div class="rounded-2 b-dark-gray text-white p-1 px-3 fs-7">Mesociclo <strong>${entrenamiento.mesociclo}</strong></div>
             `;
             listaEjercicios.appendChild(d);
         }
