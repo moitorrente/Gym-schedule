@@ -4,8 +4,24 @@ const periodoTexto = document.getElementById('periodo-texto');
 const dateFrom = document.getElementById('date-from');
 const dateTo = document.getElementById('date-to');
 
+const prevTime = document.getElementById('prev-time');
+prevTime.onclick = () => {
+    calculateNextPrev(-1);
+}
+const nextTime = document.getElementById('next-time');
+nextTime.onclick = () => {
+    calculateNextPrev(1);
+}
+
+const MONTHS = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
 let dateFromValue = false;
 let dateToValue = 9999999999999;
+let currentTime = {
+    start: 0,
+    finish: 0,
+    tipo: ''
+}
 dateFrom.onchange = () => {
     if (dateFrom.value == '') {
         dateFromValue = false;
@@ -26,58 +42,116 @@ dateTo.onchange = () => {
 }
 
 function setDateFrom(date) {
+
     dateFromValue = new Date(date);
     dateFromValue.setHours(0, 0, 0, 0);
+    currentTime.start = dateFromValue;
 }
 
 function setDateTo(date) {
     dateToValue = new Date(date);
     dateToValue.setHours(0, 0, 0, 0);
+    currentTime.finish = dateTo.value;
 }
 
-let tipoPeriodo
 const periodos = document.querySelectorAll('input[name="periodo"]');
 periodos.forEach(periodo => periodo.onclick = () => {
-    tipoPeriodo = periodo.value;
-    switch (periodo.value) {
-        case 'semana':
-            periodoTexto.innerHTML = '02/01/2023 - 08/01/2023';
-            setDateFrom(convertToDate('02/01/2023'));
-            setDateTo(convertToDate('08/01/2023'));
-            getContext('diary');
+    currentTime.tipo = periodo.value;
 
-            break;
-        case 'mes':
-            periodoTexto.innerHTML = 'Enero 2023';
-            setDateFrom(convertToDate('01/01/2023'));
-            setDateTo(convertToDate('31/01/2023'));
-            getContext('diary');
+    const { start, finish, title, tipo } = getDates(periodo.value, new Date());
+    periodoTexto.innerHTML = title;
+    console.log(start, finish, title, tipo)
+    setDateFrom(convertToDate(start));
+    setDateTo(convertToDate(finish));
 
-            break
-        case 'año':
-            periodoTexto.innerHTML = '2023';
-            setDateFrom(convertToDate('01/01/2023'));
-            setDateTo(convertToDate('31/12/2023'));
-            getContext('monthly');
-
-            break;
-        case 'siempre':
-            periodoTexto.innerHTML = 'Siempre';
-            setDateFrom(convertToDate('01/01/2022'));
-            setDateTo(convertToDate('31/12/2023'));
-            getContext('monthly');
-
-            break;
-        case 'fechas':
-            ;
-    }
+    getContext(tipo);
 });
+
+function calculateNextPrev(sentido) {
+    let d = new Date(currentTime.start);
+
+    if (currentTime.tipo === 'semana') {
+        if (sentido < 0) {
+            d.setDate(d.getDate() - 7);
+
+        } else {
+            d.setDate(d.getDate() + 7);
+
+        }
+        const { start, finish, title, tipo } = getDates('semana', d);
+        currentTime.start = start;
+        currentTime.finish = finish;
+        periodoTexto.innerHTML = title;
+        setDateFrom(convertToDate(currentTime.start));
+        setDateTo(convertToDate(currentTime.finish));
+        getContext(tipo);
+    }
+
+    if (currentTime.tipo === 'mes') {
+        if (sentido < 0) {
+            d.setMonth(d.getMonth() - 1);
+        } else {
+            d.setMonth(d.getMonth() + 1);
+        }
+        const { start, finish, title, tipo } = getDates('mes', d);
+        currentTime.start = start;
+        currentTime.finish = finish;
+        periodoTexto.innerHTML = title;
+        setDateFrom(convertToDate(currentTime.start));
+        setDateTo(convertToDate(currentTime.finish));
+        getContext(tipo);
+    }
+
+    if (currentTime.tipo === 'año') {
+
+        if (sentido < 0) {
+            d.setDate(d.getDate() - 365);
+        } else {
+            d.setDate(d.getDate() + 365);
+        }
+        const { start, finish, title, tipo } = getDates('año', d);
+        currentTime.start = start;
+        currentTime.finish = finish;
+        periodoTexto.innerHTML = title;
+        setDateFrom(convertToDate(currentTime.start));
+        setDateTo(convertToDate(currentTime.finish));
+        getContext(tipo);
+    }
+}
+
+function addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+}
+
+
+function getDates(type, fecha) {
+    if (type === 'semana') {
+        const firstDay = fecha.getDate() - fecha.getDay() + 1;
+        const lastDay = addDays(new Date(`${fecha.getMonth() + 1}/${firstDay}/${fecha.getFullYear()}`), 6);
+        return { start: `${firstDay}/${fecha.getMonth() + 1}/${fecha.getFullYear()}`, finish: `${lastDay.getDate()}/${lastDay.getMonth() + 1}/${lastDay.getFullYear()}`, title: `${firstDay}/${fecha.getMonth() + 1}/${fecha.getFullYear()} - ${lastDay.getDate()}/${lastDay.getMonth() + 1}/${lastDay.getFullYear()}`, tipo: 'diary' }
+    }
+    if (type === 'mes') {
+        const lastDay = new Date(fecha.getFullYear(), fecha.getMonth() + 1, 0).getDate();
+        return { start: (`01/${fecha.getMonth() + 1}/${fecha.getFullYear()}`), finish: (`${lastDay}/${fecha.getMonth() + 1}/${fecha.getFullYear()}`), title: MONTHS[fecha.getMonth()] + ' ' + fecha.getFullYear(), tipo: 'diary' }
+    }
+    if (type === 'año') {
+        const year = fecha.getFullYear();
+        return { start: (`01/01/${year}`), finish: (`31/12/${year}`), title: year, tipo: 'monthly' }
+    }
+    if (type === 'siempre') {
+        return { start: ('01/01/2022'), finish: ('31/12/2050'), title: 'Siempre', tipo: 'monthly' }
+    }
+}
 
 let historic;
 let dates;
+let res = getDates('siempre', new Date());
+currentTime.start = res.start;
+currentTime.finish = res.finish;
 getContext();
 async function getContext(type = 'monthly') {
-    console.log(type)
     getAllFromIndexedDB('db-primary', 'Log').then(function (reponse) {
         historic = reponse;
         dates = [...new Set(historic.map(x => x.Fecha))];
@@ -91,11 +165,13 @@ async function getContext(type = 'monthly') {
         });
 
 
-        const uniqueTrainings = historic.filter((value, index, self) =>
+        let uniqueTrainings = historic.filter((value, index, self) =>
             index === self.findIndex((t) => (
                 t.Fecha === value.Fecha
             ))
-        )
+        );
+
+        uniqueTrainings = uniqueTrainings.filter(date => convertToDate(date.Fecha) >= dateFromValue && convertToDate(date.Fecha) <= dateToValue);
 
         let totalTime = uniqueTrainings.map(x => parseInt(x.Tiempo)).filter(x => x);
         const numberOfTime = parseInt(totalTime.length);
@@ -107,9 +183,8 @@ async function getContext(type = 'monthly') {
         if (filteredDates) {
             filteredDates = filteredDates.sort(function (a, b) { return new Date(convertToDate(a)) - new Date(convertToDate(b)) });
             document.getElementById('trained-days').innerHTML = filteredDates.length;
-            document.getElementById('first-training').innerHTML = filteredDates[0];
-            document.getElementById('last-training').innerHTML = filteredDates[filteredDates.length - 1];
-
+            document.getElementById('first-training').innerHTML = filteredDates[0] ? filteredDates[0] : 'N/D';
+            document.getElementById('last-training').innerHTML = filteredDates[filteredDates.length - 1] ? filteredDates[filteredDates.length - 1] : 'N/D';
             if (type == 'monthly') createChartByMonth(filteredDates);
             if (type == 'diary') createChartByWeekday(filteredDates);
 
@@ -122,6 +197,7 @@ async function getContext(type = 'monthly') {
 }
 
 function createChartByWeekday(dates) {
+
     let daysOfWeek = dates.map(date => {
         let d = convertToDate(date).getDay();
         if (d === 0) d = 7;
@@ -129,7 +205,8 @@ function createChartByWeekday(dates) {
     });
 
     daysOfWeek = daysOfWeek.reduce((cnt, cur) => (cnt[cur] = cnt[cur] + 1 || 1, cnt), {});
-    for (let i = 0; i < 7; i++) if (!daysOfWeek[i]) daysOfWeek[i] = 0;
+    for (let i = 1; i < 7; i++) if (!daysOfWeek[i]) daysOfWeek[i] = 0;
+
     daysOfWeek = Object.values(daysOfWeek);
 
     const dataset = createDataset('# Veces', daysOfWeek);
@@ -161,6 +238,7 @@ function createChartByMonth(dates) {
 
 
 function toMinutes(time) {
+    if (isNaN(time) || time === 0) return 'N/D';
     const minutes = Math.floor(time / 60);
     if (minutes > 60) {
         return toHours(minutes);
@@ -170,13 +248,10 @@ function toMinutes(time) {
 }
 
 function toHours(time) {
+    if (isNaN(time)) return 'N/D';
     const hours = Math.floor(time / 60);
     const minutes = Math.floor(time % 60)
     return `${hours}h ${minutes}min`;
-}
-
-function convertToUnix(date) {
-    return Math.floor(new Date(date).getTime() / 1000)
 }
 
 
