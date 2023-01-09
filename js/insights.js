@@ -1,12 +1,8 @@
 import getAllFromIndexedDB from './db.js';
 
-
 const periodoTexto = document.getElementById('periodo-texto');
-
 const dateFrom = document.getElementById('date-from');
 const dateTo = document.getElementById('date-to');
-
-
 
 let dateFromValue = false;
 let dateToValue = 9999999999999;
@@ -16,7 +12,6 @@ dateFrom.onchange = () => {
     } else {
         dateFromValue = new Date(dateFrom.value);
         dateFromValue.setHours(0, 0, 0, 0);
-
     }
     getContext();
 }
@@ -49,36 +44,40 @@ periodos.forEach(periodo => periodo.onclick = () => {
             periodoTexto.innerHTML = '02/01/2023 - 08/01/2023';
             setDateFrom(convertToDate('02/01/2023'));
             setDateTo(convertToDate('08/01/2023'));
+            getContext('diary');
+
             break;
         case 'mes':
-            periodoTexto.innerHTML = '01/01/2023 - 31/01/2023';
+            periodoTexto.innerHTML = 'Enero 2023';
             setDateFrom(convertToDate('01/01/2023'));
             setDateTo(convertToDate('31/01/2023'));
+            getContext('diary');
+
             break
         case 'año':
             periodoTexto.innerHTML = '2023';
             setDateFrom(convertToDate('01/01/2023'));
             setDateTo(convertToDate('31/12/2023'));
+            getContext('monthly');
+
             break;
         case 'siempre':
             periodoTexto.innerHTML = 'Siempre';
             setDateFrom(convertToDate('01/01/2022'));
             setDateTo(convertToDate('31/12/2023'));
+            getContext('monthly');
+
             break;
         case 'fechas':
             ;
     }
-    getContext();
 });
-
-
-
 
 let historic;
 let dates;
-let unixDates;
 getContext();
-async function getContext() {
+async function getContext(type = 'monthly') {
+    console.log(type)
     getAllFromIndexedDB('db-primary', 'Log').then(function (reponse) {
         historic = reponse;
         dates = [...new Set(historic.map(x => x.Fecha))];
@@ -111,26 +110,8 @@ async function getContext() {
             document.getElementById('first-training').innerHTML = filteredDates[0];
             document.getElementById('last-training').innerHTML = filteredDates[filteredDates.length - 1];
 
-
-
-            unixDates = filteredDates.map(date => convertToUnix(convertToDate(date)));
-
-            let daysOfWeek = filteredDates.map(date => {
-                let d = convertToDate(date).getDay();
-                if (d === 0) d = 7;
-                return d;
-            });
-
-            daysOfWeek = daysOfWeek.reduce((cnt, cur) => (cnt[cur] = cnt[cur] + 1 || 1, cnt), {});
-            daysOfWeek = Object.values(daysOfWeek);
-
-            const dataset = createDataset('# Veces', daysOfWeek);
-            const data = {
-                labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-                datasets: [dataset]
-            }
-            generateChart(data);
-
+            if (type == 'monthly') createChartByMonth(filteredDates);
+            if (type == 'diary') createChartByWeekday(filteredDates);
 
         } else {
             document.getElementById('trained-days').innerHTML = 'N/D';
@@ -139,6 +120,44 @@ async function getContext() {
         alert(error.message);
     });
 }
+
+function createChartByWeekday(dates) {
+    let daysOfWeek = dates.map(date => {
+        let d = convertToDate(date).getDay();
+        if (d === 0) d = 7;
+        return d;
+    });
+
+    daysOfWeek = daysOfWeek.reduce((cnt, cur) => (cnt[cur] = cnt[cur] + 1 || 1, cnt), {});
+    for (let i = 0; i < 7; i++) if (!daysOfWeek[i]) daysOfWeek[i] = 0;
+    daysOfWeek = Object.values(daysOfWeek);
+
+    const dataset = createDataset('# Veces', daysOfWeek);
+    const data = {
+        labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+        datasets: [dataset]
+    }
+    generateChart(data);
+}
+
+function createChartByMonth(dates) {
+    let monthTimes = dates.map(date => {
+        return convertToDate(date).getMonth();
+    });
+
+    monthTimes = monthTimes.reduce((cnt, cur) => (cnt[cur] = cnt[cur] + 1 || 1, cnt), {});
+
+    for (let i = 0; i < 12; i++) if (!monthTimes[i]) monthTimes[i] = 0;
+    monthTimes = Object.values(monthTimes);
+
+    const dataset = createDataset('# Veces', monthTimes);
+    const data = {
+        labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        datasets: [dataset]
+    }
+    generateChart(data);
+}
+
 
 
 function toMinutes(time) {
@@ -172,10 +191,9 @@ function createDataset(text, data) {
         label: text,
         data: data,
         backgroundColor: ['#2563eb'],
-        borderRadius: 3,
+        borderRadius: 5,
         borderSkipped: false,
-        barThickness: 16
-        // borderWidth: 1
+        barThickness: 18
     }
     return dataset;
 }
