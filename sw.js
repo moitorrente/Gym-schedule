@@ -29,6 +29,7 @@ const URLS = [
   `${GHPATH}/js/workouts.js`,
   `${GHPATH}/js/calendar.js`,
   `${GHPATH}/js/settings.js`,
+  `${GHPATH}/js/insights.js`,
   `${GHPATH}/js/view-data.js`,
   `${GHPATH}/js/chart.js`,
   `${GHPATH}/js/data.js`,

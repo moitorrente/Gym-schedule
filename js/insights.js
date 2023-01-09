@@ -60,7 +60,6 @@ periodos.forEach(periodo => periodo.onclick = () => {
 
     const { start, finish, title, tipo } = getDates(periodo.value, new Date());
     periodoTexto.innerHTML = title;
-    console.log(start, finish, title, tipo)
     setDateFrom(convertToDate(start));
     setDateTo(convertToDate(finish));
 
