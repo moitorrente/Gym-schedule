@@ -350,5 +350,53 @@
         "video": "",
         "elemento": "mancuerna",
         "textoCorto": "Extensiones de tríceps mancuernas"
+    },
+    {
+        "ejercicio": "Press militar con mancuernas sentado agarre semiprono",
+        "id": "45",
+        "tipo": "Peso",
+        "video": "https://youtu.be/iO5A6uJhzqw",
+        "elemento": "mancuerna",
+        "textoCorto": "Press militar mancuernas sentado"
+    },
+    {
+        "ejercicio": "Dominadas agarre prono abierto",
+        "id": "46",
+        "tipo": "Repeticiones",
+        "video": "https://youtu.be/Jpf392_2zuU",
+        "elemento": "cuerpo",
+        "textoCorto": "Dominadas agarre prono abierto"
+    },
+    {
+        "ejercicio": "Floor press mancuernas agarre semiprono",
+        "id": "47",
+        "tipo": "Peso",
+        "video": "https://youtu.be/uUGDRwge4F8",
+        "elemento": "mancuerna",
+        "textoCorto": "Floor press"
+    },
+    {
+        "ejercicio": "Remo con mancuerna a una mano",
+        "id": "48",
+        "tipo": "Peso",
+        "video": "https://youtu.be/pYcpY20QaE8",
+        "elemento": "mancuerna",
+        "textoCorto": "Remo con mancuerna a una mano"
+    },
+    {
+        "ejercicio": "Flexiones de brazos",
+        "id": "49",
+        "tipo": "Repeticiones",
+        "video": "https://youtu.be/2-LAMcpzODU",
+        "elemento": "cuerpo",
+        "textoCorto": "Flexiones de brazos"
+    },
+    {
+        "ejercicio": "Extensiones de tríceps en polea con agarre V",
+        "id": "50",
+        "tipo": "Peso",
+        "video": "https://youtu.be/Mqu3VoWgEL4",
+        "elemento": "polea",
+        "textoCorto": "Extensiones tríceps polea"
     }
 ]
