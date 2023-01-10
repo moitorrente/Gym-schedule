@@ -20,6 +20,7 @@ const URLS = [
   `${GHPATH}/js/script.js`,
   `${GHPATH}/js/log.js`,
   `${GHPATH}/js/add.js`,
+  `${GHPATH}/js/db.js`,
   `${GHPATH}/css/style.css`,
   `${GHPATH}/css/calendar.css`,
   `${GHPATH}/css/dark.css`,
@@ -27,6 +28,7 @@ const URLS = [
   `${GHPATH}/css/bootstrap.min.css`,
   `${GHPATH}/js/historic.js`,
   `${GHPATH}/js/workouts.js`,
+  `${GHPATH}/js/workout-details.js`,
   `${GHPATH}/js/calendar.js`,
   `${GHPATH}/js/settings.js`,
   `${GHPATH}/js/insights.js`,
@@ -35,6 +37,7 @@ const URLS = [
   `${GHPATH}/js/data.js`,
   `${GHPATH}/js/memory-usage.js`,
   `${GHPATH}/js/bootstrap.bundle.min.js`,
+  `${GHPATH}/js/year-view.js`,
   `${GHPATH}/data/exercises.json`,
   `${GHPATH}/data/version.json`,
   `${GHPATH}/data/workouts.json`
