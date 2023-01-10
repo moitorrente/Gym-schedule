@@ -59,7 +59,7 @@ getContext();
 async function getContext() {
     WORKOUTS = await getFile('workouts.json');
     WORKOUTS = WORKOUTS.data;
-    mesocicloSelect.value = '2';
+    mesocicloSelect.value = '1';
     tipoSelect.value = '0';
     clearFilters.classList.remove('bg-white');
     clearFilters.classList.add('b-blue', 'text-white');
@@ -90,12 +90,24 @@ function createAllCards(workouts) {
     }
 }
 
-function createCard(name, type, exercises, mesociclo) {
-    const iconColor = type == 'carga' ? 't-dark-green' : 't-dark-blue';
-    const textBackground = type == 'carga' ? 'b-light-green' : 'b-light-blue';
-    const textColor = type == 'carga' ? 't-dark-green' : 't-dark-blue';
+let tag;
 
-    
+function createCard(name, type, exercises, mesociclo) {
+    let textBackground, textColor, iconColor, ocultar;
+    if (mesociclo[0] == 'A') {
+        // textBackground = type == 'carga' ? 'b-light-red' : 'b-light-yellow';
+        // textColor = type == 'carga' ? 't-red' : 't-dark-yellow';
+        // iconColor = type == 'carga' ? 't-red' : 't-dark-yellow';
+
+    } else {
+
+        ocultar = 'd-none';
+    }
+    textBackground = type == 'carga' ? 'b-light-green' : 'b-light-blue';
+    textColor = type == 'carga' ? 't-dark-green' : 't-dark-blue';
+    iconColor = type == 'carga' ? 't-dark-green' : 't-dark-blue';
+
+
     const svg = type == 'carga' ? upSVG : downSVG;
 
     const tipo = type.charAt(0).toUpperCase() + type.slice(1);
@@ -130,7 +142,9 @@ function createCard(name, type, exercises, mesociclo) {
                 text-overflow: ellipsis;
                 width: 70vw;
                 display: block;
-                overflow: hidden;" class="fs-6 align-self-center">Entrenamiento <span class="fw-bold">${name}</span></div>
+                overflow: hidden;" class="fs-6 align-items-center d-flex gap-3">Entrenamiento ${name}
+                    <div class="align-self-center fs-7 t-red b-light-red p-1 rounded-1 fw-bold ${ocultar}">Antiguo</div>
+                </div>
                 <div>
                     ${div.innerHTML}
                 </div>

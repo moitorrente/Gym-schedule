@@ -1,7 +1,7 @@
 [
     {
         "entrenamiento": "A",
-        "mesociclo": 1,
+        "mesociclo": "A1",
         "tipo": "carga",
         "ejercicios": [
             {
@@ -118,7 +118,7 @@
     },
     {
         "entrenamiento": "B",
-        "mesociclo": 1,
+        "mesociclo": "A1",
         "tipo": "carga",
         "ejercicios": [
             {
@@ -230,7 +230,7 @@
     },
     {
         "entrenamiento": "C",
-        "mesociclo": 1,
+        "mesociclo": "A1",
         "tipo": "carga",
         "ejercicios": [
             {
@@ -347,7 +347,7 @@
     },
     {
         "entrenamiento": "D",
-        "mesociclo": 1,
+        "mesociclo": "A1",
         "tipo": "carga",
         "ejercicios": [
             {
@@ -436,7 +436,7 @@
     },
     {
         "entrenamiento": "A",
-        "mesociclo": 1,
+        "mesociclo": "A1",
         "tipo": "descarga",
         "ejercicios": [
             {
@@ -551,7 +551,7 @@
     },
     {
         "entrenamiento": "B",
-        "mesociclo": 1,
+        "mesociclo": "A1",
         "tipo": "descarga",
         "ejercicios": [
             {
@@ -661,7 +661,7 @@
     },
     {
         "entrenamiento": "C",
-        "mesociclo": 1,
+        "mesociclo": "A1",
         "tipo": "descarga",
         "ejercicios": [
             {
@@ -776,7 +776,7 @@
     },
     {
         "entrenamiento": "D",
-        "mesociclo": 1,
+        "mesociclo": "A1",
         "tipo": "descarga",
         "ejercicios": [
             {
@@ -865,7 +865,7 @@
     },
     {
         "entrenamiento": "A",
-        "mesociclo": 2,
+        "mesociclo": "A2",
         "tipo": "carga",
         "ejercicios": [
             {
@@ -990,7 +990,7 @@
     },
     {
         "entrenamiento": "B",
-        "mesociclo": 2,
+        "mesociclo": "A2",
         "tipo": "carga",
         "ejercicios": [
             {
@@ -1109,7 +1109,7 @@
     },
     {
         "entrenamiento": "C",
-        "mesociclo": 2,
+        "mesociclo": "A2",
         "tipo": "carga",
         "ejercicios": [
             {
@@ -1234,7 +1234,7 @@
     },
     {
         "entrenamiento": "D",
-        "mesociclo": 2,
+        "mesociclo": "A2",
         "tipo": "carga",
         "ejercicios": [
             {
@@ -1333,7 +1333,7 @@
     },
     {
         "entrenamiento": "A",
-        "mesociclo": 3,
+        "mesociclo": 1,
         "tipo": "carga",
         "ejercicios": [
             {

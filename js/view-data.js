@@ -190,24 +190,25 @@ function createCard(ejercicioMoi, ejercicioAitor, index) {
         </small></div>`;
     }
 
-    const colorString = `${ejercicioMoi.Mesociclo}${ejercicioMoi.Entrenamiento}${ejercicioMoi.TipoEntrenamiento}`;
+    // const colorString = `${ejercicioMoi.Mesociclo}${ejercicioMoi.Entrenamiento}${ejercicioMoi.TipoEntrenamiento}`;
 
-    const COLORES = [
-        { clave: '1ACarga', color: '#a5b4fc' },
-        { clave: '1BCarga', color: '#6366f1' },
-        { clave: '1CCarga', color: '#4338ca' },
-        { clave: '1DCarga', color: '#312e81' },
-        { clave: '1ADescarga', color: '#fda4af' },
-        { clave: '1BDescarga', color: '#f43f5e' },
-        { clave: '1CDescarga', color: '#be123c' },
-        { clave: '1DDescarga', color: '#881337' },
-        { clave: '2ACarga', color: '#93c5fd' },
-        { clave: '2BCarga', color: '#3b82f6' },
-        { clave: '2CCarga', color: '#1d4ed8' },
-        { clave: '2DCarga', color: '#1e3a8a' }];
+    // const COLORES = [
+    //     { clave: '1ACarga', color: '#a5b4fc' },
+    //     { clave: '1BCarga', color: '#6366f1' },
+    //     { clave: '1CCarga', color: '#4338ca' },
+    //     { clave: '1DCarga', color: '#312e81' },
+    //     { clave: '1ADescarga', color: '#fda4af' },
+    //     { clave: '1BDescarga', color: '#f43f5e' },
+    //     { clave: '1CDescarga', color: '#be123c' },
+    //     { clave: '1DDescarga', color: '#881337' },
+    //     { clave: '2ACarga', color: '#93c5fd' },
+    //     { clave: '2BCarga', color: '#3b82f6' },
+    //     { clave: '2CCarga', color: '#1d4ed8' },
+    //     { clave: '2DCarga', color: '#1e3a8a' }];
 
-    const color = COLORES.find(x => x.clave === colorString);
+    // const color = COLORES.find(x => x.clave === colorString);
 
+    const color = '##2563eb';
     const border = index === 0 ? `2px solid ${color.color}!important` : '';
 
     let copyMode = '';
