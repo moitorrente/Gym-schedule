@@ -94,6 +94,8 @@ function createCard(name, type, exercises, mesociclo) {
     const iconColor = type == 'carga' ? 't-dark-green' : 't-dark-blue';
     const textBackground = type == 'carga' ? 'b-light-green' : 'b-light-blue';
     const textColor = type == 'carga' ? 't-dark-green' : 't-dark-blue';
+
+    
     const svg = type == 'carga' ? upSVG : downSVG;
 
     const tipo = type.charAt(0).toUpperCase() + type.slice(1);
