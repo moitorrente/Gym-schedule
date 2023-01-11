@@ -445,11 +445,6 @@ body {
     padding: 0.35rem;
 }
 
-
-.left-ver {
-    box-shadow: inset 3px 0px 0px 0px var(--blue);
-}
-
 .white-crystal {
     background-color: rgba(255, 255, 255, .5);
     backdrop-filter: blur(5px);

@@ -387,7 +387,7 @@
         "ejercicio": "Flexiones de brazos",
         "id": "49",
         "tipo": "Repeticiones",
-        "video": "https://youtu.be/2-LAMcpzODU",
+        "video": "https://youtu.be/Mqu3VoWgEL4",
         "elemento": "cuerpo",
         "textoCorto": "Flexiones de brazos"
     },
@@ -395,8 +395,32 @@
         "ejercicio": "Extensiones de tríceps en polea con agarre V",
         "id": "50",
         "tipo": "Peso",
-        "video": "https://youtu.be/Mqu3VoWgEL4",
+        "video": "https://youtu.be/2-LAMcpzODU",
         "elemento": "polea",
         "textoCorto": "Extensiones tríceps polea"
+    },
+    {
+        "ejercicio": "Sentadilla con barra alta",
+        "id": "51",
+        "tipo": "Peso",
+        "video": "https://youtu.be/i0wfVEoWxSs",
+        "elemento": "barra",
+        "textoCorto": "Sentadilla con barra alta"
+    },
+    {
+        "ejercicio": "Paseo del granjero con trap bar",
+        "id": "52",
+        "tipo": "Peso",
+        "video": "",
+        "elemento": "barra",
+        "textoCorto": "Paseo del granjero con trap bar"
+    },
+    {
+        "ejercicio": "Ab rollouts",
+        "id": "53",
+        "tipo": "Repeticiones",
+        "video": "https://youtu.be/QB2Gj1QGfjQ",
+        "elemento": "cuerpo",
+        "textoCorto": "Ab rollouts"
     }
 ]

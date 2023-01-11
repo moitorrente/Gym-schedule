@@ -2,6 +2,7 @@ import getFile from './data.js';
 const workoutsContainer = document.getElementById('workouts-container');
 const mesocicloSelect = document.getElementById('mesociclo-select');
 const tipoSelect = document.getElementById('tipo-select');
+const activoSelect = document.getElementById('activo-select');
 const clearFilters = document.getElementById('clear-filters');
 
 let WORKOUTS;
@@ -18,7 +19,7 @@ const downSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" 
 
 
 mesocicloSelect.onchange = () => {
-    createAllCards(filters(mesocicloSelect.value, tipoSelect.value));
+    createAllCards(filters(mesocicloSelect.value, tipoSelect.value, activoSelect.value));
     if (mesocicloSelect.value != 0) {
         mesocicloSelect.classList.remove('bg-white');
         mesocicloSelect.classList.add('b-blue', 'text-white', 'custom-select');
@@ -32,7 +33,7 @@ mesocicloSelect.onchange = () => {
     }
 }
 tipoSelect.onchange = () => {
-    createAllCards(filters(mesocicloSelect.value, tipoSelect.value));
+    createAllCards(filters(mesocicloSelect.value, tipoSelect.value, activoSelect.value));
     if (tipoSelect.value != 0) {
         tipoSelect.classList.remove('bg-white');
         tipoSelect.classList.add('b-blue', 'text-white', 'custom-select');
@@ -45,41 +46,62 @@ tipoSelect.onchange = () => {
         clearFilters.classList.remove('b-blue', 'text-white');
     }
 }
+activoSelect.onchange = () => {
+    createAllCards(filters(mesocicloSelect.value, tipoSelect.value, activoSelect.value));
+    if (activoSelect.value != 0) {
+        activoSelect.classList.remove('bg-white');
+        activoSelect.classList.add('b-blue', 'text-white', 'custom-select');
+        clearFilters.classList.remove('bg-white');
+        clearFilters.classList.add('b-blue', 'text-white');
+    } else {
+        activoSelect.classList.add('bg-white');
+        activoSelect.classList.remove('b-blue', 'text-white', 'custom-select');
+        clearFilters.classList.add('bg-white');
+        clearFilters.classList.remove('b-blue', 'text-white');
+    }
+}
 
 clearFilters.onclick = () => {
     mesocicloSelect.value = '0';
     tipoSelect.value = '0';
+    activoSelect.value = '0';
     mesocicloSelect.onchange();
     tipoSelect.onchange();
+    activoSelect.onchange();
     clearFilters.classList.add('bg-white');
     clearFilters.classList.remove('b-blue', 'text-white');
 }
 
-getContext();
+await getContext();
 async function getContext() {
     WORKOUTS = await getFile('workouts.json');
     WORKOUTS = WORKOUTS.data;
+    console.log(WORKOUTS)
     mesocicloSelect.value = '1';
     tipoSelect.value = '0';
+    activoSelect.value = 'true';
     clearFilters.classList.remove('bg-white');
     clearFilters.classList.add('b-blue', 'text-white');
     tipoSelect.onchange();
     mesocicloSelect.onchange();
-    createAllCards(filters(mesocicloSelect.value, tipoSelect.value));
+    activoSelect.onchange();
+    createAllCards(filters(mesocicloSelect.value, tipoSelect.value, activoSelect.value));
 }
 
-function filters(mesociclo, tipo) {
+function filters(mesociclo, tipo, activo) {
     let filtered = WORKOUTS;
-    if (mesociclo != 0) filtered = filtered.filter(workout => workout.mesociclo == mesociclo)
+    if (mesociclo != 0) filtered = filtered.filter(workout => workout.mesociclo == mesociclo);
     if (tipo != 0) filtered = filtered.filter(workout => workout.tipo == tipo);
-    return filtered;
+    if (activo != 0) filtered = filtered.filter(workout => workout.active == activo);
+
+return filtered;
 }
 
 function createAllCards(workouts) {
     workoutsContainer.innerHTML = '';
     if (workouts.length) {
         workouts.forEach(element => {
-            createCard(element.entrenamiento, element.tipo, element.ejercicios, element.mesociclo)
+            createCard(element.entrenamiento, element.tipo, element.ejercicios, element.mesociclo, element.active, element.version)
         });
     } else {
         const d = document.createElement('div');
@@ -90,17 +112,13 @@ function createAllCards(workouts) {
     }
 }
 
-let tag;
-
-function createCard(name, type, exercises, mesociclo) {
+function createCard(name, type, exercises, mesociclo, activo, version) {
     let textBackground, textColor, iconColor, ocultar;
-    if (mesociclo[0] == 'A') {
+    if (activo != "true") {
         // textBackground = type == 'carga' ? 'b-light-red' : 'b-light-yellow';
         // textColor = type == 'carga' ? 't-red' : 't-dark-yellow';
         // iconColor = type == 'carga' ? 't-red' : 't-dark-yellow';
-
     } else {
-
         ocultar = 'd-none';
     }
     textBackground = type == 'carga' ? 'b-light-green' : 'b-light-blue';
@@ -143,9 +161,9 @@ function createCard(name, type, exercises, mesociclo) {
                 width: 70vw;
                 display: block;
                 overflow: hidden;" class="fs-6 align-items-center d-flex gap-3">Entrenamiento ${name}
-                    <div class="align-self-center fs-7 t-red b-light-red p-1 rounded-1 fw-bold ${ocultar}">Antiguo</div>
+                    <div class="align-self-center fs-7 t-red b-light-red p-1 px-2 rounded-1 fw-bold ${ocultar}">Inactivo</div>
                 </div>
-                <div>
+                <div class="b-light-blue py-0 p-2 rounded-2">
                     ${div.innerHTML}
                 </div>
                 </div>
