@@ -363,8 +363,13 @@ function json2csv(ob, datosEntrenamiento) {
     if (ob.aitor) repsAitor = `${ob.repeticiones[0] || ''};${ob.aitor[0] || ''};${ob.repeticiones[1] || ''};${ob.aitor[1] || ''};${ob.repeticiones[2] || ''};${ob.aitor[2] || ''};${ob.repeticiones[3] || ''};${ob.aitor[3] || ''};${ob.repeticiones[4] || ''};${ob.aitor[4] || ''}`;
     if (ob.moi) repsMoi = `${ob.repeticiones[0] || ''};${ob.moi[0] || ''};${ob.repeticiones[1] || ''};${ob.moi[1] || ''};${ob.repeticiones[2] || ''};${ob.moi[2] || ''};${ob.repeticiones[3] || ''};${ob.moi[3] || ''};${ob.repeticiones[4] || ''};${ob.moi[4] || ''}`;
 
-    const aitor = `${date};${entrenamientoID};${mesociclo};${entrenamientoTipo};${orden};${ejercicioID};${ejercicio};${series};${tempo};${objetivo};Aitor;${tipo};${repsAitor};${sensacionAitor};${started};${ended};${time}`;
-    const moi = `${date};${entrenamientoID};${mesociclo};${entrenamientoTipo};${orden};${ejercicioID};${ejercicio};${series};${tempo};${objetivo};Moi;${tipo};${repsMoi};${sensacionMoi};${started};${ended};${time}`;
+    let repsRealizadasAitor = ';;;;;';
+    let repsRealizadasMoi = ';;;;;';
+    if (ob.aitor) repsRealizadasAitor = `${ob.repsAitor[0] || ''};${ob.repsAitor[1] || ''};${ob.repsAitor[2] || ''};${ob.repsAitor[3] || ''};${ob.repsAitor[4] || ''}`;
+    if (ob.moi) repsRealizadasMoi = `${ob.repsMoi[0] || ''};${ob.repsMoi[1] || ''};${ob.repsMoi[2] || ''};${ob.repsMoi[3] || ''};${ob.repsMoi[4] || ''}`;
+
+    const aitor = `${date};${entrenamientoID};${mesociclo};${entrenamientoTipo};${orden};${ejercicioID};${ejercicio};${series};${tempo};${objetivo};Aitor;${tipo};${repsAitor};${sensacionAitor};${started};${ended};${time};${repsRealizadasAitor}`;
+    const moi = `${date};${entrenamientoID};${mesociclo};${entrenamientoTipo};${orden};${ejercicioID};${ejercicio};${series};${tempo};${objetivo};Moi;${tipo};${repsMoi};${sensacionMoi};${started};${ended};${time};${repsRealizadasMoi}`;
 
     return aitor + '\r\n' + moi + '\r\n';
 }

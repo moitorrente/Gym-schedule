@@ -144,6 +144,8 @@ homeBtn.onclick = () => {
     current.moi = {};
     current.aitor = [...document.querySelectorAll('input[name="peso-aitor"]')].map(x => x.value);
     current.moi = [...document.querySelectorAll('input[name="peso-moi"]')].map(x => x.value);
+    current.repsAitor = [...document.querySelectorAll('input[name="reps-aitor"]')].map(x => x.value);
+    current.repsMoi = [...document.querySelectorAll('input[name="reps-moi"]')].map(x => x.value);
 
     const sensacionAitor = document.querySelector('input[name="sensacion-aitor"]:checked').value;
     const sensacionMoi = document.querySelector('input[name="sensacion-moi"]:checked').value;
@@ -187,10 +189,20 @@ function loadData() {
     }
     objetivo.value = current.objetivo;
     createReps(current.series, current.isometrico);
-    document.getElementById('series').innerHTML = current.series;
-    [...document.getElementsByName('reps')].forEach((x, i) => x.innerHTML = current.repeticiones[i]);
+
     createPeso(current.series, 'aitor', current.tipo);
     createPeso(current.series, 'moi', current.tipo);
+
+    document.getElementById('series').innerHTML = current.series;
+    [...document.getElementsByName('reps')].forEach((x, i) => {
+        x.innerHTML = current.repeticiones[i];
+        [...document.querySelectorAll('input[name="reps-moi"]')][i].value = current.repeticiones[i];
+        [...document.querySelectorAll('input[name="reps-aitor"]')][i].value = current.repeticiones[i];
+    }
+    );
+
+    if (current.repsAitor) [...document.querySelectorAll('input[name="reps-aitor"]')].forEach((x, i) => x.value = current.repsAitor[i])
+    if (current.repsMoi) [...document.querySelectorAll('input[name="reps-moi"]')].forEach((x, i) => x.value = current.repsMoi[i])
 
 
     if (current.aitor) [...document.querySelectorAll('input[name="peso-aitor"]')].forEach((x, i) => x.value = current.aitor[i])
@@ -272,7 +284,9 @@ function createReps(num, isometrico) {
         div.classList.add('flex-fill', 'w-50', 'bg-white', 'px-3', 'py-1', 'rounded-1');
         div.innerHTML = `
         <div for="reps-${i}" class="text-muted fw-bold fs-8">${text} ${i}</div>
-        <div class="fw-bolder fs-5" name="reps" id="reps-${i}">5</div>`;
+        <div class="fw-bolder fs-5" name="reps" id="reps-${i}">5</div>
+        
+        `;
         repsContainer.appendChild(div);
     }
 }
@@ -281,13 +295,15 @@ function createPeso(num, user, tipo) {
     if (user == 'aitor') aitorWeightContainer.innerHTML = '';
     if (user == 'moi') moiWeightContainer.innerHTML = '';
     num++;
-    if (tipo == 'Repeticiones') tipo = 'Reps';
+    if (tipo == 'Repeticiones') tipo = 'd-none';
 
     for (let i = 1; i < num; i++) {
         const div = document.createElement('div');
 
-        div.innerHTML = `<label for="${user}-${i}" class="fs-7 fw-bold d-flex">${tipo} ${i}</label>
-        <input type="number" class="form-control" id="${user}-${i}" placeholder="" value="" required="" name="peso-${user}">`;
+        div.innerHTML = `<label for="${user}-${i}" class="fs-7 fw-bold d-flex">Reps ${i}</label>
+        <input type="number" class="form-control" id="${user}-${i}" placeholder="" value="" required="" name="reps-${user}">
+        <label for="${user}-${i}" class="fs-7 fw-bold d-flex ${tipo} mt-2">Peso ${i}</label>
+        <input type="number" class="form-control ${tipo}" id="${user}-${i}" placeholder="" value="" required="" name="peso-${user}">`;
         if (user == 'aitor') aitorWeightContainer.appendChild(div);
         if (user == 'moi') moiWeightContainer.appendChild(div);
     }
