@@ -1616,5 +1616,136 @@
                 "tipo": "Repeticiones"
             }
         ]
+    },
+    {
+        "entrenamiento": "C",
+        "mesociclo": "1",
+        "tipo": "carga",
+        "version": "2",
+        "active": "true",
+        "ejercicios": [
+            {
+                "orden": "A1",
+                "nombre": "Press plano con barra",
+                "id": "33",
+                "series": "4",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "10",
+                    "10",
+                    "10",
+                    "10"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "A2",
+                "nombre": "Dominadas agarre neutro cerrado",
+                "id": "34",
+                "series": "4",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "10",
+                    "10",
+                    "10",
+                    "10"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Repeticiones"
+            },
+            {
+                "orden": "B1",
+                "nombre": "Press Arnold con mancuernas",
+                "id": "54",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "2",
+                    "0",
+                    "2",
+                    "0"
+                ],
+                "repeticiones": [
+                    "12",
+                    "12",
+                    "12"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "B2",
+                "nombre": "Remo sentado en polea con agarre prono al pecho",
+                "id": "36",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "12",
+                    "12",
+                    "12"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "C",
+                "nombre": "Curl bíceps en banco inclinado agarre supino",
+                "id": "5",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "12",
+                    "12",
+                    "12"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "D",
+                "nombre": "Elevaciones laterales a una mano polea baja",
+                "id": "55",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "2",
+                    "0",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "15",
+                    "15",
+                    "15"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            }
+        ]
     }
 ]

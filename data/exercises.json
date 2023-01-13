@@ -422,5 +422,21 @@
         "video": "https://youtu.be/QB2Gj1QGfjQ",
         "elemento": "cuerpo",
         "textoCorto": "Ab rollouts"
+    },
+    {
+        "ejercicio": "Press Arnold con mancuernas",
+        "id": "54",
+        "tipo": "Peso",
+        "video": "https://youtu.be/odhXwoS3mDA",
+        "elemento": "mancuerna",
+        "textoCorto": "Press Arnold con mancuernas"
+    },
+    {
+        "ejercicio": "Elevaciones laterales a una mano polea baja",
+        "id": "55",
+        "tipo": "Peso",
+        "video": "https://youtu.be/PPrzBWZDOhA",
+        "elemento": "polea",
+        "textoCorto": "Elevaciones laterales polea baja"
     }
 ]

@@ -13,8 +13,7 @@ const playSVG = `
 
 const bsCollapse = new bootstrap.Collapse('#collapseOptions', {
     toggle: false
-})
-
+});
 
 const startStopTimer = document.getElementById('timer-button');
 
@@ -179,6 +178,8 @@ function loadExercises() {
             const ejercicioInfo = listaEjerciciosStorage.filter(x => x.id == ejercicio.id)[0];
             createNewExercise(ejercicio.orden, ejercicioInfo.textoCorto, ejercicio.series, ejercicio.id, ejercicio.completado, ejercicios.length, i, tempo);
         });
+
+
         const done = ejercicios.map(x => x.completado).filter(x => x !== true).length > 0 ? false : true;
         if (done) shareBtn.classList.remove('d-none');
         addPresetContainer.classList.add('d-none');
