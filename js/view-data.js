@@ -450,11 +450,22 @@ function convertToDate(dateString) {
 }
 
 function createDataset(text, data) {
+    let borderColor = '#2563eb';
+    let backgroundColor = 'rgb(37, 99, 235, 0.2)';
+    if(text == 'Aitor') {
+        borderColor = '#b91c1c';
+        backgroundColor = 'rgb(185, 28, 28, 0.2)'
+    }
     const dataset = {
         label: text,
         data: data,
+        fill: true,
         borderWidth: 1,
-        tension: 0.2
+        // tension: .2,
+        borderColor: borderColor,
+        backgroundColor: backgroundColor,
+        spanGaps: true,
+        cubicInterpolationMode: 'monotone'
     }
 
     return dataset;
@@ -465,6 +476,7 @@ function createDataset(text, data) {
 function generateChart(data) {
 
     const ctx = document.getElementById('myChart');
+
 
     if (myChart) {
         myChart.destroy();
@@ -492,7 +504,7 @@ function generateChart(data) {
                     grid: {
                         display: false,
                     },
-                    //beginAtZero: true,
+                    beginAtZero: true,
                 }
             }
         }
