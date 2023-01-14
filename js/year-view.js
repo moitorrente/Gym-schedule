@@ -52,7 +52,7 @@ function createYearView(days, year) {
 
     for (let i = today; i < daysInYear; i++) {
         const day = document.createElement('span');
-        day.classList.add("d-inline-block", "rounded-square", "p-s", 'bg-white');
+        day.classList.add("d-inline-block", "rounded-square", "p-s", 'b-light-green');
         day.dataset.number = i + 1;
         view.appendChild(day);
     }

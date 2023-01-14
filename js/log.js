@@ -94,7 +94,9 @@ const spreadMoi = document.getElementById('spread-moi');
 const resetMoi = document.getElementById('reset-moi');
 
 spreadMoi.onclick = () => {
-    const pesosMoi = [...document.querySelectorAll('input[name="peso-moi"]')];
+    let tipo = 'peso';
+    if (current.tipo == 'Repeticiones') tipo = 'reps';
+    const pesosMoi = [...document.querySelectorAll(`input[name="${tipo}-moi"]`)];
     const pesoDuplicar = pesosMoi.findLast(x => x.value !== '');
     if (pesoDuplicar) {
         pesosMoi.forEach(peso => peso.value = peso.value ? peso.value : pesoDuplicar.value);
@@ -104,6 +106,8 @@ spreadMoi.onclick = () => {
 }
 resetMoi.onclick = () => {
     [...document.querySelectorAll('input[name="peso-moi"]')].forEach(i => i.value = '');
+    [...document.querySelectorAll('input[name="reps-moi"]')].forEach(i => i.value = '');
+
     isSeriesCompleted('moi');
 }
 
@@ -111,10 +115,11 @@ resetMoi.onclick = () => {
 const spreadAitor = document.getElementById('spread-aitor');
 const resetAitor = document.getElementById('reset-aitor');
 spreadAitor.onclick = () => {
-    const pesosAitor = [...document.querySelectorAll('input[name="peso-aitor"]')];
+    let tipo = 'peso';
+    if (current.tipo == 'Repeticiones') tipo = 'reps';
+    const pesosAitor = [...document.querySelectorAll(`input[name="${tipo}-aitor"]`)];
     const pesoDuplicar = pesosAitor.findLast(x => x.value !== '');
     if (pesoDuplicar) {
-
         pesosAitor.forEach(peso => peso.value = peso.value ? peso.value : pesoDuplicar.value);
         isSeriesCompleted('aitor');
     }
@@ -122,6 +127,7 @@ spreadAitor.onclick = () => {
 
 resetAitor.onclick = () => {
     [...document.querySelectorAll('input[name="peso-aitor"]')].forEach(i => i.value = '');
+    [...document.querySelectorAll('input[name="reps-aitor"]')].forEach(i => i.value = '');
     isSeriesCompleted('aitor');
 }
 
@@ -231,7 +237,9 @@ function delay(time) {
 
 
 function isSeriesCompleted(user) {
-    const seriesValues = [...document.querySelectorAll(`input[name="peso-${user}"]`)];
+    let tipo = 'peso';
+    if (current.tipo == 'Repeticiones') tipo = 'reps';
+    const seriesValues = [...document.querySelectorAll(`input[name="${tipo}-${user}"]`)];
     const isCompleted = seriesValues.filter(x => x.value == '').length > 0 ? false : true;
     if (isCompleted) {
         // document.getElementById(`container-${user}`).style.setProperty('border', '1px solid var(--light-green)', 'important');;

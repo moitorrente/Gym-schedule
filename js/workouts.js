@@ -76,7 +76,6 @@ await getContext();
 async function getContext() {
     WORKOUTS = await getFile('workouts.json');
     WORKOUTS = WORKOUTS.data;
-    console.log(WORKOUTS)
     mesocicloSelect.value = '1';
     tipoSelect.value = '0';
     activoSelect.value = 'true';
