@@ -17,10 +17,15 @@ const bsCollapse = new bootstrap.Collapse('#collapseOptions', {
 
 const startStopTimer = document.getElementById('timer-button');
 
-function initializeControls() {
-    const state = localStorage.getItem('workout-state');
+const startTimerModal = document.getElementById('start-timer-modal');
+startTimerModal.onclick = () => { 
+    startStopTimer.click();
+}
 
-    if (state == 'started') {
+function initializeControls() {
+    const state = JSON.parse(localStorage.getItem('timer-running'));
+
+    if (state == true) {
         startStopTimer.innerHTML = stopDVG;
         startStopTimer.classList.remove('b-light-red');
         startStopTimer.classList.add('b-light-green');
@@ -40,13 +45,12 @@ function stopTimer() {
     startStopTimer.innerHTML = playSVG;
     startStopTimer.classList.add('b-light-red');
     startStopTimer.classList.remove('b-light-green');
-    localStorage.setItem('workout-state', 'stopped');
+    localStorage.setItem('timer-running', false);
 }
 
 startStopTimer.onclick = () => {
-    const state = localStorage.getItem('workout-state');
-    if (state == 'started') {
-
+    const state = JSON.parse(localStorage.getItem('timer-running'));
+    if (state == true) {
         const modalTimer = new bootstrap.Modal(document.getElementById('modalTimer'), {});
         const startingDate = new Date(localStorage.getItem('workout-date-start'));
         const endingDate = new Date();
@@ -64,7 +68,7 @@ startStopTimer.onclick = () => {
         startStopTimer.innerHTML = stopDVG;
         startStopTimer.classList.remove('b-light-red');
         startStopTimer.classList.add('b-light-green');
-        localStorage.setItem('workout-state', 'started');
+        localStorage.setItem('timer-running', true);
         localStorage.setItem('workout-date-start', new Date());
         localStorage.removeItem('workout-date-end', new Date());
     }
@@ -126,7 +130,13 @@ async function getContext() {
     } else {
         listaEjerciciosStorage = JSON.parse(listaEjercicios).data;
     }
-    loadExercises();
+    const ejercicios = loadExercises();
+
+    const estadoTimer = JSON.parse(localStorage.getItem('timer-running'));
+    if(ejercicios && !estadoTimer) {
+        const modalRecordatorio = new bootstrap.Modal(document.getElementById('modalRecordatorio'), {});
+        modalRecordatorio.show();
+    }
 }
 
 document.getElementById('order').onclick = () => {
@@ -153,7 +163,6 @@ function loadExercises() {
     listaEjercicios.style.height = '0%';
     const ejercicios = getExercises();
     if (ejercicios) {
-
 
         let entrenamiento = localStorage.getItem('entrenamiento');
 
@@ -190,6 +199,7 @@ function loadExercises() {
         document.getElementById('timer-button').style.visibility = 'hidden';
         document.getElementById('clear-filters').style.visibility = 'hidden';
     }
+    return ejercicios;
 }
 
 function createNewExercise(order, name, series, id, checked, len, pos, tempo) {

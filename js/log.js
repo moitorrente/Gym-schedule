@@ -253,7 +253,9 @@ function isSeriesCompleted(user) {
 }
 
 function isSeriesEmpty(user) {
-    return [...document.querySelectorAll(`input[name="peso-${user}"]`)].every(x => x.value === '');
+    let tipo = 'peso';
+    if(current.tipo == 'Repeticiones') tipo = 'reps';
+    return [...document.querySelectorAll(`input[name="${tipo}-${user}"]`)].every(x => x.value === '');
 }
 
 function getContext() {
