@@ -1747,5 +1747,115 @@
                 "tipo": "Peso"
             }
         ]
+    },
+    {
+        "entrenamiento": "D",
+        "mesociclo": "1",
+        "tipo": "carga",
+        "version": "2",
+        "active": "true",
+        "ejercicios": [
+            {
+                "orden": "A",
+                "nombre": "Sentadilla con barra alta",
+                "id": "51",
+                "series": "4",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "10",
+                    "10",
+                    "10",
+                    "10"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "B1",
+                "nombre": "Sentadilla búlgara dominante de cadera",
+                "id": "56",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "2",
+                    "0",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "12",
+                    "12",
+                    "12"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "B2",
+                "nombre": "Curl femoral de rodillas a una piernas",
+                "id": "57",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "8",
+                    "8",
+                    "8"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "C1",
+                "nombre": "Elevaciones de gemelo de pie",
+                "id": "21",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "2",
+                    "0",
+                    "1",
+                    "1"
+                ],
+                "repeticiones": [
+                    "12",
+                    "12",
+                    "12"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "C2",
+                "nombre": "Elevaciones de gemelo sentado",
+                "id": "11",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "1",
+                    "0",
+                    "1",
+                    "1"
+                ],
+                "repeticiones": [
+                    "20",
+                    "20",
+                    "20"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            }
+        ]
     }
 ]

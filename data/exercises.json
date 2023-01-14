@@ -438,5 +438,21 @@
         "video": "https://youtu.be/PPrzBWZDOhA",
         "elemento": "polea",
         "textoCorto": "Elevaciones laterales polea baja"
+    },
+    {
+        "ejercicio": "Sentadilla búlgara dominante de cadera",
+        "id": "56",
+        "tipo": "Peso",
+        "video": "https://youtu.be/x_X7sxKSWdU",
+        "elemento": "mancuerna",
+        "textoCorto": "Sentadilla búlgara"
+    },
+    {
+        "ejercicio": "Curl femoral de rodillas a una piernas",
+        "id": "57",
+        "tipo": "Peso",
+        "video": "https://youtu.be/mztaRfefang",
+        "elemento": "maquina",
+        "textoCorto": "Curl femoral de rodillas"
     }
 ]
