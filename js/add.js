@@ -189,16 +189,75 @@ function loadData() {
 
 function getContext() {
     const id = localStorage.getItem('current-edit');
+    const ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
 
     if (id) {
-        const ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
         if (ejercicios) {
             currentIndex = ejercicios.findIndex(ejercicio => ejercicio.id == id);
             current = ejercicios[currentIndex];
         }
     }
 
+    suggestOrder();
+
     return current;
+}
+
+function suggestOrder() {
+    const ejercicios = JSON.parse(localStorage.getItem('ejercicios'));
+    const container = document.getElementById('order-suggestion');
+    container.innerHTML = '';
+
+    if (ejercicios) {
+        const ultimoOrden = ejercicios.map(x => x.orden).sort().pop();
+        let siguienteOrden = String.fromCharCode(ultimoOrden.charCodeAt(0) + 1);
+        let numero = 1;
+        if (ultimoOrden.charAt(1)) numero = Number(ultimoOrden.charAt(1)) + 1;
+
+        let d = document.createElement('div');
+        d.classList.add('ui-square-btn', 'b-light-blue', 't-dark-blue', 'align-self-end');
+        d.innerHTML = siguienteOrden;
+        d.onclick = () => {
+            document.getElementById('order').value = siguienteOrden;
+        }
+
+        container.appendChild(d);
+        let d2 = document.createElement('div');
+        d2.classList.add('ui-square-btn', 'b-light-blue', 't-dark-blue', 'align-self-end');
+        d2.innerHTML = `${siguienteOrden}1`;
+        d2.onclick = () => {
+            document.getElementById('order').value = `${siguienteOrden}1`;
+        }
+        container.appendChild(d2);
+
+        if (numero > 1) {
+            let d3 = document.createElement('div');
+            d3.classList.add('ui-square-btn', 'b-light-blue', 't-dark-blue', 'align-self-end');
+            d3.innerHTML = `${ultimoOrden[0]}${Number(numero)}`;
+            d3.onclick = () => {
+                document.getElementById('order').value = `${ultimoOrden[0]}${Number(numero)}`;
+            }
+            container.appendChild(d3);
+        }
+
+
+    } else {
+        let d = document.createElement('div');
+        d.classList.add('ui-square-btn', 'b-light-blue', 't-dark-blue', 'align-self-end');
+        d.innerHTML = 'A';
+        d.onclick = () => {
+            document.getElementById('order').value = 'A';
+        }
+
+        container.appendChild(d);
+        let d2 = document.createElement('div');
+        d2.classList.add('ui-square-btn', 'b-light-blue', 't-dark-blue', 'align-self-end');
+        d2.innerHTML = `A1`;
+        d2.onclick = () => {
+            document.getElementById('order').value = `A1`;
+        }
+        container.appendChild(d2);
+    }
 }
 
 function createToken() {
@@ -235,6 +294,7 @@ function SaveDataToLocalStorage(data) {
         }
     }
     localStorage.setItem('ejercicios', JSON.stringify(ejercicios));
+    suggestOrder();
 }
 
 function createReps(num) {
