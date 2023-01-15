@@ -18,7 +18,7 @@ const bsCollapse = new bootstrap.Collapse('#collapseOptions', {
 const startStopTimer = document.getElementById('timer-button');
 
 const startTimerModal = document.getElementById('start-timer-modal');
-startTimerModal.onclick = () => { 
+startTimerModal.onclick = () => {
     startStopTimer.click();
 }
 
@@ -78,6 +78,23 @@ const html = document.getElementsByTagName('html')[0];
 const toggleTheme = (theme) => {
     html.dataset.theme = theme;
 }
+generateWorkoutText()
+function generateWorkoutText() {
+    const container = document.getElementById('download-text');
+    const workout = JSON.parse(localStorage.getItem('ejercicios'));
+    const json =
+    {
+        "entrenamiento": "A",
+        "mesociclo": "1",
+        "tipo": "carga",
+        "version": "2",
+        "active": "true",
+        "ejercicios": workout
+    }
+
+    container.value = JSON.stringify(json, null, 2);
+    console.log(workout)
+}
 
 const notCheckedSVG = `
 <div class="fs-5 w-50 p-0" id="badge-moi">
@@ -133,7 +150,7 @@ async function getContext() {
     const ejercicios = loadExercises();
 
     const estadoTimer = JSON.parse(localStorage.getItem('timer-running'));
-    if(ejercicios && !estadoTimer) {
+    if (ejercicios && !estadoTimer) {
         const modalRecordatorio = new bootstrap.Modal(document.getElementById('modalRecordatorio'), {});
         modalRecordatorio.show();
     }
