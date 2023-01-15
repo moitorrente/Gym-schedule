@@ -91,9 +91,7 @@ function generateWorkoutText() {
         "active": "true",
         "ejercicios": workout
     }
-
     container.value = JSON.stringify(json, null, 2);
-    console.log(workout)
 }
 
 const notCheckedSVG = `
