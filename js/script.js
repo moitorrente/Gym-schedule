@@ -78,21 +78,6 @@ const html = document.getElementsByTagName('html')[0];
 const toggleTheme = (theme) => {
     html.dataset.theme = theme;
 }
-generateWorkoutText()
-function generateWorkoutText() {
-    const container = document.getElementById('download-text');
-    const workout = JSON.parse(localStorage.getItem('ejercicios'));
-    const json =
-    {
-        "entrenamiento": "A",
-        "mesociclo": "1",
-        "tipo": "carga",
-        "version": "2",
-        "active": "true",
-        "ejercicios": workout
-    }
-    container.value = JSON.stringify(json, null, 2);
-}
 
 const notCheckedSVG = `
 <div class="fs-5 w-50 p-0" id="badge-moi">
