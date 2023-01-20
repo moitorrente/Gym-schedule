@@ -68,19 +68,37 @@ self.addEventListener('install', function (e) {
   )
 })
 
-self.addEventListener('activate', function (e) {
-  e.waitUntil(
-    caches.keys().then(function (keyList) {
-      var cacheWhitelist = keyList.filter(function (key) {
-        return key.indexOf(APP_PREFIX)
-      })
-      cacheWhitelist.push(CACHE_NAME);
-      return Promise.all(keyList.map(function (key, i) {
-        if (cacheWhitelist.indexOf(key) === -1) {
-          console.log('Deleting cache : ' + keyList[i]);
-          return caches.delete(keyList[i])
-        }
-      }))
+// self.addEventListener('activate', function (e) {
+//   e.waitUntil(
+//     caches.keys().then(function (keyList) {
+//       var cacheWhitelist = keyList.filter(function (key) {
+//         return key.indexOf(APP_PREFIX)
+//       })
+//       cacheWhitelist.push(CACHE_NAME);
+//       return Promise.all(keyList.map(function (key, i) {
+//         if (cacheWhitelist.indexOf(key) === -1) {
+//           console.log('Deleting cache : ' + keyList[i]);
+//           return caches.delete(keyList[i])
+//         }
+//       }))
+//     })
+//   )
+// })
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cache) => {
+          if (cache !== CACHE_NAME) {
+            return caches.delete(cache); //Deleting the old cache (cache v1)
+          }
+        })
+      );
     })
-  )
-})
+      .then(function () {
+        console.info("Old caches are cleared!");
+        return self.clients.claim();
+      })
+  );
+});
