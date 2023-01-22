@@ -66,7 +66,6 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       caches.match(event.request).then(cachedResponse => {
         if (cachedResponse) {
-          console.log('Responding with cache : ' + cachedResponse.request.url);
           return cachedResponse;
         }
 
