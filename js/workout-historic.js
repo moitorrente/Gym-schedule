@@ -23,6 +23,12 @@ getAllFromIndexedDB('db-primary', 'Log').then(function (response) {
         historicContainer.appendChild(createDiv(x, calculateCarga(groupedAitor[x]), calculateCarga(groupedMoi[x])))
     });
 
+    const fechas = Object.keys(groupedMoi);
+    const cargasAitor = Object.values(groupedAitor).map(x => calculateCarga(x));
+    const cargasMoi = Object.values(groupedMoi).map(x => calculateCarga(x));
+
+    chart(fechas, cargasMoi, cargasAitor)
+
 }).catch(function (error) {
     alert(error.message);
 });
@@ -79,3 +85,76 @@ function createDiv(fecha, cargaAitor, cargaMoi) {
     return d;
 }
 
+function chart(fechas, datosMoi, datosAitor) {
+    const datasetMoi = createDataset('Moi', datosMoi);
+    const datasetAitor = createDataset('Aitor', datosAitor);
+
+    const data = {
+        labels: fechas,
+        datasets: [datasetMoi, datasetAitor]
+    }
+
+    generateChart(data);
+}
+
+
+function createDataset(text, data) {
+    let borderColor = '#2563eb';
+    let backgroundColor = 'rgb(37, 99, 235, 0.2)';
+    if (text == 'Aitor') {
+        borderColor = '#b91c1c';
+        backgroundColor = 'rgb(185, 28, 28, 0.2)'
+    }
+    const dataset = {
+        label: text,
+        data: data,
+        fill: true,
+        borderWidth: 1,
+        borderColor: borderColor,
+        backgroundColor: backgroundColor,
+        spanGaps: true,
+        cubicInterpolationMode: 'monotone'
+    }
+
+    return dataset;
+}
+
+
+let myChart;
+function generateChart(data) {
+
+    const ctx = document.getElementById('myChart');
+
+
+    if (myChart) {
+        myChart.destroy();
+    }
+
+    myChart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: {
+            scales: {
+                x: {
+                    type: 'time',
+                    ticks: {
+                        display: false
+                    },
+                    grid: {
+                        display: false
+                    },
+                    time: {
+                        unit: 'day',
+                        parser: 'dd/MM/yyyy',
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false,
+                    },
+                    beginAtZero: true,
+                }
+            }
+        }
+    });
+}
