@@ -1,6 +1,6 @@
 const GHPATH = '/Gym-schedule';
 const APP_PREFIX = 'Gym_schedule_';
-const VERSION = 'version_0015f';
+const VERSION = 'version_0015g';
 const RUNTIME = 'runtime';
 
 const URLS = [
@@ -17,6 +17,7 @@ const URLS = [
   `${GHPATH}/html/view-data.html`,
   `${GHPATH}/html/workout-details.html`,
   `${GHPATH}/html/workouts.html`,
+  `${GHPATH}/html/workout-historic.html`,
   `${GHPATH}/html/year-view.html`,
   `${GHPATH}/js/script.js`,
   `${GHPATH}/js/log.js`,
@@ -30,6 +31,7 @@ const URLS = [
   `${GHPATH}/js/historic.js`,
   `${GHPATH}/js/workouts.js`,
   `${GHPATH}/js/workout-details.js`,
+  `${GHPATH}/js/workout-historic.js`,
   `${GHPATH}/js/calendar.js`,
   `${GHPATH}/js/settings.js`,
   `${GHPATH}/js/insights.js`,
