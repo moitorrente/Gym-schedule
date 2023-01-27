@@ -179,14 +179,14 @@ function loadData() {
     const hora = current.fecha ? current.fecha.split(',')[1] : 'N/D';
     const tipo = current.tipo ? current.tipo : 'N/D';
 
-    document.querySelector('.accordion-body').innerHTML = `
-    <div class="badge rounded-pill bg-dark">Orden: ${current.orden}</div>
-    <div class="badge rounded-pill bg-success">Id: ${current.id}</div>
-    <div class="badge rounded-pill bg-success">Tipo: ${tipo}</div>
-    <div class="badge rounded-pill bg-success">Video: ${current.video ? 'Sí' : 'No'}</div>
-    <div class="badge rounded-pill bg-success">Fecha: ${fecha}</div>
-    <div class="badge rounded-pill bg-success">Hora: ${hora}</div>
-    `;
+    // document.querySelector('.accordion-body').innerHTML = `
+    // <div class="badge rounded-pill bg-dark">Orden: ${current.orden}</div>
+    // <div class="badge rounded-pill bg-success">Id: ${current.id}</div>
+    // <div class="badge rounded-pill bg-success">Tipo: ${tipo}</div>
+    // <div class="badge rounded-pill bg-success">Video: ${current.video ? 'Sí' : 'No'}</div>
+    // <div class="badge rounded-pill bg-success">Fecha: ${fecha}</div>
+    // <div class="badge rounded-pill bg-success">Hora: ${hora}</div>
+    // `;
     if (current.isometrico) {
         tempo.innerHTML = current.tempo;
     } else {
