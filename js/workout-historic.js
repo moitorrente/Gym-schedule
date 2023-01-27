@@ -137,6 +137,32 @@ function createExercise(aitor, moi) {
             break;
     }
 
+    let textoAitor1 = aitor.Peso1;
+    let textoAitor2 = aitor.Peso2;
+    let textoAitor3 = aitor.Peso3;
+    let textoAitor4 = aitor.Peso4;
+    let textoAitor5 = aitor.Peso5;
+    let textoMoi1 = moi.Peso1;
+    let textoMoi2 = moi.Peso2;
+    let textoMoi3 = moi.Peso3;
+    let textoMoi4 = moi.Peso4;
+    let textoMoi5 = moi.Peso5;
+
+    if (aitor.TipoDato == 'Repeticiones' || aitor.TipoDato == 'Segundos') {
+
+        textoAitor1 = aitor.Realizadas1;
+        textoAitor2 = aitor.Realizadas2;
+        textoAitor3 = aitor.Realizadas3;
+        textoAitor4 = aitor.Realizadas4;
+        textoAitor5 = aitor.Realizadas5;
+
+        textoMoi1 = moi.Realizadas1;
+        textoMoi2 = moi.Realizadas2;
+        textoMoi3 = moi.Realizadas3;
+        textoMoi4 = moi.Realizadas4;
+        textoMoi5 = moi.Realizadas5;
+    }
+
     d.innerHTML = `
 <div class="list-group-item d-flex gap-2 p-2 rounded align-items-center bg-white my-2 border-0 shadow-sm" data-id="1">
     <div class="d-flex flex-grow-1 flex-column">
@@ -151,11 +177,11 @@ function createExercise(aitor, moi) {
 
             </div>
             <div class="d-flex gap-3 text-center">
-                <div style="width: 2.5rem;"><small class="d-block">${aitor.Peso1}</small></div>
-                <div style="width: 2.5rem;"><small class="d-block">${aitor.Peso2}</small></div>
-                <div style="width: 2.5rem;"><small class="d-block">${aitor.Peso3}</small></div>
-                <div style="width: 2.5rem;"><small class="d-block">${aitor.Peso4}</small></div>
-                <div style="width: 2.5rem;"><small class="d-block">${aitor.Peso5}</small></div>
+                <div style="width: 2.5rem;"><small class="d-block">${textoAitor1}</small></div>
+                <div style="width: 2.5rem;"><small class="d-block">${textoAitor2}</small></div>
+                <div style="width: 2.5rem;"><small class="d-block">${textoAitor3}</small></div>
+                <div style="width: 2.5rem;"><small class="d-block">${textoAitor4}</small></div>
+                <div style="width: 2.5rem;"><small class="d-block">${textoAitor5}</small></div>
             </div>
         </div>
         <div class="d-flex flex-grow-1 align-items-center ps-2">
@@ -165,11 +191,11 @@ function createExercise(aitor, moi) {
             </div>
 
             <div class="d-flex gap-3 text-center">
-                <div style="width: 2.5rem;"><small class="d-block">${moi.Peso1}</small></div>
-                <div style="width: 2.5rem;"><small class="d-block">${moi.Peso2}</small></div>
-                <div style="width: 2.5rem;"><small class="d-block">${moi.Peso3}</small></div>
-                <div style="width: 2.5rem;"><small class="d-block">${moi.Peso4}</small></div>
-                <div style="width: 2.5rem;"><small class="d-block">${moi.Peso5}</small></div>
+                <div style="width: 2.5rem;"><small class="d-block">${textoMoi1}</small></div>
+                <div style="width: 2.5rem;"><small class="d-block">${textoMoi2}</small></div>
+                <div style="width: 2.5rem;"><small class="d-block">${textoMoi3}</small></div>
+                <div style="width: 2.5rem;"><small class="d-block">${textoMoi4}</small></div>
+                <div style="width: 2.5rem;"><small class="d-block">${textoMoi5}</small></div>
             </div>
         </div>
     </div>
