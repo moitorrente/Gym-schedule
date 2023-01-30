@@ -361,7 +361,7 @@ function json2csv(ob, datosEntrenamiento) {
     const tempo = ob.isometrico ? ob.tempo : ob.tempo.reduce((prev, curr) => prev + curr, '');
     const objetivo = ob.objetivo;
     const mesociclo = datosEntrenamiento.mesociclo;
-    const tipo = 'Peso';
+    const tipo = ob.tipo;
     const sensacionAitor = ob.aitorSensacion || '';
     const sensacionMoi = ob.moiSensacion || '';
 
