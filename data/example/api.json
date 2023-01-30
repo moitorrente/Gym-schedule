@@ -1,0 +1,113 @@
+{
+    "fechaInicio": 1675113569,
+    "fechaFin": 1675113636,
+    "entrenamiento": "C",
+    "mesociclo": "2",
+    "tipoEntrenamiento": "Carga",
+    "ejercicios": [
+        {
+            "orden": "A1",
+            "id": 45,
+            "series": 4,
+            "tempo": [
+                "3",
+                "0",
+                "X",
+                "0"
+            ],
+            "repeticiones": [
+                10,
+                10,
+                10,
+                10
+            ],
+            "objetivo": "X-2",
+            "usuarios": [
+                {
+                    "id": 1,
+                    "sensacion": "3",
+                    "repeticionesRealizadas": [
+                        10,
+                        10,
+                        10,
+                        10
+                    ],
+                    "pesos": [
+                        12,
+                        13,
+                        14,
+                        15
+                    ]
+                },
+                {
+                    "id": 2,
+                    "sensacion": "3",
+                    "repeticionesRealizadas": [
+                        10,
+                        10,
+                        10,
+                        10
+                    ],
+                    "pesos": [
+                        12,
+                        13,
+                        14,
+                        15
+                    ]
+                }
+            ]
+        },
+        {
+            "orden": "A2",
+            "id": 46,
+            "series": 4,
+            "tempo": [
+                "3",
+                "0",
+                "X",
+                "0"
+            ],
+            "repeticiones": [
+                10,
+                10,
+                10,
+                10
+            ],
+            "objetivo": "X-2",
+            "usuarios": [
+                {
+                    "id": 1,
+                    "sensacion": "3",
+                    "repeticionesRealizadas": [
+                        10,
+                        10,
+                        10,
+                        10
+                    ],
+                    "pesos": [
+                        12,
+                        13,
+                        14,
+                        15
+                    ]
+                },
+                {
+                    "id": 2,
+                    "sensacion": "3",
+                    "repeticionesRealizadas": [
+                        10,
+                        10,
+                        10,
+                        10
+                    ],
+                    "pesos": [
+                        12,
+                        13,
+                        14,
+                        15
+                    ]
+                }
+            ]
+        }
+    ]
+}

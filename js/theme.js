@@ -1,18 +1,24 @@
 window.addEventListener('DOMContentLoaded', (event) => {
-    console.log('DOM fully loaded and parsed');
-    let title = localStorage.getItem("theme");
-    if (title) setActiveStyleSheet(title);
+    detectColorScheme();
 });
-function setActiveStyleSheet(title) {
-    /* Grab a list of all alternate style sheets */
-    let css = `link[rel="alternate stylesheet"]`;
-    let stylesheets = document.querySelectorAll(css);
-    /* Walk all alternate style sheets and disable them */
-    stylesheets.forEach(sheet => sheet.disabled = true);
-    /* Select style sheet we want to "turn on" */
-    let selector = `link[title="${title}"]`;
-    let stylesheet = document.querySelector(selector);
-    /* Enable the style sheet */
-    stylesheet.disabled = false;
-    localStorage.setItem("theme", title);
+function detectColorScheme() {
+    var theme = "light";    //default to light
+
+    //local storage is used to override OS theme settings
+    if (localStorage.getItem("theme")) {
+        if (localStorage.getItem("theme") == "dark") {
+            var theme = "dark";
+        }
+    } else if (!window.matchMedia) {
+        //matchMedia method not supported
+        return false;
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        //OS theme setting detected as dark
+        var theme = "dark";
+    }
+
+    //dark theme preferred, set document with a `data-theme` attribute
+    if (theme == "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+    }
 }

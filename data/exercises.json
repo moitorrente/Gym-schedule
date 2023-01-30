@@ -5,7 +5,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "barra",
-        "textoCorto": "Press banca inclinado barra"
+        "textoCorto": "Press banca inclinado barra",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Jalón al pecho agarre supino",
@@ -13,7 +14,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "polea",
-        "textoCorto": "Jalón al pecho agarre supino"
+        "textoCorto": "Jalón al pecho agarre supino",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Press declinado mancuernas agarre neutro",
@@ -21,7 +23,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "mancuerna",
-        "textoCorto": "Press declinado mancuernas"
+        "textoCorto": "Press declinado mancuernas",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Remo máquina con soporte pecho",
@@ -29,7 +32,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "polea",
-        "textoCorto": "Remo máquina con soporte pecho"
+        "textoCorto": "Remo máquina con soporte pecho",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Curl bíceps en banco inclinado agarre supino",
@@ -37,7 +41,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "barra",
-        "textoCorto": "Curl bíceps en banco inclinado"
+        "textoCorto": "Curl bíceps en banco inclinado",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Extensiones de tríceps con mancuernas en banco inclinado",
@@ -45,7 +50,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "mancuerna",
-        "textoCorto": "Extensiones de tríceps mancuernas"
+        "textoCorto": "Extensiones de tríceps mancuernas",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Sentadillas con barra",
@@ -53,7 +59,8 @@
         "tipo": "Peso",
         "video": "https://youtu.be/ovF-ZqY11ZY",
         "elemento": "barra",
-        "textoCorto": "Sentadillas con barra"
+        "textoCorto": "Sentadillas con barra",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Curl femoral tumbado",
@@ -61,7 +68,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "maquina",
-        "textoCorto": "Curl femoral tumbado"
+        "textoCorto": "Curl femoral tumbado",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Zancadas reversas alternas con mancuernas",
@@ -69,7 +77,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "mancuerna",
-        "textoCorto": "Zancadas reversas alternas"
+        "textoCorto": "Zancadas reversas alternas",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Peso muerto rumano con barra",
@@ -77,7 +86,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "barra",
-        "textoCorto": "Peso muerto rumano con barra"
+        "textoCorto": "Peso muerto rumano con barra",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Elevaciones de gemelo sentado",
@@ -85,7 +95,8 @@
         "tipo": "Peso",
         "video": "https://youtu.be/Gti0nc0E2jI",
         "elemento": "maquina",
-        "textoCorto": "Elevaciones de gemelo sentado"
+        "textoCorto": "Elevaciones de gemelo sentado",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Plancha RKC",
@@ -93,7 +104,8 @@
         "tipo": "Segundos",
         "video": "https://youtu.be/6TKktamzq4o",
         "elemento": "cuerpo",
-        "textoCorto": "Plancha RKC"
+        "textoCorto": "Plancha RKC",
+        "isometrico": "true"
     },
     {
         "ejercicio": "Dips",
@@ -101,7 +113,8 @@
         "tipo": "Repeticiones",
         "video": "",
         "elemento": "cuerpo",
-        "textoCorto": "Dips"
+        "textoCorto": "Dips",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Press inclinado mancuernas",
@@ -109,7 +122,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "mancuerna",
-        "textoCorto": "Press inclinado mancuernas"
+        "textoCorto": "Press inclinado mancuernas",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Remo con mancuernas inclinado",
@@ -117,7 +131,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "mancuerna",
-        "textoCorto": "Remo con mancuernas inclinado"
+        "textoCorto": "Remo con mancuernas inclinado",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Facepull",
@@ -125,7 +140,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "polea",
-        "textoCorto": "Facepull"
+        "textoCorto": "Facepull",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Elevaciones laterales poliquin sentado",
@@ -133,7 +149,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "mancuerna",
-        "textoCorto": "Elevaciones laterales sentado"
+        "textoCorto": "Elevaciones laterales sentado",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Hack squats",
@@ -141,7 +158,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "maquina",
-        "textoCorto": "Hack squats"
+        "textoCorto": "Hack squats",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Hip thrusts",
@@ -149,7 +167,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "maquina",
-        "textoCorto": "Hip thrusts"
+        "textoCorto": "Hip thrusts",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Zancadas con mancuernas",
@@ -157,7 +176,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "mancuerna",
-        "textoCorto": "Zancadas con mancuernas"
+        "textoCorto": "Zancadas con mancuernas",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Elevaciones de gemelo de pie",
@@ -165,7 +185,8 @@
         "tipo": "Peso",
         "video": "https://youtu.be/Gti0nc0E2jI",
         "elemento": "barra",
-        "textoCorto": "Elevaciones de gemelo de pie"
+        "textoCorto": "Elevaciones de gemelo de pie",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Plancha lateral",
@@ -173,7 +194,8 @@
         "tipo": "Segundos",
         "video": "https://youtu.be/ckUwoMt2Hmk",
         "elemento": "cuerpo",
-        "textoCorto": "Plancha lateral"
+        "textoCorto": "Plancha lateral",
+        "isometrico": "true"
     },
     {
         "ejercicio": "Jalón al pecho agarre prono",
@@ -181,7 +203,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "polea",
-        "textoCorto": "Jalón al pecho agarre prono"
+        "textoCorto": "Jalón al pecho agarre prono",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Press militar con barra",
@@ -189,7 +212,8 @@
         "tipo": "Peso",
         "video": "https://youtu.be/f1Un1Z28ekc",
         "elemento": "barra",
-        "textoCorto": "Press militar con barra"
+        "textoCorto": "Press militar con barra",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Dominadas con agarre supino medio",
@@ -197,7 +221,8 @@
         "tipo": "Repeticiones",
         "video": "",
         "elemento": "cuerpo",
-        "textoCorto": "Dominadas con agarre supino"
+        "textoCorto": "Dominadas con agarre supino",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Press plano con mancuernas agarre neutro",
@@ -205,7 +230,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "mancuerna",
-        "textoCorto": "Press plano con mancuernas"
+        "textoCorto": "Press plano con mancuernas",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Remo sentado en polea agarre neutro",
@@ -213,7 +239,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "polea",
-        "textoCorto": "Remo sentado en polea"
+        "textoCorto": "Remo sentado en polea",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Curl bíceps de pie mancuernas agarre neutro",
@@ -221,7 +248,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "mancuerna",
-        "textoCorto": "Curl bíceps de pie mancuernas"
+        "textoCorto": "Curl bíceps de pie mancuernas",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Extensiones de tríceps con cuerda en polea alta",
@@ -229,7 +257,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "polea",
-        "textoCorto": "Extensiones de tríceps cuerda"
+        "textoCorto": "Extensiones de tríceps cuerda",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Curl femoral sentado",
@@ -237,7 +266,8 @@
         "tipo": "Peso",
         "video": "https://youtu.be/ELOCsoDSmrg",
         "elemento": "maquina",
-        "textoCorto": "Curl femoral sentado"
+        "textoCorto": "Curl femoral sentado",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Sentadilla split con mancuernas talón delantero elevado",
@@ -245,7 +275,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "mancuerna",
-        "textoCorto": "Sentadilla split"
+        "textoCorto": "Sentadilla split",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Peso muerto rumano con barra pausa rodilla",
@@ -253,7 +284,8 @@
         "tipo": "Peso",
         "video": "https://youtu.be/VDPzTtBF9XE",
         "elemento": "barra",
-        "textoCorto": "Peso muerto rumano pausa"
+        "textoCorto": "Peso muerto rumano pausa",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Press plano con barra",
@@ -261,7 +293,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "barra",
-        "textoCorto": "Press plano con barra"
+        "textoCorto": "Press plano con barra",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Dominadas agarre neutro cerrado",
@@ -269,7 +302,8 @@
         "tipo": "Repeticiones",
         "video": "",
         "elemento": "cuerpo",
-        "textoCorto": "Dominadas agarre neutro cerrado"
+        "textoCorto": "Dominadas agarre neutro cerrado",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Press militar mancuerna a una mano de pie",
@@ -277,7 +311,8 @@
         "tipo": "Peso",
         "video": "https://youtu.be/je6cSnt00x4",
         "elemento": "mancuerna",
-        "textoCorto": "Press militar mancuerna"
+        "textoCorto": "Press militar mancuerna",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Remo sentado en polea con agarre prono al pecho",
@@ -285,7 +320,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "polea",
-        "textoCorto": "Remo sentado agarre prono"
+        "textoCorto": "Remo sentado agarre prono",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Palloff press en polea",
@@ -293,7 +329,8 @@
         "tipo": "Peso",
         "video": "https://youtu.be/AS2DxzeQxow",
         "elemento": "polea",
-        "textoCorto": "Palloff press en polea"
+        "textoCorto": "Palloff press en polea",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Rotación externa de hombro con mancuerna",
@@ -301,7 +338,8 @@
         "tipo": "Peso",
         "video": "https://youtu.be/JxOTlLNUdYE",
         "elemento": "mancuerna",
-        "textoCorto": "Rotación externa de hombro"
+        "textoCorto": "Rotación externa de hombro",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Peso muerto convencional desde bloques",
@@ -309,7 +347,8 @@
         "tipo": "Peso",
         "video": "https://youtu.be/QbO-7w2L6UY",
         "elemento": "barra",
-        "textoCorto": "Peso muerto convencional"
+        "textoCorto": "Peso muerto convencional",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Curl femoral en pelota suiza",
@@ -317,7 +356,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "maquina",
-        "textoCorto": "Curl femoral en pelota suiza"
+        "textoCorto": "Curl femoral en pelota suiza",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Abdominales tumbado",
@@ -325,7 +365,8 @@
         "tipo": "Repeticiones",
         "video": "",
         "elemento": "cuerpo",
-        "textoCorto": "Abdominales tumbado"
+        "textoCorto": "Abdominales tumbado",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Jalón al pecho agarre neutro",
@@ -333,7 +374,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "polea",
-        "textoCorto": "Jalón al pecho agarre neutro"
+        "textoCorto": "Jalón al pecho agarre neutro",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Curl bíceps barra zeta sentado",
@@ -341,7 +383,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "barra",
-        "textoCorto": "Curl bíceps barra zeta sentado"
+        "textoCorto": "Curl bíceps barra zeta sentado",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Extensiones de tríceps con mancuernas de pie",
@@ -349,7 +392,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "mancuerna",
-        "textoCorto": "Extensiones de tríceps mancuernas"
+        "textoCorto": "Extensiones de tríceps mancuernas",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Press militar con mancuernas sentado agarre semiprono",
@@ -357,7 +401,8 @@
         "tipo": "Peso",
         "video": "https://youtu.be/iO5A6uJhzqw",
         "elemento": "mancuerna",
-        "textoCorto": "Press militar mancuernas sentado"
+        "textoCorto": "Press militar mancuernas sentado",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Dominadas agarre prono abierto",
@@ -365,7 +410,8 @@
         "tipo": "Repeticiones",
         "video": "https://youtu.be/Jpf392_2zuU",
         "elemento": "cuerpo",
-        "textoCorto": "Dominadas agarre prono abierto"
+        "textoCorto": "Dominadas agarre prono abierto",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Floor press mancuernas agarre semiprono",
@@ -373,7 +419,8 @@
         "tipo": "Peso",
         "video": "https://youtu.be/uUGDRwge4F8",
         "elemento": "mancuerna",
-        "textoCorto": "Floor press"
+        "textoCorto": "Floor press",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Remo con mancuerna a una mano",
@@ -381,7 +428,8 @@
         "tipo": "Peso",
         "video": "https://youtu.be/pYcpY20QaE8",
         "elemento": "mancuerna",
-        "textoCorto": "Remo con mancuerna a una mano"
+        "textoCorto": "Remo con mancuerna a una mano",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Flexiones de brazos",
@@ -389,7 +437,8 @@
         "tipo": "Repeticiones",
         "video": "https://youtu.be/Mqu3VoWgEL4",
         "elemento": "cuerpo",
-        "textoCorto": "Flexiones de brazos"
+        "textoCorto": "Flexiones de brazos",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Extensiones de tríceps en polea con agarre V",
@@ -397,7 +446,8 @@
         "tipo": "Peso",
         "video": "https://youtu.be/2-LAMcpzODU",
         "elemento": "polea",
-        "textoCorto": "Extensiones tríceps polea"
+        "textoCorto": "Extensiones tríceps polea",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Sentadilla con barra alta",
@@ -405,7 +455,8 @@
         "tipo": "Peso",
         "video": "https://youtu.be/i0wfVEoWxSs",
         "elemento": "barra",
-        "textoCorto": "Sentadilla con barra alta"
+        "textoCorto": "Sentadilla con barra alta",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Paseo del granjero con trap bar",
@@ -413,7 +464,8 @@
         "tipo": "Peso",
         "video": "",
         "elemento": "barra",
-        "textoCorto": "Paseo del granjero con trap bar"
+        "textoCorto": "Paseo del granjero con trap bar",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Ab rollouts",
@@ -421,7 +473,8 @@
         "tipo": "Repeticiones",
         "video": "https://youtu.be/QB2Gj1QGfjQ",
         "elemento": "cuerpo",
-        "textoCorto": "Ab rollouts"
+        "textoCorto": "Ab rollouts",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Press Arnold con mancuernas",
@@ -429,7 +482,8 @@
         "tipo": "Peso",
         "video": "https://youtu.be/odhXwoS3mDA",
         "elemento": "mancuerna",
-        "textoCorto": "Press Arnold con mancuernas"
+        "textoCorto": "Press Arnold con mancuernas",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Elevaciones laterales a una mano polea baja",
@@ -437,7 +491,8 @@
         "tipo": "Peso",
         "video": "https://youtu.be/PPrzBWZDOhA",
         "elemento": "polea",
-        "textoCorto": "Elevaciones laterales polea baja"
+        "textoCorto": "Elevaciones laterales polea baja",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Sentadilla búlgara dominante de cadera",
@@ -445,7 +500,8 @@
         "tipo": "Peso",
         "video": "https://youtu.be/x_X7sxKSWdU",
         "elemento": "mancuerna",
-        "textoCorto": "Sentadilla búlgara"
+        "textoCorto": "Sentadilla búlgara",
+        "isometrico": "false"
     },
     {
         "ejercicio": "Curl femoral de rodillas a una piernas",
@@ -453,6 +509,7 @@
         "tipo": "Peso",
         "video": "https://youtu.be/mztaRfefang",
         "elemento": "maquina",
-        "textoCorto": "Curl femoral de rodillas"
+        "textoCorto": "Curl femoral de rodillas",
+        "isometrico": "false"
     }
 ]

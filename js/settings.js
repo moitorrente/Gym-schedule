@@ -18,5 +18,5 @@ async function forceReload() {
 }
 
 document.getElementById('force-update').onclick = () => forceReload();
-document.getElementById('dark-theme').onclick = () => setActiveStyleSheet('dark');
-document.getElementById('light-theme').onclick = () => setActiveStyleSheet('light');
+document.getElementById('dark-theme').onclick = () => localStorage.setItem('theme', 'dark');
+document.getElementById('light-theme').onclick = () => localStorage.setItem('theme', 'light');
