@@ -60,10 +60,11 @@ function init() {
             jsonData.table.cols.forEach((heading) => {
                 if (heading.label) {
                     let column = heading.label;
+                    column = column.charAt(0).toUpperCase() + column.slice(1);
+                    if(column == 'Id') column = 'EjercicioID';
                     colz.push(column);
                 }
             })
-
             //extract row data:
             jsonData.table.rows.forEach((rowData) => {
                 const row = {};
