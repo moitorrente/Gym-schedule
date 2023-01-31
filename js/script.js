@@ -352,8 +352,8 @@ function shareMail(btn) {
     const entrenamiento = JSON.parse(localStorage.getItem('entrenamiento'));
     const text = jsonProxy(ejercicios, entrenamiento)
 
-    const subject = `Log ${new Date().toLocaleDateString('en-GB')}`;
-    const body = JSON.stringify(text);
+    const subject = `Log ${new Date(localStorage.getItem('workout-date-start')).toLocaleDateString('en-GB')}`;
+    const body = JSON.stringify(text, null, 0);
     const mailto = localStorage.getItem('mail');    
     btn.href = `mailto:${mailto}?subject=${subject}&body=${body}`;
 }
