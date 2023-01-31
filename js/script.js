@@ -343,11 +343,67 @@ document.querySelectorAll('.w-share').forEach(btn => {
     btn.addEventListener('click', () => share(btn))
 });
 
+document.querySelectorAll('.w-share-mail').forEach(btn => {
+    btn.addEventListener('click', () => shareMail(btn))
+});
+
+function shareMail(btn) {
+    const ejercicios = getExercises();
+    const entrenamiento = JSON.parse(localStorage.getItem('entrenamiento'));
+    const text = jsonProxy(ejercicios, entrenamiento)
+    // const text = ejercicios.map(ejercicio => jsonProxy(ejercicio, entrenamiento));
+
+    const subject = `Log ${new Date().toLocaleDateString('en-GB')}`;
+    const body = JSON.stringify(text);
+    const mailto = localStorage.getItem('mail');    
+    btn.href = `mailto:${mailto}?subject=${subject}&body=${body}`;
+}
+
 function share(btn) {
     const ejercicios = getExercises();
     const entrenamiento = JSON.parse(localStorage.getItem('entrenamiento'));
     const text = ejercicios.map(ejercicio => json2csv(ejercicio, entrenamiento)).join('');
     btn.href = `https://wa.me?text=${encodeURIComponent(text)}`;
+}
+
+function jsonProxy(ob, datosEntrenamiento) {
+    const json = {
+        "fechaInicio": new Date(localStorage.getItem('workout-date-start')).getTime(),
+        "fechaFin": new Date(localStorage.getItem('workout-date-end')).getTime(),
+        "entrenamiento": datosEntrenamiento.id,
+        "mesociclo": datosEntrenamiento.mesociclo,
+        "tipoEntrenamiento": datosEntrenamiento.tipo,
+        "ejercicios": ob.map(ejercicio => jsonProxyEjercicio(ejercicio))
+    }
+    return json;
+}
+
+function jsonProxyEjercicio(ejercicio) {
+    const json = {
+        "orden": ejercicio.orden,
+        "id": Number(ejercicio.id),
+        "series": Number(ejercicio.series),
+        "tempo": ejercicio.isometrico ? ejercicio.tempo : ejercicio.tempo.reduce((prev, curr) => prev + curr, ''),
+        "repeticiones": ejercicio.repeticiones.map(x => Number(x)),
+        "objetivo": ejercicio.objetivo,
+        "usuarios": [
+            {
+                "id": 1,
+                "sensacion": ejercicio.aitorSensacion,
+                "repeticionesRealizadas": ejercicio.repsAitor.map(x => Number(x)),
+                "pesos": ejercicio.aitor.map(x => Number(x))
+            },
+            {
+                "id": 2,
+                "sensacion": ejercicio.moiSensacion,
+                "repeticionesRealizadas": ejercicio.repsMoi.map(x => Number(x)),
+                "pesos": ejercicio.moi.map(x => Number(x))
+            },
+        ]
+
+    }
+
+    return json;
 }
 
 function json2csv(ob, datosEntrenamiento) {

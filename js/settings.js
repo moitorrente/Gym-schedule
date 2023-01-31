@@ -20,3 +20,12 @@ async function forceReload() {
 document.getElementById('force-update').onclick = () => forceReload();
 document.getElementById('dark-theme').onclick = () => localStorage.setItem('theme', 'dark');
 document.getElementById('light-theme').onclick = () => localStorage.setItem('theme', 'light');
+
+
+const saveMail = document.getElementById('save-mail');
+if (localStorage.getItem('mail')) {
+    document.getElementById('mailto').value = localStorage.getItem('mail');
+}
+saveMail.onclick = () => {
+    localStorage.setItem('mail', document.getElementById('mailto').value)
+};
