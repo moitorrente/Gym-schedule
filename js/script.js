@@ -351,7 +351,6 @@ function shareMail(btn) {
     const ejercicios = getExercises();
     const entrenamiento = JSON.parse(localStorage.getItem('entrenamiento'));
     const text = jsonProxy(ejercicios, entrenamiento)
-    // const text = ejercicios.map(ejercicio => jsonProxy(ejercicio, entrenamiento));
 
     const subject = `Log ${new Date().toLocaleDateString('en-GB')}`;
     const body = JSON.stringify(text);
@@ -366,14 +365,14 @@ function share(btn) {
     btn.href = `https://wa.me?text=${encodeURIComponent(text)}`;
 }
 
-function jsonProxy(ob, datosEntrenamiento) {
+function jsonProxy(ejercicios, datosEntrenamiento) {
     const json = {
         "fechaInicio": new Date(localStorage.getItem('workout-date-start')).getTime(),
         "fechaFin": new Date(localStorage.getItem('workout-date-end')).getTime(),
         "entrenamiento": datosEntrenamiento.id,
         "mesociclo": datosEntrenamiento.mesociclo,
         "tipoEntrenamiento": datosEntrenamiento.tipo,
-        "ejercicios": ob.map(ejercicio => jsonProxyEjercicio(ejercicio))
+        "ejercicios": ejercicios.map(ejercicio => jsonProxyEjercicio(ejercicio))
     }
     return json;
 }
@@ -400,7 +399,6 @@ function jsonProxyEjercicio(ejercicio) {
                 "pesos": ejercicio.moi.map(x => Number(x))
             },
         ]
-
     }
 
     return json;

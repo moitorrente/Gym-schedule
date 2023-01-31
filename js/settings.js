@@ -22,10 +22,10 @@ document.getElementById('dark-theme').onclick = () => localStorage.setItem('them
 document.getElementById('light-theme').onclick = () => localStorage.setItem('theme', 'light');
 
 
-const saveMail = document.getElementById('save-mail');
+document.getElementById('mailto').onchange = () => {
+    localStorage.setItem('mail', document.getElementById('mailto').value)
+}
+
 if (localStorage.getItem('mail')) {
     document.getElementById('mailto').value = localStorage.getItem('mail');
 }
-saveMail.onclick = () => {
-    localStorage.setItem('mail', document.getElementById('mailto').value)
-};
