@@ -111,7 +111,6 @@ resetMoi.onclick = () => {
     isSeriesCompleted('moi');
 }
 
-
 const spreadAitor = document.getElementById('spread-aitor');
 const resetAitor = document.getElementById('reset-aitor');
 spreadAitor.onclick = () => {
@@ -175,18 +174,7 @@ loadData();
 function loadData() {
     getContext();
     ejercicio.innerHTML = current.nombre;
-    const fecha = current.fecha ? current.fecha.split(',')[0] : 'N/D';
-    const hora = current.fecha ? current.fecha.split(',')[1] : 'N/D';
-    const tipo = current.tipo ? current.tipo : 'N/D';
 
-    // document.querySelector('.accordion-body').innerHTML = `
-    // <div class="badge rounded-pill bg-dark">Orden: ${current.orden}</div>
-    // <div class="badge rounded-pill bg-success">Id: ${current.id}</div>
-    // <div class="badge rounded-pill bg-success">Tipo: ${tipo}</div>
-    // <div class="badge rounded-pill bg-success">Video: ${current.video ? 'Sí' : 'No'}</div>
-    // <div class="badge rounded-pill bg-success">Fecha: ${fecha}</div>
-    // <div class="badge rounded-pill bg-success">Hora: ${hora}</div>
-    // `;
     if (current.isometrico) {
         tempo.innerHTML = current.tempo;
     } else {
@@ -210,13 +198,11 @@ function loadData() {
     if (current.repsAitor) [...document.querySelectorAll('input[name="reps-aitor"]')].forEach((x, i) => x.value = current.repsAitor[i])
     if (current.repsMoi) [...document.querySelectorAll('input[name="reps-moi"]')].forEach((x, i) => x.value = current.repsMoi[i])
 
-
     if (current.aitor) [...document.querySelectorAll('input[name="peso-aitor"]')].forEach((x, i) => x.value = current.aitor[i])
     if (current.moi) [...document.querySelectorAll('input[name="peso-moi"]')].forEach((x, i) => x.value = current.moi[i])
 
     if (current.aitorSensacion) document.querySelectorAll('input[name="sensacion-aitor"]')[parseInt(current.aitorSensacion - 1)].checked = true;
     if (current.moiSensacion) document.querySelectorAll('input[name="sensacion-moi"]')[parseInt(current.moiSensacion - 1)].checked = true;
-
 
     const dataToCopy = JSON.parse(localStorage.getItem('data-to-copy'));
     if (dataToCopy) {
@@ -228,7 +214,6 @@ function loadData() {
     isSeriesCompleted('aitor');
 
     playTxt.innerHTML = parseInt([...document.getElementsByName('reps')][0].innerHTML);
-
 }
 
 function delay(time) {

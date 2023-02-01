@@ -1,18 +1,17 @@
 const exerciseContainer = document.getElementById('exercise-container');
 
 getContext();
-function getContext(){
+function getContext() {
     exerciseContainer.innerHTML = '';
     const exercises = JSON.parse(localStorage.listaEjercicios).data;
     document.getElementById('exercise-count').innerHTML = `Ejercicios: ${exercises.length}`;
-    exercises.forEach(exercise => exerciseContainer.appendChild(createCard(exercise.ejercicio, exercise.elemento, exercise.tipo)))
-
+    exercises.forEach(exercise => exerciseContainer.appendChild(createCard(exercise.ejercicio, exercise.elemento, exercise.tipo, exercise.id)))
 }
 
-function createCard(title, type, element){
+function createCard(title, type, element, id) {
+    const d = document.createElement('a');
 
-    const d = document.createElement('div');
-
+    d.classList.add('text-decoration-none', 'text-black');
 
     d.innerHTML = `
         <div class="bg-white list-group-item d-flex gap-2 p-3 rounded align-items-center border-0 shadow-sm mt-1 mb-2"
@@ -23,16 +22,23 @@ function createCard(title, type, element){
                     <div class="d-flex mt-2 gap-2 fs-7 w-100 align-items-center">
                         <small
                             class="b-light-blue text-center align-self-center t-dark-blue border-rounded rounded-5 px-2"
-                            style="min-width: 2rem;"><strong>${element}</strong></small>
+                            style="min-width: 2rem;"><strong>${element}</strong>
+                        </small>
                         <small
                             class="b-light-yellow text-center align-self-center t-dark-yellow border-rounded rounded-5 px-2"
-                            style="min-width: 4rem;"><strong>${type}</strong></small>
+                            style="min-width: 4rem;"><strong>${type}</strong>
+                        </small>
                     </div>
                 </div>
             </div>
         </div>
     `;
 
-    return d;
+    d.onclick = () => {
+        localStorage.setItem('exercise-to-view', JSON.stringify({ id: id, copy: false }));
+        d.href = 'view-data.html';
+    }
 
+    return d;
 }
+
