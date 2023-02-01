@@ -450,3 +450,29 @@ function getExercises() {
     if (tmp) return JSON.parse(tmp);
     return false;
 }
+
+
+const buttona = document.getElementById('notifications');
+buttona.addEventListener('click', () => {
+    console.log('aaaa')
+  Notification.requestPermission().then((result) => {
+    if (result === 'granted') {
+      randomNotification();
+    }
+  });
+});
+
+
+function randomNotification() {
+    console.log('bbbbbb')
+    const randomItem = Math.floor(Math.random() * 10);
+    const notifTitle = 'Hpla';
+    const notifBody = `Created by .`;
+    const notifImg = `../icon.png`;
+    const options = {
+      body: notifBody,
+      icon: notifImg,
+    };
+    new Notification(notifTitle, options);
+    setTimeout(randomNotification, 30000);
+  }
