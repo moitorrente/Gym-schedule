@@ -18,6 +18,7 @@
     --light-yellow: #fef9c3;
     --dark-yellow: #915e20;
     --fuchsia: #e879f9;
+    --gray-300: #9ca3af6d;
 }
 
 html {
@@ -62,12 +63,16 @@ body {
     background-color: var(--red) !important;
 }
 
+.b-gray-300 {
+    background-color: var(--gray-300) !important;
+}
+
 .b-fuchsia {
     background-color: var(--fuchsia);
 }
 
 .b-dark-gray {
-    background-color: var(--dark-gray);
+    background-color: var(--dark-gray) !important;
 }
 
 .b-light-gray {

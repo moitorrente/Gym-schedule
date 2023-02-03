@@ -12,184 +12,123 @@
     <link rel='shortcut icon' type='image/x-icon' href='../../icon.png' />
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
     <script defer type="module" src="../../js/bootstrap.bundle.min.js"></script>
+    <script defer type="module" src="../../js/desktop/dashboard.js"></script>
+    <script defer src="../../js/desktop/exercise-generator.js"></script>
 
     <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/calendar.css">
 </head>
 
-<body style="background-color: #fefefe; overflow: hidden;">
+<body style="background-color: #fefefe; overflow-y: hidden;">
 
-    <div class="row">
-        <div class="col-2">
-            <div class="d-flex flex-column flex-shrink-0 p-3 b-gray" style="height: 100vh; background-color: #f6f8fa;">
-                <a href="/"
-                    class="d-flex align-items-center gap-2 mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                    <img src="../../icon.png" alt="" width="40" height="40" class="rounded-3">
-                    <span class="fs-5 fw-bold">Gym<span class="t-blue">Schedule</span></span>
-                </a>
-                <hr>
-                <input type="text" class="form-control mb-2 border-0 shadow-sm" placeholder="Buscar"></input>
-                <ul class="nav nav-pills flex-column mb-auto">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link align-items-center d-flex gap-2 active" aria-current="page">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
-                                class="bi bi-database" viewBox="0 0 16 16">
-                                <path
-                                    d="M4.318 2.687C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4c0-.374.356-.875 1.318-1.313ZM13 5.698V7c0 .374-.356.875-1.318 1.313C10.766 8.729 9.464 9 8 9s-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777A4.92 4.92 0 0 0 13 5.698ZM14 4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13V4Zm-1 4.698V10c0 .374-.356.875-1.318 1.313C10.766 11.729 9.464 12 8 12s-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10s3.022-.289 4.096-.777A4.92 4.92 0 0 0 13 8.698Zm0 3V13c0 .374-.356.875-1.318 1.313C10.766 14.729 9.464 15 8 15s-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13s3.022-.289 4.096-.777c.324-.147.633-.323.904-.525Z">
-                                </path>
-                            </svg>
-                            Ejercicios
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link link-dark">
-                            <svg class="bi pe-none me-2" width="16" height="16">
-                                <use xlink:href="#speedometer2"></use>
-                            </svg>
-                            Entrenamientos
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link link-dark">
-                            <svg class="bi pe-none me-2" width="16" height="16">
-                                <use xlink:href="#table"></use>
-                            </svg>
-                            Orders
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link link-dark">
-                            <svg class="bi pe-none me-2" width="16" height="16">
-                                <use xlink:href="#grid"></use>
-                            </svg>
-                            Products
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link link-dark">
-                            <svg class="bi pe-none me-2" width="16" height="16">
-                                <use xlink:href="#people-circle"></use>
-                            </svg>
-                            Customers
-                        </a>
-                    </li>
-                </ul>
-                <hr>
-                <div class="dropdown">
-                    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="" alt="" width="32" height="32" class="rounded-circle me-2">
-                        <strong>Exit</strong>
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto px-0">
+                <div class="d-flex flex-column flex-shrink-0 p-3 px-3 b-gray"
+                    style="height: 100vh; max-width: 20vw; background: linear-gradient(313deg, rgb(245, 218, 218) 0%, rgba(223, 217, 247, 0.841) 35%, rgb(199, 232, 240) 100%);">
+                    <a href="/"
+                        class="d-flex align-items-center gap-2 mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                        <img src="../../icon.png" alt="" width="40" height="40" class="rounded-3">
+                        <span class="fs-5 fw-bold">Gym<span class="t-blue">Schedule</span></span>
                     </a>
-                    <ul class="dropdown-menu text-small shadow">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
+                    <hr>
+                    <input type="text" class="form-control mb-2 border-0 shadow-sm" placeholder="Buscar"></input>
+                    <ul class="nav nav-pills flex-column mb-auto gap-2">
+                        <li class="nav-item">
+                            <a href="#"
+                                class="py-1 px-2 text-decoration-none link-dark rounded-2 b-gray-300 align-items-center d-flex gap-2 active fs-6 shadow-sm"
+                                aria-current="page">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-filetype-json" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M14 4.5V11h-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM4.151 15.29a1.176 1.176 0 0 1-.111-.449h.764a.578.578 0 0 0 .255.384c.07.049.154.087.25.114.095.028.201.041.319.041.164 0 .301-.023.413-.07a.559.559 0 0 0 .255-.193.507.507 0 0 0 .084-.29.387.387 0 0 0-.152-.326c-.101-.08-.256-.144-.463-.193l-.618-.143a1.72 1.72 0 0 1-.539-.214 1.001 1.001 0 0 1-.352-.367 1.068 1.068 0 0 1-.123-.524c0-.244.064-.457.19-.639.128-.181.304-.322.528-.422.225-.1.484-.149.777-.149.304 0 .564.05.779.152.217.102.384.239.5.41.12.17.186.359.2.566h-.75a.56.56 0 0 0-.12-.258.624.624 0 0 0-.246-.181.923.923 0 0 0-.37-.068c-.216 0-.387.05-.512.152a.472.472 0 0 0-.185.384c0 .121.048.22.144.3a.97.97 0 0 0 .404.175l.621.143c.217.05.406.12.566.211a1 1 0 0 1 .375.358c.09.148.135.335.135.56 0 .247-.063.466-.188.656a1.216 1.216 0 0 1-.539.439c-.234.105-.52.158-.858.158-.254 0-.476-.03-.665-.09a1.404 1.404 0 0 1-.478-.252 1.13 1.13 0 0 1-.29-.375Zm-3.104-.033a1.32 1.32 0 0 1-.082-.466h.764a.576.576 0 0 0 .074.27.499.499 0 0 0 .454.246c.19 0 .33-.055.422-.164.091-.11.137-.265.137-.466v-2.745h.791v2.725c0 .44-.119.774-.357 1.005-.237.23-.565.345-.985.345a1.59 1.59 0 0 1-.568-.094 1.145 1.145 0 0 1-.407-.266 1.14 1.14 0 0 1-.243-.39Zm9.091-1.585v.522c0 .256-.039.47-.117.641a.862.862 0 0 1-.322.387.877.877 0 0 1-.47.126.883.883 0 0 1-.47-.126.87.87 0 0 1-.32-.387 1.55 1.55 0 0 1-.117-.641v-.522c0-.258.039-.471.117-.641a.87.87 0 0 1 .32-.387.868.868 0 0 1 .47-.129c.177 0 .333.043.47.129a.862.862 0 0 1 .322.387c.078.17.117.383.117.641Zm.803.519v-.513c0-.377-.069-.701-.205-.973a1.46 1.46 0 0 0-.59-.63c-.253-.146-.559-.22-.916-.22-.356 0-.662.074-.92.22a1.441 1.441 0 0 0-.589.628c-.137.271-.205.596-.205.975v.513c0 .375.068.699.205.973.137.271.333.48.589.626.258.145.564.217.92.217.357 0 .663-.072.917-.217.256-.146.452-.355.589-.626.136-.274.205-.598.205-.973Zm1.29-.935v2.675h-.746v-3.999h.662l1.752 2.66h.032v-2.66h.75v4h-.656l-1.761-2.676h-.032Z" />
+                                </svg>
+                                Generador JSON ejercicios
+                            </a>
                         </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        <li>
+                            <a href="#"
+                                class="py-1 px-2 text-decoration-none link-dark align-items-center d-flex gap-2 fs-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-filetype-json" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M14 4.5V11h-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM4.151 15.29a1.176 1.176 0 0 1-.111-.449h.764a.578.578 0 0 0 .255.384c.07.049.154.087.25.114.095.028.201.041.319.041.164 0 .301-.023.413-.07a.559.559 0 0 0 .255-.193.507.507 0 0 0 .084-.29.387.387 0 0 0-.152-.326c-.101-.08-.256-.144-.463-.193l-.618-.143a1.72 1.72 0 0 1-.539-.214 1.001 1.001 0 0 1-.352-.367 1.068 1.068 0 0 1-.123-.524c0-.244.064-.457.19-.639.128-.181.304-.322.528-.422.225-.1.484-.149.777-.149.304 0 .564.05.779.152.217.102.384.239.5.41.12.17.186.359.2.566h-.75a.56.56 0 0 0-.12-.258.624.624 0 0 0-.246-.181.923.923 0 0 0-.37-.068c-.216 0-.387.05-.512.152a.472.472 0 0 0-.185.384c0 .121.048.22.144.3a.97.97 0 0 0 .404.175l.621.143c.217.05.406.12.566.211a1 1 0 0 1 .375.358c.09.148.135.335.135.56 0 .247-.063.466-.188.656a1.216 1.216 0 0 1-.539.439c-.234.105-.52.158-.858.158-.254 0-.476-.03-.665-.09a1.404 1.404 0 0 1-.478-.252 1.13 1.13 0 0 1-.29-.375Zm-3.104-.033a1.32 1.32 0 0 1-.082-.466h.764a.576.576 0 0 0 .074.27.499.499 0 0 0 .454.246c.19 0 .33-.055.422-.164.091-.11.137-.265.137-.466v-2.745h.791v2.725c0 .44-.119.774-.357 1.005-.237.23-.565.345-.985.345a1.59 1.59 0 0 1-.568-.094 1.145 1.145 0 0 1-.407-.266 1.14 1.14 0 0 1-.243-.39Zm9.091-1.585v.522c0 .256-.039.47-.117.641a.862.862 0 0 1-.322.387.877.877 0 0 1-.47.126.883.883 0 0 1-.47-.126.87.87 0 0 1-.32-.387 1.55 1.55 0 0 1-.117-.641v-.522c0-.258.039-.471.117-.641a.87.87 0 0 1 .32-.387.868.868 0 0 1 .47-.129c.177 0 .333.043.47.129a.862.862 0 0 1 .322.387c.078.17.117.383.117.641Zm.803.519v-.513c0-.377-.069-.701-.205-.973a1.46 1.46 0 0 0-.59-.63c-.253-.146-.559-.22-.916-.22-.356 0-.662.074-.92.22a1.441 1.441 0 0 0-.589.628c-.137.271-.205.596-.205.975v.513c0 .375.068.699.205.973.137.271.333.48.589.626.258.145.564.217.92.217.357 0 .663-.072.917-.217.256-.146.452-.355.589-.626.136-.274.205-.598.205-.973Zm1.29-.935v2.675h-.746v-3.999h.662l1.752 2.66h.032v-2.66h.75v4h-.656l-1.761-2.676h-.032Z" />
+                                </svg>
+                                Exportar entrenamiento
+                            </a>
+                        </li>
                     </ul>
+                    <hr class="my-1 p-0">
+                    <div class="text-muted text-center fs-7" id="version-text">v.15</div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-8">
-            aaaaasdasdasd
-        </div>
-
-        <div class="col-2 b-gray px-2">
-            <div class="px-2" style="height: 100vh;">
-                <div class="bg-white d-block position-static my-0 p-2 rounded-3 mt-2 shadow-sm">
-                    <div class="d-grid gap-1">
-                        <div class="cal">
-                            <div class="cal-month">
-                                <strong class="cal-month-name">Febrero 2023</strong>
-
-                                <button class="btn cal-btn" type="button" id="prev-month">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-chevron-left" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z">
-                                        </path>
-                                    </svg>
-                                </button>
-                                <button class="btn cal-btn" type="button" id="next-month">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-chevron-right" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z">
-                                        </path>
-                                    </svg>
-                                </button>
-                                <select class="form-select cal-month-name d-none">
-                                    <option value="January">January</option>
-                                    <option value="February">February</option>
-                                    <option value="March">March</option>
-                                    <option value="April">April</option>
-                                    <option value="May">May</option>
-                                    <option selected="" value="June">June</option>
-                                    <option value="July">July</option>
-                                    <option value="August">August</option>
-                                    <option value="September">September</option>
-                                    <option value="October">October</option>
-                                    <option value="November">November</option>
-                                    <option value="December">December</option>
-                                </select>
+            <div class="col px-0">
+                <nav class="navbar b-gray">
+                    <div class="d-flex container-fluid">
+                        <div class="col-1 ui-square-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                                class="bi bi-layout-sidebar-inset" viewBox="0 0 16 16">
+                                <path
+                                    d="M14 2a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h12zM2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2z" />
+                                <path d="M3 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z" />
+                            </svg>
+                        </div>
+                        <span class="flex-grow-1 navbar-brand mb-0 fs-6 d-flex justify-content-center">
+                            <div class="b-light-blue t-dark-blue fw-bold w-50 py-1 text-center rounded-2">
+                                Generador JSON ejercicios
                             </div>
-                            <div class="cal-weekdays text-muted">
-                                <div class="cal-weekday">Lun</div>
-                                <div class="cal-weekday">Mar</div>
-                                <div class="cal-weekday">Mié</div>
-                                <div class="cal-weekday">Jue</div>
-                                <div class="cal-weekday">Vie</div>
-                                <div class="cal-weekday">Sáb</div>
-                                <div class="cal-weekday">Dom</div>
+                        </span>
+                    </div>
+                </nav>
+
+                <div class="h-100 d-flex b-gray pt-2">
+                    <div class="w-100 border-end px-4">
+                        <div class="d-flex align-items-center mb-3 gap-2">
+                            <div>Input:</div>
+                            <div id="paste" class="btn btn-sm btn-light bg-white t-black border-0 shadow-sm">Pegar
                             </div>
-                            <div class="cal-days" id="calendar-container"><button class="btn cal-btn"></button><button
-                                    class="btn cal-btn"></button><button class="btn cal-btn"
-                                    data-day="01/02/2023">1</button><button class="btn cal-btn"
-                                    data-day="02/02/2023">2</button><button class="btn cal-btn"
-                                    data-day="03/02/2023">3</button><button class="btn cal-btn"
-                                    data-day="04/02/2023">4</button><button class="btn cal-btn"
-                                    data-day="05/02/2023">5</button><button class="btn cal-btn"
-                                    data-day="06/02/2023">6</button><button class="btn cal-btn"
-                                    data-day="07/02/2023">7</button><button class="btn cal-btn"
-                                    data-day="08/02/2023">8</button><button class="btn cal-btn"
-                                    data-day="09/02/2023">9</button><button class="btn cal-btn"
-                                    data-day="10/02/2023">10</button><button class="btn cal-btn"
-                                    data-day="11/02/2023">11</button><button class="btn cal-btn"
-                                    data-day="12/02/2023">12</button><button class="btn cal-btn"
-                                    data-day="13/02/2023">13</button><button class="btn cal-btn"
-                                    data-day="14/02/2023">14</button><button class="btn cal-btn"
-                                    data-day="15/02/2023">15</button><button class="btn cal-btn"
-                                    data-day="16/02/2023">16</button><button class="btn cal-btn"
-                                    data-day="17/02/2023">17</button><button class="btn cal-btn"
-                                    data-day="18/02/2023">18</button><button class="btn cal-btn"
-                                    data-day="19/02/2023">19</button><button class="btn cal-btn"
-                                    data-day="20/02/2023">20</button><button class="btn cal-btn"
-                                    data-day="21/02/2023">21</button><button class="btn cal-btn"
-                                    data-day="22/02/2023">22</button><button class="btn cal-btn"
-                                    data-day="23/02/2023">23</button><button class="btn cal-btn"
-                                    data-day="24/02/2023">24</button><button class="btn cal-btn"
-                                    data-day="25/02/2023">25</button><button class="btn cal-btn"
-                                    data-day="26/02/2023">26</button><button class="btn cal-btn"
-                                    data-day="27/02/2023">27</button><button class="btn cal-btn"
-                                    data-day="28/02/2023">28</button></div>
+                            <div id="delete" class="btn btn-sm btn-light bg-white t-black border-0 shadow-sm">Borrar
+                            </div>
+                        </div>
+                        <div class="w-100 h-100">
+                            <textarea name="" id="input" cols="30" rows="30" class="w-100 form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="w-100 px-4">
+                        <div class="d-flex align-items-center mb-3 gap-2">
+                            <div class="flex-grow-1 w-100">Output:</div>
+                            <div id="copy"
+                                class="d-flex align-items-center gap-1 btn btn-sm btn-light bg-white t-black border-0 shadow-sm px-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-clipboard" viewBox="0 0 16 16">
+                                    <path
+                                        d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                    <path
+                                        d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                                </svg>
+                                Copiar
+                            </div>
+                            <select class="flex-shrink-1 form-select form-select-sm border-0 shadow-sm w-50"
+                                id="number">
+                                <option value="1">1 espacio</option>
+                                <option value="2">2 espacios</option>
+                                <option value="3">3 espacios</option>
+                                <option value="4" selected>4 espacios</option>
+                                <option value="5">5 espacios</option>
+                                <option value="6">6 espacios</option>
+                                <option value="7">7 espacios</option>
+                                <option value="8">8 espacios</option>
+                                <option value="9">9 espacios</option>
+                                <option value="10">10 espacios</option>
+                            </select>
+                        </div>
+                        <div class="w-100 h-100">
+                            <textarea name="" id="output" cols="30" rows="30" class="w-100 form-control"></textarea>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-
-
-
-
-
-
-
 </body>
 
 </html>
