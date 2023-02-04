@@ -66,10 +66,11 @@ function init() {
                 }
             })
             //extract row data:
+            console.log(jsonData.table.rows)
             jsonData.table.rows.forEach((rowData) => {
                 const row = {};
                 colz.forEach((ele, ind) => {
-                    row[ele] = (rowData.c[ind] != null) ? rowData.c[ind].f != null ? rowData.c[ind].f : rowData.c[ind].v : '';
+                    row[ele] = (rowData.c[ind] != null) ? rowData.c[ind].f != null ? rowData.c[ind].f : rowData.c[ind].v.replace(',', '.') : '';
                 })
                 data.push(row);
             })
