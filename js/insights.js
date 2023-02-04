@@ -75,7 +75,6 @@ function calculateNextPrev(sentido) {
 
         } else {
             d.setDate(d.getDate() + 7);
-
         }
         const { start, finish, title, tipo } = getDates('semana', d);
         currentTime.start = start;
@@ -124,12 +123,26 @@ function addDays(date, days) {
     return result;
 }
 
+function firstDayOfWeek(dateObject, firstDayOfWeekIndex) {
+
+    const dayOfWeek = dateObject.getDay(),
+        firstDayOfWeek = new Date(dateObject),
+        diff = dayOfWeek >= firstDayOfWeekIndex ?
+            dayOfWeek - firstDayOfWeekIndex :
+            6 - dayOfWeek
+
+    firstDayOfWeek.setDate(dateObject.getDate() - diff)
+    firstDayOfWeek.setHours(0, 0, 0, 0)
+
+    return firstDayOfWeek;
+}
+
 
 function getDates(type, fecha) {
     if (type === 'semana') {
-        const firstDay = fecha.getDate() - fecha.getDay() + 1;
-        const lastDay = addDays(new Date(`${fecha.getMonth() + 1}/${firstDay}/${fecha.getFullYear()}`), 6);
-        return { start: `${firstDay}/${fecha.getMonth() + 1}/${fecha.getFullYear()}`, finish: `${lastDay.getDate()}/${lastDay.getMonth() + 1}/${lastDay.getFullYear()}`, title: `${firstDay}/${fecha.getMonth() + 1}/${fecha.getFullYear()} - ${lastDay.getDate()}/${lastDay.getMonth() + 1}/${lastDay.getFullYear()}`, tipo: 'diary' }
+        const firstDay = firstDayOfWeek(fecha, 1);
+        const lastDay = addDays(new Date(`${firstDay.getMonth() + 1}/${firstDay.getDate()}/${fecha.getFullYear()}`), 6);
+        return { start: `${firstDay.getDate()}/${firstDay.getMonth() + 1}/${firstDay.getFullYear()}`, finish: `${lastDay.getDate()}/${lastDay.getMonth() + 1}/${lastDay.getFullYear()}`, title: `${firstDay.getDate()}/${firstDay.getMonth() + 1}/${firstDay.getFullYear()} - ${lastDay.getDate()}/${lastDay.getMonth() + 1}/${lastDay.getFullYear()}`, tipo: 'diary' }
     }
     if (type === 'mes') {
         const lastDay = new Date(fecha.getFullYear(), fecha.getMonth() + 1, 0).getDate();
