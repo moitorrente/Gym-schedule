@@ -35,7 +35,7 @@
                     <ul class="nav nav-pills flex-column mb-auto gap-2">
                         <li class="nav-item">
                             <a href="#"
-                                class="py-1 px-2 text-decoration-none link-dark rounded-2 b-gray-300 align-items-center d-flex gap-2 active fs-6 shadow-sm"
+                                class="py-1 px-2 text-decoration-none link-dark rounded-2 white-crystal align-items-center d-flex gap-2 active fs-6 shadow-sm"
                                 aria-current="page">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                     class="bi bi-filetype-json" viewBox="0 0 16 16">
@@ -90,10 +90,11 @@
                             </div>
                         </div>
                         <div class="w-100 h-100">
-                            <textarea name="" id="input" cols="30" rows="30" class="w-100 form-control border-0"></textarea>
+                            <textarea name="" id="input" cols="30" rows="30"
+                                class="w-100 form-control border-0"></textarea>
                         </div>
                     </div>
-                    <div class="w-100 px-4">
+                    <div class="w-100 px-4" style="max-width: 50vw;">
                         <div class="d-flex align-items-center mb-3 gap-2">
                             <div class="w-100 flex-grow-1">Output:</div>
                             <div id="copy"
@@ -107,8 +108,7 @@
                                 </svg>
                                 Copiar
                             </div>
-                            <select class="form-select form-select-sm border-0 shadow-sm w-auto"
-                                id="number">
+                            <select class="form-select form-select-sm border-0 shadow-sm w-auto" id="number">
                                 <option value="1">1 espacio</option>
                                 <option value="2">2 espacios</option>
                                 <option value="3">3 espacios</option>
@@ -122,10 +122,18 @@
                             </select>
                         </div>
 
-                        <div class="w-100 h-100">
-                            <textarea name="" id="output" cols="30" rows="30" class="w-100 form-control border-0"></textarea>
-                            <div class="bg-light px-2 rounded-2 mt-2 shadow-sm">Número de ejercicios: <span id="exercise-count">0</span></div>
+                        <div class="">
+                            <textarea name="" id="output" cols="30" rows="30"
+                                class="w-100 form-control border-0"></textarea>
                         </div>
+
+                        <div class="d-flex gap-2 py-2" id="container" style="overflow-x: scroll;">
+                            <div class="bg-light px-2 rounded-2 mt-2 shadow-sm text-nowrap">Número de ejercicios: <span
+                                    id="exercise-count">0</span></div>
+                            <div class="bg-light px-2 rounded-2 mt-2 shadow-sm text-nowrap">Sin video: <span
+                                    id="no-video-count">0</span></div>
+                        </div>
+
                     </div>
                 </div>
             </div>

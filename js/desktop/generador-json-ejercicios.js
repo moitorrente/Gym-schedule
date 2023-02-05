@@ -4,11 +4,13 @@ const spacesSelected = document.getElementById('number');
 const copyBtn = document.getElementById('copy');
 const pasteBtn = document.getElementById('paste');
 const countText = document.getElementById('exercise-count');
+const noVideoCount = document.getElementById('no-video-count')
 
 document.getElementById('delete').onclick = () => {
     inputText.value = '';
     outputText.value = '';
     countText.innerHTML = 0;
+    noVideoCount.innerHTML = 0;
 }
 
 input.oninput = () => run(inputText, Number(spacesSelected.value));
@@ -18,6 +20,21 @@ function run(input, spaces) {
     const objArr = text2objectArray(input.value);
     outputText.value = JSON.stringify(objArr, null, spaces);
     countText.innerHTML = objArr.length;
+    noVideoCount.innerHTML = objArr.filter(x => x.video == '').length;
+    const pesoCount = `Peso: ${objArr.filter(x => x.tipo == 'Peso').length}`;
+    const segundosCount = `Segundos: ${objArr.filter(x => x.tipo == 'Segundos').length}`;
+    const repeticionesCount = `Repeticiones: ${objArr.filter(x => x.tipo == 'Repeticiones').length}`;
+
+    document.getElementById('container').innerHTML += createDiv(pesoCount);
+    document.getElementById('container').innerHTML += createDiv(segundosCount);
+    document.getElementById('container').innerHTML += createDiv(repeticionesCount);
+
+
+
+}
+
+function createDiv(text) {
+    return `<div class="bg-light px-2 rounded-2 mt-2 shadow-sm text-nowrap">${text}</div>`
 }
 
 function text2objectArray(text) {
