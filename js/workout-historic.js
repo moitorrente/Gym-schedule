@@ -3,7 +3,7 @@ import getAllFromIndexedDB from "./db.js";
 const historicContainer = document.getElementById('historic-container')
 
 getAllFromIndexedDB('db-primary', 'Log').then(function (response) {
-    console.log(response)
+    // console.log(response)
     // response = response.filter(x => x.Entrenamiento === 'A')
     const historicMoi = response.filter(x => x.Usuario == 'Moi').sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
     const historicAitor = response.filter(x => x.Usuario == 'Aitor').sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
@@ -51,6 +51,11 @@ function calculateCarga(list) {
 
     if (valor == 0) return null;
     return valor;
+}
+
+window.redir = (id) => {
+    localStorage.setItem('exercise-to-view', JSON.stringify({ id: id.toString(), copy: false }));
+    window.location = 'view-data.html';
 }
 
 function createExercise(aitor, moi) {
@@ -164,7 +169,7 @@ function createExercise(aitor, moi) {
     }
 
     d.innerHTML = `
-<div class="list-group-item d-flex gap-2 p-2 rounded align-items-center bg-white my-2 border-0 shadow-sm" data-id="1">
+<div onclick="redir(${aitor.EjercicioID})" class="list-group-item d-flex gap-2 p-2 rounded align-items-center bg-white my-2 border-0 shadow-sm" data-id="1">
     <div class="d-flex flex-grow-1 flex-column">
         <div class="d-flex gap-2 mb-2 align-items-center">
             <span class="fs-7 fw-bold">${aitor.Ejercicio}</span>
@@ -201,8 +206,11 @@ function createExercise(aitor, moi) {
     </div>
 </div>`;
 
+
     return d.innerHTML;
 }
+
+
 
 function createDiv(fecha, cargaAitor, cargaMoi, entrenamiento, aitor, moi) {
     const fechaGuiones = fecha.replaceAll('/', '-');

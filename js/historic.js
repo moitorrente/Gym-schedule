@@ -15,8 +15,6 @@ const sheetName = 'Log';
 const query = encodeURIComponent('Select *')
 const url = `${base}&sheet=${sheetName}&tq=${query}`;
 
-
-
 const lastDescription = document.getElementById('last-description');
 const lastDate = document.getElementById('last-date');
 const lastCheck = document.getElementById('last-check');
@@ -66,7 +64,7 @@ function init() {
                 }
             })
             //extract row data:
-            console.log(jsonData.table.rows)
+            // console.log(jsonData.table.rows)
             jsonData.table.rows.forEach((rowData) => {
                 const row = {};
                 colz.forEach((ele, ind) => {
