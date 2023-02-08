@@ -361,8 +361,8 @@ function chart(serie, dataMoi, dataAitor) {
     const rawMoi = dataMoi;
     const rawAitor = dataAitor;
     const fechas = rawAitor.map(x => x.Fecha);
-    let datosMoi1 = rawMoi.map(x => x.Peso1);
-    let datosAitor1 = rawAitor.map(x => x.Peso1);
+    let datosMoi1 = rawMoi.map(x => x.CargaRelativa);
+    let datosAitor1 = rawAitor.map(x => x.CargaRelativa);
     let datosMoi2 = rawMoi.map(x => x.Peso2);
     let datosAitor2 = rawAitor.map(x => x.Peso2);
     let datosMoi3 = rawMoi.map(x => x.Peso3);

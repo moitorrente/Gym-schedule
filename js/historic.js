@@ -59,7 +59,7 @@ function init() {
                 if (heading.label) {
                     let column = heading.label;
                     column = column.charAt(0).toUpperCase() + column.slice(1);
-                    if(column == 'Id') column = 'EjercicioID';
+                    if (column == 'Id') column = 'EjercicioID';
                     colz.push(column);
                 }
             })
@@ -68,7 +68,8 @@ function init() {
             jsonData.table.rows.forEach((rowData) => {
                 const row = {};
                 colz.forEach((ele, ind) => {
-                    row[ele] = (rowData.c[ind] != null) ? rowData.c[ind].f != null ? rowData.c[ind].f : rowData.c[ind].v.replace(',', '.') : '';
+                    row[ele] = (rowData.c[ind] != null) ? rowData.c[ind].f != null ? rowData.c[ind].f.replace(',', '.') : rowData.c[ind].v.replace(',', '.') : '';
+                    row[ele] = row[ele].replace(',', '.');
                 })
                 data.push(row);
             })
@@ -78,7 +79,7 @@ function init() {
             createIndexedDB();
             clearIndexedDB();
             loadIndexedDB(data);
-           
+
 
             setTimeout(() => {
                 document.querySelector('.bi-arrow-clockwise').classList.remove('rotating');

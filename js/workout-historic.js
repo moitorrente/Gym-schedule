@@ -43,8 +43,8 @@ function convertToDate(dateString) {
 
 function calculateCarga(list) {
     const valor = list.reduce((acc, value) => {
-        if (value.Carga == '') value.Carga = '0';
-        return acc + parseFloat(value.Carga.replace(",", "."));
+        if (value.Carga == '') value.CargaRelativa = '0';
+        return acc + parseFloat(value.CargaRelativa.replace(",", "."));
     }, 0);
 
 
