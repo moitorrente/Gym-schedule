@@ -1,7 +1,22 @@
+const datasetSelect = document.getElementById('dataset-select');
+const cargaSelect = document.getElementById('carga-select');
+cargaSelect.oninput = () => createChart(ejercicioSelect.value, userSelect.value, datasetSelect.value, cargaSelect.value);
+
+const ejercicioSelect = document.getElementById('ejercicio-select');
+ejercicioSelect.oninput = () => createChart(ejercicioSelect.value, userSelect.value, datasetSelect.value, cargaSelect.value);
+const ejercicios = JSON.parse(localStorage.listaEjercicios).data;
+ejercicios.forEach(ejercicio => {
+    const option = document.createElement('option');
+    option.value = ejercicio.id;
+    option.innerHTML = ejercicio.ejercicio
+    document.getElementById('ejercicio-select').appendChild(option)
+})
+
 const userSelect = document.getElementById('user');
-userSelect.oninput = () => createChart(ejercicioSelect.value, userSelect.value)
+userSelect.oninput = () => createChart(ejercicioSelect.value, userSelect.value, datasetSelect.value, cargaSelect.value)
+datasetSelect.oninput = () => createChart(ejercicioSelect.value, userSelect.value, datasetSelect.value, cargaSelect.value)
 
-
+createChart(ejercicioSelect.value, userSelect.value, datasetSelect.value, cargaSelect.value)
 function getFromIndexedDB(id) {
     const indexedDB =
         window.indexedDB ||
@@ -46,24 +61,21 @@ function getFromIndexedDB(id) {
 
 let myChart;
 
-const ejercicios = JSON.parse(localStorage.listaEjercicios).data;
-ejercicios.forEach(ejercicio => {
-    const option = document.createElement('option');
-    option.value = ejercicio.id;
-    option.innerHTML = ejercicio.ejercicio
-    document.getElementById('ejercicio-select').appendChild(option)
-})
 
-const ejercicioSelect = document.getElementById('ejercicio-select');
-ejercicioSelect.oninput = () => createChart(ejercicioSelect.value, userSelect.value);
 
-function createChart(id, user) {
-    console.log(user)
+
+function createChart(id, user, dataset, carga) {
 
     getFromIndexedDB(id).then(function (reponse) {
-        const selectedMoi = reponse.filter(x => x.EjercicioID == id && x.Usuario == 'Moi' && x.TipoEntrenamiento == 'Carga').sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
-        const selectedAitor = reponse.filter(x => x.EjercicioID == id && x.Usuario == 'Aitor' && x.TipoEntrenamiento == 'Carga').sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
-        chart(selectedMoi, selectedAitor, user);
+        let selectedMoi = reponse.filter(x => x.EjercicioID == id && x.Usuario == 'Moi').sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
+        let selectedAitor = reponse.filter(x => x.EjercicioID == id && x.Usuario == 'Aitor').sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
+
+        if (carga == 'Carga' || carga == 'Descarga') {
+            selectedMoi = selectedMoi.filter(x => x.TipoEntrenamiento == carga);
+            selectedAitor = selectedAitor.filter(x => x.TipoEntrenamiento == carga);
+        }
+
+        chart(selectedMoi, selectedAitor, user, dataset);
     }).catch(function (error) {
         alert(error.message);
     });
@@ -75,15 +87,15 @@ function convertToDate(dateString) {
     return dat;
 }
 
-function chart(dataMoi, dataAitor, user) {
+function chart(dataMoi, dataAitor, user, dataset) {
     const rawMoi = dataMoi;
     const rawAitor = dataAitor;
     const fechas = rawAitor.map(x => x.Fecha);
-    let datosMoi1 = rawMoi.map(x => x.CargaRelativa);
-    let datosAitor1 = rawAitor.map(x => x.CargaRelativa);
+    let datosMoi1 = rawMoi.map(x => x[dataset]);
+    let datosAitor1 = rawAitor.map(x => x[dataset]);
 
-    datosMoi1 = datosMoi1.map(x => x === '0' ? NaN : x);
-    datosAitor1 = datosAitor1.map(x => x === '0' ? NaN : x);
+    datosMoi1 = datosMoi1.map(x => x === '' ? NaN : x);
+    datosAitor1 = datosAitor1.map(x => x === '' ? NaN : x);
 
     const datasetMoi1 = createDataset('Moi', datosMoi1);
     const datasetAitor1 = createDataset('Aitor', datosAitor1);
@@ -108,8 +120,6 @@ function chart(dataMoi, dataAitor, user) {
             datasets: [datasetMoi1, datasetAitor1]
         }
     }
-
-    console.log(data)
 
     generateChart(data);
 
@@ -153,6 +163,7 @@ function generateChart(data) {
         type: 'line',
         data: data,
         options: {
+            responsive: true,
             scales: {
                 x: {
                     type: 'time',
@@ -169,7 +180,7 @@ function generateChart(data) {
                 },
                 y: {
                     grid: {
-                        display: false,
+                        display: true,
                     },
                     beginAtZero: true,
                 }
