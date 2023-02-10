@@ -5,10 +5,6 @@ const searchExerciseText = document.getElementById('search-exercise-text');
 
 let exerciseToView;
 let myChart;
-let myChart2;
-let myChart3;
-let myChart4;
-let myChart5;
 
 function getFromIndexedDB(id) {
     const indexedDB =
@@ -154,14 +150,15 @@ function createAllCards(id) {
     container.innerHTML = '';
 
     getFromIndexedDB(id).then(function (reponse) {
-        const selectedMoi = reponse.filter(x => x.EjercicioID == id && x.Usuario == 'Moi').sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
-        const selectedAitor = reponse.filter(x => x.EjercicioID == id && x.Usuario == 'Aitor').sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
-
+        let selectedMoi = reponse.filter(x => x.EjercicioID == id && x.Usuario == 'Moi').sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
+        let selectedAitor = reponse.filter(x => x.EjercicioID == id && x.Usuario == 'Aitor').sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
         document.getElementById('found-items').innerHTML = selectedMoi.length;
         selectedMoi.forEach((x, i) => createCard(selectedMoi[i], selectedAitor[i], i));
+        const fechas = selectedAitor.map(x => x.Fecha);
+        selectedAitor = selectedAitor.map(x => Math.max(x.Peso1, x.Peso2, x.Peso3, x.Peso4, x.Peso5))
+        selectedMoi = selectedMoi.map(x => Math.max(x.Peso1, x.Peso2, x.Peso3, x.Peso4, x.Peso5))
         //TODO corregir que haya ejercicio en uno y no en el otro
-        document.getElementById('chart-serie-selector').classList.remove('d-none');
-        chart(1, selectedMoi, selectedAitor);
+        chart(selectedMoi, selectedAitor, fechas);
         document.querySelectorAll('input[name="btnradio"]').forEach(x => x.onclick = () => chart(document.querySelector('input[name="btnradio"]:checked').value, selectedMoi, selectedAitor))
     }).catch(function (error) {
         alert(error.message);
@@ -189,24 +186,6 @@ function createCard(ejercicioMoi, ejercicioAitor, index) {
         contAitor += `<div style="width: 2.5rem;"><small class="d-block">${ejercicioAitor[x]}
         </small></div>`;
     }
-
-    // const colorString = `${ejercicioMoi.Mesociclo}${ejercicioMoi.Entrenamiento}${ejercicioMoi.TipoEntrenamiento}`;
-
-    // const COLORES = [
-    //     { clave: '1ACarga', color: '#a5b4fc' },
-    //     { clave: '1BCarga', color: '#6366f1' },
-    //     { clave: '1CCarga', color: '#4338ca' },
-    //     { clave: '1DCarga', color: '#312e81' },
-    //     { clave: '1ADescarga', color: '#fda4af' },
-    //     { clave: '1BDescarga', color: '#f43f5e' },
-    //     { clave: '1CDescarga', color: '#be123c' },
-    //     { clave: '1DDescarga', color: '#881337' },
-    //     { clave: '2ACarga', color: '#93c5fd' },
-    //     { clave: '2BCarga', color: '#3b82f6' },
-    //     { clave: '2CCarga', color: '#1d4ed8' },
-    //     { clave: '2DCarga', color: '#1e3a8a' }];
-
-    // const color = COLORES.find(x => x.clave === colorString);
 
     let copyMode = '';
 
@@ -357,86 +336,16 @@ function createCard(ejercicioMoi, ejercicioAitor, index) {
 
 //------------------------------------------------------------------------------
 
-function chart(serie, dataMoi, dataAitor) {
-    const rawMoi = dataMoi;
-    const rawAitor = dataAitor;
-    const fechas = rawAitor.map(x => x.Fecha);
-    let datosMoi1 = rawMoi.map(x => x.CargaRelativa);
-    let datosAitor1 = rawAitor.map(x => x.CargaRelativa);
-    let datosMoi2 = rawMoi.map(x => x.Peso2);
-    let datosAitor2 = rawAitor.map(x => x.Peso2);
-    let datosMoi3 = rawMoi.map(x => x.Peso3);
-    let datosAitor3 = rawAitor.map(x => x.Peso3);
-    let datosMoi4 = rawMoi.map(x => x.Peso4);
-    let datosAitor4 = rawAitor.map(x => x.Peso4);
-    let datosMoi5 = rawMoi.map(x => x.Peso5);
-    let datosAitor5 = rawAitor.map(x => x.Peso5);
+function chart(dataMoi, dataAitor, fechas) {
+    const datasetMoi1 = createDataset('Moi', dataMoi);
+    const datasetAitor1 = createDataset('Aitor', dataAitor);
 
-
-    datosMoi1 = datosMoi1.map(x => x === '' ? NaN : x);
-    datosAitor1 = datosAitor1.map(x => x === '' ? NaN : x);
-    datosMoi2 = datosMoi2.map(x => x === '' ? NaN : x);
-    datosAitor2 = datosAitor2.map(x => x === '' ? NaN : x);
-    datosMoi3 = datosMoi3.map(x => x === '' ? NaN : x);
-    datosAitor3 = datosAitor3.map(x => x === '' ? NaN : x);
-    datosMoi4 = datosMoi4.map(x => x === '' ? NaN : x);
-    datosAitor4 = datosAitor4.map(x => x === '' ? NaN : x);
-    datosMoi5 = datosMoi5.map(x => x === '' ? NaN : x);
-    datosAitor5 = datosAitor5.map(x => x === '' ? NaN : x);
-
-    const datasetMoi1 = createDataset('Moi', datosMoi1);
-    const datasetAitor1 = createDataset('Aitor', datosAitor1);
-    const datasetMoi2 = createDataset('Moi', datosMoi2);
-    const datasetAitor2 = createDataset('Aitor', datosAitor2);
-    const datasetMoi3 = createDataset('Moi', datosMoi3);
-    const datasetAitor3 = createDataset('Aitor', datosAitor3);
-    const datasetMoi4 = createDataset('Moi', datosMoi4);
-    const datasetAitor4 = createDataset('Aitor', datosAitor4);
-    const datasetMoi5 = createDataset('Moi', datosMoi5);
-    const datasetAitor5 = createDataset('Aitor', datosAitor5);
-
-
-    const data1 = {
+    const data = {
         labels: fechas,
         datasets: [datasetMoi1, datasetAitor1]
     }
-    const data2 = {
-        labels: fechas,
-        datasets: [datasetMoi2, datasetAitor2]
-    }
-    const data3 = {
-        labels: fechas,
-        datasets: [datasetMoi3, datasetAitor3]
-    }
-    const data4 = {
-        labels: fechas,
-        datasets: [datasetMoi4, datasetAitor4]
-    }
-    const data5 = {
-        labels: fechas,
-        datasets: [datasetMoi5, datasetAitor5]
-    }
 
-    switch (parseInt(serie)) {
-        case 1:
-            generateChart(data1);
-            break;
-        case 2:
-            generateChart(data2);
-            break;
-        case 3:
-            generateChart(data3);
-            break;
-        case 4:
-            generateChart(data4);
-            break;
-        case 5:
-            generateChart(data5);
-            break;
-
-        default:
-            break;
-    }
+    generateChart(data);
 }
 
 
@@ -449,7 +358,7 @@ function convertToDate(dateString) {
 function createDataset(text, data) {
     let borderColor = '#2563eb';
     let backgroundColor = 'rgb(37, 99, 235, 0.2)';
-    if(text == 'Aitor') {
+    if (text == 'Aitor') {
         borderColor = '#b91c1c';
         backgroundColor = 'rgb(185, 28, 28, 0.2)'
     }
