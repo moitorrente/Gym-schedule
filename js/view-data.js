@@ -150,15 +150,21 @@ function createAllCards(id) {
     container.innerHTML = '';
 
     getFromIndexedDB(id).then(function (reponse) {
-        let selectedMoi = reponse.filter(x => x.EjercicioID == id && x.Usuario == 'Moi').sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
-        let selectedAitor = reponse.filter(x => x.EjercicioID == id && x.Usuario == 'Aitor').sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
+        const selectedMoi = reponse.filter(x => x.EjercicioID == id && x.Usuario == 'Moi').sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
+        const selectedAitor = reponse.filter(x => x.EjercicioID == id && x.Usuario == 'Aitor').sort(function (a, b) { return new Date(convertToDate(b.Fecha)) - new Date(convertToDate(a.Fecha)) });
         document.getElementById('found-items').innerHTML = selectedMoi.length;
-        selectedMoi.forEach((x, i) => createCard(selectedMoi[i], selectedAitor[i], i));
+        selectedMoi.forEach((x, i) => createCard(selectedMoi[i], selectedAitor[i], i, selectedAitor[0].TipoDato));
         const fechas = selectedAitor.map(x => x.Fecha);
-        selectedAitor = selectedAitor.map(x => Math.max(x.Peso1, x.Peso2, x.Peso3, x.Peso4, x.Peso5))
-        selectedMoi = selectedMoi.map(x => Math.max(x.Peso1, x.Peso2, x.Peso3, x.Peso4, x.Peso5))
-        //TODO corregir que haya ejercicio en uno y no en el otro
-        chart(selectedMoi, selectedAitor, fechas);
+        let filteredAitor = selectedAitor.map(x => Math.max(x.Peso1, x.Peso2, x.Peso3, x.Peso4, x.Peso5));
+        let filteredMoi = selectedMoi.map(x => Math.max(x.Peso1, x.Peso2, x.Peso3, x.Peso4, x.Peso5));
+
+        if (selectedAitor[0].TipoDato == 'Repeticiones') {
+            filteredAitor = selectedAitor.map(x => Math.max(x.Repeticiones1, x.Repeticiones2, x.Repeticiones3, x.Repeticiones4, x.Repeticiones5));
+        }
+        if (selectedMoi[0].TipoDato == 'Repeticiones') {
+            filteredMoi = selectedMoi.map(x => Math.max(x.Repeticiones1, x.Repeticiones2, x.Repeticiones3, x.Repeticiones4, x.Repeticiones5));
+        }
+        chart(filteredMoi, filteredAitor, fechas);
         document.querySelectorAll('input[name="btnradio"]').forEach(x => x.onclick = () => chart(document.querySelector('input[name="btnradio"]:checked').value, selectedMoi, selectedAitor))
     }).catch(function (error) {
         alert(error.message);
@@ -172,16 +178,19 @@ function convertToDate(dateString) {
     return dat;
 }
 
-function createCard(ejercicioMoi, ejercicioAitor, index) {
+function createCard(ejercicioMoi, ejercicioAitor, index, tipo) {
     const d = document.createElement('div');
     d.classList.add('d-flex', 'gap-2');
 
     let contMoi = '';
     let contAitor = '';
-
+    
 
     for (let i = 1; i < 5 + 1; i++) {
         let x = `Peso${i}`;
+        if(tipo == 'Repeticiones'){
+            x = `Realizadas${i}`
+        }
         contMoi += `<div style="width: 2.5rem;"><small class="d-block">${ejercicioMoi[x]}</small></div>`;
         contAitor += `<div style="width: 2.5rem;"><small class="d-block">${ejercicioAitor[x]}
         </small></div>`;
