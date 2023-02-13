@@ -186,13 +186,13 @@ function createCard(ejercicioMoi, ejercicioAitor, index, tipo) {
     let contAitor = '';
     
 
-    for (let i = 1; i < 5 + 1; i++) {
+    for (let i = 1; i < 6 + 1; i++) {
         let x = `Peso${i}`;
         if(tipo == 'Repeticiones'){
             x = `Realizadas${i}`
         }
-        contMoi += `<div style="width: 2.5rem;"><small class="d-block">${ejercicioMoi[x]}</small></div>`;
-        contAitor += `<div style="width: 2.5rem;"><small class="d-block">${ejercicioAitor[x]}
+        contMoi += `<div style="width: 2rem;"><small class="d-block">${ejercicioMoi[x]}</small></div>`;
+        contAitor += `<div style="width: 2rem;"><small class="d-block">${ejercicioAitor[x]}
         </small></div>`;
     }
 

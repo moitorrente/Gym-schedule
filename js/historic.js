@@ -64,12 +64,12 @@ function init() {
                 }
             })
             //extract row data:
-            // console.log(jsonData.table.rows)
+            console.log(jsonData.table.rows)
             jsonData.table.rows.forEach((rowData) => {
                 const row = {};
                 colz.forEach((ele, ind) => {
-                    row[ele] = (rowData.c[ind] != null) ? rowData.c[ind].f != null ? rowData.c[ind].f.replace(',', '.') : rowData.c[ind].v.replace(',', '.') : '';
-                    row[ele] = row[ele].replace(',', '.');
+                    row[ele] = (rowData.c[ind] != null) ? rowData.c[ind].f != null ? rowData.c[ind].f : rowData.c[ind].v : '';
+                    if (row[ele] !== null) row[ele] = row[ele].replace(',', '.');
                 })
                 data.push(row);
             })

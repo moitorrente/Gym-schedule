@@ -511,5 +511,86 @@
         "elemento": "maquina",
         "textoCorto": "Curl femoral de rodillas",
         "isometrico": "false"
+    },
+    {
+        "ejercicio": "Remo con barra Z en banco inclinado agarre semi supino medio, pecho apoyado en el banco",
+        "id": "58",
+        "tipo": "Peso",
+        "video": "",
+        "elemento": "barra",
+        "textoCorto": "Remo barra Z banco inclinado",
+        "isometrico": "false"
+    },
+    {
+        "ejercicio": "Extensiones de tríceps con polea baja con cuerda por detrás de la cabeza",
+        "id": "59",
+        "tipo": "Peso",
+        "video": "",
+        "elemento": "polea",
+        "textoCorto": "Extensiones de tríceps polea baja",
+        "isometrico": "false"
+    },
+    {
+        "ejercicio": "Front squats",
+        "id": "60",
+        "tipo": "Peso",
+        "video": "",
+        "elemento": "mancuerna",
+        "textoCorto": "Front squats",
+        "isometrico": "false"
+    },
+    {
+        "ejercicio": "Hiperextensiones a 45º",
+        "id": "61",
+        "tipo": "Repeticiones",
+        "video": "",
+        "elemento": "cuerpo",
+        "textoCorto": "Hiperextensiones a 45º",
+        "isometrico": "false"
+    },
+    {
+        "ejercicio": "Jalón subescapular",
+        "id": "62",
+        "tipo": "Peso",
+        "video": "",
+        "elemento": "polea",
+        "textoCorto": "Jalón subescapular",
+        "isometrico": "false"
+    },
+    {
+        "ejercicio": "Curl perfecto Gironda con barra Z",
+        "id": "63",
+        "tipo": "Peso",
+        "video": "",
+        "elemento": "barra",
+        "textoCorto": "Curl perfecto Gironda con barra Z",
+        "isometrico": "false"
+    },
+    {
+        "ejercicio": "Zancadas reversas con déficit",
+        "id": "64",
+        "tipo": "Peso",
+        "video": "",
+        "elemento": "mancuerna",
+        "textoCorto": "Zancadas reversas con déficit",
+        "isometrico": "false"
+    },
+    {
+        "ejercicio": "Buenos días",
+        "id": "65",
+        "tipo": "Peso",
+        "video": "",
+        "elemento": "barra",
+        "textoCorto": "Buenos días",
+        "isometrico": "false"
+    },
+    {
+        "ejercicio": "Elevaciones de tibial anterior en pared",
+        "id": "66",
+        "tipo": "Repeticiones",
+        "video": "",
+        "elemento": "cuerpo",
+        "textoCorto": "Elevaciones de tibial anterior en pared",
+        "isometrico": "false"
     }
 ]
