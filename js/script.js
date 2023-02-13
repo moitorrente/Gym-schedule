@@ -219,9 +219,9 @@ function createNewExercise(order, name, series, id, checked, len, pos, tempo) {
             display: block;
             overflow: hidden;">${name}</strong>
             <div class="d-flex mt-2 gap-2 fs-7 w-100 align-items-center">
-                <small class="b-light-blue text-center align-self-center t-dark-blue border-rounded rounded-5 px-2" style="min-width: 2rem;">Orden: <strong>${order}</strong></small>
-                <small class="b-light-green text-center align-self-center t-dark-green border-rounded rounded-5 px-2" style="min-width: 3.5rem;">Series: <strong>${series}</strong></small>
-                <small class="b-light-yellow text-center align-self-center t-dark-yellow border-rounded rounded-5 px-2" style="min-width: 4rem;">Tempo: <strong>${tempo}</strong></small>
+                <small class="b-light-green text-center align-self-center t-dark-green border-rounded rounded-5 px-2" style="width: 20vw;">Orden: <strong>${order}</strong></small>
+                <small class="b-light-green text-center align-self-center t-dark-green border-rounded rounded-5 px-2" style="width: 20vw;">Series: <strong>${series}</strong></small>
+                <small class="b-light-green text-center align-self-center t-dark-green border-rounded rounded-5" style="width: 25vw;">Tempo: <strong>${tempo}</strong></small>
             </div>
         </span>
         <span class="align-self-center ms-auto">
