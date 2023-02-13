@@ -1,6 +1,6 @@
 const GHPATH = '/Gym-schedule';
 const APP_PREFIX = 'Gym_schedule_';
-const VERSION = 'version_0015p';
+const VERSION = 'version_0016';
 const RUNTIME = 'runtime';
 
 const URLS = [
@@ -9,38 +9,43 @@ const URLS = [
   `${GHPATH}/index.html`,
   `${GHPATH}/html/add-exercise.html`,
   `${GHPATH}/html/calendar.html`,
+  `${GHPATH}/html/exercises.html`,
   `${GHPATH}/html/historic.html`,
   `${GHPATH}/html/insights.html`,
   `${GHPATH}/html/log-exercise.html`,
   `${GHPATH}/html/memory-usage.html`,
   `${GHPATH}/html/settings.html`,
+  `${GHPATH}/html/user.html`,
   `${GHPATH}/html/view-data.html`,
   `${GHPATH}/html/workout-details.html`,
-  `${GHPATH}/html/workouts.html`,
   `${GHPATH}/html/workout-historic.html`,
+  `${GHPATH}/html/workouts.html`,
   `${GHPATH}/html/year-view.html`,
+ 
   `${GHPATH}/js/script.js`,
-  `${GHPATH}/js/log.js`,
   `${GHPATH}/js/add.js`,
-  `${GHPATH}/js/db.js`,
+  `${GHPATH}/js/bootstrap.bundle.min.js`,
+  `${GHPATH}/js/calendar.js`,
+  `${GHPATH}/js/data.js`,
+  `${GHPATH}/js/exercises.js`,
+  `${GHPATH}/js/historic.js`,
+  `${GHPATH}/js/insights.js`,
+  `${GHPATH}/js/log.js`,
+  `${GHPATH}/js/memory-usage.js`,
+  `${GHPATH}/js/settings.js`,
+  `${GHPATH}/js/user.js`,
+  `${GHPATH}/js/view-data.js`,
+  `${GHPATH}/js/workout-details.js`,
+  `${GHPATH}/js/workout-historic.js`,
+  `${GHPATH}/js/workouts.js`,
+  `${GHPATH}/js/year-view.js`,
+ 
   `${GHPATH}/css/style.css`,
   `${GHPATH}/css/calendar.css`,
   `${GHPATH}/css/dark.css`,
   `${GHPATH}/css/light.css`,
   `${GHPATH}/css/bootstrap.min.css`,
-  `${GHPATH}/js/historic.js`,
-  `${GHPATH}/js/workouts.js`,
-  `${GHPATH}/js/workout-details.js`,
-  `${GHPATH}/js/workout-historic.js`,
-  `${GHPATH}/js/calendar.js`,
-  `${GHPATH}/js/settings.js`,
-  `${GHPATH}/js/insights.js`,
-  `${GHPATH}/js/view-data.js`,
-  `${GHPATH}/js/chart.js`,
-  `${GHPATH}/js/data.js`,
-  `${GHPATH}/js/memory-usage.js`,
-  `${GHPATH}/js/bootstrap.bundle.min.js`,
-  `${GHPATH}/js/year-view.js`,
+  
   `${GHPATH}/data/exercises.json`,
   `${GHPATH}/data/version.json`,
   `${GHPATH}/data/workouts.json`
