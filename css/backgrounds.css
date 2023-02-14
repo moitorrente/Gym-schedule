@@ -1,0 +1,59 @@
+.wavy {
+    background-color: #e5e5f7;
+    opacity: 1;
+    background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #e5e5f7 11px), repeating-linear-gradient(#f3f4fe55, #f3f4fe);
+}
+
+.rhombus {
+    background-color: #e5e5f7;
+    opacity: 1;
+    background-image: linear-gradient(135deg, #f3f4fe 25%, transparent 25%), linear-gradient(225deg, #f3f4fe 25%, transparent 25%), linear-gradient(45deg, #f3f4fe 25%, transparent 25%), linear-gradient(315deg, #f3f4fe 25%, #e5e5f7 25%);
+    background-position: 11px 0, 11px 0, 0 0, 0 0;
+    background-size: 11px 11px;
+    background-repeat: repeat;
+}
+
+.zigzag {
+    background-color: #e5e5f7;
+    opacity: 1;
+    background-image: linear-gradient(135deg, #f3f4fe 25%, transparent 25%), linear-gradient(225deg, #f3f4fe 25%, transparent 25%), linear-gradient(45deg, #f3f4fe 25%, transparent 25%), linear-gradient(315deg, #f3f4fe 25%, #e5e5f7 25%);
+    background-position: 11px 0, 11px 0, 0 0, 0 0;
+    background-size: 22px 22px;
+    background-repeat: repeat;
+}
+
+.circles {
+    background-color: #e5e5f7;
+    opacity: 1;
+    background-image: radial-gradient(circle at center center, #f3f4fe, #e5e5f7), repeating-radial-gradient(circle at center center, #f3f4fe, #f3f4fe, 11px, transparent 22px, transparent 11px);
+    background-blend-mode: multiply;
+}
+
+.isometric {
+    background-color: #e5e5f7;
+    opacity: 1;
+    background-image: linear-gradient(30deg, #f3f4fe 12%, transparent 12.5%, transparent 87%, #f3f4fe 87.5%, #f3f4fe), linear-gradient(150deg, #f3f4fe 12%, transparent 12.5%, transparent 87%, #f3f4fe 87.5%, #f3f4fe), linear-gradient(30deg, #f3f4fe 12%, transparent 12.5%, transparent 87%, #f3f4fe 87.5%, #f3f4fe), linear-gradient(150deg, #f3f4fe 12%, transparent 12.5%, transparent 87%, #f3f4fe 87.5%, #f3f4fe), linear-gradient(60deg, #f3f4fe77 25%, transparent 25.5%, transparent 75%, #f3f4fe77 75%, #f3f4fe77), linear-gradient(60deg, #f3f4fe77 25%, transparent 25.5%, transparent 75%, #f3f4fe77 75%, #f3f4fe77);
+    background-size: 22px 39px;
+    background-position: 0 0, 0 0, 11px 19px, 11px 19px, 0 0, 11px 19px;
+}
+
+.diagonal-v3 {
+    background-color: #e5e5f7;
+    opacity: 1;
+    background-size: 11px 11px;
+    background-image: repeating-linear-gradient(45deg, #f3f4fe 0, #f3f4fe 1.1px, #e5e5f7 0, #e5e5f7 50%);
+}
+
+.triangle {
+    background-color: #e5e5f7;
+    opacity: 1;
+    background-image: linear-gradient(45deg, #f3f4fe 50%, #e5e5f7 50%);
+    background-size: 11px 11px;
+}
+
+.moon {
+    background-color: #e5e5f7;
+    opacity: 1;
+    background-image: radial-gradient(ellipse farthest-corner at 11px 11px, #f3f4fe, #f3f4fe 50%, #e5e5f7 50%);
+    background-size: 11px 11px;
+}
