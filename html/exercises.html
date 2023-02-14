@@ -39,14 +39,41 @@
                 </svg>
             </div>
         </div>
+
+        <div style="margin-top: 2rem;"></div>
+
+        <div class="d-flex align-items-center gap-2 mb-2">
+            <div class="input-group rounded-2 shadow-sm" style="outline: none !important;">
+                <span class="input-group-text bg-white border-0 text-muted" id="search-icon">
+                    <svg width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10 6.5C10 8.433 8.433 10 6.5 10C4.567 10 3 8.433 3 6.5C3 4.567 4.567 3 6.5 3C8.433 3 10 4.567 10 6.5ZM9.30884 10.0159C8.53901 10.6318 7.56251 11 6.5 11C4.01472 11 2 8.98528 2 6.5C2 4.01472 4.01472 2 6.5 2C8.98528 2 11 4.01472 11 6.5C11 7.56251 10.6318 8.53901 10.0159 9.30884L12.8536 12.1464C13.0488 12.3417 13.0488 12.6583 12.8536 12.8536C12.6583 13.0488 12.3417 13.0488 12.1464 12.8536L9.30884 10.0159Z"
+                            fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </span>
+                <input type="text" class="form-control form-control border-0 ps-0" placeholder="Ejercicio"
+                    aria-describedby="search-icon" id="exercise-search">
+            </div>
+            <div class="ui-square-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                </svg>
+            </div>
+        </div>
+
+        <div class="ps-4 text-muted fs-7" id="exercise-count">
+            Ejercicios: 0
+        </div>
+
+
+
     </header>
-    <div style="margin-top: 5rem;"></div>
+    <div style="margin-top: 10rem;"></div>
 
-    <div class="container ps-4 text-muted fs-7" id="exercise-count">
-        Ejercicios: 0
-    </div>
 
-    <div class="container" id="exercise-container">
+    <div class="container" id="exercise-container" style="overflow-y: auto;">
 
     </div>
 

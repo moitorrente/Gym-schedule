@@ -42,3 +42,19 @@ function createCard(title, type, element, id) {
     return d;
 }
 
+const exerciseSearch = document.getElementById('exercise-search');
+exerciseSearch.oninput = () => {
+    const list = find(JSON.parse(localStorage.listaEjercicios).data, exerciseSearch.value);
+    exerciseContainer.innerHTML = '';
+    document.getElementById('exercise-count').innerHTML = `Ejercicios: ${list.length}`;
+    list.forEach(exercise => exerciseContainer.appendChild(createCard(exercise.ejercicio, exercise.elemento, exercise.tipo, exercise.id)))
+}
+
+function find(items, text) {
+    return items.filter(item => {
+        if (item.ejercicio.toLowerCase().includes(text.toLowerCase())) {
+            return item;
+        }
+        return false;
+    });
+}
