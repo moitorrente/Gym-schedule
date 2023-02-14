@@ -3,12 +3,12 @@ const height = document.getElementById('height');
 
 const saveBtn = document.getElementById('save');
 saveBtn.onclick = () => {
-    let userSaved = localStorage.user;
+
 
     const userToSave = {
         name: user.value,
         height: height.value,
-        image: JSON.parse(userSaved).image
+        image: img
     }
     localStorage.setItem('user', JSON.stringify(userToSave));
     getContext();
@@ -29,19 +29,20 @@ function getContext() {
 
 
 const profilePicture = document.getElementById("profilePicture");
-
+let img;
 profilePicture.addEventListener("change", () => {
     const image = profilePicture.files[0];
     const reader = new FileReader();
 
     reader.readAsDataURL(image);
     reader.addEventListener('load', () => {
-        let user = localStorage.user;
-        if (user) {
-            user = JSON.parse(user);
-            user.image = reader.result;
-            localStorage.setItem('user', JSON.stringify(user));
-        }
+        img = reader.result;
+        // let user = localStorage.user;
+        // if (user) {
+        //     user = JSON.parse(user);
+        //     user.image = reader.result;
+        //     localStorage.setItem('user', JSON.stringify(user));
+        // }
     });
 
 
