@@ -19,8 +19,6 @@ function getContext() {
     let userStorage = localStorage.user;
     if (userStorage) {
         userStorage = JSON.parse(userStorage);
-        console.log(userStorage)
-
         user.value = userStorage.name;
         height.value = userStorage.height;
         document.getElementById('user-display').innerHTML = userStorage.name;
