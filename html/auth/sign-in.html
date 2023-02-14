@@ -28,20 +28,42 @@
                         <img src="../../icon.png" alt="" class="rounded mx-auto" width="50" height="50">
                         <h1 class="fw-bold m-0" style="font-size: 2rem;">Gym<span class="t-blue">Schedule</span></h1>
                     </div>
-                    <div class="gap-1">
+                    <div class="gap-1 text-start w-100 px-4">
                         <h2 class="mb-0">Sign in to your account</h2>
                         <span class="fs-7">Or </span><a href="sign-up.html"
                             class="text-decoration-none t-blue m-0 fs-7">create a new account</a>
                     </div>
 
-                    <form action="" class="w-75">
+                    <form action="" class="w-100 px-4">
                         <div class="mb-3 w-100">
-                            <label for="user" class="form-label fs-7">Email address</label>
-                            <input type="text" class="form-control border-0 shadow-sm" id="user">
+                            <label for="user" class="form-label fs-7">
+                                Email address
+                            </label>
+
+                            <div class="input-group mb-3 shadow-sm">
+                                <span class="input-group-text bg-white border-0 text-muted" id="mail-icon"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-envelope" viewBox="0 0 16 16">
+                                        <path
+                                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+                                    </svg></span>
+                                <input type="text" class="form-control form-control border-0 ps-0" placeholder="mail@mail.com"
+                                    aria-label="Username" aria-describedby="mail-icon">
+                            </div>
                         </div>
                         <div class="mb-3 w-100">
                             <label for="password" class="form-label fs-7">Password</label>
-                            <input type="password" class="form-control border-0 shadow-sm" id="password">
+                            <div class="input-group mb-3 shadow-sm">
+                                <span class="input-group-text bg-white border-0 text-muted" id="password-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-lock" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
+                                    </svg>
+                                </span>
+                                <input type="password" class="form-control border-0 ps-0" placeholder="·····"
+                                    aria-label="Username" aria-describedby="password-icon" id="password">
+                            </div>
                         </div>
                         <div class="mb-3 form-check d-flex w-100">
                             <a href="reset-password.html"
