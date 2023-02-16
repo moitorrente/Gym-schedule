@@ -1882,8 +1882,7 @@
                     "8"
                 ],
                 "objetivo": "X-2",
-                "tipo": "Peso",
-                "completado": null
+                "tipo": "Peso"
             },
             {
                 "orden": "A2",
@@ -1902,8 +1901,7 @@
                     "8"
                 ],
                 "objetivo": "X-2",
-                "tipo": "Repeticiones",
-                "completado": null
+                "tipo": "Repeticiones"
             },
             {
                 "orden": "B1",
@@ -1922,8 +1920,7 @@
                     "10"
                 ],
                 "objetivo": "X-2",
-                "tipo": "Peso",
-                "completado": null
+                "tipo": "Peso"
             },
             {
                 "orden": "B2",
@@ -1942,8 +1939,7 @@
                     "10"
                 ],
                 "objetivo": "X-2",
-                "tipo": "Peso",
-                "completado": null
+                "tipo": "Peso"
             },
             {
                 "orden": "C",
@@ -1962,8 +1958,7 @@
                     "NA"
                 ],
                 "objetivo": "X-2",
-                "tipo": "Repeticiones",
-                "completado": null
+                "tipo": "Repeticiones"
             },
             {
                 "orden": "D",
@@ -1982,8 +1977,7 @@
                     "10"
                 ],
                 "objetivo": "X-2",
-                "tipo": "Peso",
-                "completado": null
+                "tipo": "Peso"
             }
         ]
     },
@@ -2101,6 +2095,118 @@
                 ],
                 "objetivo": "X-2",
                 "tipo": "Peso"
+            }
+        ]
+    },
+    {
+        "entrenamiento": "B",
+        "mesociclo": "2",
+        "tipo": "carga",
+        "version": "2",
+        "active": "true",
+        "ejercicios": [
+            {
+                "orden": "A1",
+                "nombre": "Sentadillas con barra",
+                "id": "7",
+                "series": "6",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "7",
+                    "7",
+                    "5",
+                    "5",
+                    "3",
+                    "3"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "A2",
+                "nombre": "Curl femoral tumbado",
+                "id": "8",
+                "series": "6",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "7",
+                    "7",
+                    "5",
+                    "5",
+                    "3",
+                    "3"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "B1",
+                "nombre": "Front squats",
+                "id": "60",
+                "series": "4",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "8",
+                    "8",
+                    "8",
+                    "8"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "B2",
+                "nombre": "Hiperextensiones a 45º",
+                "id": "61",
+                "series": "4",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "10",
+                    "10",
+                    "10",
+                    "10"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Repeticiones"
+            },
+            {
+                "orden": "C",
+                "nombre": "Plancha RKC",
+                "id": "12",
+                "series": "3",
+                "isometrico": true,
+                "tempo": "Isométrico",
+                "repeticiones": [
+                    "30",
+                    "30",
+                    "30"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Segundos"
             }
         ]
     }
