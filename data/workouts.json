@@ -2209,5 +2209,142 @@
                 "tipo": "Segundos"
             }
         ]
+    },
+    {
+        "entrenamiento": "C",
+        "mesociclo": "2",
+        "tipo": "carga",
+        "version": "2",
+        "active": "true",
+        "ejercicios": [
+            {
+                "orden": "A1",
+                "nombre": "Dips",
+                "id": "13",
+                "series": "6",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "7",
+                    "7",
+                    "5",
+                    "5",
+                    "3",
+                    "3"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Repeticiones"
+            },
+            {
+                "orden": "A2",
+                "nombre": "Dominadas con agarre supino medio",
+                "id": "25",
+                "series": "6",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "7",
+                    "7",
+                    "5",
+                    "5",
+                    "3",
+                    "3"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Repeticiones"
+            },
+            {
+                "orden": "B1",
+                "nombre": "Press inclinado mancuernas",
+                "id": "14",
+                "series": "4",
+                "isometrico": false,
+                "tempo": [
+                    "2",
+                    "0",
+                    "1",
+                    "1"
+                ],
+                "repeticiones": [
+                    "8",
+                    "8",
+                    "8",
+                    "8"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "B2",
+                "nombre": "Remo sentado en polea agarre neutro",
+                "id": "27",
+                "series": "4",
+                "isometrico": false,
+                "tempo": [
+                    "2",
+                    "0",
+                    "1",
+                    "1"
+                ],
+                "repeticiones": [
+                    "8",
+                    "8",
+                    "8",
+                    "8"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "C",
+                "nombre": "Jalón subescapular",
+                "id": "62",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "10",
+                    "10",
+                    "10"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "D",
+                "nombre": "Curl perfecto Gironda con barra Z",
+                "id": "63",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "2",
+                    "1",
+                    "2",
+                    "1"
+                ],
+                "repeticiones": [
+                    "8",
+                    "8",
+                    "8"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            }
+        ]
     }
 ]
