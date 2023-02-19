@@ -2346,5 +2346,139 @@
                 "tipo": "Peso"
             }
         ]
+    },
+    {
+        "entrenamiento": "D",
+        "mesociclo": "2",
+        "tipo": "carga",
+        "version": "2",
+        "active": "true",
+        "ejercicios": [
+            {
+                "orden": "A",
+                "nombre": "Peso muerto rumano con barra",
+                "id": "10",
+                "series": "6",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "1",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "7",
+                    "7",
+                    "5",
+                    "5",
+                    "3",
+                    "3"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "B1",
+                "nombre": "Zancadas reversas con déficit",
+                "id": "64",
+                "series": "4",
+                "isometrico": false,
+                "tempo": [
+                    "2",
+                    "0",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "8",
+                    "8",
+                    "8",
+                    "8"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "B2",
+                "nombre": "Curl femoral sentado",
+                "id": "30",
+                "series": "4",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "8",
+                    "8",
+                    "8",
+                    "8"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "C",
+                "nombre": "Buenos días",
+                "id": "65",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "10",
+                    "10",
+                    "10"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "D",
+                "nombre": "Elevaciones de gemelo de pie",
+                "id": "21",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "2",
+                    "0",
+                    "1",
+                    "1"
+                ],
+                "repeticiones": [
+                    "10",
+                    "10",
+                    "10"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "E",
+                "nombre": "Elevaciones de tibial anterior en pared",
+                "id": "66",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "1",
+                    "0",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "20",
+                    "20",
+                    "20"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Repeticiones"
+            }
+        ]
     }
 ]
