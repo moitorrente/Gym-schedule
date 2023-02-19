@@ -18,8 +18,8 @@ async function forceReload() {
 }
 
 document.getElementById('force-update').onclick = () => forceReload();
-document.getElementById('dark-theme').onclick = () => localStorage.setItem('theme', 'dark');
-document.getElementById('light-theme').onclick = () => localStorage.setItem('theme', 'light');
+// document.getElementById('dark-theme').onclick = () => localStorage.setItem('theme', 'dark');
+// document.getElementById('light-theme').onclick = () => localStorage.setItem('theme', 'light');
 
 
 document.getElementById('mailto').onchange = () => {
