@@ -2480,5 +2480,144 @@
                 "tipo": "Repeticiones"
             }
         ]
+    },
+    {
+        "entrenamiento": "A",
+        "mesociclo": "3",
+        "tipo": "carga",
+        "version": "2",
+        "active": "true",
+        "ejercicios": [
+            {
+                "orden": "A1",
+                "nombre": "Press militar con mancuernas sentado agarre semiprono",
+                "id": "45",
+                "series": "6",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "7",
+                    "7",
+                    "7",
+                    "7",
+                    "7",
+                    "7"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "A2",
+                "nombre": "Dominadas agarre prono abierto",
+                "id": "46",
+                "series": "6",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "7",
+                    "7",
+                    "7",
+                    "7",
+                    "7",
+                    "7"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Repeticiones"
+            },
+            {
+                "orden": "B1",
+                "nombre": "Press plano con mancuernas agarre neutro",
+                "id": "26",
+                "series": "6",
+                "isometrico": false,
+                "tempo": [
+                    "2",
+                    "1",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "8",
+                    "8",
+                    "8",
+                    "8",
+                    "8",
+                    "8"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "B2",
+                "nombre": "Remo con mancuerna a una mano",
+                "id": "48",
+                "series": "4",
+                "isometrico": false,
+                "tempo": [
+                    "2",
+                    "0",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "8",
+                    "8",
+                    "8",
+                    "8"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "C",
+                "nombre": "Flexiones de brazos",
+                "id": "49",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "2",
+                    "0",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "10",
+                    "10",
+                    "10"
+                ],
+                "objetivo": "X-1",
+                "tipo": "Repeticiones"
+            },
+            {
+                "orden": "D",
+                "nombre": "Extensiones de tríceps en polea con agarre V",
+                "id": "50",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "2",
+                    "0",
+                    "1",
+                    "1"
+                ],
+                "repeticiones": [
+                    "10",
+                    "10",
+                    "10"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            }
+        ]
     }
 ]
