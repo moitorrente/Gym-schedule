@@ -2619,5 +2619,141 @@
                 "tipo": "Peso"
             }
         ]
+    },
+    {
+        "entrenamiento": "B",
+        "mesociclo": "3",
+        "tipo": "carga",
+        "version": "2",
+        "active": "true",
+        "ejercicios": [
+            {
+                "orden": "A1",
+                "nombre": "Sentadillas con barra",
+                "id": "7",
+                "series": "6",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "7",
+                    "7",
+                    "7",
+                    "7",
+                    "7",
+                    "7"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "A2",
+                "nombre": "Curl femoral tumbado",
+                "id": "8",
+                "series": "6",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "7",
+                    "7",
+                    "7",
+                    "7",
+                    "7",
+                    "7"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "B",
+                "nombre": "Paseo del granjero con trap bar",
+                "id": "52",
+                "series": "4",
+                "isometrico": false,
+                "tempo": [
+                    "2",
+                    "0",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "12",
+                    "12",
+                    "12",
+                    "12"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "C1",
+                "nombre": "Zancadas con mancuernas",
+                "id": "20",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "2",
+                    "0",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "8",
+                    "8",
+                    "8"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "C2",
+                "nombre": "Peso muerto rumano con barra",
+                "id": "10",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "2",
+                    "0",
+                    "1",
+                    "0"
+                ],
+                "repeticiones": [
+                    "8",
+                    "8",
+                    "8"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "D",
+                "nombre": "Ab rollouts",
+                "id": "53",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "8",
+                    "8",
+                    "8"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Repeticiones"
+            }
+        ]
     }
 ]
