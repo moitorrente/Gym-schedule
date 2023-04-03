@@ -38,6 +38,8 @@ function createYearView(days, year) {
     const daysInYear = dayOfYear(new Date(stringToDate(`31/12/${year}`)));
     const goneDays = getGoneDaysInYear(days, year);
     const streak = calculateStreak(goneDays);
+    console.log(days)
+    console.log(goneDays)
 
     view.innerHTML = '';
     for (let i = 0; i < today; i++) {
@@ -72,8 +74,11 @@ function stringToDate(dateString) {
 };
 
 function dayOfYear(day) {
-    const date = new Date(day);
-    return Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+    const date = new Date(day)
+    const start = new Date(date.getFullYear(), 0, 0);
+    const diff = (date - start) + ((start.getTimezoneOffset() - date.getTimezoneOffset()) * 60 * 1000);
+    const oneDay = 1000 * 60 * 60 * 24;
+    return Math.floor(diff / oneDay);
 }
 
 function getGoneDaysInYear(days, year) {
