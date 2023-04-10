@@ -76,7 +76,7 @@ await getContext();
 async function getContext() {
     WORKOUTS = await getFile('workouts.json');
     WORKOUTS = WORKOUTS.data;
-    mesocicloSelect.value = '3';
+    mesocicloSelect.value = '4';
     tipoSelect.value = '0';
     activoSelect.value = 'true';
     clearFilters.classList.remove('bg-white');
