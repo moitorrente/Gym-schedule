@@ -3004,5 +3004,120 @@
                 "tipo": "Peso"
             }
         ]
+    },
+    {
+        "entrenamiento": "A",
+        "mesociclo": "4",
+        "tipo": "carga",
+        "version": "2",
+        "active": "true",
+        "ejercicios": [
+            {
+                "orden": "A1",
+                "nombre": "Press banca inclinado barra",
+                "id": "1",
+                "series": "5",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "5",
+                    "4",
+                    "3",
+                    "2",
+                    "1"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "A2",
+                "nombre": "Dominadas agarre neutro cerrado",
+                "id": "34",
+                "series": "5",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "5",
+                    "5",
+                    "5",
+                    "5",
+                    "5"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Repeticiones"
+            },
+            {
+                "orden": "B1",
+                "nombre": "Dips",
+                "id": "13",
+                "series": "4",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "6",
+                    "6",
+                    "6",
+                    "6"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Repeticiones"
+            },
+            {
+                "orden": "B2",
+                "nombre": "Remo con mancuernas inclinado",
+                "id": "15",
+                "series": "4",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "6",
+                    "6",
+                    "6",
+                    "6"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "C",
+                "nombre": "Jalón subescapular",
+                "id": "62",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "10",
+                    "10",
+                    "10"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            }
+        ]
     }
 ]
