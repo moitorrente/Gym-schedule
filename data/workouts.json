@@ -3119,5 +3119,114 @@
                 "tipo": "Peso"
             }
         ]
+    },
+    {
+        "entrenamiento": "B",
+        "mesociclo": "4",
+        "tipo": "carga",
+        "version": "2",
+        "active": "true",
+        "ejercicios": [
+            {
+                "orden": "A",
+                "nombre": "Sentadillas con barra",
+                "id": "7",
+                "series": "5",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "5",
+                    "4",
+                    "3",
+                    "2",
+                    "1"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso",
+                "completado": null
+            },
+            {
+                "orden": "B1",
+                "nombre": "Curl femoral tumbado",
+                "id": "8",
+                "series": "4",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "6",
+                    "6",
+                    "6",
+                    "6"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "B2",
+                "nombre": "Front squats",
+                "id": "60",
+                "series": "4",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "6",
+                    "6",
+                    "6",
+                    "6"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "C",
+                "nombre": "Hiperextensiones a 45º",
+                "id": "61",
+                "series": "3",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "6",
+                    "6",
+                    "6"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Repeticiones"
+            },
+            {
+                "orden": "D",
+                "nombre": "Plancha RKC",
+                "id": "12",
+                "series": "3",
+                "isometrico": true,
+                "tempo": "Isométrico",
+                "repeticiones": [
+                    "30",
+                    "30",
+                    "30"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Segundos"
+            }
+        ]
     }
 ]
