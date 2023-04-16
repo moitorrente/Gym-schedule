@@ -592,5 +592,32 @@
         "elemento": "cuerpo",
         "textoCorto": "Elevaciones de tibial anterior en pared",
         "isometrico": "false"
+    },
+    {
+        "ejercicio": "Press declinado con barra, agarre cerrado",
+        "id": "67",
+        "tipo": "Peso",
+        "video": "",
+        "elemento": "barra",
+        "textoCorto": "Press declinado con barra",
+        "isometrico": "false"
+    },
+    {
+        "ejercicio": "Landmine press",
+        "id": "68",
+        "tipo": "Peso",
+        "video": "",
+        "elemento": "barra",
+        "textoCorto": "Landmine press",
+        "isometrico": "false"
+    },
+    {
+        "ejercicio": "Remo seal mancuernas agarre neutro",
+        "id": "69",
+        "tipo": "Peso",
+        "video": "",
+        "elemento": "mancuerna",
+        "textoCorto": "Remo seal mancuernas agarre neutro",
+        "isometrico": "false"
     }
 ]

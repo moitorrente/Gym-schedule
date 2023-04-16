@@ -3147,8 +3147,7 @@
                     "1"
                 ],
                 "objetivo": "X-2",
-                "tipo": "Peso",
-                "completado": null
+                "tipo": "Peso"
             },
             {
                 "orden": "B1",
@@ -3226,6 +3225,116 @@
                 ],
                 "objetivo": "X-2",
                 "tipo": "Segundos"
+            }
+        ]
+    },
+    {
+        "entrenamiento": "C",
+        "mesociclo": "4",
+        "tipo": "carga",
+        "version": "2",
+        "active": "true",
+        "ejercicios": [
+            {
+                "orden": "A1",
+                "nombre": "Press declinado con barra, agarre cerrado",
+                "id": "67",
+                "series": "5",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "5",
+                    "4",
+                    "3",
+                    "2",
+                    "1"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "A2",
+                "nombre": "Dominadas con agarre supino medio",
+                "id": "25",
+                "series": "5",
+                "isometrico": false,
+                "tempo": [
+                    "3",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "5",
+                    "5",
+                    "5",
+                    "5",
+                    "5"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Repeticiones"
+            },
+            {
+                "orden": "B1",
+                "nombre": "Landmine press",
+                "id": "68",
+                "series": "4",
+                "isometrico": false,
+                "tempo": [
+                    "2",
+                    "0",
+                    "X",
+                    "0"
+                ],
+                "repeticiones": [
+                    "6",
+                    "6",
+                    "6",
+                    "6"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "B1",
+                "nombre": "Remo seal mancuernas agarre neutro",
+                "id": "69",
+                "series": "4",
+                "isometrico": false,
+                "tempo": [
+                    "2",
+                    "0",
+                    "1",
+                    "1"
+                ],
+                "repeticiones": [
+                    "6",
+                    "6",
+                    "6",
+                    "6"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
+            },
+            {
+                "orden": "C",
+                "nombre": "Palloff press en polea",
+                "id": "37",
+                "series": "3",
+                "isometrico": true,
+                "tempo": "Isométrico",
+                "repeticiones": [
+                    "15",
+                    "15",
+                    "15"
+                ],
+                "objetivo": "X-2",
+                "tipo": "Peso"
             }
         ]
     }
