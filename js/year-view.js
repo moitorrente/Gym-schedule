@@ -7,6 +7,7 @@ document.querySelectorAll('.bi-arrows-fullscreen').forEach(el => el.onclick = ()
         screen.orientation.lock('landscape').then(() => {
             document.getElementById(`year-2022`).style.width = 'fit-content';
             document.getElementById(`year-2023`).style.width = 'fit-content';
+            document.getElementById(`year-2024`).style.width = 'fit-content';
         }).catch(err => console.log(err));
 
 
@@ -24,6 +25,7 @@ window.addEventListener("orientationchange", (event) => {
                     .then(() => {
                         document.getElementById(`year-2022`).style.width = '';
                         document.getElementById(`year-2023`).style.width = '';
+                        document.getElementById(`year-2024`).style.width = '';
                     })
                     .catch((err) => console.error(err));
             }
@@ -96,6 +98,7 @@ function getContext() {
         const dates = [...new Set(response.map(el => el.Fecha))];
         createYearView(dates, 2022);
         createYearView(dates, 2023);
+        createYearView(dates, 2024);
 
     }).catch(function (error) {
         alert(error.message);
